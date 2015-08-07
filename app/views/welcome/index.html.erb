@@ -1,0 +1,18 @@
+
+<h1><%= @current_user ? @current_user.full_name : 'No Logged In User' %></h1>
+<% if @current_user && @current_user.admin? %>
+    <%= link_to 'Admin Functions', admin_functions_path %>
+<% end %>
+
+<h3>Everybody loves beer -- here's a site to help you make your own</h3>
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut neque odio.
+  Nunc laoreet arcu ex, id scelerisque magna ullamcorper vitae. Vestibulum sit
+  amet gravida dui, vel commodo lorem. Proin vehicula tortor mauris, eu viverra dolor
+  aliquet ut. Vivamus ac viverra diam. Quisque ultricies imperdiet est sed gravida.
+  Aliquam rhoncus mollis metus ut euismod. Sed posuere eleifend mi sit amet malesuada.
+  Sed fermentum faucibus quam quis tempor. Phasellus id dignissim metus.
+  Quisque consequat metus sed malesuada efficitur. Etiam justo leo, semper et venenatis
+  ut, interdum eget purus. Fusce at suscipit est.
+</p>
