@@ -1,6 +1,6 @@
 
-<h1><%= @current_user ? @current_user.full_name : 'No Logged In User' %></h1>
-<% if @current_user && @current_user.admin? %>
+<h1><%= current_user ? current_user.full_name : 'Precision School Improvement' %></h1>
+<% if current_user && current_user.admin? %>
     <%= link_to 'Admin Functions', admin_functions_path %>
 <% end %>
 
