@@ -31,6 +31,7 @@ gem 'bootstrap-generators'
 gem 'simple_form'
 gem 'letter_opener'
 gem 'font-awesome-rails', '~> 4.4.0.0'
+gem 'font-awesome-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record

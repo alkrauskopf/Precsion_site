@@ -74,9 +74,38 @@
         width: 1170px;
     }
 }
+
 .panel-default > .panel-heading {
     color: #333;
     text-align:center;
     background-color: #ffffff;
+    border-color: #ddd;
+}
+
+.panel-default-1 > .panel-heading {
+    color: #f7f4ed;
+    text-align:center;
+    background-color: #AA9A66;
+    border-color: #ddd;
+}
+
+.panel-default-2 > .panel-heading {
+    color: #f7f4ed;
+    text-align:center;
+    background-color: #B74934;
+    border-color: #ddd;
+}
+
+.panel-default-3 > .panel-heading {
+    color: #f7f4ed;
+    text-align:center;
+    background-color: #577492;
+    border-color: #ddd;
+}
+
+.panel-default-4 > .panel-heading {
+    color: #f7f4ed;
+    text-align:center;
+    background-color: #67655D;
     border-color: #ddd;
 }
