@@ -23,17 +23,14 @@ end
 group :production do
   gem 'pg'
   gem 'rails_12factor'
-  gem 'letter_opener'
-end
-
-group :development do
-  gem 'letter_opener'
 end
 
 gem 'sendgrid'
 gem 'bcrypt'
 gem 'bootstrap-generators'
 gem 'simple_form'
+gem 'letter_opener'
+gem 'font-awesome-rails', '~> 4.4.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record

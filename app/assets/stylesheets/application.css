@@ -12,21 +12,24 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
-.fill {
-    background: image-url('mtns-bg.jpg')
+
+.page_background {
+    background-color:#f7f4ed;
 }
 .main_background_image {
-    background: url(/assets/mtns-bg.jpg);
-    height: 400px;
+    background: url(/assets/CA_mtns.jpg);
+    height: 350px;
+    width:100%;
+    margin:0px;
 }
-
 
 .intro-lead-1 {
     font-family:Verdana, Arial, Helvetica, sans-serif;
-    padding-top:10%;
+    padding-top:15%;
     text-align:center;
-    color:#fff;
+    color:#f7f4ed;
     font-size:38px;
     line-height:25px;
     margin-bottom:5px;
@@ -34,10 +37,46 @@
 
 .intro-lead-2 {
     font-family:Verdana, Arial, Helvetica, sans-serif;
-    padding-top:6%;
+    padding-top:5%;
     text-align:center;
-    color:#fff;
+    color:#f7f4ed;
     font-size:24px;
     line-height:25px;
     margin-bottom:5px;
+}
+
+.intro-lead-3 {
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    padding-top:4%;
+    text-align:center;
+    color:#f7f4ed;
+    font-size:20px;
+    line-height:25px;
+    margin-bottom:5px;
+}
+
+.main_block_1 {
+    margin-top: 10px;
+    background: url(/assets/psin_1.png);
+    height: 270px;
+    width: 100%;
+}
+
+.main_block_2 {
+    margin-top: 10px;
+    line-height:1.5em;
+    height: 270px;
+    width: 100%;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+.panel-default > .panel-heading {
+    color: #333;
+    text-align:center;
+    background-color: #ffffff;
+    border-color: #ddd;
 }
