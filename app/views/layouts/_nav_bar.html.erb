@@ -16,6 +16,9 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <% if logged_in? && current_user.admin? %>
+                <li><%= link_to 'Admin Functions', admin_functions_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
