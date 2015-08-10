@@ -20,7 +20,6 @@
 <body class="container, page_background">
 
     <%= render 'layouts/nav_bar' %>
-    <%= render 'layouts/main_header' %>
   <div class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do %>
