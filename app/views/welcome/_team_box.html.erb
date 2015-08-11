@@ -1,14 +1,203 @@
-<div class="table-responsive" style="overflow:scroll; max-height:450px;">
-    <% names.each_with_index do |name, idx| %>
-      <div class="col-md-2">
-        <div class="panel ">
-          <div class="panel-body">
-            <% break if idx == 4 %>
-            <<span style="font-weight:bold"><%= name %></span>,&nbsp;<small><%= titles[idx] %></small><br/>
-                <small>Managing Partner</small>
+<div class="container" style="overflow:scroll; max-height:480px;">
+  <div class="row">
+    <div class="col-md-4">
+      <% name =   names[0] %>
+      <% pic =     pics[0] %>
+      <% title = titles[0] %>
+      <% bio =     bios[0] %>
+      <table class="table" style="width:90%">
+        <tbody>
+            <tr>
+              <td class="thumbnail-med" style="width:30%">
+                <%= image_tag(pic)  %>
               </td>
-          </div>
-        </div>
-      </div>
-    <% end %>
+              <td style ="vertical-align:top;">
+                <span style = "font-weight:bold;"><%=name%></span></br>
+                <small>
+                  <% if title != '' %>
+                      <%=title %></br>
+                  <% end %>
+                  <%= bio %>
+                </small>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <% name =   names[1] %>
+      <% pic =     pics[1] %>
+      <% title = titles[1] %>
+      <% bio =     bios[1] %>
+      <table class="table" style="width:90%">
+        <tbody>
+            <tr>
+              <td class="thumbnail-med" style="width:30%">
+                <%= image_tag(pic)  %>
+              </td>
+              <td style ="vertical-align:top;">
+                <span style = "font-weight:bold;"><%=name%></span></br>
+                <small>
+                    <% if title != '' %>
+                        <%=title %></br>
+                    <% end %>
+                    <%= bio %>
+                </small>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <% name =   names[2] %>
+      <% pic =     pics[2] %>
+      <% title = titles[2] %>
+      <% bio =     bios[2] %>
+      <table class="table" style="width:90%">
+        <tbody>
+        <tr>
+          <td class="thumbnail-med" style="width:30%">
+            <%= image_tag(pic)  %>
+          </td>
+          <td style ="vertical-align:top;">
+            <span style = "font-weight:bold;"><%=name%></span></br>
+            <small>
+              <% if title != '' %>
+                  <%=title %></br>
+              <% end %>
+              <%= bio %>
+            </small>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <% name =   names[3] %>
+      <% pic =     pics[3] %>
+      <% title = titles[3] %>
+      <% bio =     bios[3] %>
+      <table class="table" style="width:90%">
+        <tbody>
+        <tr>
+          <td class="thumbnail-med" style="width:30%">
+            <%= image_tag(pic)  %>
+          </td>
+          <td style ="vertical-align:top;">
+            <span style = "font-weight:bold;"><%=name%></span></br>
+            <small>
+              <% if title != '' %>
+                  <%=title %></br>
+              <% end %>
+              <%= bio %>
+            </small>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <% name =   names[4] %>
+      <% pic =     pics[2] %>
+      <% title = titles[4] %>
+      <% bio =     bios[2] %>
+      <table class="table" style="width:90%">
+        <tbody>
+        <tr>
+          <td class="thumbnail-med"style="width:30%">
+            <%= image_tag(pic)  %>
+          </td>
+          <td style ="vertical-align:top;">
+            <span style = "font-weight:bold;"><%=name%></span></br>
+            <small>
+              <% if title != '' %>
+                  <%=title %></br>
+              <% end %>
+              <%= bio %>
+            </small>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <% name =   names[5] %>
+      <% pic =     pics[5] %>
+      <% title = titles[5] %>
+      <% bio =     bios[5] %>
+      <table class="table table-bordered" style="width:90%">
+        <tbody>
+        <tr>
+          <td class="thumbnail-med" style="width:30%">
+            <%= image_tag(pic)  %>
+          </td>
+          <td style ="vertical-align:top;">
+            <span style = "font-weight:bold;"><%=name%></span></br>
+            <small>
+              <% if title != '' %>
+                  <%=title %></br>
+              <% end %>
+              <%= bio %>
+            </small>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <% name =   names[6] %>
+      <% pic =     pics[6] %>
+      <% title = titles[6] %>
+      <% bio =     bios[6] %>
+      <table class="table" style="width:90%">
+        <tbody>
+        <tr>
+          <td class="thumbnail-med" style="width:30%">
+            <%= image_tag(pic)  %>
+          </td>
+          <td style ="vertical-align:top;">
+            <span style = "font-weight:bold;"><%=name%></span></br>
+            <small>
+              <% if title != '' %>
+                  <%=title %></br>
+              <% end %>
+              <%= bio %>
+            </small>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <% name =   names[7] %>
+      <% pic =     pics[7] %>
+      <% title = titles[7] %>
+      <% bio =     bios[7] %>
+      <table class="table" style="width:90%">
+        <tbody>
+        <tr>
+          <td class="thumbnail-med" style="width:30%">
+            <%= image_tag(pic)  %>
+          </td>
+          <td style ="vertical-align:top;">
+            <span style = "font-weight:bold;"><%=name%></span></br>
+            <small>
+              <% if title != '' %>
+                  <%=title %></br>
+              <% end %>
+              <%= bio %>
+            </small>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
