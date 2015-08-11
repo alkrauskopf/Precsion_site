@@ -36,6 +36,6 @@ class WelcomeController < ApplicationController
     @names[7] = 'Allen Krauskopf'
     @pics[7] = 'people/krauskopf.jpg'
     @titles[7] = 'Managing Partner'
-    @bios[7] = "Former Partner, PwC.   Transformation, Tech Strategy."
+    @bios[7] = "Former Partner, PwC Consulting.   Transformation, Tech Strategy."
   end
 end
