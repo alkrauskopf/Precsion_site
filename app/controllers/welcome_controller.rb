@@ -38,4 +38,9 @@ class WelcomeController < ApplicationController
     @titles[7] = 'Managing Partner'
     @bios[7] = "Former Partner, PwC Consulting.   Transformation, Tech Strategy."
   end
+
+  def about
+
+    render layout: "about"
+  end
 end
