@@ -21,6 +21,7 @@
 
 .thumbnail-small img { min-height:50px; height:50px; }
 .thumbnail-med img { min-height:80px; height:80px; }
+.thumbnail-large img { min-height:130px; height:130px; }
 
 .main_background_image {
     background: url(/assets/CA_mtns_3.jpg);

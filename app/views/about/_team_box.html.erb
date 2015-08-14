@@ -1,0 +1,33 @@
+<div>
+  <% (0..(names.size-1)).each do |idx| %>
+      <div class="row">
+        <div class="col-md-12">
+          <% name =   names[idx] %>
+          <% pic =     pics[idx] %>
+          <% title = titles[idx] %>
+          <% bio =     bios[idx] %>
+          <table class="table" style="width:90%">
+            <tbody>
+                <tr>
+                  <td class="thumbnail-large" style="width:20%">
+                    <%= image_tag(pic)  %>
+                  </td>
+                  <td style ="vertical-align:top;">
+                    <h3 class="about_blue_font">
+                      <%=name%>
+                          <% if title != '' %>
+                              &nbsp;<small><%=title %></small>
+                          <% end %>
+                    </h3>
+                    <p class="about_gray_font">
+                      <%= bio %>
+                    </p>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  <% end %>
+</div>
+

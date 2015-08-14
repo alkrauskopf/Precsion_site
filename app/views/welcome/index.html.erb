@@ -18,9 +18,8 @@
         <p style="line-height:1.8em"> We are a network of seasoned educators. We collaborate with education's thought leaders
             and work with schools to apply research-based methods to their local circumstances.&nbsp;
             We build "community" among our schools who, using common methods and integrated tools,
-            help each other move up the path of continuous performance improvement.
+            help each other move up the path of continuous performance improvement.&nbsp;&nbsp;<u><%= link_to 'Learn More', about_us_path %></u>
         </p>
-        <p><u><%= link_to 'Learn More', about_us_path %></u></p>
       </div>
     </div>
   </div>
@@ -123,16 +122,12 @@
             <h4> Experience Matters</h4>
           </div>
           <div class="panel-body" style="line-height:2.0em">
+            <p>
+              The <em>Precision</em> team is an exclusive network of credentialed educators who understand that,
+              by working collectively with common tools and methods, they can more effectively help every school move to higher levels of performance.
+            </p>
                 <p>
-                  The <em>Precision</em> team is an exclusive group of seasoned educators having extensive experience in school diagnostic reviews.
-                  Advisers are well versed with the Common Core Standards and specific curricular requirements in Colorado.
-                  Instruction and teacher effectiveness are particular strengths, as well our knowledge of best practices for intervention and acceleration.
-                  Everyone on the <em>Precision</em> team is a credentialed education leader, skilled facilitator, and professional development coach.
-                  And we are diverse: elementary, middle, high, and alternative school educators and principals; curriculum designers; special education educators; published authors; transformation experts.
-                  Every adviser has developed Unified Improvement Plans and will prove to be a valuable resource and, even fun to be around, colleague of school leaders.
-                </p>
-                <p>
-                  <u><a href="#" >Learn More</a></u>
+                  <u><%= link_to 'Learn More', about_us_path %></u>
                 </p>
             <%= render partial: 'team_box', locals: {names: @names,
                                                       pics: @pics,
