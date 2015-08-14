@@ -15,7 +15,9 @@
           <ul class="nav navbar-nav">
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'About', about_us_path %></li>
+            <!--
             <li><a data-toggle="modal" data-target="#myModal">Contact</a></li>
+            -->
             <% if logged_in? && current_user.admin? %>
                 <li><%= link_to 'Admin Functions', admin_functions_path %></li>
             <% end %>
@@ -31,7 +33,7 @@
   Fermentables
 </button>
 -->
-<!-- Modal -->
+<!-- Modal
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -42,7 +44,7 @@
       <div class="modal-body">
         Ingredients
 
-        <%= render '/layouts/email_form' %>
+        <%#= render '/layouts/email_form' %>
 
       </div>
       <div class="modal-footer">
@@ -52,3 +54,4 @@
     </div>
   </div>
 </div>
+-->

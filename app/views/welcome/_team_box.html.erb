@@ -1,4 +1,4 @@
-<div class="container" style="overflow:scroll; max-height:480px;">
+<div class="container">
   <div class="row">
     <div class="col-md-4">
       <% name =   names[0] %>
@@ -102,9 +102,9 @@
   <div class="row">
     <div class="col-md-4">
       <% name =   names[4] %>
-      <% pic =     pics[2] %>
+      <% pic =     pics[4] %>
       <% title = titles[4] %>
-      <% bio =     bios[2] %>
+      <% bio =     bios[4] %>
       <table class="table" style="width:90%">
         <tbody>
         <tr>
@@ -199,5 +199,32 @@
       </table>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-4">
+      <% name =   names[8] %>
+      <% pic =     pics[8] %>
+      <% title = titles[8] %>
+      <% bio =     bios[8] %>
+      <table class="table" style="width:90%">
+        <tbody>
+        <tr>
+          <td class="thumbnail-med" style="width:30%">
+            <%= image_tag(pic)  %>
+          </td>
+          <td style ="vertical-align:top;">
+            <span style = "font-weight:bold;"><%=name%></span></br>
+            <small>
+              <% if title != '' %>
+                  <%=title %></br>
+              <% end %>
+              <%= bio %>
+            </small>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
 

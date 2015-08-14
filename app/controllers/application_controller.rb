@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     @titles[3] = ''
     @bios[3] = "Former Middle & High School Principal.  Scheduling"
     @names[4] = 'Ms. Paula Redig'
-    @pics[4] = 'people/taylor.jpg'
+    @pics[4] = 'people/redig.jpg'
     @titles[4] = ''
     @bios[4] = "bio needed"
     @names[5] = 'Ms. Lisa Pryor'
@@ -51,10 +51,14 @@ class ApplicationController < ActionController::Base
     @pics[6] = 'people/staszko.jpg'
     @titles[6] = ''
     @bios[6] = "SPED Consultant"
-    @names[7] = 'Allen Krauskopf'
-    @pics[7] = 'people/krauskopf.jpg'
-    @titles[7] = 'Managing Partner'
-    @bios[7] = "Former Partner, PwC Consulting.   Transformation, Tech Strategy."
+    @names[7] = 'Dana Frazee'
+    @pics[7] = 'people/frazee.jpg'
+    @titles[7] = ''
+    @bios[7] = "."
+    @names[8] = 'Allen Krauskopf'
+    @pics[8] = 'people/krauskopf.jpg'
+    @titles[8] = 'Managing Partner'
+    @bios[8] = "Former Assc.Partner, PwC Consulting.   Transformation, Tech Strategy."
   end
 
 end
