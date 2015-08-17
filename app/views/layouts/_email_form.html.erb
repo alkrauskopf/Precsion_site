@@ -1,14 +1,35 @@
+<div class="'container">
+<%= form_tag contact_us_path  do  %>
 
-<%= form_for [current_user], :url => email_path   do |form| %>
-  <div class="form-group">
-    <div class="col-sm-8">
-      <%= text_area_tag 'message'%>
+    <div class="row">
+      <div class="col-md-8 ">
+            Your Message
+          <div class="panel-body">
+            <%= text_area_tag 'message', nil, size: "65x6" %>
+          </div>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-md-8">
+            Your Workplace
+          <div class="panel-body">
+            <%= text_field_tag 'workplace', nil, size: 50 %>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+            Your Email Address
+          <div class="panel-body">
+            <%= text_field_tag 'email', '', size: 50 %>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-8 ">
+         <%= submit_tag 'Send Message' %>
+        </div>
+    </div>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-8">
-      <%= form.submit 'Send' %>
-    </div>
-  </div>
-<% end %>
+<% end -%>
+</div>

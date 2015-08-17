@@ -16,6 +16,13 @@ class SessionController < ApplicationController
     end
   end
 
+  def contact_us
+    email = params[:email]
+    message = params[:message]
+    workplace = params[:workplace]
+    redirect_to root_path, notice: "Email Sent from: #{email}. Workplace: #{workplace}. Message: #{message}"
+  end
+
   def destroy
     if user = current_user
       session.delete(:id)
