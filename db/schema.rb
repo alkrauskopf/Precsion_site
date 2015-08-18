@@ -11,6 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150818202339) do
+
+  create_table "contact_logs", force: :cascade do |t|
+    t.boolean  "was_sent",     default: false
+    t.string   "user_email"
+    t.string   "workplace"
+    t.string   "distribution"
+    t.text     "message"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "name"
+  end
 
 end

@@ -17,7 +17,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # No. We do care
-  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.delivery_method = :letter_opener
   #  config.action_mailer.delivery_method = :smtp
   #  config.action_mailer.smtp_settings = {
@@ -27,7 +27,7 @@ Rails.application.configure do
   #
   #   - or -
   #
-  config.action_mailer.smtp_settings = {
+   config.action_mailer.smtp_settings = {
       :address => "smtp.sendgrid.net",
       :port => 587,
       :domain => "davinci-coders-beer-recipes.herokuapp.com",

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#login'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  post 'contact_us' => 'session#contact_us'
+  post 'contact_logs' => 'session#contact_us'
   get 'about_us' => 'about#index'
 
   # Example of regular route:

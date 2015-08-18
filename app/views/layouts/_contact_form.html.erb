@@ -1,0 +1,39 @@
+<div class="container">
+    <%= form_for contact_log do |f|  %>
+      <div class="row">
+        <div class="col-md-8">
+          Your Name
+          <div class="panel-body">
+            <%= f.text_field :name, size: 30 %>
+            <span style="padding-left:30px">
+              <%= f.submit 'Send Message' %>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          Your Email Address
+          <div class="panel-body">
+            <%= f.text_field :user_email, size: 50 %>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-md-8">
+                Your Workplace
+              <div class="panel-body">
+                <%= f.text_field :workplace, size: 50 %>
+              </div>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-md-8 ">
+          Your Message
+          <div class="panel-body">
+            <%= f.text_area :message, size: "65x6" %>
+          </div>
+        </div>
+      </div>
+    <% end -%>
+</div>

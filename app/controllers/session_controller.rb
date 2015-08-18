@@ -17,10 +17,15 @@ class SessionController < ApplicationController
   end
 
   def contact_us
-    email = params[:email]
-    message = params[:message]
-    workplace = params[:workplace]
-    redirect_to root_path, notice: "Email Sent from: #{email}. Workplace: #{workplace}. Message: #{message}"
+    contact_log = ContactLog.create(contact_us_params)
+    contact_log.distribution = 'alkrauskopf@gmail.com, mlindimore@precisionschoolimprovement.com'
+    if contact_log.save
+      flash[:notice] = "Message Sent."
+      contact_log.email_us!
+    else
+      flash[:error] = contact_log.errors.full_messages
+    end
+    redirect_to root_path
   end
 
   def destroy
@@ -28,5 +33,10 @@ class SessionController < ApplicationController
       session.delete(:id)
       redirect_to root_path, notice: "#{user.full_name} has been logged out"
     end
+  end
+
+  private
+  def contact_us_params
+    params.require(:contact_log).permit(:user_email, :workplace, :message, :name)
   end
 end
