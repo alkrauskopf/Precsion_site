@@ -12,10 +12,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title panel contact-panel" id="myModalLabel">Send The Precision Team A Message</h4>
       </div>
-      <div class="modal-body contact-panel">
-
-        <%= render partial: '/layouts/contact_form'%>
-
+      <%= render '/session/emailing' %>
+      <div class="modal-body contact-panel contact-us-form">
+        <%= render partial: '/session/contact_form'%>
       </div>
       <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>

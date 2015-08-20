@@ -18,12 +18,13 @@ class SessionController < ApplicationController
 
   def contact_us
     contact_log = ContactLog.create(contact_us_params)
-    contact_log.distribution = 'alkrauskopf@gmail.com, mlindimore@precisionschoolimprovement.com'
+#    contact_log.distribution = 'alkrauskopf@gmail.com, mlindimore@precisionschoolimprovement.com'
+    contact_log.distribution = 'alkrauskopf@gmail.com'
     if contact_log.save
       flash[:notice] = "Message Sent."
       contact_log.email_us!
     else
-      flash[:error] = contact_log.errors.full_messages
+      flash[:error] = 'Incorrect email or password'
     end
     redirect_to root_path
   end
