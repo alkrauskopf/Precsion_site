@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821063814) do
+ActiveRecord::Schema.define(version: 20150823175316) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name"
@@ -42,14 +42,24 @@ ActiveRecord::Schema.define(version: 20150821063814) do
   add_index "user_authorizations", ["user_id"], name: "index_user_authorizations_on_user_id"
 
   create_table "user_bios", force: :cascade do |t|
-    t.string   "education"
     t.text     "history"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.text     "education",  default: ""
+    t.string   "brief",      default: ""
+    t.string   "passion",    default: ""
   end
 
   add_index "user_bios", ["user_id"], name: "index_user_bios_on_user_id"
+
+  create_table "user_classes", force: :cascade do |t|
+    t.string   "abbrev",      limit: 8
+    t.string   "name",        limit: 30
+    t.text     "description"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -61,6 +71,7 @@ ActiveRecord::Schema.define(version: 20150821063814) do
     t.string   "email"
     t.string   "picture"
     t.boolean  "is_contactee",    default: false
+    t.integer  "user_class_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

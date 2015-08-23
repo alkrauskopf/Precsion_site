@@ -1,6 +1,6 @@
-class AdminsController < ApplicationController
+class Admin::AdminsController < ApplicationController
 
-  before_action :authorized?
+  before_action :admin_authorize
 
   before_action :set_user, only: [:destroy, :roles]
 
