@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_bios
   default_url_options host: 'localhost', port: 3000
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -9,8 +10,10 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#login'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  post 'email/:id' => 'welcome#contact_us', as: 'email'
+  post 'contact_logs' => 'session#contact_us'
   get 'about_us' => 'about#index'
+  get 'sign_up' => 'users#new'
+  post 'users' => 'users#create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

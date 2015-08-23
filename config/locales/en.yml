@@ -20,8 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  site_name: Brewtopia
-  user_notifier:
-    sign_up:
-      subject: Brewtopia Welcomes You
+  site_name: Precision
+  contact_log_notifier:
+    contact_us:
+      subject: Precision Contact Us Notice
+    contact_us_reply:
+      subject: Precision Thank You

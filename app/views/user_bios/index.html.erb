@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to new_user_bio_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New User bio
+  <% end %>
+  <h1>Listing user_bios</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Education</th>
+            <th>History</th>
+            <th>User</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @user_bios) do |user_bio| %>
+            <td><%= user_bio.education %></td>
+            <td><%= user_bio.history %></td>
+            <td><%= user_bio.user %></td>
+            <td><%= link_to 'Show', user_bio %></td>
+        <td><%= link_to 'Edit', edit_user_bio_path(user_bio) %></td>
+        <td><%= link_to 'Destroy', user_bio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -16,10 +16,27 @@ class SessionController < ApplicationController
     end
   end
 
+  def contact_us
+    contact_log = ContactLog.create(contact_us_params)
+    contact_log.distribution = User.contact_list
+    if contact_log.save
+      flash[:notice] = "Message Sent."
+      contact_log.email_us!
+    else
+      flash[:error] = contact_log.errors.full_messages
+    end
+    redirect_to root_path
+  end
+
   def destroy
     if user = current_user
       session.delete(:id)
       redirect_to root_path, notice: "#{user.full_name} has been logged out"
     end
+  end
+
+  private
+  def contact_us_params
+    params.require(:contact_log).permit(:user_email, :workplace, :message, :name)
   end
 end
