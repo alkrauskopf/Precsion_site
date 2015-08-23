@@ -55,23 +55,29 @@
       </div>
       <div class="row">
         <div class="col-md-5" >
-          <div class="about_image">
+          <div class="about_approach_image_1">
             <%= image_tag('Precision_model.png', width: 400) %>
           </div>
         </div>
         <div class="col-md-7">
-            <div class="panel-body about_panel_1 about_blue_font" style="padding-top:3em;">
+            <div class="panel-body about_panel_1 about_blue_font" style="padding-top:0em;">
               <em>
                 <p>
                   <strong>We are laser-focused on one thing:</strong>
                 </p>
                 <p>
                   Helping our schools institute the operational disciplines
-                  they need to continuously improve their performance.<br/>
+                  they need to continuously improve how they work.<br/>
                 </p>
                 <p>
-                  Everything fits within a methodological framework that is based on research
-                  and grounded to quality management principals.
+                  We don't offer a buffet of disparate "solutions," each attached to a marketing tag line.<br/>
+                </p>
+                <p>
+                  All of our work fits within a methodological framework. Every improvement priority
+                  builds upon preceding achievements and sets the stage for achievements to come.
+                </p>
+                <p>
+                  Continuous improvement is not an experimentation process. It's focused, deliberate, and incremental.
                 </p>
               </em>
               <hr>
@@ -82,23 +88,24 @@
     <div class="col-md-8 about_panel">
       <p class="about_model_p">
         <strong>Thought Leaders:</strong> Our ties to education's thought leaders provide the basis for
-        our methods. The core competencies of these organizations tend to focus on the important "What?" questions. (<u>What</u> does research tell us?)
-        <em>Precision</em> converts these into the methodological "How?" that our schools ultimately need.
+        our methods. Thought leaders clarify <u>what</u> research tells us.
+        We translate the "what?" into the operational "how?" because this is the question
+        most schools, given their unique circumstances, ultimately need help with.
       </p>
       <p class="about_model_p">
-        <strong>Precision Advisers:</strong> We are an exclusive team of accomplished education leaders. We know how schools work;
-        we are familiar with local circumstances and state standards; we are a network of professionals: collectively we have the
-        expertise related to all operational issues facing our schools.
+        <strong>Precision Advisers:</strong> We are an exclusive team of accomplished education leaders. We know what research says and how schools work.
+        We are familiar with local circumstances and state standards. <em>Precision</em> is a network of professionals who collectively possess the
+        know-how related to all operational issues facing our schools.
       </p>
       <p class="about_model_p">
         <strong>Knowledge Base:</strong> Our technical infrastructure integrates our research-based methods.
-        This is as it should be; but not as it often is in education today. Our tools feed our community-wide
-        knowledge base of operational metrics; needed for data-driven collaboration among our schools. This, in turn,
-        sustains our relationships with thought leaders.
+        This is as it should be. Many schools today rely on a buffet of disparate tools, which do little to harmonize the whole.
+        Our tools feed our community-wide knowledge base of operational metrics, making data-driven collaboration possible.
+        Our knowledge base also sustains our relationships with thought leaders.
       </p>
     </div>
     <div class="col-md-4" >
-      <div class="about_image_2">
+      <div class="about_approach_image_2">
         <%= image_tag('about_2.jpeg') %>
       </div>
     </div>
@@ -129,19 +136,19 @@
     </div>
     <div class="row">
         <div class="col-md-5" >
-          <div class="about_image">
+          <div class="about_team_image">
             <%= image_tag('about_1.jpeg', width: 400) %>
           </div>
         </div>
         <div class="col-md-7">
           <div class="panel-body about_panel about_grey_font" style="padding-top:0em;" >
             <p>
-              The <em>Precision</em> team is an exclusive group of seasoned educators having extensive experience in school diagnostic reviews.
-              Advisers are well versed with the Common Core Standards and specific curricular requirements in Colorado.
+              <em>Precision</em> is a network of seasoned advisors having extensive experience in school diagnostic reviews;
+              the foundation for all valid performance improvement plans. Advisers are well versed with the Common Core Standards and specific curricular requirements in Colorado.
               Instruction and teacher effectiveness are particular strengths, as well our knowledge of best practices for intervention and acceleration.
-              Everyone on the <em>Precision</em> team is a credentialed education leader, skilled facilitator, and professional development coach.
-              And we are diverse: elementary, middle, high, and alternative school educators and principals; curriculum designers; special education educators; published authors; transformation experts.
-              Every adviser has developed <strong>Unified Improvement Plans</strong> and will prove to be a valuable resource and, even fun to be around, colleague of school leaders.
+              Everyone is a credentialed education leader, skilled facilitator, and professional development coach.
+              And we are diverse: elementary, middle, high, and alternative school educators and principals; curriculum designers; special education educators; published authors; transformation and technology experts.
+              Every adviser has developed <strong>Unified Improvement Plans</strong> and will prove to be a valuable resource and fun-to-be-around colleague.
             </p>
           </div>
         </div>
@@ -179,7 +186,12 @@
       <%= render partial: 'team_box', locals: {names: @names,
                                              pics: @pics,
                                              titles: @titles,
-                                             bios: @bios, }%>
+                                             bios: @bios,
+                                               briefs: @briefs,
+                                               educations: @educations,
+                                               passions:   @passions,
+                                               user_classes:   @user_classes
+                                    }%>
     </div>
   </div>
   <!-- Blog Entries Column -->

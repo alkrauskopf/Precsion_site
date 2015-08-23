@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to new_user_class_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New User class
+  <% end %>
+  <h1>Listing user_classes</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Abbrev</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @user_classes) do |user_class| %>
+            <td><%= user_class.abbrev %></td>
+            <td><%= user_class.name %></td>
+            <td><%= user_class.description %></td>
+            <td><%= link_to 'Show', user_class %></td>
+        <td><%= link_to 'Edit', edit_user_class_path(user_class) %></td>
+        <td><%= link_to 'Destroy', user_class, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

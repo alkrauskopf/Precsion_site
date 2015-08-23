@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  belongs_to :user_class
   has_one :user_bio, dependent: :destroy
 
   has_many :user_authorizations, dependent: :destroy

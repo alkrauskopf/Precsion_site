@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: []
 
   def new
-    if !authorized?
+    if !admin_authorized?
       @user = User.new
     else
       redirect_to root_path
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    if authorized?
+    if admin_authorized?
       @users = User.all
     else
       redirect_to root_path
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if !authorized?
+    if !admin_authorized?
       @user = User.new(user_params)
       if @user.save
         flash[:notice] = "#{@user.full_name} Created"
