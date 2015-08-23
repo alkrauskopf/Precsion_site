@@ -5,21 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?, :contact_log
 
-  private
-
-  def logged_in?
-    !current_user.nil?
-  end
-
-  def current_user
-    @current_user ||= User.find(session[:id]) if session[:id]
-    rescue ActiveRecord::RecordNotFound
-    session.delete(:id)
-    nil
-  end
-
-  def contact_log
-    ContactLog.new
+  def authorized?
+    logged_in? && current_user.admin?
   end
 
   def load_team
@@ -65,4 +52,20 @@ class ApplicationController < ActionController::Base
     @bios[8] = "Former Assc.Partner, PwC Consulting.   Transformation, Tech Strategy."
   end
 
+  private
+
+  def logged_in?
+    !current_user.nil?
+  end
+
+  def current_user
+    @current_user ||= User.find(session[:id]) if session[:id]
+  rescue ActiveRecord::RecordNotFound
+    session.delete(:id)
+    nil
+  end
+
+  def contact_log
+    ContactLog.new
+  end
 end

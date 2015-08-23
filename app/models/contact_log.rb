@@ -14,4 +14,8 @@ class ContactLog < ActiveRecord::Base
     ContactLogNotifier.contact_us_reply(self).deliver_now
   end
 
+  def distribution_list
+    User.contactees.join(', ')
+  end
+
 end
