@@ -70,6 +70,10 @@ class User < ActiveRecord::Base
     self.user_class && self.user_class.abbrev == 'consult'
   end
 
+  def self.full_team
+    User.all.by_position.select{ |u| u.consultant? || u.core?}
+  end
+
   def self.core_team
     User.all.by_position.select{ |u| u.core? }
   end

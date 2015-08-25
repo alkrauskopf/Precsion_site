@@ -6,7 +6,7 @@
                 <% pic_url = !user.picture.empty? ? ("people/" + user.picture) : '' %>
                 <%= image_tag(pic_url) %>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <h2 class="about_blue_font">
                   <%= user.name_with_prefix %>
                       <% if user.title != '' %>

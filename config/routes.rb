@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'session#destroy'
   post 'contact_logs' => 'session#contact_us'
   get 'about_us' => 'about#index'
+  get 'about_team' => 'about#our_team'
   get 'sign_up' => 'admin/users#new'
 
   namespace :admin do
