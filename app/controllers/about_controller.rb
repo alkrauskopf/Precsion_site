@@ -1,7 +1,11 @@
 class AboutController < ApplicationController
 
   def index
-  #  load_team
-    @users = User.core_team + User.consultants
+
+  end
+
+  def our_team
+    #  load_team
+    @users = User.full_team
   end
 end
