@@ -1,6 +1,6 @@
 class Admin::UserBiosController < ApplicationController
 
-  before_action :admin_authorized?
+  before_action :admin_authorize
   before_action :set_user_bio, only: [:show, :edit, :update, :destroy]
 
   # GET /user_bios

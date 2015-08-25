@@ -7,15 +7,22 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  get 'login' => 'sessions#login'
-  post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+  get 'login' => 'session#login'
+  post 'login' => 'session#create'
+  delete 'logout' => 'session#destroy'
   post 'contact_logs' => 'session#contact_us'
   get 'about_us' => 'about#index'
+  get 'sign_up' => 'admin/users#new'
 
   namespace :admin do
-    get 'sign_up' => 'users#new'
-    post 'users' => 'users#create'
+    get 'user_roles' => 'users#index'
+    post 'users' => 'users#create', as: 'users'
+    patch 'user/:id/roles' => 'users#roles', as: 'role'
+    delete 'user/:id' => 'users#destroy', as: 'user'
+    get 'user/:id' => 'users#profile'
+    patch 'user/:id' => 'users#update'
+    post 'user_bios' => 'users#create_bio', as: 'user_bios'
+    patch 'user_bio/:id' => 'users#update_bio', as: 'user_bio'
   end
 
   resources :user_classes

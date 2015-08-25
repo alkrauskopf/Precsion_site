@@ -1,39 +1,34 @@
-<div>
-  <% (0..(names.size-1)).each do |idx| %>
-      <div class="row">
-        <div class="col-md-12">
-          <% name =   names[idx] %>
-          <% pic =     pics[idx] %>
-          <% title = titles[idx] %>
-          <% bio =     bios[idx] %>
-          <% brief =     briefs[idx] %>
-          <% passion =     passions[idx] %>
-          <% education =     educations[idx] %>
-          <% user_class =     user_classes[idx] %>
-          <% if user_class == 'core'%>
-              <table class="table" style="width:90%">
-                <tbody>
-                    <tr>
-                      <td class="thumbnail-large ">
-                        <%= image_tag(pic)  %>
-                      </td>
-                      <td style ="vertical-align:top;">
-                        <h3 class="about_blue_font">
-                          <%=name%>
-                              <% if title != '' %>
-                                  &nbsp;<small><%=title %></small>
-                              <% end %>
-                        </h3>
-                        <p class="about_gray_font">
-                          <%= bio %>
-                        </p>
-                      </td>
-                    </tr>
-                </tbody>
-              </table>
-          <% end -%>
-        </div>
-      </div>
-  <% end %>
+<div class="container">
+    <div style="line-height:2.0em">
+      <% users.each do |user| %>
+          <div class="row team_row">
+            <div class="col-md-2 thumbnail-large">
+                <% pic_url = !user.picture.empty? ? ("people/" + user.picture) : '' %>
+                <%= image_tag(pic_url) %>
+            </div>
+            <div class="col-md-8">
+                <h2 class="about_blue_font">
+                  <%= (user.prefix.nil? || user.prefix.empty?) ? '' : user.prefix + ' '%><%=user.full_name%>
+                      <% if user.title != '' %>
+                          &nbsp;<small><%=user.title %></small>
+                      <% end %>
+                </h2>
+                 <% if user.user_bio && !user.user_bio.passion.empty? %>
+                      <h4 class="about_blue_font">
+                        <%= user.user_bio.passion %>
+                      </h4>
+                  <% end -%>
+                  <% if user.user_bio && !user.user_bio.education.empty? %>
+                      <h6 class="about_blue_font">
+                        <%= user.user_bio.education %>
+                      </h6>
+                  <% end -%>
+                <p class="about_gray_font">
+                  <%= user.user_bio ? user.user_bio.history : '' %>
+                </p>
+            </div>
+          </div>
+      <% end %>
+    </div>
 </div>
 

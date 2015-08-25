@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150823175316) do
+ActiveRecord::Schema.define(version: 20150825044110) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name"
@@ -70,8 +70,10 @@ ActiveRecord::Schema.define(version: 20150823175316) do
     t.datetime "updated_at",                      null: false
     t.string   "email"
     t.string   "picture"
-    t.boolean  "is_contactee",    default: false
     t.integer  "user_class_id"
+    t.string   "contactee",        default: "No"
+    t.integer  "display_position", default: 9999
+    t.string   "prefix"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

@@ -12,6 +12,13 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :email
 
+
+  def authorize!(auth_id)
+    auth = UserAuthorization.new
+    auth.authorization_id = auth_id
+    self.user_authorizations << auth
+  end
+
   def self.last_first
     order('created_at DESC')
   end
@@ -20,8 +27,16 @@ class User < ActiveRecord::Base
     order('last_name ASC')
   end
 
+  def self.by_position
+    order('display_position ASC')
+  end
+
   def full_name
     [self.first_name, self.last_name].join(' ')
+  end
+
+  def last_name_first
+    [self.last_name, self.first_name].join(', ')
   end
 
   # User.authorizations.
@@ -29,16 +44,42 @@ class User < ActiveRecord::Base
     self.authorizations.include?(Authorization.admin) ? true : false
   end
 
+  def team?
+    self.authorizations.include?(Authorization.team) ? true : false
+  end
+
   def self.admins
     User.all.select{ |u| u.admin? }
   end
 
+  def self.team
+    User.all.select{ |u| u.team? }
+  end
+
+  # User.user_classes
+
+  def core?
+    self.user_class && self.user_class.abbrev == 'core'
+  end
+
+  def consultant?
+    self.user_class && self.user_class.abbrev == 'consultant'
+  end
+
+  def self.core_team
+    User.all.by_position.select{ |u| u.core? }
+  end
+
+  def self.consultants
+    User.all.by_position.select{ |u| u.consultant? }
+  end
+
   def contactee?
-    self.is_contactee
+    self.contactee == 'Yes'
   end
 
   def self.contactees
-    where(is_contactee: true)
+    where(contactee: 'Yes')
   end
 
   def self.contact_list

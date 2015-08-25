@@ -1,0 +1,44 @@
+<%= form_for([:admin,@user_bio], html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @user_bio.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@user_bio.errors.count, "error") %> prohibited this user_bio from being saved:</h4>
+
+      <ul>
+      <% @user_bio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+  <div class="form-group">
+    <%= f.label :education, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :education, class: "form-control" %>
+    </div>
+  </div>
+    <div class="form-group">
+      <%= f.label :brief, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :brief, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :passion, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :passion, class: "form-control" %>
+      </div>
+    </div>
+  <div class="form-group">
+    <%= f.label :history, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :history, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

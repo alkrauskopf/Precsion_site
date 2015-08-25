@@ -54,26 +54,38 @@
 .about_gold_font {
     color:#AA9A66;
 }
+
 .about_panel_1 {
-    font-size: 18px;
-    line-height:1.8em;
-    background:transparent;
+  font-size: 18px;
+  line-height:1.8em;
+  background:transparent;
 }
 .about_panel {
-    font-size: 16px;
-    line-height:1.8em;
-    background:transparent;
+  font-size: 16px;
+  line-height:1.8em;
+  background:transparent;
 }
+
 .about_panel_model {
   font-size: 16px;
   line-height:1.8em;
   background:transparent;
   padding-top:2em;
 }
+
 .about_model_p {
   padding-bottom:1em;
 }
+
+.team_row {
+  border-top: 1px solid #67655D;
+  padding-bottom:2em;
+  padding-top:2em;
+}
+.team_row_text {
+  vertical-align:top;
+}
 .about_border_bottom {
-    border-bottom: 1px solid #67655D;
-    padding-bottom:1em;
+  border-bottom: 1px solid #67655D;
+  padding-bottom:1em;
 }
