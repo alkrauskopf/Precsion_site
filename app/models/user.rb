@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
     [self.last_name, self.first_name].join(', ')
   end
 
+  def name_with_prefix
+    (self.prefix.nil? || self.prefix == '') ? self.full_name : (self.prefix + ' ' + self.full_name)
+  end
+
   # User.authorizations.
   def admin?
     self.authorizations.include?(Authorization.admin) ? true : false

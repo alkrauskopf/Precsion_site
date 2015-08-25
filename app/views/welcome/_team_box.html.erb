@@ -11,7 +11,7 @@
                         <%= image_tag(pic_url) %>
                       </td>
                       <td style ="vertical-align:top;">
-                        <span style = "font-weight:bold;"><%= (users[idx-1].prefix.nil? || users[idx-1].prefix.empty?)  ? '' : users[idx-1].prefix + ' '%> <%=users[idx-1].full_name%></span></br>
+                        <span style = "font-weight:bold;"><%=users[idx-1].name_with_prefix %></span></br>
                         <small>
                           <%= users[idx-1].title %></br>
                           <%= users[idx-1].user_bio ? users[idx-1].user_bio.brief : ''%>
