@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :user_authorizations, dependent: :destroy
   has_many :authorizations, through: :user_authorizations
 
+  has_many :user_povs, dependent: :destroy
+
   validates_format_of :email, :with => /\A[\w._%+-]+@[\w.-]+\.[\w]{2,6}\z/, :message => 'invalid format',
                       :allow_nil => false
 
@@ -92,6 +94,10 @@ class User < ActiveRecord::Base
 
   def self.contact_list
     self.contactees.map(&:email).join(', ')
+  end
+
+  def self.with_povs
+    User.select{|u| !u.user_povs.empty?}
   end
 
 end

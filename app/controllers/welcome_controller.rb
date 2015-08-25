@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
   #  load_team
 
   @users = User.core_team
-
+  @pov_users = User.with_povs
   end
 
 

@@ -23,6 +23,14 @@
                         <%= user.user_bio.education %>
                       </h6>
                   <% end -%>
+                  <% if !user.user_povs.empty?%>
+                      <h6 class="about_blue_font team_education">
+                        Online Points-of-View =>
+                        <% user.user_povs.each do |pov| %>
+                            &nbsp;&nbsp;<u><a href= <%= pov.url %>> <%= pov.name %> </a></u>
+                        <% end %>
+                      </h6>
+                  <% end -%>
                 <p class="about_gray_font">
                   <%= user.user_bio ? user.user_bio.history : '' %>
                 </p>
