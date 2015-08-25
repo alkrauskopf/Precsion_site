@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-8">
                 <h2 class="about_blue_font">
-                  <%= (user.prefix.nil? || user.prefix.empty?) ? '' : user.prefix + ' '%><%=user.full_name%>
+                  <%= user.name_with_prefix %>
                       <% if user.title != '' %>
                           &nbsp;<small><%=user.title %></small>
                       <% end %>
