@@ -1,283 +1,50 @@
 <div class="container">
-  <div class="row">
-      <% name =   names[0] %>
-      <% pic =     pics[0] %>
-      <% title = titles[0] %>
-      <% bio =     bios[0] %>
-      <% brief =     briefs[0] %>
-      <% passion =     passions[0] %>
-      <% education =     educations[0] %>
-      <% user_class =     user_classes[0] %>
-      <% if user_class == 'core'%>
-    <div class="col-md-4">
-        <table class="table" style="width:90%">
+  <% idx = 1 %>
+  <% while idx <= users.size do %>
+      <div class="row">
+        <div class="col-md-4">
+            <table class="table" style="width:90%">
+                <tbody>
+                    <tr>
+                      <td class="thumbnail-med" style="width:30%">
+                        <% pic_url = (users[idx-1] && users[idx-1].picture) ? ("people/" + users[idx-1].picture) : '' %>
+                        <%= image_tag(pic_url) %>
+                      </td>
+                      <td style ="vertical-align:top;">
+                        <span style = "font-weight:bold;"><%= (users[idx-1].prefix.nil? || users[idx-1].prefix.empty?)  ? '' : users[idx-1].prefix + ' '%> <%=users[idx-1].full_name%></span></br>
+                        <small>
+                          <%= users[idx-1].title %></br>
+                          <%= users[idx-1].user_bio ? users[idx-1].user_bio.brief : ''%>
+                        </small>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+        <div class="col-md-4">
+          <% if idx < users.size %>
+          <table class="table" style="width:90%">
             <tbody>
                 <tr>
                   <td class="thumbnail-med" style="width:30%">
-                    <%= image_tag(pic)  %>
+                    <% pic_url = users[idx].picture ? ("people/" + users[idx].picture) : '' %>
+                    <%= image_tag(pic_url)  %>
                   </td>
                   <td style ="vertical-align:top;">
-                    <span style = "font-weight:bold;"><%=name%></span></br>
+                    <span style = "font-weight:bold;"><%= (users[idx].prefix.nil? || users[idx].prefix.empty?) ? '' : users[idx].prefix + ' '%> <%= users[idx].full_name  %></span></br>
                     <small>
-                      <% if title != '' %>
-                          <%=title %></br>
-                      <% end %>
-                      <%= brief %>
+                      <%= users[idx].title%></br>
+                      <%= users[idx].user_bio ? users[idx].user_bio.brief : ''%>
                     </small>
                   </td>
                 </tr>
             </tbody>
           </table>
-    </div>
-    <% end -%>
-      <% name =   names[1] %>
-      <% pic =     pics[1] %>
-      <% title = titles[1] %>
-      <% bio =     bios[1] %>
-      <% brief =     briefs[1] %>
-      <% passion =     passions[1] %>
-      <% education =     educations[1] %>
-      <% user_class =     user_classes[1] %>
-      <% if user_class == 'core'%>
-        <div class="col-md-4">
-        <table class="table" style="width:90%">
-        <tbody>
-            <tr>
-              <td class="thumbnail-med" style="width:30%">
-                <%= image_tag(pic)  %>
-              </td>
-              <td style ="vertical-align:top;">
-                <span style = "font-weight:bold;"><%=name%></span></br>
-                <small>
-                    <% if title != '' %>
-                        <%=title %></br>
-                    <% end %>
-                    <%= brief %>
-                </small>
-              </td>
-            </tr>
-        </tbody>
-      </table>
-    </div>
-    <% end %>
-  </div>
-  <div class="row">
-      <% name =   names[2] %>
-      <% pic =     pics[2] %>
-      <% title = titles[2] %>
-      <% bio =     bios[2] %>
-      <% brief =     briefs[2] %>
-      <% passion =     passions[2] %>
-      <% education =     educations[2] %>
-      <% user_class =     user_classes[2] %>
-      <% if user_class == 'core'%>
-        <div class="col-md-4">
-        <table class="table" style="width:90%">
-        <tbody>
-        <tr>
-          <td class="thumbnail-med" style="width:30%">
-            <%= image_tag(pic)  %>
-          </td>
-          <td style ="vertical-align:top;">
-            <span style = "font-weight:bold;"><%=name%></span></br>
-            <small>
-              <% if title != '' %>
-                  <%=title %></br>
-              <% end %>
-              <%= brief %>
-            </small>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <% end %>
-      <% name =   names[3] %>
-      <% pic =     pics[3] %>
-      <% title = titles[3] %>
-      <% bio =     bios[3] %>
-      <% brief =     briefs[3] %>
-      <% passion =     passions[3] %>
-      <% education =     educations[3] %>
-      <% user_class =     user_classes[3] %>
-      <% if user_class == 'core'%>
-        <div class="col-md-4">
-        <table class="table" style="width:90%">
-        <tbody>
-        <tr>
-          <td class="thumbnail-med" style="width:30%">
-            <%= image_tag(pic)  %>
-          </td>
-          <td style ="vertical-align:top;">
-            <span style = "font-weight:bold;"><%=name%></span></br>
-            <small>
-              <% if title != '' %>
-                  <%=title %></br>
-              <% end %>
-              <%= brief %>
-            </small>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <% end %>
-  </div>
-  <div class="row">
-      <% name =   names[4] %>
-      <% pic =     pics[4] %>
-      <% title = titles[4] %>
-      <% bio =     bios[4] %>
-      <% brief =     briefs[4] %>
-      <% passion =     passions[4] %>
-      <% education =     educations[4] %>
-      <% user_class =     user_classes[4] %>
-      <% if user_class == 'core'%>
-        <div class="col-md-4">
-      <table class="table" style="width:90%">
-        <tbody>
-        <tr>
-          <td class="thumbnail-med"style="width:30%">
-            <%= image_tag(pic)  %>
-          </td>
-          <td style ="vertical-align:top;">
-            <span style = "font-weight:bold;"><%=name%></span></br>
-            <small>
-              <% if title != '' %>
-                  <%=title %></br>
-              <% end %>
-              <%= brief %>
-            </small>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <% end %>
-      <% name =   names[5] %>
-      <% pic =     pics[5] %>
-      <% title = titles[5] %>
-      <% bio =     bios[5] %>
-      <% brief =     briefs[5] %>
-      <% passion =     passions[5] %>
-      <% education =     educations[5] %>
-      <% user_class =     user_classes[5] %>
-      <% if user_class == 'core'%>
-        <div class="col-md-4">
-      <table class="table " style="width:90%">
-        <tbody>
-        <tr>
-          <td class="thumbnail-med" style="width:30%">
-            <%= image_tag(pic)  %>
-          </td>
-          <td style ="vertical-align:top;">
-            <span style = "font-weight:bold;"><%=name%></span></br>
-            <small>
-              <% if title != '' %>
-                  <%=title %></br>
-              <% end %>
-              <%= brief %>
-            </small>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <% end %>
-  </div>
-  <div class="row">
-      <% name =   names[6] %>
-      <% pic =     pics[6] %>
-      <% title = titles[6] %>
-      <% bio =     bios[6] %>
-      <% brief =     briefs[6] %>
-      <% passion =     passions[6] %>
-      <% education =     educations[6] %>
-      <% user_class =     user_classes[6] %>
-      <% if user_class == 'core'%>
-      <table class="table" style="width:90%">
-        <tbody>
-        <tr>
-          <td class="thumbnail-med" style="width:30%">
-            <%= image_tag(pic)  %>
-          </td>
-          <td style ="vertical-align:top;">
-            <span style = "font-weight:bold;"><%=name%></span></br>
-            <small>
-              <% if title != '' %>
-                  <%=title %></br>
-              <% end %>
-              <%= brief %>
-            </small>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <% end %>
-      <% name =   names[7] %>
-      <% pic =     pics[7] %>
-      <% title = titles[7] %>
-      <% bio =     bios[7] %>
-      <% brief =     briefs[7] %>
-      <% passion =     passions[7] %>
-      <% education =     educations[7] %>
-      <% user_class =     user_classes[7] %>
-      <% if user_class == 'core'%>
-        <div class="col-md-4">
-      <table class="table" style="width:90%">
-        <tbody>
-        <tr>
-          <td class="thumbnail-med" style="width:30%">
-            <%= image_tag(pic)  %>
-          </td>
-          <td style ="vertical-align:top;">
-            <span style = "font-weight:bold;"><%=name%></span></br>
-            <small>
-              <% if title != '' %>
-                  <%=title %></br>
-              <% end %>
-              <%= brief %>
-            </small>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <% end %>
-  </div>
-  <div class="row">
-      <% name =   names[8] %>
-      <% pic =     pics[8] %>
-      <% title = titles[8] %>
-      <% bio =     bios[8] %>
-      <% brief =     briefs[8] %>
-      <% passion =     passions[8] %>
-      <% education =     educations[8] %>
-      <% user_class =     user_classes[8] %>
-      <% if user_class == 'core'%>
-        <div class="col-md-4">
-        <table class="table" style="width:90%">
-        <tbody>
-        <tr>
-          <td class="thumbnail-med" style="width:30%">
-            <%= image_tag(pic)  %>
-          </td>
-          <td style ="vertical-align:top;">
-            <span style = "font-weight:bold;"><%=name%></span></br>
-            <small>
-              <% if title != '' %>
-                  <%=title %></br>
-              <% end %>
-              <%= brief %>
-            </small>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <% end %>
-  </div>
+          <% end %>
+        </div>
+      </div>
+      <% idx += 2 %>
+  <% end %>
 </div>
 
 

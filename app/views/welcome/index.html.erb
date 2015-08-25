@@ -129,15 +129,7 @@
                 <p>
                   <u><%= link_to 'Learn More', about_us_path %></u>
                 </p>
-            <%= render partial: 'team_box', locals: {names: @names,
-                                                      pics: @pics,
-                                                      titles: @titles,
-                                                      bios: @bios,
-                                                        briefs: @briefs,
-                                                        educations: @educations,
-                                                        passions:   @passions,
-                                                        user_classes:   @user_classes
-                                                        }%>
+            <%= render partial: 'team_box', locals: {users: @users }%>
             </div>
             </div>
         </div>

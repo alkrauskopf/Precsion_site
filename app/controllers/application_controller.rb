@@ -3,11 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :contact_log
+  helper_method :current_user, :logged_in?, :contact_log, :admin_authorized?
 
-  def admin_authorized?
-    logged_in? && current_user.admin?
-  end
 
   def admin_authorize
     if !admin_authorized?
@@ -136,5 +133,9 @@ class ApplicationController < ActionController::Base
 
   def contact_log
     ContactLog.new
+  end
+
+  def admin_authorized?
+    Authorization.admin.user_authorizations.empty? || (logged_in? && current_user.admin?)
   end
 end
