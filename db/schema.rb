@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825044110) do
+ActiveRecord::Schema.define(version: 20150825172947) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20150825044110) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "user_povs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_povs", ["user_id"], name: "index_user_povs_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

@@ -3,6 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :admin_authorize
   before_action :set_user, only: [:roles, :destroy, :profile, :update]
   before_action :set_bio, only: [:update_bio]
+  before_action :set_pov, only: [:destroy_pov]
 
   def index
     @users = User.by_position
@@ -48,7 +49,8 @@ class Admin::UsersController < ApplicationController
     else
       @user_bio = @user.user_bio
     end
-
+    @user_povs = @user.user_povs
+    @new_pov = UserPov.new
   end
 
   def update
@@ -85,6 +87,29 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def create_pov
+    @user_pov = UserPov.new(user_pov_params)
+    if @user_pov.save
+      flash[:notice] = "#{@user.full_name} POV Created"
+    else
+      flash[:error] = @user.errors.full_messages
+    end
+    redirect_to admin_user_path(@user.id)
+  end
+
+  def destroy_pov
+
+    if @user_pov.destroy
+      flash[:notice] = 'POV was successfully destroyed.'
+    else
+      flash[:error] = (logged_in? ? current_user.id.to_s : 'You Must Be Logged In')
+    end
+    respond_to do |format|
+      format.html { redirect_to admin_user_path(@user.id)}
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def set_user
@@ -109,6 +134,18 @@ class Admin::UsersController < ApplicationController
     params.require(:user_bio).permit(
         :history, :user_id, :education,
         :brief, :passion
+    )
+  end
+
+  def set_pov
+    @user_pov = UserPov.find(params[:id])
+    @user = @user_pov.user
+  end
+
+  def user_pov_params
+    @user = User.find(params[:user_pov][:user_id])
+    params.require(:user_pov).permit(
+        :user_id, :name, :url
     )
   end
 end

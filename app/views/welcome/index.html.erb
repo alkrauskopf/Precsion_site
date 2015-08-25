@@ -40,7 +40,9 @@
           <p>
             All diagnostic data are kept on-line as a baseline from which schools can analyze their future progress against established standards.
           </p>
-          <u><a href="#" >Learn More</a></u>
+          <!--
+            <u><a href="#">Learn More</a></u>
+            -->
         </div>
       </div>
     </div>
@@ -60,7 +62,9 @@
           <p>
             <em>Precision</em> connects schools having achieved, or are striving to achieve, similar goals.
           </p>
-          <u><a href="#" >Learn More</a></u>
+            <!--
+                <u><a href="#">Learn More</a></u>
+            -->
         </div>
       </div>
     </div>
@@ -77,7 +81,9 @@
           <p>Periodic diagnostic checkpoints produce objective indicators of progress for each school and that of the community as a whole. This, in turn,
             helps our research partners better understand what our schools need from them.
           </p>
+          <!--
           <u><a href="#">Learn More</a></u>
+          -->
         </div>
       </div>
     </div>
@@ -99,7 +105,9 @@
             <p>
               Our enabling tools, operate from a powerful online platform called <span style="font-weight:bold; color:#0000a4">Escent</span>, which conforms school processes to quality tenets and fosters data-based collaboration among <em>Precision</em> schools.
             </p>
+            <!--
             <u><a href="#">Learn More</a></u>
+            -->
           </div>
         </div>
         <div class="panel panel-palette_3">
@@ -108,7 +116,9 @@
           </div>
           <div class="panel-body">
             <p>
-              <u><a href="#" >View Testimonials</a></u>
+             <!--
+             <u><a href="#" >View Testimonials</a></u>
+             -->
             </p>
             <p>
               <%= render 'logo_box'%>
@@ -121,13 +131,26 @@
           <div class="panel-heading">
             <h4> Experience Matters</h4>
           </div>
-          <div class="panel-body" style="line-height:2.0em">
+          <div class="panel-body welcome_team">
             <p>
               The <em>Precision</em> team is an exclusive network of credentialed educators who understand that,
               by working collectively with common tools and methods, they can more effectively help every school move to higher levels of performance.
             </p>
-                <p>
-                  <u><%= link_to 'Learn More', about_us_path %></u>
+            <p class="about_blue_font welcome_team">
+              <% if !@pov_users.empty?%>
+                <div class="about_blue_font">
+                  <u>Some Points-of-View</u><br/>
+                  <% @pov_users.each do |user| %>
+                      <%= user.last_name %>&nbsp;=>
+                      <% user.user_povs.each do |pov| %>
+                          &nbsp;&nbsp;<u><a href= <%= pov.url %>> <%= pov.name %> </a></u>
+                      <% end %>
+                  <% end %>
+                </div>
+            <% end -%>
+            </p>
+            <p>
+                  <u><%= link_to 'Learn More', about_team_path %></u>
                 </p>
             <%= render partial: 'team_box', locals: {users: @users }%>
             </div>

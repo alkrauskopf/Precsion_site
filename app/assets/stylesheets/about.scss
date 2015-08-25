@@ -25,7 +25,7 @@
 }
 
 .about_approach_image_2{
-  padding-top:1em;
+  padding-top:4em;
   float:right;
 }
 
@@ -60,10 +60,12 @@
   line-height:1.8em;
   background:transparent;
 }
-.about_panel {
+
+.about_panel_2 {
   font-size: 16px;
-  line-height:1.8em;
+  line-height:1.5em;
   background:transparent;
+  padding-top:1em;
 }
 
 .about_panel_model {
@@ -73,8 +75,16 @@
   padding-top:2em;
 }
 
+.about_panel {
+  font-size: 16px;
+  line-height:1.8em;
+  background:transparent;
+  padding-bottom:2em;
+}
+
 .about_model_p {
-  padding-bottom:1em;
+  padding-top:1em;
+  padding-bottom:0em;
 }
 
 .team_row {

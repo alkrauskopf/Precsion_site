@@ -1,0 +1,31 @@
+<div class = "container pov_list-container">
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+      <div class="panel panel-default-2">
+        <div class="panel-heading">
+          <h5><i class="fa fa-fw fa-user"></i> <%= user.first_name%> has <%= pluralize(user.user_povs.size, 'POV URL')%></h5>
+        </div>
+        <div class="panel-body, table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <tbody>
+                  <%= content_tag_for(:tr, user.user_povs) do |pov| %>
+                      <td>
+                        <%= pov.name %>
+                      </td>
+                      <td>
+                        <a href= <%= pov.url %>> <%= pov.url %> </a>
+                      </td>
+                      <td>
+                        <%= link_to 'Destroy POV', [:admin, pov], method: :delete, data: { confirm: 'Are you sure?' } %>
+                      </td>
+                  <% end %>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
