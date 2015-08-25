@@ -14,12 +14,12 @@
                       <% end %>
                 </h2>
                  <% if user.user_bio && !user.user_bio.passion.empty? %>
-                      <h4 class="about_blue_font">
+                      <h4 class="about_blue_font team_passion">
                         <%= user.user_bio.passion %>
                       </h4>
                   <% end -%>
                   <% if user.user_bio && !user.user_bio.education.empty? %>
-                      <h6 class="about_blue_font">
+                      <h6 class="about_blue_font team_education">
                         <%= user.user_bio.education %>
                       </h6>
                   <% end -%>
