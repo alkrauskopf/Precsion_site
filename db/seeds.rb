@@ -14,5 +14,5 @@
 #   User Classes
 UserClass.destroy_all
 UserClass.create(id: 1, abbrev: 'core', name: 'Core Team', description: 'Core Team Member')
-UserClass.create(id: 2, abbrev: 'consultant', name: 'Exended Team', description: 'Extended Team Member')
+UserClass.create(id: 2, abbrev: 'consult', name: 'Exended Team', description: 'Extended Team Member')
 #

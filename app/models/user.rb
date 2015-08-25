@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def consultant?
-    self.user_class && self.user_class.abbrev == 'consultant'
+    self.user_class && self.user_class.abbrev == 'consult'
   end
 
   def self.core_team
