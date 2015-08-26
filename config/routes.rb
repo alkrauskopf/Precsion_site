@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'about_team' => 'about#our_team'
   get 'sign_up' => 'admin/users#new'
 
+  get 'offerings' => 'offerings#index'
+
   namespace :admin do
     get 'user_roles' => 'users#index'
     post 'users' => 'users#create', as: 'users'
