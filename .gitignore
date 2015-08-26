@@ -16,6 +16,5 @@
 !/log/.keep
 /tmp
 
-# Ignore that damned schema file
-
+# Ignore schema.rb
 /db/schema.rb
