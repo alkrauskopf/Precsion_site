@@ -1,0 +1,19 @@
+<div id="title_row" class="row">
+  <h1>Manage Offerings</h1>
+</div>
+<div class="accordion">
+  <% @offerings.each do |offering| %>
+    <div class="row col-md-10">
+      <div class="panel panel-palette_5">
+        <div class="panel-heading">
+          <h4><i class="fa fa-wrench"></i><%= offering.name %></h4>
+          <button class="btn btn-default">Edit</button>
+        </div>
+        <div class="panel-body brief" style="line-height:1.6em">
+          <p id="brief"><em><%= offering.brief %></em></p>
+          <%= offering.description %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
