@@ -13,8 +13,10 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
+ *= require jquery-ui
  */
 @import "application-variables.scss";
+
 
 .navbar {
   background-color: #ffffff;
@@ -152,4 +154,8 @@
 
 .welcome_team {
   line-height:2em;
+}
+
+h1 {
+  color: $h1_dark_text;
 }

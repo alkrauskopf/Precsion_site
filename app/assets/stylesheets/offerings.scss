@@ -1,0 +1,22 @@
+@import 'application-variables';
+
+h1 {
+  color: $h1_dark_text;
+}
+
+#title_row {
+  border-bottom: 1px solid $h1_dark_text;
+  margin-bottom: 20px;
+}
+
+.panel {
+  i {
+    padding-right: 10px;
+  }
+  h4 {
+    text-align: left;
+  }
+  p#brief {
+    font-size: 120%;
+  }
+}
