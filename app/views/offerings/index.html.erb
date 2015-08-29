@@ -1,18 +1,48 @@
 <div id="title_row" class="row">
   <h1>Our Offerings</h1>
 </div>
-<div class="accordion">
-  <% @offerings.each do |offering| %>
-    <div class="row col-md-10">
-      <div class="panel panel-palette_5">
-        <div class="panel-heading">
-          <h4><i class="fa fa-wrench"></i><%= offering.name %></h4>
-        </div>
-        <div class="panel-body brief" style="line-height:1.6em">
-            <p id="brief"><em><%= offering.brief %></em></p>
-            <%= offering.description %>
-        </div>
+<% @offerings.each do |offering| %>
+  <div class="row col-md-10">
+    <div class="panel panel-palette_5">
+
+      <div class="panel-heading" role="tab" id="heading<%= offering.id %>">
+        <h4><i class="fa fa-wrench"></i><%= offering.name %></h4>
+      </div>
+
+
+      <div class="panel-body">
+        <p id="brief"><em><%= offering.brief %></em></p>
+        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse<%= offering.id %>"
+                aria-expanded="false" aria-controls="collapse<%= offering.id %>">
+          more...
+        </button>
+      </div>
+
+      <div id="collapse<%= offering.id %>" class="panel-collapse collapse" role="tabpanel"
+           aria-labelledby="heading<%= offering.id %>" style="line-height:1.6em">
+        <p><%= offering.description %></p>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+
+<% end %>
+
+
+<% if false %>
+  <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse<%= offering.id %>"
+          aria-expanded="false" aria-controls="collapse<%= offering.id %>">
+    more...
+  </button>
+
+
+  <div class="row">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Button with data-target
+    </button>
+    <div class="collapse" id="collapseExample">
+      <div class="well">
+        ...
+      </div>
+    </div>
+  </div>
+<% end %>
