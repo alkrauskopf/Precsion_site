@@ -23,8 +23,8 @@
 .about_header {
   color:$navbar-background;
   text-align:center;
-  font-size: 18px;
-  line-height:1.7em;
+  font-size: 20px;
+  line-height:2.0em;
   background:transparent;
 }
 
@@ -37,6 +37,16 @@
   padding-top:4em;
   float:right;
 }
+
+.pillars-panel-heading {
+  color: $light_text;
+  text-align: center;
+  padding-top:1px;
+  padding-bottom:1px;
+  background-color: $palette_2;
+  border-color: #ddd;
+}
+
 
 .about_team_image{
   padding-top:2em;
