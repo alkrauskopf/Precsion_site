@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901005050) do
+ActiveRecord::Schema.define(version: 20150901040309) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name"
@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 20150901005050) do
   create_table "images", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "offering_id"
   end
 
   create_table "offering_user_povs", force: :cascade do |t|

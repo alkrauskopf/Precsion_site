@@ -42,7 +42,11 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def destroy
-    # destroy
+    @offering.destroy
+    respond_to do |format|
+        format.html { redirect_to admin_offerings_path, notice: 'Offering has been deleted.' }
+        format.json { head :no_content }
+    end
   end
 
   private
