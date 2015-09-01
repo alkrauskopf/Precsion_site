@@ -14,10 +14,25 @@
  *= require_self
  *= require font-awesome
  */
+@import "application-variables.scss";
 
 .page_background {
     background-color:#f7f4ed;
 }
+
+.about_header {
+  color:$palette_2;
+  text-align:center;
+  font-size: 20px;
+  line-height:2.0em;
+  background:transparent;
+}
+
+.about-page {
+  color:$palette_2;
+  font-weight:bold;
+}
+
 
 .about_approach_image_1{
   padding-top:1em;
@@ -28,6 +43,16 @@
   padding-top:4em;
   float:right;
 }
+
+.pillars-panel-heading {
+  color: $light_text;
+  text-align: center;
+  padding-top:1px;
+  padding-bottom:1px;
+  background-color: $palette_2;
+  border-color: #ddd;
+}
+
 
 .about_team_image{
   padding-top:2em;
