@@ -20,6 +20,17 @@ h1 {
   }
 }
 
+#status {
+  border: 1px solid $palette_5;
+  position: relative;
+  top: 5px;
+  p {
+    font-size: 1em;
+    font-style: italic;
+
+  }
+}
+
 .panel {
   i {
     padding-right: 10px;
