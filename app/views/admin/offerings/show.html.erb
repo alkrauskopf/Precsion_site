@@ -1,0 +1,36 @@
+<div class="row col-md-12">
+  <div class="panel panel-palette_5">
+
+    <div class="panel-heading" role="tab" id="heading<%= @offering.id %>">
+      <h4><i class="fa fa-wrench"></i><%= @offering.name %></h4>
+      <a class="btn btn-default" href="<%= edit_admin_offering_path(@offering) %>">Edit</a>
+    </div>
+
+    <div class="panel-body">
+      <h4>Brief:</h4>
+
+      <p id="brief"><em><%= @offering.brief %></em></p>
+
+      <h4>Description:</h4>
+
+      <p><%= @offering.description %></p>
+
+      <% if @offering.position.nil? %>
+        <h4>Position not selected (nil)</h4>
+      <% else %>
+        <h4>Offering Position: <%= @offering.position %></h4>
+      <% end %>
+
+      <% if @offering.visible? %>
+        <h4>Published to index page</h4>
+      <% else %>
+        <h4>Not shown on Index page.</h4>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row col-md-2" id="back-button">
+    <a class="btn btn-default" href="<%= admin_offerings_path %>">Back</a>
+  </div>
+</div>
+
