@@ -1,0 +1,15 @@
+<!-- locals: { offering: @local_var } -->
+
+<div id="status" class="col-md-2">
+  <% if offering.visible? %>
+    <h4>Visible</h4>
+  <% else %>
+    <h4><em>Hidden</em></h4>
+  <% end %>
+
+  <% if offering.position.nil? %>
+    <p>No position selected</p>
+  <% else %>
+    <p>Offering Position: <%= offering.position %></p>
+  <% end %>
+</div>

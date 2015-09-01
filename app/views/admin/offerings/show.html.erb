@@ -15,17 +15,8 @@
 
       <p><%= @offering.description %></p>
 
-      <% if @offering.position.nil? %>
-        <h4>Position not selected (nil)</h4>
-      <% else %>
-        <h4>Offering Position: <%= @offering.position %></h4>
-      <% end %>
+      <%= render partial: 'status', locals: { offering: @offering } %>
 
-      <% if @offering.visible? %>
-        <h4>Published to index page</h4>
-      <% else %>
-        <h4>Not shown on Index page.</h4>
-      <% end %>
     </div>
   </div>
 
