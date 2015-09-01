@@ -7,6 +7,28 @@ h1 {
 #title_row {
   border-bottom: 1px solid $h1_dark_text;
   margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+#offerings-carousel {
+  margin: 0 20px;
+  height: 500px;
+  img {
+    /* force images to fit the carousel window */
+    width: 100%;
+    height: 500px;
+  }
+}
+
+#status {
+  border: 1px solid $palette_5;
+  position: relative;
+  top: 5px;
+  p {
+    font-size: 1em;
+    font-style: italic;
+
+  }
 }
 
 .panel {
@@ -18,5 +40,31 @@ h1 {
   }
   p#brief {
     font-size: 120%;
+    text-indent: 10px;
   }
+  .panel-collapse p {
+    text-indent: 20px;
+    padding: 20px;
+    border-top: 1px solid $palette_5;
+  }
+}
+
+button {
+  float: right;
+}
+
+a.btn {
+  float: right;
+  position: relative;
+  top: -33px;
+}
+
+#back-button a {
+  display: block;
+  float: none;
+  top: 0px;
+}
+
+.button_to input {
+  margin: 5px;
 }
