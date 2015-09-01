@@ -1,4 +1,7 @@
-<h1>Edit Offering</h1>
+<h1 id="title_row">Edit Offering</h1>
 
 <%= render 'form' %>
-
+<div class="row col-md-offset-2">
+  <%= button_to 'Delete Offering', admin_offering_path, class: 'btn btn-danger', method: :delete,
+    data: {confirm: 'Are you sure? This action cannot be undone'} %>
+</div>
