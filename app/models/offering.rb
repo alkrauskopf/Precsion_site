@@ -4,4 +4,8 @@ class Offering < ActiveRecord::Base
   has_many :user_povs, through: :offering_user_povs
   has_many :images, dependent: :destroy
 
+  def self.arrange_by_position
+    order('position ASC')
+  end
+
 end
