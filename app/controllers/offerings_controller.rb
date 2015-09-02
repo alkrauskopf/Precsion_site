@@ -1,5 +1,5 @@
 class OfferingsController < ApplicationController
   def index
-    @offerings = Offering.all
+    @offerings = Offering.arrange_by_position
   end
 end

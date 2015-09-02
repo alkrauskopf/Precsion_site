@@ -12,6 +12,7 @@ class Admin::OfferingsController < ApplicationController
 
   def create
     @offering = Offering.new(offering_params)
+
     respond_to do |format|
       if @offering.save
         format.html { redirect_to admin_offering_path(@offering.id), notice: "#{@offering.name} has been created." }
