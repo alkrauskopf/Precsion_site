@@ -58,6 +58,7 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def offering_params
-    params.require(:offering).permit(:name, :brief, :description, :position, :visible)
+    params.require(:offering).permit(:name, :brief, :description,
+      :display_position, :is_visible, :parent_id)
   end
 end

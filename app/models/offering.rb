@@ -5,7 +5,7 @@ class Offering < ActiveRecord::Base
   has_many :images, dependent: :destroy
 
   def self.arrange_by_position
-    order('position ASC')
+    order('display_position ASC')
   end
 
 end
