@@ -1,7 +1,6 @@
 <div id="offerings-carousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <!-- first item to be generic 'offerings' image to account for active class -->
     <% @offerings.length.times do |num| %>
       <% if num == 0 %>
         <li data-target="#offerings-carousel" data-slide-to="<%= num %>" class="active"></li>
