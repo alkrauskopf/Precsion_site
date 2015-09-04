@@ -8,4 +8,12 @@ class Offering < ActiveRecord::Base
     order('display_position ASC')
   end
 
+  def self.find_parent(child)
+    find(child.parent_id)
+  end
+
+  def self.children
+    # where are my kiddos?
+  end
+
 end

@@ -15,7 +15,7 @@
 
       <p><%= @offering.description %></p>
 
-      <%= render partial: 'status', locals: { offering: @offering } %>
+      <%= render partial: 'status', locals: { offering: @offering, parent: @parent } %>
 
     </div>
   </div>

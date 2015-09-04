@@ -2,8 +2,11 @@ class Admin::OfferingsController < ApplicationController
 
   before_action :admin_authorize, :set_offering, only: [:edit, :show, :update, :destroy]
 
+  before_action :find_parent, only: [:show]
+
   def index
     @offerings = Offering.all
+    @parent = Offering.find_parent(@offerings[0])
   end
 
   def new
@@ -25,6 +28,9 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def edit
+    if @offering.parent_id != nil
+      find_parent
+    end
   end
 
   def update
@@ -55,6 +61,10 @@ class Admin::OfferingsController < ApplicationController
 
   def set_offering
     @offering = Offering.find(params[:id])
+  end
+
+  def find_parent
+    @parent = Offering.find_parent(@offering)
   end
 
   def offering_params

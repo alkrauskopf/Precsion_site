@@ -1,6 +1,6 @@
-<!-- locals: { offering: @local_var } -->
+<!-- locals: { offering: @local_var, parent: @local_var2 } -->
 
-<div id="status" class="col-md-2">
+<div id="status" class="col-sm-4">
   <% if offering.is_visible %>
     <h4>Visible</h4>
   <% else %>
@@ -11,5 +11,11 @@
     <p>No position selected</p>
   <% else %>
     <p>Offering Position: <%= offering.display_position %></p>
+  <% end %>
+
+  <% if offering.parent_id.nil? %>
+    <p>Ain't no child</p>
+  <% else %>
+    <p>Sub-offering of: <strong><%= parent.name %></strong></p>
   <% end %>
 </div>
