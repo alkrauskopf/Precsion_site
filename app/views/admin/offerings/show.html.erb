@@ -12,8 +12,9 @@
       <p id="brief"><em><%= @offering.brief %></em></p>
 
       <h4>Description:</h4>
-
-      <p><%= @offering.description %></p>
+      <!-- so .html_safe might not be the best thing to use here but since all this content
+      is admin-generated, then it is likely not susceptible to malicious script insertion XSS attacks. -->
+      <p><%= @offering.description.html_safe %></p>
 
       <%= render partial: 'status', locals: { offering: @offering, parent: @parent } %>
 

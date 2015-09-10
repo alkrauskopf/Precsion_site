@@ -2,15 +2,15 @@ class Admin::OfferingsController < ApplicationController
 
   before_action :admin_authorize, :set_offering, only: [:edit, :show, :update, :destroy]
 
-  before_action :find_parent, only: [:show]
-
   def index
     @offerings = Offering.all
-    @parent = Offering.find_parent(@offerings[0])
+    # below creates a hash of :id/:name key/value pairs to be used in the view
+    @parents = @offerings.map { |offering| [offering.id, offering.name]}.to_h
   end
 
   def new
     @offering = Offering.new
+    parent_options
   end
 
   def create
@@ -28,9 +28,7 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def edit
-    if @offering.parent_id != nil
-      find_parent
-    end
+    parent_options
   end
 
   def update
@@ -46,7 +44,7 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def show
-    # show page for specific offering
+    @parent = @offering.parent
   end
 
   def destroy
@@ -63,8 +61,10 @@ class Admin::OfferingsController < ApplicationController
     @offering = Offering.find(params[:id])
   end
 
-  def find_parent
-    @parent = Offering.find_parent(@offering)
+  def parent_options
+    # method populates the form drop-down menu
+    @parent_array = Offering.all.map { |offering| [offering.name, offering.id]}
+    @parent_array.unshift(['none', nil])
   end
 
   def offering_params

@@ -1,21 +1,26 @@
 <!-- locals: { offering: @local_var, parent: @local_var2 } -->
 
 <div id="status" class="col-sm-4">
-  <% if offering.is_visible %>
+  <% if offering.visible? %>
     <h4>Visible</h4>
   <% else %>
     <h4><em>Hidden</em></h4>
   <% end %>
 
-  <% if offering.display_position.nil? %>
-    <p>No position selected</p>
-  <% else %>
     <p>Offering Position: <%= offering.display_position %></p>
+
+  <% if parent.is_a?(Hash) %>
+    <% if offering.parent_id.nil? %>
+      <p>Parent offering</p>
+    <% else %>
+      <p>Sub-offering of: <strong><%= parent[offering.parent_id] %></strong></p>
+    <% end %>
+  <% else %>
+    <% if offering.parent_id.nil? %>
+      <p>Parent offering</p>
+    <% else %>
+      <p>Sub-offering of: <strong><%= parent.name %></strong></p>
+    <% end %>
   <% end %>
 
-  <% if offering.parent_id.nil? %>
-    <p>Ain't no child</p>
-  <% else %>
-    <p>Sub-offering of: <strong><%= parent.name %></strong></p>
-  <% end %>
 </div>
