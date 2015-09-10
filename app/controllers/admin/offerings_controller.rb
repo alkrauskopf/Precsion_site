@@ -1,6 +1,6 @@
 class Admin::OfferingsController < ApplicationController
 
-  before_action :admin_authorize, :set_offering, only: [:edit, :show, :update, :destroy]
+  before_action :admin_authorize, :set_offering, only: [:edit, :show, :update, :destroy, :assign_pov]
 
   def index
     @offerings = Offering.arrange_by_position
@@ -56,6 +56,14 @@ class Admin::OfferingsController < ApplicationController
     end
   end
 
+  def assign_pov
+
+    respond_to do |format|
+      format.html { redirect_to edit_admin_offering_path }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def set_offering
@@ -71,5 +79,9 @@ class Admin::OfferingsController < ApplicationController
   def offering_params
     params.require(:offering).permit(:name, :brief, :description,
       :display_position, :is_visible, :parent_id)
+  end
+
+  def set_pov
+    @pov = UserPov.find(params[:pov][:id])
   end
 end

@@ -7,3 +7,9 @@ $(document) ->
     false
   return
 
+  $(document).on 'click', '.api_load a', ->
+  $(".ingredients_list").hide()
+  $(".ingredients_loading").show()
+  $.getScript @href
+  false
+

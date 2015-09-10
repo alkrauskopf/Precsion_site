@@ -1,0 +1,28 @@
+<div class = "container pov_list-container pov_load">
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+      <div class="panel panel-default-2">
+        <div class="panel-heading">
+          <h5><i class="fa fa-fw fa-user"></i>  has </h5>
+        </div>
+        <div class="panel-body, table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <tbody>
+                  <%= content_tag_for(:tr, povs) do |pov| %>
+                      <td>
+                        <%= pov.user ? pov.user.last_name : 'No User' %>:&nbsp;<%= pov.name %>
+                      </td>
+                      <td>
+                        <a></a><%= button_to (offering.user_povs.include?(pov) ? 'Remove' : 'Add'), admin_assign_pov_path(offering) %></a>
+                      </td>
+                  <% end %>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

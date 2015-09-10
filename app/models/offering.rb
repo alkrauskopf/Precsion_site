@@ -9,7 +9,12 @@ class Offering < ActiveRecord::Base
     order('display_position ASC')
   end
 
+  def available_povs
+   UserPov.all - self.user_povs
+  end
+
   def visible?
     self.is_visible
   end
+
 end
