@@ -6,3 +6,7 @@
   <%= button_to 'Delete Offering', admin_offering_path, class: 'btn btn-danger', method: :delete,
     data: {confirm: 'Are you sure? This action cannot be undone'} %>
 </div>
+
+<div class="row col-md-offset-2" id="edit-back-button">
+  <a class="btn btn-default" href="<%= admin_offerings_path %>">Back</a>
+</div>

@@ -18,7 +18,7 @@
       <div class="panel-body">
         <p id="brief"><em><%= offering.brief %></em></p>
 
-        <%= render partial: 'status', locals: { offering: offering }%>
+        <%= render partial: 'status', locals: {offering: offering, parent: @parents} %>
 
         <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse<%= offering.id %>"
                 aria-expanded="false" aria-controls="collapse<%= offering.id %>">
@@ -28,7 +28,8 @@
 
       <div id="collapse<%= offering.id %>" class="panel-collapse collapse" role="tabpanel"
            aria-labelledby="heading<%= offering.id %>">
-        <p><%= offering.description %></p>
+        <p><%= offering.description.html_safe %></p>
+        <!-- html_safe tells rails to pass this as HTML code and the browser will render the tags -->
       </div>
     </div>
   </div>

@@ -1,8 +1,7 @@
 <div id="offerings-carousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <!-- first item to be generic 'offerings' image to account for active class -->
-    <% @offerings.length.times do |num| %>
+    <% (@offerings.length + 1).times do |num| %>
       <% if num == 0 %>
         <li data-target="#offerings-carousel" data-slide-to="<%= num %>" class="active"></li>
       <% else %>
@@ -26,9 +25,10 @@
         <%= image_tag('evans-1.jpeg') %>
 
         <div class="carousel-caption">
-          <h3><%= offering.name %></h3>
+          <h2><%= offering.name %></h2>
         </div>
       </div>
+
     <% end %>
   </div>
 

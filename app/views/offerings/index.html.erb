@@ -24,7 +24,7 @@
 
         <div id="collapse<%= offering.id %>" class="panel-collapse collapse" role="tabpanel"
              aria-labelledby="heading<%= offering.id %>" style="line-height:1.6em">
-          <p><%= offering.description %></p>
+          <p><%= offering.description.html_safe %></p>
         </div>
       </div>
     </div>

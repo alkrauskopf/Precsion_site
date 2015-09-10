@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904143655) do
+ActiveRecord::Schema.define(version: 20150909230823) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name"
@@ -31,12 +31,13 @@ ActiveRecord::Schema.define(version: 20150904143655) do
     t.string   "name"
   end
 
-  create_table "images", force: :cascade do |t|
+  create_table "offering_images", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "offering_id"
+    t.boolean  "is_carousel_img", default: false
   end
 
   create_table "offering_user_povs", force: :cascade do |t|
