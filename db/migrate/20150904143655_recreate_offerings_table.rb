@@ -1,8 +1,8 @@
 class RecreateOfferingsTable < ActiveRecord::Migration
   def change
-    drop_table :offerings
     drop_table :offering_user_povs
-    
+    drop_table :offerings
+
     create_table :offerings do |t|
       t.string :name
       t.text :brief
