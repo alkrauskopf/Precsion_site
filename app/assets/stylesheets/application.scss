@@ -49,19 +49,20 @@ h1, h2, h3, h4 {
 }
 
 .main_background_image {
-/*  background: url(/assets/CO_Aspen_2.png); */
-  background-color: $palette_2;
+  background: url(/assets/CO_Mtn_2d.png);
+/*  background-color: $palette_2;  */
   height: 260px;
   width: 100%;
   margin: 0px;
 }
 
 .intro-lead-1 {
-  font-family: Garamond, Verdana, Arial, Helvetica, sans-serif;
-  padding-top: 10%;
-  text-align: center;
+  font-family: Zapfino, Arial, Verdana, Helvetica, sans-serif;
+  padding-top: 8%;
+  padding-left:9%;
+  text-align: left;
   color: $light_text;
-  font-size: 55px;
+  font-size: 65px;
   line-height: 20px;
   margin-bottom: 0px;
 }
@@ -73,13 +74,13 @@ h1, h2, h3, h4 {
 }
 
 .intro-lead-3 {
-  font-family: Garamond, Verdana, Arial, Helvetica, sans-serif;
+  font-family: Zapfino, Arial, Verdana,  Helvetica, sans-serif;
   padding-top: 3%;
-  text-align: center;
+  padding-left:9%;
+  text-align: left;
   color: $light_text;
-  font-size: 28px;
-  line-height: 25px;
-  margin-bottom: 5px;
+  font-size: 20px;
+  margin-bottom: 0px;
 }
 
 .main_block_1 {
