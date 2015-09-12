@@ -3,9 +3,10 @@ class Admin::OfferingsController < ApplicationController
   before_action :admin_authorize, :set_offering, only: [:edit, :show, :update, :destroy]
 
   def index
-    @offerings = Offering.all
+    @offerings = Offering.arrange_by_position
+    @parents = @offerings.select { |o| o.parent_id.nil? }
     # below creates a hash of :id/:name key/value pairs to be used in the view
-    @parents = @offerings.map { |offering| [offering.id, offering.name]}.to_h
+    @parents_hash = @offerings.map { |offering| [offering.id, offering.name]}.to_h
   end
 
   def new
