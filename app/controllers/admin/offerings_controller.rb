@@ -88,3 +88,5 @@ class Admin::OfferingsController < ApplicationController
   end
 
 end
+
+# Trivial change -- delete me
