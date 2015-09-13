@@ -1,0 +1,46 @@
+
+  <div class="col-md-8">
+
+      <div class="panel panel-palette_2">
+        <div class="panel-heading">
+          <h5><%= pluralize(povs.size, 'Associated POV') %></h5>
+        </div>
+        <div class="panel-body, table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <tbody>
+                  <%= content_tag_for(:tr, povs) do |pov| %>
+                  <td class="pov_load" style="width:15%">
+                    <a><%= button_to 'Remove', admin_assign_pov_path(offering, pov_id: pov.id) %></a>
+                  </td>
+                  <td>
+                        <%= pov.user ? pov.user.last_name : 'No User' %>:&nbsp;<%= pov.name %>
+                      </td>
+                  <% end %>
+              </tbody>
+            </table>
+        </div>
+      </div>
+
+      <div class="panel panel-palette_5">
+        <div class="panel-heading">
+          <h5><%= pluralize(avail_povs.size, 'Available POV') %></h5>
+        </div>
+        <div class="panel-body, table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <tbody>
+            <%= content_tag_for(:tr, avail_povs) do |pov| %>
+                <td class="pov_load" style="width:15%">
+                  <a><%= button_to ' Add  ', admin_assign_pov_path(offering, pov_id: pov.id) %></a>
+                </td>
+                <td>
+                  <%= pov.user ? pov.user.last_name : 'No User' %>:&nbsp;<%= pov.name %>
+                </td>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+

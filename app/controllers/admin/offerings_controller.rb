@@ -57,11 +57,13 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def assign_pov
-
+    pov = UserPov.find(params[:pov_id])
+    @offering.add_remove_pov!(pov)
     respond_to do |format|
-      format.html { redirect_to edit_admin_offering_path }
+      format.html { redirect_to edit_admin_offering_path(@offering)}
       format.json { head :no_content }
     end
+
   end
 
   private
@@ -84,4 +86,5 @@ class Admin::OfferingsController < ApplicationController
   def set_pov
     @pov = UserPov.find(params[:pov][:id])
   end
+
 end

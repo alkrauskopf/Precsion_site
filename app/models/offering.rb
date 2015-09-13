@@ -17,4 +17,11 @@ class Offering < ActiveRecord::Base
     self.is_visible
   end
 
+  def add_remove_pov!(pov)
+    if self.offering_user_povs.associations_with(pov.id).empty?
+      self.offering_user_povs.create(user_pov_id: pov.id)
+    else
+      self.offering_user_povs.associations_with(pov.id).destroy_all
+    end
+  end
 end

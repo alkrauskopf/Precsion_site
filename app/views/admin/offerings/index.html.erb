@@ -1,110 +1,36 @@
-<div id="title_row" class="row">
-  <h1>Manage Offerings</h1>
-  <a class="btn btn-success" href="<%= new_admin_offering_path %>">
-    <i class="glyphicon glyphicon-plus-sign"></i>
-    New Offering
-  </a>
-</div>
-
-<!-- render Offerings in hierarchical structure (two levels deep only) -->
-<% @parents.each do |offering| %>
-  <!-- Parent offering -->
-  <div class="row col-md-12">
-    <div class="panel panel-palette_5">
-
-      <div class="panel-heading" role="tab" id="heading<%= offering.id %>">
-        <h4><i class="fa fa-anchor"></i><%= offering.name %></h4>
-        <a class="btn btn-default" href="<%= edit_admin_offering_path(offering) %>">Edit</a>
-      </div>
-
-      <div class="panel-body">
-        <p id="brief"><em><%= offering.brief %></em></p>
-
-        <%= render partial: 'status', locals: {offering: offering, parent: @parents_hash} %>
-
-        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse<%= offering.id %>"
-                aria-expanded="false" aria-controls="collapse<%= offering.id %>">
-          more...
-        </button>
-      </div>
-
-      <div id="collapse<%= offering.id %>" class="panel-collapse collapse" role="tabpanel"
-           aria-labelledby="heading<%= offering.id %>">
-        <p><%= offering.description.html_safe %></p>
-        <!-- html_safe tells rails to pass this as HTML code and the browser will render the tags -->
-      </div>
+<div class="container">
+    <div id="title_row" class="row">
+      <h1>Manage Offerings</h1>
+      <a class="btn btn-success" href="<%= new_admin_offering_path %>">
+        <i class="glyphicon glyphicon-plus-sign"></i>
+        New Offering
+      </a>
     </div>
-  </div>
-  <!-- end parent offering-->
-  <!-- Child offering -->
-  <% offering.children.each do |child| %>
-    <div class="row">
-      <div class="col-md-1">
-        <i class="fa fa-odnoklassniki-square fa-5x"></i>
-      </div>
+    <% @offerings.each do |offering| %>
+      <div class="row col-md-12">
+        <div class="panel panel-palette_5">
 
-      <div class="col-md-11">
-        <div class="panel panel-palette_4">
-          <div class="panel-heading" role="tab" id="heading<%= child.id %>">
-            <h4><%= child.name %></h4>
-            <a class="btn btn-default" href="<%= edit_admin_offering_path(child) %>">Edit</a>
+          <div class="panel-heading" role="tab" id="heading<%= offering.id %>">
+            <h4><i class="fa fa-wrench"></i><%= offering.name %></h4>
+            <a class="btn btn-default" href="<%= edit_admin_offering_path(offering) %>">Edit</a>
           </div>
 
           <div class="panel-body">
-            <p id="brief"><em><%= child.brief %></em></p>
+            <p id="brief"><em><%= offering.brief %></em></p>
 
-            <%= render partial: 'status', locals: {offering: child, parent: @parents_hash} %>
+            <%= render partial: 'status', locals: { offering: offering }%>
 
-            <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse<%= child.id %>"
-                    aria-expanded="false" aria-controls="collapse<%= child.id %>">
+            <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse<%= offering.id %>"
+                    aria-expanded="false" aria-controls="collapse<%= offering.id %>">
               more...
             </button>
           </div>
 
-          <div id="collapse<%= child.id %>" class="panel-collapse collapse" role="tabpanel"
-               aria-labelledby="heading<%= child.id %>">
-            <p><%= child.description.html_safe %></p>
-            <!-- html_safe tells rails to pass this as HTML code and the browser will render the tags -->
+          <div id="collapse<%= offering.id %>" class="panel-collapse collapse" role="tabpanel"
+               aria-labelledby="heading<%= offering.id %>">
+            <p><%= offering.description %></p>
           </div>
         </div>
       </div>
-      <!-- End child offering -->
-      <!-- Grandchild offering -->
-      <% child.children.each do |grandchild| %>
-        <div class="row">
-          <div class="col-md-2">
-            <% 2.times do %>
-              <i class="fa fa-odnoklassniki-square fa-4x"></i>
-            <% end %>
-          </div>
-          <div class="col-md-10">
-            <div class="panel panel-palette_3">
-              <div class="panel-heading" role="tab" id="heading<%= grandchild.id %>">
-                <h4><%= grandchild.name %></h4>
-                <a class="btn btn-default" href="<%= edit_admin_offering_path(grandchild) %>">Edit</a>
-              </div>
-
-              <div class="panel-body">
-                <p id="brief"><em><%= grandchild.brief %></em></p>
-
-                <%= render partial: 'status', locals: {offering: grandchild, parent: @parents_hash} %>
-
-                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse<%= grandchild.id %>"
-                        aria-expanded="false" aria-controls="collapse<%= grandchild.id %>">
-                  more...
-                </button>
-              </div>
-
-              <div id="collapse<%= grandchild.id %>" class="panel-collapse collapse" role="tabpanel"
-                   aria-labelledby="heading<%= grandchild.id %>">
-                <p><%= grandchild.description.html_safe %></p>
-                <!-- html_safe tells rails to pass this as HTML code and the browser will render the tags -->
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End grandchild offering -->
-      <% end %>
-  <% end %>
-<% end %>
-
+    <% end %>
+</div>
