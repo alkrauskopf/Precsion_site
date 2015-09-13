@@ -73,3 +73,5 @@ class Admin::OfferingsController < ApplicationController
       :display_position, :is_visible, :parent_id)
   end
 end
+
+# Trivial change -- delete me
