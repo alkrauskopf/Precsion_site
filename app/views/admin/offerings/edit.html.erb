@@ -5,6 +5,8 @@
   <%= button_to 'Delete Offering', admin_offering_path, class: 'btn btn-danger', method: :delete,
                 data: {confirm: 'Are you sure? This action cannot be undone'} %>
 </div>
-
-<%= render partial: 'pov_associations', locals: { offering: @offering, povs: @offering.user_povs, avail_povs: @offering.available_povs}%>
+<br/>
+Offering: <%=@offering.id%>
+<%= render 'pov_associations'%>
+<br/>
 

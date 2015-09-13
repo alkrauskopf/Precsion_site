@@ -61,7 +61,7 @@ class Admin::OfferingsController < ApplicationController
     @offering.add_remove_pov!(pov)
     respond_to do |format|
       format.html { redirect_to edit_admin_offering_path(@offering)}
-      format.json { head :no_content }
+      format.js
     end
 
   end

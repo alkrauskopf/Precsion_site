@@ -1,7 +1,7 @@
 <div class = "container pov_list-container">
- <!-- <%#= render 'pov_association_loading' %> -->
+  <%= render 'pov_association_loading' %>
   <div class="pov_associations">
-    <%= render partial: 'pov_assigns', locals: { offering: offering, povs: povs, avail_povs: avail_povs}%>
+    <%= render partial: 'pov_assigns', locals: { offering: @offering, povs: @offering.user_povs, avail_povs: @offering.available_povs}%>
   </div>
 </div>
 
