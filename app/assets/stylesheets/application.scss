@@ -156,6 +156,13 @@ h1, h2, h3, h4 {
   line-height:2em;
 }
 
+.welcome-header {
+  padding-bottom: 9px;
+  text-align:center;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  margin: 0px 0px 13px 13px;
+  border-bottom: 1px solid #eee;
+}
 h1 {
   color: $h1_dark_text;
 }
