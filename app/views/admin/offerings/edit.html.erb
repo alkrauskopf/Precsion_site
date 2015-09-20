@@ -8,5 +8,7 @@
 <br/>
 Offering: <%=@offering.id%>
 <%= render 'pov_associations'%>
-<br/>
+
+<%= render partial: 'list_images', locals: { offering: @offering}%>
+
 

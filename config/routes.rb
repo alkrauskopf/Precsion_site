@@ -29,6 +29,11 @@ Rails.application.routes.draw do
     post 'user_povs' => 'users#create_pov', as: 'user_povs'
     delete 'user_pov/:id' => 'users#destroy_pov', as: 'user_pov'
     post 'offering_pov/:id' => 'offerings#assign_pov', as: 'assign_pov'
+    post 'offering_image' => 'offerings#new_image', as: 'add_image'
+    post 'offering_images' => 'offerings#create_image', as: 'offering_images'
+    delete 'offering_image/:id' => 'offerings#destroy_image', as: 'offering_image'
+    get 'offering_image/:id' => 'offerings#edit_image'
+    patch 'offering_image/:id' => 'offerings#update_image'
     resources :offerings
   end
 
