@@ -18,3 +18,6 @@
 
 # Ignore schema.rb
 /db/schema.rb
+
+# Ignore all Public Files
+/public/*
