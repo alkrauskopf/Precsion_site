@@ -1,0 +1,56 @@
+<div class="container">
+<%= form_for([:admin, offering_image], html: {class: 'form-horizontal', role: 'form', multipart: true }) do |f| %>
+
+  <% if offering_image.errors.any? %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(offering_image.errors.count, "error") %> prohibited this image from being updated:</h4>
+      <ul>
+        <% offering_image.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.hidden_field :offering_id, value: offering.id %>
+    <div class="form-group">
+      <%= f.label :name, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :display_position, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :display_position, size: 1 %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <h4>Display offering publicly:</h4>
+        <%= f.radio_button(:is_carousel_img, true) %>
+        <%= f.label(:carousel_yes, 'Yes') %>
+        <%= f.radio_button(:is_carousel_img, false) %>
+        <%= f.label(:carousel_no, 'No') %>
+      </div>
+    </div>
+    <div class="form-group">
+      <% if offering_image.image %>
+        <%= offering_image.image %>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.file_field :image %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+<% end %>
+</div>

@@ -1,0 +1,9 @@
+<h1>Edit <%=@offering_image.offering.name %> Image</h1>
+<div class="row">
+    <%= render partial: 'image_form', locals: { offering_image: @offering_image, offering: @offering_image.offering } %>
+    <hr>
+</div>
+<div class="row col-md-offset-2 col-md-2" >
+
+  <a class="btn btn-default" href="<%= edit_admin_offering_path(@offering_image.offering) %>">Back</a>
+</div>
