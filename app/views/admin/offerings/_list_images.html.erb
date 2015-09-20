@@ -13,14 +13,14 @@
           <tbody>
           <%= content_tag_for(:tr, offering.offering_images.by_position) do |image| %>
               <td>
-                <%= image.display_position%>)&nbsp;<%= image.name %><br/>
-                url:&nbsp;<%= image.url %>
+                <%= image.display_position%>)&nbsp;<%= image.name %>
               </td>
               <td>
                 <%= image.image.present? ? image_tag(image.image.url(:thumb))  : '-' %>
               </td>
               <td>
-                <%=  image.carousel? ? 'Carousel' : '' %>
+                <%=  image.carousel? ? 'Carousel' : '' %><br/>
+                <%= image.active? ? "Active" : "Not Active" %>
               </td>
               <td>
                 <%= link_to 'Destroy', [:admin,image], method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -28,21 +28,28 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <h4>Display offering publicly:</h4>
+        <h4>Carousel?</h4>
         <%= f.radio_button(:is_carousel_img, true) %>
         <%= f.label(:carousel_yes, 'Yes') %>
         <%= f.radio_button(:is_carousel_img, false) %>
         <%= f.label(:carousel_no, 'No') %>
       </div>
     </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <h4>Active?</h4>
+          <%= f.radio_button(:is_active, true) %>
+          <%= f.label(:active_yes, 'Yes') %>
+          <%= f.radio_button(:is_active, false) %>
+          <%= f.label(:active_no, 'No') %>
+        </div>
+      </div>
     <div class="form-group">
-      <% if offering_image.image %>
-        <%= offering_image.image %>
-      <% end %>
-    </div>
-    <div class="form-group">
-      <%= f.label :image, class: "col-sm-2 control-label" %>
+      <div class="col-sm-2">
+        <%= offering_image.image.present? ? image_tag(offering_image.image.url(:thumb)) : '-' %>
+      </div>
       <div class="col-sm-10">
+        <h4>Upload Image:</h4>
         <%= f.file_field :image %>
       </div>
     </div>

@@ -18,4 +18,10 @@ class OfferingImage < ActiveRecord::Base
     self.is_carousel_img
   end
 
+  def active?
+    self.is_active
+  end
+  def self.active
+    where('is_active')
+  end
 end
