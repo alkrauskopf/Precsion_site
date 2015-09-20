@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920183249) do
+ActiveRecord::Schema.define(version: 20150920205233) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150920183249) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "is_active",          default: false
   end
 
   create_table "offering_user_povs", force: :cascade do |t|
