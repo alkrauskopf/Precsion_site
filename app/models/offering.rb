@@ -24,7 +24,7 @@ class Offering < ActiveRecord::Base
   end
 
   def self.active
-    where('is_visible == ?', true)
+    where('is_visible = ?', true)
   end
 
   def add_remove_pov!(pov)
