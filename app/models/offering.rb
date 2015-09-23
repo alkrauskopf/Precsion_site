@@ -48,15 +48,15 @@ class Offering < ActiveRecord::Base
   end
 
   def self.offerings
-    where('offering_type == ?').order('display_position ASC')
+    where('offering_type = ?').order('display_position ASC')
   end
 
   def self.tools
-    where('offering_type == ?', 'T').order('display_position ASC')
+    where('offering_type = ?', 'T').order('display_position ASC')
   end
 
   def self.welcomes
-    where('offering_type == ?','W').order('display_position ASC')
+    where('offering_type = ?','W').order('display_position ASC')
   end
 
   def type_name
