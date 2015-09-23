@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920205233) do
+ActiveRecord::Schema.define(version: 20150923153309) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name"
@@ -60,9 +60,10 @@ ActiveRecord::Schema.define(version: 20150920205233) do
     t.string  "name"
     t.text    "brief"
     t.text    "description"
-    t.integer "display_position", default: 999
+    t.integer "display_position",           default: 999
     t.integer "parent_id"
-    t.boolean "is_visible",       default: false
+    t.boolean "is_visible",                 default: false
+    t.string  "offering_type",    limit: 1, default: "O"
   end
 
   create_table "user_authorizations", force: :cascade do |t|

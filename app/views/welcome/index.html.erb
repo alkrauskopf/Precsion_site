@@ -32,19 +32,21 @@
     <div class="col-md-4">
       <div class="panel panel-palette_1">
         <div class="panel-heading">
-          <h4 style="text-align: center;"><i class="fa fa-search"></i> Diagnostic Review</h4>
+          <h4 style="text-align: center;"><i class="fa fa-search"></i> <%= @welcomes[0] ? @welcomes[0].name.html_safe : 'Standby' %></h4>
         </div>
         <div class="panel-body" style="line-height:2.0em">
-          <p>
-            <em>Precision's</em> experienced advisers measure school performance relative to established standards,
-            such as <em>Colorado's Standards and Indicators for Continuous School Improvement</em>.
-            Our methodology ensures this is done with precision and consistency.
-            Our tools organize all diagnostic findings and supporting evidence,
-            and programatically relate them to the relevant indicators comprising the standards.
-          </p>
-          <p>
-            All diagnostic data are kept on-line as a baseline from which every school can monitor its progress and understand its performance relative to the population as a whole.
-          </p>
+          <%= @welcomes[0] ? @welcomes[0].description.html_safe : 'Rebuilding' %>
+          <% if @welcomes[0] && !@welcomes[0].user_povs.empty?%>
+              <p class="welcome_team">
+                  <div class="about_blue_font welcome_pov_list">
+                    Please Read:<br/>
+                    <% @welcomes[0].user_povs.each do |pov| %>
+                        <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
+                        <br/>
+                    <% end %>
+                  </div>
+              </p>
+          <% end -%>
           <!--
             <u><a href="#">Learn More</a></u>
             -->
@@ -54,20 +56,21 @@
     <div class="col-md-4">
       <div class="panel panel-palette_5">
         <div class="panel-heading">
-          <h4 style="text-align: center;"><i class="fa fa-users"></i> Improvement Planning</h4>
+          <h4 style="text-align: center;"><i class="fa fa-users"></i> <%= @welcomes[1] ? @welcomes[1].name.html_safe : 'Standby' %></h4>
         </div>
         <div class="panel-body" style="line-height:2.0em">
-          <p>
-            <em>Precision's</em> planning methodology involves an experienced education leader working with
-            the school's leadership team. Diagnostic findings are reviewed and weighed: they are understood in relation to one another and in context of
-            each school's particular circumstances.
-            The resulting <em>Action Plan</em> illuminates up to three achievable goals, which are owned by the school's leadership team.
-            These goals do not represent a finish line: they are steps which, when successfully taken, will point to the next steps of the school's evolvng performance improvement plan.
-          </p>
-          <p>
-            <em>Precision</em> connects schools in our network that have similar goals.
-          </p>
-            <!--
+          <%= @welcomes[1] ? @welcomes[1].description.html_safe : 'Rebuilding' %>
+          <% if @welcomes[1] && !@welcomes[1].user_povs.empty?%>
+              <p class="welcome_team">
+                  <div class="about_blue_font welcome_pov_list">
+                    Please Read:<br/>
+                    <% @welcomes[1].user_povs.each do |pov| %>
+                        <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
+                        <br/>
+                    <% end %>
+                  </div>
+              </p>
+          <% end -%>           <!--
                 <u><a href="#">Learn More</a></u>
             -->
         </div>
@@ -76,16 +79,21 @@
     <div class="col-md-4">
       <div class="panel panel-palette_2">
         <div class="panel-heading">
-          <h4 style="text-align: center;"><i class="fa fa-cog fa-1x fa-spin"></i> Performance Monitoring</h4>
+          <h4 style="text-align: center;"><i class="fa fa-cog fa-1x fa-spin"></i> <%= @welcomes[2] ? @welcomes[2].name.html_safe : 'Standby' %></h4>
         </div>
         <div class="panel-body" style="line-height:2.0em">
-          <p>We shepherd the schools in our community toward their goals. We are able to do this efficiently
-            because of the credibility <em>Precision's</em> local advisers earn with school leaders,
-            and because our tools allow us to monitor, in confidence and without intrusion, how our schools are progressing.
-          </p>
-          <p>Periodic diagnostic checkpoints produce objective indicators of progress for each school and that of the community as a whole. This, in turn,
-            helps our research partners better understand what our schools need from them.
-          </p>
+          <%= @welcomes[2] ? @welcomes[2].description.html_safe : 'Rebuilding' %>
+          <% if @welcomes[2] && !@welcomes[2].user_povs.empty?%>
+              <p class="welcome_team">
+                  <div class="about_blue_font welcome_pov_list">
+                    Please Read:<br/>
+                    <% @welcomes[2].user_povs.each do |pov| %>
+                        <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
+                        <br/>
+                    <% end %>
+                  </div>
+              </p>
+          <% end -%>
           <!--
           <u><a href="#">Learn More</a></u>
           -->
@@ -98,19 +106,21 @@
       <div class="col-md-4">
         <div class="panel panel-palette_3">
           <div class="panel-heading" >
-            <h4 style="text-align: center;"><i class="fa fa-wrench"></i> Integrated Toolkit</h4>
+            <h4 style="text-align: center;"><i class="fa fa-wrench"></i> <%= @welcomes[3] ? @welcomes[3].name.html_safe : 'Standby' %></h4>
           </div>
           <div class="panel-body" style="line-height:2.0em">
-            <p>
-              Billions of education dollars are wasted every year on technologies that cling to "good ideas" rather than precise performance improvement plans.
-            </p>
-            <p>
-              Our enabling tools operate from a powerful online platform called <span style="font-weight:bold; color:#0000a4"><em>Escent</em></span>, which properly aligns a school's use of technology with its improvement priorities
-              and fosters data-based collaboration among schools facing similar circumstances and pursuing similar goals.
-            </p>
-            <p>
-              This is why our integrated toolkit and our technology credentials are key to <em>Precision's</em> approach.
-            </p>
+            <%= @welcomes[3] ? @welcomes[3].description.html_safe : 'Rebuilding' %>
+            <% if @welcomes[3] && !@welcomes[3].user_povs.empty?%>
+                <p class="welcome_team">
+                    <div class="about_blue_font welcome_pov_list">
+                      Please Read:<br/>
+                      <% @welcomes[3].user_povs.each do |pov| %>
+                          <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
+                          <br/>
+                      <% end %>
+                    </div>
+                </p>
+            <% end -%>
             <!--
             <u><a href="#">Learn More</a></u>
             -->
@@ -135,27 +145,23 @@
       <div class="col-md-8">
         <div class="panel panel-palette_4">
           <div class="panel-heading" >
-            <h4 style="text-align: center;">Experience Matters</h4>
+            <h4 style="text-align: center;"><%= @welcomes[4] ? @welcomes[4].name.html_safe : 'Standby' %></h4>
           </div>
           <div class="panel-body welcome_team">
-            <p>
-              The <em>Precision</em> team is an exclusive network of credentialed educators who understand that,
-              by working collectively with common tools and methods, they can more effectively help every school move to higher levels of performance.
-            </p>
-            <p class="about_blue_font welcome_team">
-              <% if !@pov_users.empty?%>
-                <div class="about_blue_font">
-                  Some Points-of-View<br/>
-                  <% @pov_users.each do |user| %>
-                      <%= user.last_name %>&nbsp;=>
-                      <% user.user_povs.each do |pov| %>
-                          &nbsp;&nbsp;<u><a href= <%= pov.url %>> <%= pov.name %> </a></u>
+            <%= @welcomes[4] ? @welcomes[4].description.html_safe : 'Rebuilding' %>
+              <% if @welcomes[4] && !@welcomes[4].user_povs.empty?%>
+                <p class="welcome_team">
+                    <div class="about_blue_font welcome_pov_list">
+                      Team Points-Of-View:<br/>
+                      <% @welcomes[4].user_povs.each do |pov| %>
+                          <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
+                          <% if pov != @welcomes[4].user_povs.last %>
+                              &nbsp;&nbsp;&nbsp;
+                          <% end %>
                       <% end %>
-                      <br/>
-                  <% end %>
-                </div>
+                    </div>
+                </p>
             <% end -%>
-            </p>
             <p>
                   <u><%= link_to 'Learn More', about_team_path %></u>
                 </p>

@@ -22,5 +22,5 @@
       <p>Sub-offering of: <strong><%= parent.name %></strong></p>
     <% end %>
   <% end %>
-
+  <p><%= pluralize(offering.user_povs.size, 'POV') %></p>
 </div>

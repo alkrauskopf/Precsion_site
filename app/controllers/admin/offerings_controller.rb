@@ -4,7 +4,7 @@ class Admin::OfferingsController < ApplicationController
   before_action :admin_authorize, :set_image, only: [:edit_image, :update_image, :destroy_image]
 
   def index
-    @offerings = Offering.arrange_by_position
+    @offerings = Offering.by_type.arrange_by_position
     @parents = @offerings.select { |o| o.parent_id.nil? }
     # below creates a hash of :id/:name key/value pairs to be used in the view
     @parents_hash = @offerings.map { |offering| [offering.id, offering.name]}.to_h
@@ -127,7 +127,7 @@ class Admin::OfferingsController < ApplicationController
 
   def offering_params
     params.require(:offering).permit(:name, :brief, :description,
-      :display_position, :is_visible, :parent_id)
+      :display_position, :is_visible, :parent_id, :offering_type)
   end
 
   def set_pov
