@@ -7,6 +7,10 @@ class Offering < ActiveRecord::Base
 
   validates_presence_of :offering_type
 
+  def images
+    self.offering_images.active.by_position
+  end
+
   def self.arrange_by_position
     order('display_position ASC')
   end
@@ -47,6 +51,14 @@ class Offering < ActiveRecord::Base
     self.offering_type == 'W'
   end
 
+  def testimonial?
+    self.offering_type == 'R'
+  end
+
+  def partner?
+    self.offering_type == 'P'
+  end
+
   def self.offerings
     where('offering_type = ?').order('display_position ASC')
   end
@@ -59,6 +71,14 @@ class Offering < ActiveRecord::Base
     where('offering_type = ?','W').order('display_position ASC')
   end
 
+  def self.testimonials
+    where('offering_type = ?','R').order('display_position ASC')
+  end
+
+  def self.partners
+    where('offering_type = ?','P').order('display_position ASC')
+  end
+
   def type_name
     name = 'Unknown Type'
     if self.offering_type == 'O'
@@ -67,6 +87,10 @@ class Offering < ActiveRecord::Base
       name = 'Welcome'
     elsif self.offering_type == 'T'
       name = 'Tool'
+    elsif self.offering_type == 'R'
+      name = 'Testimonial'
+    elsif self.offering_type == 'P'
+      name = 'Partner'
     end
     name
   end

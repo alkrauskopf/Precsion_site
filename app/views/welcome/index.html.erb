@@ -126,21 +126,16 @@
             -->
           </div>
         </div>
-        <div class="panel panel-palette_2">
-          <div class="panel-heading" >
-            <h4 style="text-align: center;">Partners</h4>
-          </div>
-          <div class="panel-body">
-            <p>
-             <!--
-             <u><a href="#" >View Testimonials</a></u>
-             -->
-            </p>
-            <p>
-              <%= render 'logo_box'%>
-            </p>
-          </div>
-        </div>
+        <% if !@testimonials.empty? %>
+            <div class="panel panel-palette_2">
+              <div class="panel-heading" >
+                <h4 style="text-align: center;"><i class="glyphicon glyphicon-thumbs-up"></i>Testimonials</h4>
+              </div>
+              <div class="panel-body">
+                  <%= render partial: 'testimony_box', locals: { testimonials: @testimonials} %>
+              </div>
+            </div>
+        <% end %>
       </div>
       <div class="col-md-8">
         <div class="panel panel-palette_4">
@@ -163,11 +158,21 @@
                 </p>
             <% end -%>
             <p>
-                  <u><%= link_to 'Learn More', about_team_path %></u>
-                </p>
+              <u><%= link_to 'Learn More', about_team_path %></u>
+            </p>
             <%= render partial: 'team_box', locals: {users: @users }%>
             </div>
             </div>
+            <% if !@partners.empty? %>
+                <div class="panel panel-palette_5">
+                  <div class="panel-heading" >
+                    <h4 style="text-align: center;">Partners</h4>
+                  </div>
+                  <div class="panel-body">
+                      <%= render partial: 'partner_box', locals: { partners: @partners} %>
+                  </div>
+                </div>
+            <% end %>
         </div>
       </div>
     </div>

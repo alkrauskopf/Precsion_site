@@ -1,6 +1,6 @@
 class OfferingImage < ActiveRecord::Base
 
-  has_attached_file :image, styles: {thumb: "100x100#"}
+  has_attached_file :image, styles: {thumb: "60x60#"}
 
   belongs_to :offering
 
@@ -21,7 +21,8 @@ class OfferingImage < ActiveRecord::Base
   def active?
     self.is_active
   end
+
   def self.active
-    where('is_active')
+    where('is_active = ?', true)
   end
 end

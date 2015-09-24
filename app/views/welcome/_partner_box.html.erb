@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table" style="width:90%;">
+        <tbody>
+            <colgroup>
+              <col style="width:27%">
+              <col style="width:73%">
+            </colgroup>
+            <% partners.each do |partner| %>
+                <tr>
+                  <td class= "partner_image">
+                    <%= (!partner.images.empty? && partner.images.first.image.present?) ? (image_tag partner.images.first.image.url, width: '160')  : '-' %>
+                  </td>
+                  <td class= "partner_descript">
+                    <%= partner.brief.html_safe %>
+                  </td>
+                </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
