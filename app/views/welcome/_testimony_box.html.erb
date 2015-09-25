@@ -1,7 +1,7 @@
-<div class="table-responsive testimony_table">
+<div class="testimony_table">
   <% testimonials.each do |testimony| %>
-      <div class = "row testimony_row1">
-        <table>
+      <div class = "row">
+        <table style="width:97%">
           <tbody>
               <colgroup>
                 <col style="width:20%">
@@ -9,7 +9,11 @@
               </colgroup>
               <tr>
                 <td class= "testimony_image">
-                  <%= (!testimony.images.empty? && testimony.images.first.image.present?) ? (image_tag testimony.images.first.image.url, :size =>  "55x60")  : '-' %>
+                  <% if (!testimony.images.empty? && testimony.images.first.image.present?) %>
+                      <%= (image_tag testimony.images.first.image.url, :size =>  "55x60") %>
+                  <% else %>
+                      <i class="glyphicon glyphicon-thumbs-up"></i>
+                  <% end %>
                 </td>
                 <td class= "testimony_brief">
                 <%= testimony.brief.html_safe %>

@@ -169,19 +169,15 @@ h1, h2, h3, h4 {
   border-bottom: 1px solid #eee;
 }
 .testimony_table {
+  padding-left:15px;
   margin-top:0px;
   overflow:scroll;
   max-height:500px;
   font-size:10px;
 }
 
-.testimony_row1 {
-  padding-left: 15px;
-  padding-right:0px;
-}
-
 .testimony_brief {
-  line-height:1em;
+  line-height:.5em;
   padding-left:10px;
   text-align: left;
   vertical-align: middle;
@@ -190,13 +186,14 @@ h1, h2, h3, h4 {
 }
 
 .testimony_image {
-  float:left;
+  float:right;
+  padding-right:3px;
 }
 
 .testimony_row2 {
-  Padding-top:3px;
-  padding-left: 17px;
-  padding-right:20px;
+  padding-top:3px;
+  padding-left: 0px;
+  padding-right:10px;
   font-style:italic;
   font-size:11px;
   color: $dark_text;
