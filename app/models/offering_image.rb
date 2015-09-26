@@ -1,6 +1,6 @@
 class OfferingImage < ActiveRecord::Base
 
-  has_attached_file :image, styles: {thumb: "60x60#"}
+  has_attached_file :image, styles: {thumb: "60x60#", small_thumb: "50x50#", carousel: "1000x450#"}
 
   belongs_to :offering
 
@@ -11,7 +11,7 @@ class OfferingImage < ActiveRecord::Base
   end
 
   def self.carousels
-    where('is_carousel_img')
+    where('is_carousel_img = ?', true)
   end
 
   def carousel?

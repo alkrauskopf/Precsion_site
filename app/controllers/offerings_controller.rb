@@ -1,5 +1,6 @@
 class OfferingsController < ApplicationController
   def index
-    @offerings = Offering.arrange_by_position
+    @offering = Offering.offerings.active.first
+    @carousel_images = OfferingImage.carousels.active
   end
 end

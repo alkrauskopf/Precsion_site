@@ -7,6 +7,11 @@ class Offering < ActiveRecord::Base
 
   validates_presence_of :offering_type
 
+
+  def self.all_parents
+    where('parent_id IS NULL')
+  end
+
   def images
     self.offering_images.active.by_position
   end
@@ -60,7 +65,7 @@ class Offering < ActiveRecord::Base
   end
 
   def self.offerings
-    where('offering_type = ?').order('display_position ASC')
+    where('offering_type = ?', 'O').order('display_position ASC')
   end
 
   def self.tools

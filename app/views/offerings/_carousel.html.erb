@@ -1,7 +1,7 @@
 <div id="offerings-carousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <% (@offerings.length + 1).times do |num| %>
+    <% (@carousel_images.length + 1).times do |num| %>
       <% if num == 0 %>
         <li data-target="#offerings-carousel" data-slide-to="<%= num %>" class="active"></li>
       <% else %>
@@ -20,12 +20,14 @@
         <h2>Our Offerings</h2>
       </div>
     </div>
-    <% @offerings.each do |offering| %>
+    <% @carousel_images.each do |image| %>
       <div class="item">
-        <%= image_tag('evans-1.jpeg') %>
-
+        <!--
+        <%#= image_tag('evans-1.jpeg') %>
+        -->
+        <%= image.image.present? ? image_tag(image.image.url(:carousel))  : '-' %>
         <div class="carousel-caption">
-          <h2><%= offering.name %></h2>
+          <h2><%= image.offering.name %></h2>
         </div>
       </div>
 

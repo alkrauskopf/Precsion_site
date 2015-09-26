@@ -4,10 +4,7 @@ class Admin::OfferingsController < ApplicationController
   before_action :admin_authorize, :set_image, only: [:edit_image, :update_image, :destroy_image]
 
   def index
-    @offerings = Offering.by_type.arrange_by_position
-    @parents = @offerings.select { |o| o.parent_id.nil? }
-    # below creates a hash of :id/:name key/value pairs to be used in the view
-    @parents_hash = @offerings.map { |offering| [offering.id, offering.name]}.to_h
+    @parents = Offering.all_parents.by_type.arrange_by_position
   end
 
   def new

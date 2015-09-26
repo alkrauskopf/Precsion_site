@@ -9,5 +9,4 @@ class WelcomeController < ApplicationController
   @pov_users = User.with_povs
   end
 
-
 end

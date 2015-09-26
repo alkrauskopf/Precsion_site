@@ -16,7 +16,7 @@
                 <%= image.display_position%>)&nbsp;<%= image.name %>
               </td>
               <td>
-                <%= image.image.present? ? image_tag(image.image.url(:thumb))  : '-' %>
+                <%= image.image.present? ? image_tag(image.image.url(:small_thumb))  : '-' %>
               </td>
               <td>
                 <%=  image.carousel? ? 'Carousel' : '' %><br/>

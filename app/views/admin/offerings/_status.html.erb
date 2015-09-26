@@ -8,19 +8,12 @@
   <% end %>
 
     <p>Offering Position: <%= offering.display_position %></p>
+    <% if offering.parent_id.nil? %>
+      <p>Parent offering</p>
+    <% else %>
+      <p>Sub-offering of: <strong><%= offering.parent.name %></strong></p>
+    <% end %>
 
-  <% if parent.is_a?(Hash) %>
-    <% if offering.parent_id.nil? %>
-      <p>Parent offering</p>
-    <% else %>
-      <p>Sub-offering of: <strong><%= parent[offering.parent_id] %></strong></p>
-    <% end %>
-  <% else %>
-    <% if offering.parent_id.nil? %>
-      <p>Parent offering</p>
-    <% else %>
-      <p>Sub-offering of: <strong><%= parent.name %></strong></p>
-    <% end %>
-  <% end %>
   <p><%= pluralize(offering.user_povs.size, 'POV') %></p>
+  <p><%= pluralize(offering.offering_images.size, 'Image') %></p>
 </div>

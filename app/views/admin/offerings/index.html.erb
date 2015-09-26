@@ -1,9 +1,9 @@
 <div class="container">
     <div id="title_row" class="row">
-      <h1>Manage Offerings</h1>
+      <h1>Manage Content</h1>
       <a class="btn btn-success" href="<%= new_admin_offering_path %>">
         <i class="glyphicon glyphicon-plus-sign"></i>
-        New Offering
+        New Content
       </a>
     </div>
 <!-- Trivial change.  Need to break the below into a partial -->
@@ -21,7 +21,7 @@
           <div class="panel-body">
             <p id="brief"><em><%= offering.brief %></em></p>
 
-            <%= render partial: 'status', locals: {offering: offering, parent: @parents_hash} %>
+            <%= render partial: 'status', locals: {offering: offering} %>
 
             <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse<%= offering.id %>"
                     aria-expanded="false" aria-controls="collapse<%= offering.id %>">
@@ -54,7 +54,7 @@
               <div class="panel-body">
                 <p id="brief"><em><%= child.brief %></em></p>
 
-                <%= render partial: 'status', locals: {offering: child, parent: @parents_hash} %>
+                <%= render partial: 'status', locals: {offering: child} %>
 
                 <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse<%= child.id %>"
                         aria-expanded="false" aria-controls="collapse<%= child.id %>">
@@ -88,7 +88,7 @@
                   <div class="panel-body">
                     <p id="brief"><em><%= grandchild.brief %></em></p>
 
-                    <%= render partial: 'status', locals: {offering: grandchild, parent: @parents_hash} %>
+                    <%= render partial: 'status', locals: {offering: grandchild} %>
 
                     <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse<%= grandchild.id %>"
                             aria-expanded="false" aria-controls="collapse<%= grandchild.id %>">
