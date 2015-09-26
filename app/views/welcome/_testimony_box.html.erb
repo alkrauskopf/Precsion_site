@@ -10,7 +10,7 @@
               <tr>
                 <td class= "testimony_image">
                   <% if (!testimony.images.empty? && testimony.images.first.image.present?) %>
-                      <%= (image_tag testimony.images.first.image.url( :small_thumb)) %>
+                      <%= (image_tag testimony.images.first.image( :small_thumb)) %>
                   <% else %>
                       <i class="glyphicon glyphicon-thumbs-up"></i>
                   <% end %>
