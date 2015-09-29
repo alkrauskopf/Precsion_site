@@ -8,9 +8,9 @@
                 <col style="width:80%">
               </colgroup>
               <tr>
-                <td class= "testimony_image">
-                  <% if (!testimony.images.empty? && testimony.images.first.image.present?) %>
-                      <%= (image_tag testimony.images.first.image( :small_thumb)) %>
+                <td class= "testimony_image thumbnail-small">
+                  <% if (!testimony.images.empty? && testimony.images.first.exist? ) %>
+                      <%= image_tag (testimony.images.first.image) %>
                   <% else %>
                       <i class="glyphicon glyphicon-thumbs-up"></i>
                   <% end %>

@@ -2,8 +2,8 @@
     <div style="line-height:2.0em">
       <% users.each do |user| %>
           <div class="row team_row">
-            <div class="col-md-2 thumbnail-large">
-                <% pic_url = !user.picture.empty? ? ("people/" + user.picture) : '' %>
+            <div class="col-md-2 thumbnail-large-x">
+                <% pic_url = !user.picture.empty? ? ("team/" + user.picture) : '' %>
                 <%= image_tag(pic_url) %>
             </div>
             <div class="col-md-10">

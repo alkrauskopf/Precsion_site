@@ -34,20 +34,29 @@ h1, h2, h3, h4 {
 }
 
 .thumbnail-small img {
-  min-height: 50px;
-  height: 50px;
+  max-height: 50px;
+  max-width:50px;
 }
 
 .thumbnail-med img {
-  min-height: 80px;
-  height: 80px;
+  max-height: 80px;
+  max-width:80px;
 }
 
 .thumbnail-large img {
-  min-height: 130px;
-  height: 130px;
+  max-height: 130px;
+  max-width:130px;
 }
 
+.thumbnail-large-x img {
+  max-height: 180px;
+  max-width:180px;
+}
+
+.logo-large img {
+  max-height: 50px;
+  max-width:140px;
+}
 .main_background_image {
   background: url(/assets/CO_Mtn_2d.png) no-repeat;
   background-size: cover;

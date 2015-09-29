@@ -7,7 +7,7 @@
                 <tbody>
                     <tr>
                       <td class="thumbnail-med" style="width:30%">
-                        <% pic_url = (users[idx-1] && users[idx-1].picture) ? ("people/" + users[idx-1].picture) : '' %>
+                        <% pic_url = (users[idx-1] && users[idx-1].picture) ? ("team/" + users[idx-1].picture) : '' %>
                         <%= image_tag(pic_url) %>
                       </td>
                       <td style ="vertical-align:top;">
@@ -29,7 +29,7 @@
             <tbody>
                 <tr>
                   <td class="thumbnail-med" style="width:30%">
-                    <% pic_url = users[idx].picture ? ("people/" + users[idx].picture) : '' %>
+                    <% pic_url = users[idx].picture ? ("team/" + users[idx].picture) : '' %>
                     <%= image_tag(pic_url)  %>
                   </td>
                   <td style ="vertical-align:top;">

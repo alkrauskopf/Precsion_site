@@ -9,8 +9,12 @@
             </colgroup>
             <% partners.each do |partner| %>
                 <tr>
-                  <td class= "partner_image">
-                    <%= (!partner.images.empty? && partner.images.first.image.present?) ? (image_tag partner.images.first.image, width: '160')  : '-' %>
+                  <td class= "partner_image logo-large">
+                    <% if (!partner.images.empty? && partner.images.first.exist? ) %>
+                        <%= image_tag (partner.images.first.image) %>
+                    <% else %>
+                        -
+                    <% end %>
                   </td>
                   <td class= "partner_descript">
                     <%= partner.brief.html_safe %>

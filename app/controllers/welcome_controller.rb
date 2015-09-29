@@ -6,7 +6,6 @@ class WelcomeController < ApplicationController
   @testimonials = Offering.testimonials.active
   @partners = Offering.partners.active
   @users = User.core_team
-  @pov_users = User.with_povs
   end
 
 end

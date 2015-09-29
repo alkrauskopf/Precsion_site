@@ -99,4 +99,21 @@ class Offering < ActiveRecord::Base
     end
     name
   end
+
+  def image_directory
+    name = ''
+    if self.offering_type == 'O'
+      name = 'offerings/'
+    elsif self.offering_type == 'W'
+      name = ''
+    elsif self.offering_type == 'T'
+      name = 'tools/'
+    elsif self.offering_type == 'R'
+      name = 'testimonials/'
+    elsif self.offering_type == 'P'
+      name = 'partners/'
+    end
+    name
+  end
+
 end

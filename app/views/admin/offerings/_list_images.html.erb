@@ -15,8 +15,12 @@
               <td>
                 <%= image.display_position%>)&nbsp;<%= image.name %>
               </td>
-              <td>
-                <%= image.image.present? ? image_tag(image.image(:small_thumb))  : '-' %>
+              <td class = 'thumbnail-small'>
+                <% if image.exist? %>
+                    <%= image_tag(image.image)  %>
+                <% else %>
+                 -
+                <% end %>
               </td>
               <td>
                 <%=  image.carousel? ? 'Carousel' : '' %><br/>
