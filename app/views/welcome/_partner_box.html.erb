@@ -11,7 +11,7 @@
                 <tr>
                   <td class= "partner_image logo-large">
                     <% if (!partner.images.empty? && partner.images.first.exist? ) %>
-                        <%= image_tag (partner.images.first.image) %>
+                        <%= image_tag (partner.images.first.pic) %>
                     <% else %>
                         -
                     <% end %>

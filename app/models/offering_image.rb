@@ -33,7 +33,7 @@ class OfferingImage < ActiveRecord::Base
     where('is_active = ?', true)
   end
 
-  def image
+  def pic
     self.offering ? self.offering.image_directory + (self.url.nil? ? '' : self.url) : ''
   end
 end
