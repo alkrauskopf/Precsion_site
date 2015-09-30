@@ -16,6 +16,11 @@ class Offering < ActiveRecord::Base
     self.offering_images.active.by_position
   end
 
+  def carousel_images
+    self.offering_images.carousels.active.by_position
+  end
+
+
   def self.arrange_by_position
     order('display_position ASC')
   end
@@ -64,6 +69,10 @@ class Offering < ActiveRecord::Base
     self.offering_type == 'P'
   end
 
+  def mission?
+    self.offering_type == 'M'
+  end
+
   def self.offerings
     where('offering_type = ?', 'O').order('display_position ASC')
   end
@@ -84,6 +93,10 @@ class Offering < ActiveRecord::Base
     where('offering_type = ?','P').order('display_position ASC')
   end
 
+  def self.missions
+    where('offering_type = ?','M').order('display_position ASC')
+  end
+
   def type_name
     name = 'Unknown Type'
     if self.offering_type == 'O'
@@ -96,6 +109,8 @@ class Offering < ActiveRecord::Base
       name = 'Testimonial'
     elsif self.offering_type == 'P'
       name = 'Partner'
+    elsif self.offering_type == 'M'
+      name = 'Mission'
     end
     name
   end
@@ -112,6 +127,8 @@ class Offering < ActiveRecord::Base
       name = 'testimonials/'
     elsif self.offering_type == 'P'
       name = 'partners/'
+    elsif self.offering_type == 'M'
+      name = 'mission/'
     end
     name
   end

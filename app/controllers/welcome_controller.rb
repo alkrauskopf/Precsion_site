@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
   @testimonials = Offering.testimonials.active
   @partners = Offering.partners.active
   @users = User.core_team
+  @carousel_images = current_mission.carousel_images
   end
 
 end
