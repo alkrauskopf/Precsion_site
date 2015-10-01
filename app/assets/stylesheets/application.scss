@@ -58,7 +58,7 @@ h1, h2, h3, h4 {
   max-width:140px;
 }
 .main_background_image {
-  background: url(/assets/CO_Mtn_2e.png) no-repeat;
+  background: url(/assets/CO_Mtn_3.png) no-repeat;
   background-size: cover;
 /*  background-color: $palette_2;  */
   height: 230px;
@@ -95,7 +95,7 @@ h1, h2, h3, h4 {
 
 .mission_row {
   margin-top: 10px;
-  min-height: 430px;
+  min-height: 410px;
   width: 100%;
   padding-bottom:0em;
 }
@@ -107,7 +107,7 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 #mission-carousel {
-  margin: 0 0px;
+  margin-top: 1em;
   height: $carousel_1_height;
   img {
     /* force images to fit the carousel window */
@@ -117,7 +117,7 @@ h1, h2, h3, h4 {
 }
 
 .mission_block_2 {
-  margin-top: 2em;
+  margin-top: 1em;
   line-height: 1.5em;
   width: 100%;
   font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -125,11 +125,19 @@ h1, h2, h3, h4 {
 
 .mission_panel {
   margin-top: 0em;
-  line-height: 2.0em;
+  line-height: 1.9em;
   text-align: justify;
   width: 90%;
   font-size:15px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.mission_statement {
+  margin-left:10%;
+  font-weight:normal;
+  width: 80%;
+  font-size:17px;
+  text-align: center;
 }
 
 @media (min-width: 1200px) {

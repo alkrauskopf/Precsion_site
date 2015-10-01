@@ -3,16 +3,16 @@
 <div class="container">
   <!-- Marketing Icons Section -->
   <div class="row mission_row">
-    <div class="col-xs-6">
+    <div class="col-xs-7">
 
       <%= render 'mission_carousel' %>
 
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-5">
       <div class="mission_block_2" >
         <h3 >Our Mission</h3>
         <div class="mission_panel">
-          <p>
+          <p class="mission_statement">
             <%= current_mission ? current_mission.brief.html_safe : '' %>
           </p>
             <h4 style="margin-top:1.2em;">Our Approach</h4>
@@ -30,6 +30,7 @@
       </h4>
   </div>
   -->
+  <hr>
   <div class="row">
     <div class="col-md-4">
       <div class="panel panel-palette_1">
