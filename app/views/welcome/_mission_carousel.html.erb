@@ -22,7 +22,7 @@
         <!-- <h2>Our Offerings</h2> -->
       </div>
     </div>
-    <% @carousel_images.each do |image| %>
+    <% @carousel_images.shuffle.each do |image| %>
       <% if image != @carousel_images.first %>
         <div class="item">
         <!--
