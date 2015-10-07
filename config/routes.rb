@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get 'offering_image/:id' => 'offerings#edit_image'
     patch 'offering_image/:id' => 'offerings#update_image'
     resources :offerings
+    resources :escents
   end
 
   resources :user_classes

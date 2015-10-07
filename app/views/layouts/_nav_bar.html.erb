@@ -25,11 +25,12 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Admin <span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><%= link_to 'Users', admin_user_roles_path %></li>
-                        <li role="separator" class="divider"></li>
                         <li><%= link_to 'Add User', sign_up_path %></li>
+                        <li><%= link_to 'Manage Users', admin_user_roles_path %></li>
                         <li role="separator" class="divider"></li>
                         <li><%= link_to 'Manage Content', admin_offerings_path %></li>
+                        <li role="separator" class="divider"></li>
+                        <li><%= link_to 'Escent Links', admin_escents_path %></li>
                       </ul>
                     </li>
             <% end %>
