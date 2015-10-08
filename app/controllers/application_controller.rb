@@ -38,9 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def escent_main_pages
-   # Escent.active.main_pages
-    []
-
+    Escent.active.main_pages
   end
 
 end
