@@ -26,10 +26,12 @@
                   <%= escent.active? ? "Active" : "Not Active" %>
                 </td>
                 <td>
-                  <%= link_to 'Destroy', [:admin,escent], method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Destroy', [:admin, escent], method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <!-- <%#= link_to 'Destroy', admin_escent_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+                -->
                 </td>
                 <td>
-                  <%= link_to 'Edit', [:admin, escent], url: admin_escent_path(escent) %>
+                  <%= link_to 'Edit', edit_admin_escent_path(escent) %>
                 </td>
             <% end %>
             </tbody>

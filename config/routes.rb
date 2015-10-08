@@ -35,7 +35,13 @@ Rails.application.routes.draw do
     get 'offering_image/:id' => 'offerings#edit_image'
     patch 'offering_image/:id' => 'offerings#update_image'
     resources :offerings
-    resources :escents
+    # get 'escents' => 'escents#index'
+    # get 'escent' => 'escents#new'
+    # post 'escents' => 'escents#create'
+    # get 'escent/:id' => 'escents#edit', as: 'edit_escent'
+    # patch 'escent/:id' => 'escents#update'
+    # delete 'escent/:id' => 'escents#destroy'
+    resources :escents, except: :show
   end
 
   resources :user_classes

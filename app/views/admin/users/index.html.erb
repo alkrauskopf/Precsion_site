@@ -29,7 +29,7 @@
                 <%= user.user_class ? user.user_class.name : 'Unassigned Class'%>
               </td>
               <td>
-                <%= link_to 'Destroy User', [:admin, user], method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= button_to 'Destroy User', [:admin, user], method: :delete, data: { confirm: 'Are you sure?' } %>
               </td>
               <td>
                 <%= link_to 'Edit User', [:admin, user], :url => admin_users_path(user) %>

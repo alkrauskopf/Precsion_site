@@ -32,7 +32,7 @@ class Admin::EscentsController < ApplicationController
   def update
     respond_to do |format|
       if @escent.update(escent_params)
-        format.html { redirect_to admin_escent_path, notice: "#{@escent.name} has been updated." }
+        format.html { redirect_to admin_escents_path, notice: "#{@escent.name} has been updated." }
         format.json { render :show, status: :ok, location: @escent }
       else
         format.html { render :edit }
