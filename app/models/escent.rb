@@ -23,14 +23,25 @@ class Escent < ActiveRecord::Base
     self.escent_type == 'N'
   end
 
+  def web_page?
+    self.escent_type == 'W'
+  end
+
   def self.main_pages
     where('escent_type = ?', 'N').order('position ASC')
+  end
+
+  def self.web_pages
+    where('escent_type = ?', 'W').order('position ASC')
   end
 
   def type_name
     name = 'Unknown Type'
     if self.escent_type == 'N'
-      name = 'Main Page'
+      name = 'Escent Toolkit Page'
+    end
+    if self.escent_type == 'W'
+      name = 'Web Page'
     end
     name
   end

@@ -10,7 +10,7 @@
     <div class=" col-md-9 image_panel">
       <div class="panel panel-palette_4 ">
         <div class="panel-heading">
-          <h5><%= pluralize(@escents.size, ' Escent Link')%></h5>
+          <h5><%= pluralize(@escents.size, ' Community Link')%></h5>
         </div>
         <div class="panel-body, table-responsive">
           <table class="table table-striped table-bordered table-hover">
@@ -20,7 +20,8 @@
                   <%= escent.position%>)&nbsp;<%= escent.name %>
                 </td>
                 <td >
-                  <%= escent.url  %>
+                  <%= escent.url  %></br>
+                  <%= escent.type_name %>
                 </td>
                 <td>
                   <%= escent.active? ? "Active" : "Not Active" %>
