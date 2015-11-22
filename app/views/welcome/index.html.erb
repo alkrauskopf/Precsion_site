@@ -15,7 +15,7 @@
           <p class="mission_statement">
             <%= current_mission ? current_mission.brief.html_safe : '' %>
           </p>
-            <h4 style="margin-top:1.2em;">Our Approach</h4>
+            <hr>
             <p>
               <%= current_mission ? current_mission.description.html_safe : '' %>
               <u><%= link_to 'Learn More', about_us_path %></u>

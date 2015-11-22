@@ -128,16 +128,18 @@ h1, h2, h3, h4 {
   line-height: 1.9em;
   text-align: justify;
   width: 90%;
-  font-size:15px;
+  font-size:14px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 .mission_statement {
   margin-left:10%;
   font-weight:normal;
+  font-style: italic;
   width: 80%;
   font-size:17px;
   text-align: center;
+  color: #000081;
 }
 
 @media (min-width: 1200px) {
