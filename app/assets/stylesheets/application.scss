@@ -191,18 +191,21 @@ h1, h2, h3, h4 {
 .index-panel-size-1 {
   overflow: scroll;
   max-height: 300px;
+  font-size:13px;
   line-height:2.0em;
 }
 
 .index-panel-size-2 {
   overflow: scroll;
   max-height: 400px;
+  font-size:13px;
   line-height:2.0em;
 }
 
 .index-panel-size-3 {
   overflow: scroll;
   max-height: 500px;
+  font-size:13px;
   line-height:2.0em;
 }
 
@@ -283,11 +286,11 @@ h1, h2, h3, h4 {
 
 .research_name {
   line-height:2.0em;
-  font-style: italic;
+  font-style: normal;
   font-weight:bold;
   text-align: left;
   font-size:13px;
-  color: #0000a4;
+  color: #000081;
 }
 
 .research_link {
@@ -310,7 +313,7 @@ h1, h2, h3, h4 {
 
 .grant_name {
   line-height:2.0em;
-  font-style: italic;
+  font-style: normal;
   font-weight:bold;
   text-align: left;
   font-size:13px;
