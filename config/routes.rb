@@ -34,6 +34,11 @@ Rails.application.routes.draw do
     delete 'offering_image/:id' => 'offerings#destroy_image', as: 'offering_image'
     get 'offering_image/:id' => 'offerings#edit_image'
     patch 'offering_image/:id' => 'offerings#update_image'
+    post 'content' => 'offerings#new_content', as: 'add_content'
+    post 'contents' => 'offerings#create_content', as: 'contents'
+    delete 'content/:id' => 'offerings#destroy_content', as: 'content'
+    get 'content/:id' => 'offerings#edit_content'
+    patch 'content/:id' => 'offerings#update_content'
     resources :offerings
     # get 'escents' => 'escents#index'
     # get 'escent' => 'escents#new'

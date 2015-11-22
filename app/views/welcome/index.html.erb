@@ -24,20 +24,14 @@
       </div>
     </div>
   </div>
-  <!--
-  <div class="row" >
-      <h4 class="welcome-header" style="text-align: center;">Continuous Improvement Begins With A Precise Understanding Of The As-Is
-      </h4>
-  </div>
-  -->
-  <hr>
-  <div class="row">
+  <div class="row" id="row_1">
+    <hr>
     <div class="col-md-4">
       <div class="panel panel-palette_1">
         <div class="panel-heading">
           <h4 style="text-align: center;"><i class="fa fa-search"></i> <%= @welcomes[0] ? @welcomes[0].name.html_safe : 'Standby' %></h4>
         </div>
-        <div class="panel-body" style="line-height:2.0em">
+        <div class="panel-body index-panel-size-1">
           <%= @welcomes[0] ? @welcomes[0].description.html_safe : 'Rebuilding' %>
           <% if @welcomes[0] && !@welcomes[0].user_povs.empty?%>
               <p class="welcome_team">
@@ -61,7 +55,7 @@
         <div class="panel-heading">
           <h4 style="text-align: center;"><i class="fa fa-users"></i> <%= @welcomes[1] ? @welcomes[1].name.html_safe : 'Standby' %></h4>
         </div>
-        <div class="panel-body" style="line-height:2.0em">
+        <div class="panel-body index-panel-size-1">
           <%= @welcomes[1] ? @welcomes[1].description.html_safe : 'Rebuilding' %>
           <% if @welcomes[1] && !@welcomes[1].user_povs.empty?%>
               <p class="welcome_team">
@@ -73,9 +67,7 @@
                     <% end %>
                   </div>
               </p>
-          <% end -%>           <!--
-                <u><a href="#">Learn More</a></u>
-            -->
+          <% end -%>
         </div>
       </div>
     </div>
@@ -84,7 +76,7 @@
         <div class="panel-heading">
           <h4 style="text-align: center;"><i class="fa fa-cog fa-1x fa-spin"></i> <%= @welcomes[2] ? @welcomes[2].name.html_safe : 'Standby' %></h4>
         </div>
-        <div class="panel-body" style="line-height:2.0em">
+        <div class="panel-body index-panel-size-1">
           <%= @welcomes[2] ? @welcomes[2].description.html_safe : 'Rebuilding' %>
           <% if @welcomes[2] && !@welcomes[2].user_povs.empty?%>
               <p class="welcome_team">
@@ -97,21 +89,42 @@
                   </div>
               </p>
           <% end -%>
-          <!--
-          <u><a href="#">Learn More</a></u>
-          -->
         </div>
       </div>
     </div>
   </div>
   <!-- /.row -->
-    <div class="row">
+  <div class="row" id="row_2">
+    <hr>
+    <div class="col-md-8">
+      <div class="panel panel-palette_3">
+        <div class="panel-heading">
+          <h4 style="text-align: center;">Research Informs Our Work</h4>
+        </div>
+        <div class="panel-body index-panel-size-1">
+          <%= render partial: 'research_box', locals: { researches: @researches} %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-palette_4">
+        <div class="panel-heading">
+          <h4 style="text-align: center;"><i class="fa fa-search"></i> Grant Assistance</h4>
+        </div>
+        <div class="panel-body index-panel-size-1">
+           <%= render partial: 'grant_box', locals: { grants: @grants} %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="row_3">
+      <hr>
       <div class="col-md-4">
-        <div class="panel panel-palette_3">
+        <div class="panel panel-palette_2">
           <div class="panel-heading" >
             <h4 style="text-align: center;"><i class="fa fa-wrench"></i> <%= @welcomes[3] ? @welcomes[3].name.html_safe : 'Standby' %></h4>
           </div>
-          <div class="panel-body" style="line-height:2.0em">
+          <div class="panel-body index-panel-size-2">
             <%= @welcomes[3] ? @welcomes[3].description.html_safe : 'Rebuilding' %>
             <% if @welcomes[3] && !@welcomes[3].user_povs.empty?%>
                 <p class="welcome_team">
@@ -130,22 +143,22 @@
           </div>
         </div>
         <% if !@testimonials.empty? %>
-            <div class="panel panel-palette_2">
+            <div id = "testimony" class="panel panel-palette_4">
               <div class="panel-heading" >
                 <h4 style="text-align: center;"><i class="glyphicon glyphicon-thumbs-up"></i>Testimonials</h4>
               </div>
-              <div class="panel-body">
+              <div class="panel-body index-panel-size-3">
                   <%= render partial: 'testimony_box', locals: { testimonials: @testimonials} %>
               </div>
             </div>
         <% end %>
       </div>
       <div class="col-md-8">
-        <div class="panel panel-palette_4">
+        <div class="panel panel-palette_5">
           <div class="panel-heading" >
             <h4 style="text-align: center;"><%= @welcomes[4] ? @welcomes[4].name.html_safe : 'Standby' %></h4>
           </div>
-          <div class="panel-body welcome_team">
+          <div class="panel-body index-panel-size-3">
             <%= @welcomes[4] ? @welcomes[4].description.html_safe : 'Rebuilding' %>
               <% if @welcomes[4] && !@welcomes[4].user_povs.empty?%>
                 <p class="welcome_team">
@@ -167,16 +180,15 @@
             </div>
             </div>
             <% if !@partners.empty? %>
-                <div class="panel panel-palette_5">
+                <div class="panel panel-palette_1">
                   <div class="panel-heading" >
                     <h4 style="text-align: center;">Partners</h4>
                   </div>
-                  <div class="panel-body">
+                  <div class="panel-body index-panel-size-2">
                       <%= render partial: 'partner_box', locals: { partners: @partners} %>
                   </div>
                 </div>
             <% end %>
         </div>
-      </div>
-    </div>
+  </div>
 </div>

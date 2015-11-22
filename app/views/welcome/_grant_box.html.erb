@@ -1,0 +1,20 @@
+<% grants.each do |grant| %>
+    <% class_name = grant.name == '' ? 'grant_header' : 'grant_descript' %>
+       <p class= <%= class_name %> >
+      <% if grant.active_contents.first && grant.active_contents.first.exist? %>
+          <span class=<%= grant.name == '' ? 'grant_header' : 'grant_descript' %>>
+            <% if grant.active_contents.first.type == "Link" %>
+                <a href= <%= grant.active_contents.first.content_url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
+            <% else %>
+                <a href= <%= grant.active_contents.first.url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
+            <% end %>
+          </span>&nbsp;
+      <% else %>
+        <span class="grant_name">
+          <%= grant.name == '' ? '' : (grant.name.html_safe + ' ') %>
+        </span>
+      <% end %>
+      <%= grant.brief.html_safe %>
+    </p>
+<% end -%>
+

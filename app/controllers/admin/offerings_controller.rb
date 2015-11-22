@@ -1,7 +1,9 @@
 class Admin::OfferingsController < ApplicationController
 
-  before_action :admin_authorize, :set_offering, only: [:edit, :show, :update, :destroy, :assign_pov]
-  before_action :admin_authorize, :set_image, only: [:edit_image, :update_image, :destroy_image]
+  before_action :admin_authorize
+  before_action :set_offering, only: [:edit, :show, :update, :destroy, :assign_pov]
+  before_action :set_image, only: [:edit_image, :update_image, :destroy_image]
+  before_action :set_content, only: [:edit_content, :update_content, :destroy_content]
 
   def index
     @parents = Offering.all_parents.by_type.arrange_by_position
@@ -14,6 +16,11 @@ class Admin::OfferingsController < ApplicationController
 
   def new_image
     @offering_image = OfferingImage.new
+    @offering = Offering.find(params[:offering_id])
+  end
+
+  def new_content
+    @content = Content.new
     @offering = Offering.find(params[:offering_id])
   end
 
@@ -45,12 +52,28 @@ class Admin::OfferingsController < ApplicationController
     end
   end
 
+  def create_content
+    @content = Content.new(content_params)
+
+    respond_to do |format|
+      if @content.save
+        format.html { redirect_to edit_admin_offering_path(@content.offering), notice: "#{@content.title} has been created." }
+        format.json { render :show, status: :ok, location: @content }
+      else
+        format.html { render :new }
+        format.json { render json: @content.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def edit
     parent_options
   end
 
-
   def edit_image
+  end
+
+  def edit_content
   end
 
   def update
@@ -65,7 +88,6 @@ class Admin::OfferingsController < ApplicationController
     end
   end
 
-
   def update_image
     respond_to do |format|
       if @offering_image.update(image_params)
@@ -74,6 +96,18 @@ class Admin::OfferingsController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @offering_image.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_content
+    respond_to do |format|
+      if @content.update(content_params)
+        format.html { redirect_to edit_admin_offering_path(@content.offering), notice: "#{@content.title} has been updated." }
+        format.json { render :show, status: :ok, location: @content }
+      else
+        format.html { render :edit }
+        format.json { render json: @content.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -99,6 +133,14 @@ class Admin::OfferingsController < ApplicationController
     end
   end
 
+  def destroy_content
+    @offering = @content.offering
+    @content.destroy
+    respond_to do |format|
+      format.html { redirect_to edit_admin_offering_path(@offering), notice: 'Content has been deleted.' }
+      format.json { head :no_content }
+    end
+  end
 
   def assign_pov
     pov = UserPov.find(params[:pov_id])
@@ -137,10 +179,22 @@ class Admin::OfferingsController < ApplicationController
     end
   end
 
+  def set_content
+    if params[:id]
+      @content = Content.find(params[:id])
+    end
+  end
+
   def image_params
     params.require(:offering_image).permit(:name, :url, :is_carousel_img,
                                            :display_position, :is_active,
                                            :offering_id, :image)
+  end
+
+  def content_params
+    params.require(:content).permit(:name, :content_url, :title,:description,
+                                           :position, :is_active,
+                                           :content_type, :offering_id)
   end
 
 end

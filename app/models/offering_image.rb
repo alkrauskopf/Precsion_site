@@ -34,6 +34,6 @@ class OfferingImage < ActiveRecord::Base
   end
 
   def pic
-    self.offering ? self.offering.image_directory + (self.url.nil? ? '' : self.url) : ''
+    self.offering ? self.offering.content_directory + (self.url.nil? ? '' : self.url) : ''
   end
 end

@@ -16,15 +16,12 @@
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'Our Approach', about_us_path %></li>
             <li><%= link_to 'Our Team', about_team_path %></li>
-            <!--
-            <li><%#= link_to 'Our Offerings', offerings_path %></li>
-            -->
-
             <% if !escent_main_pages.empty? || !community_web_pages.empty? %>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     Our Community<span class="caret"></span></a>
                   <ul class="dropdown-menu">
+                    <li><a href="#row_3">Our Partners</a></li>
                     <% escent_main_pages.each do |escent| %>
                         <li><a href=<%= escent.url %> target="_blank"><%=escent.name%></a></li>
                     <% end %>
@@ -37,7 +34,8 @@
                   </ul>
                 </li>
             <% end %>
-
+            <li><a href="#row_1">Our Work</a></li>
+            <li><a href="#row_2">Research</a></li>
             <li><%= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal'} %></li>
             <% if admin_authorized? %>
                     <li class="dropdown">

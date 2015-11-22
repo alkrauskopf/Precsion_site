@@ -4,6 +4,7 @@ class Offering < ActiveRecord::Base
   has_many :offering_user_povs, dependent: :destroy
   has_many :user_povs, through: :offering_user_povs
   has_many :offering_images, dependent: :destroy
+  has_many :contents, dependent: :destroy
 
   validates_presence_of :offering_type
 
@@ -16,10 +17,13 @@ class Offering < ActiveRecord::Base
     self.offering_images.active.by_position
   end
 
+  def active_contents
+    self.contents.active.by_position
+  end
+
   def carousel_images
     self.offering_images.carousels.active.by_position
   end
-
 
   def self.arrange_by_position
     order('display_position ASC')
@@ -54,7 +58,7 @@ class Offering < ActiveRecord::Base
   end
 
   def tool?
-    self.offering_type == 'T'
+    self.offering_type == 'E'
   end
 
   def welcome?
@@ -62,7 +66,7 @@ class Offering < ActiveRecord::Base
   end
 
   def testimonial?
-    self.offering_type == 'R'
+    self.offering_type == 'T'
   end
 
   def partner?
@@ -73,12 +77,20 @@ class Offering < ActiveRecord::Base
     self.offering_type == 'M'
   end
 
+  def research?
+    self.offering_type == 'T'
+  end
+
+  def grant?
+    self.offering_type == 'G'
+  end
+
   def self.offerings
     where('offering_type = ?', 'O').order('display_position ASC')
   end
 
   def self.tools
-    where('offering_type = ?', 'T').order('display_position ASC')
+    where('offering_type = ?', 'E').order('display_position ASC')
   end
 
   def self.welcomes
@@ -86,7 +98,7 @@ class Offering < ActiveRecord::Base
   end
 
   def self.testimonials
-    where('offering_type = ?','R').order('display_position ASC')
+    where('offering_type = ?','T').order('display_position ASC')
   end
 
   def self.partners
@@ -97,38 +109,54 @@ class Offering < ActiveRecord::Base
     where('offering_type = ?','M').order('display_position ASC')
   end
 
+  def self.researches
+    where('offering_type = ?','R').order('display_position ASC')
+  end
+
+  def self.grants
+    where('offering_type = ?','G').order('display_position ASC')
+  end
+
   def type_name
     name = 'Unknown Type'
     if self.offering_type == 'O'
       name = 'Offering'
     elsif self.offering_type == 'W'
       name = 'Welcome'
-    elsif self.offering_type == 'T'
+    elsif self.offering_type == 'E'
       name = 'Tool'
-    elsif self.offering_type == 'R'
+    elsif self.offering_type == 'T'
       name = 'Testimonial'
     elsif self.offering_type == 'P'
       name = 'Partner'
     elsif self.offering_type == 'M'
       name = 'Mission'
+    elsif self.offering_type == 'R'
+      name = 'Research'
+    elsif self.offering_type == 'G'
+      name = 'Grant'
     end
     name
   end
 
-  def image_directory
+  def content_directory
     name = ''
     if self.offering_type == 'O'
       name = 'offerings/'
     elsif self.offering_type == 'W'
       name = ''
-    elsif self.offering_type == 'T'
+    elsif self.offering_type == 'E'
       name = 'tools/'
-    elsif self.offering_type == 'R'
+    elsif self.offering_type == 'T'
       name = 'testimonials/'
     elsif self.offering_type == 'P'
       name = 'partners/'
     elsif self.offering_type == 'M'
       name = 'mission/'
+    elsif self.offering_type == 'R'
+      name = 'research/'
+    elsif self.offering_type == 'G'
+      name = 'grant/'
     end
     name
   end

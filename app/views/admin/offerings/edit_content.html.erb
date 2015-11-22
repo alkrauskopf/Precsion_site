@@ -1,0 +1,9 @@
+<h1>Edit <%=@content.offering.name %> Content</h1>
+<div class="row">
+    <%= render partial: 'content_form', locals: { content: @content, offering: @content.offering } %>
+    <hr>
+</div>
+<div class="row col-md-offset-2 col-md-2" >
+
+  <a class="btn btn-default" href="<%= edit_admin_offering_path(@content.offering) %>">Back</a>
+</div>

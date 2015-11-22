@@ -1,0 +1,18 @@
+<% researches.each do |research| %>
+    <p class="research_name">
+      <%= research.name.html_safe %>&nbsp;
+      <% if research.active_contents.first && research.active_contents.first.exist? %>
+          <span class="research_link">
+            <% if research.active_contents.first.type == "Link" %>
+                <a href= <%= research.active_contents.first.content_url %> target="_blank">(<u>View <%= research.active_contents.first.type %> </u>)</a>
+            <% else %>
+                <a href= <%= research.active_contents.first.url %> target="_blank">(<u>View <%= research.active_contents.first.type %> </u>)</a>
+            <% end %>
+          </span>&nbsp;
+      <% end %>
+        <span class="research_descript">
+          <%= research.brief.html_safe %>
+        </span>
+    </p>
+<% end -%>
+

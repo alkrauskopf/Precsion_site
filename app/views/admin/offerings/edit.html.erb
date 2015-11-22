@@ -6,9 +6,9 @@
                 data: {confirm: 'Are you sure? This action cannot be undone'} %>
 </div>
 <br/>
-Offering: <%=@offering.id%>
+Offering ID: <%=@offering.id%>
 <%= render 'pov_associations'%>
-
-<%= render partial: 'list_images', locals: { offering: @offering}%>
+<%= render partial: 'list_contents', locals: { offering: @offering} %>
+<%= render partial: 'list_images', locals: { offering: @offering} %>
 
 

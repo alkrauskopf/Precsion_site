@@ -7,6 +7,8 @@ class WelcomeController < ApplicationController
   @partners = Offering.partners.active
   @users = User.core_team
   @carousel_images = current_mission.carousel_images
+  @researches = Offering.researches.active
+  @grants = Offering.grants.active
   end
 
 end

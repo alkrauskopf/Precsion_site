@@ -1,0 +1,62 @@
+<div class="container">
+<%= form_for([:admin, content], html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+
+  <% if content.errors.any? %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(content.errors.count, "error") %> prohibited this content from being updated:</h4>
+      <ul>
+        <% content.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.hidden_field :offering_id, value: offering.id %>
+    <div class="form-group">
+      <%= f.label :content_url, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :content_url, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :position, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :position, size: 1 %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Title', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Description', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+    </div>
+      <div class="form-group">
+        <%= f.label 'Type', class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :content_type, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <h4>Active?</h4>
+          <%= f.radio_button(:is_active, true) %>
+          <%= f.label(:active_yes, 'Yes') %>
+          <%= f.radio_button(:is_active, false) %>
+          <%= f.label(:active_no, 'No') %>
+        </div>
+      </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+<% end %>
+</div>
