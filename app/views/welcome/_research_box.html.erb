@@ -22,6 +22,7 @@
         </div>
     <% end %>
     <% overview.children_by_position.active.each do |research| %>
+        <hr>
         <p class="research_descript">
           <span class="research_name"><%= research.name.html_safe %></span>&nbsp;
           <% if research.active_contents.first && research.active_contents.first.exist? %>

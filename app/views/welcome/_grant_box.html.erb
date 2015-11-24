@@ -22,6 +22,7 @@
           </div>
       <% end %>
       <% overview.children_by_position.active.each do |grant| %>
+          <hr>
           <p class= 'grant_descript' >
               <% if grant.active_contents.first && grant.active_contents.first.exist? %>
                 <% if grant.active_contents.first.type == "Link" %>

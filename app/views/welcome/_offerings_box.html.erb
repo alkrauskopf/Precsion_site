@@ -22,6 +22,7 @@
         </div>
     <% end %>
     <% overview.children_by_position.active.each do |offering| %>
+        <hr>
         <p class= "offering_descript" >
           <span class="offering_name"><%= offering.name.html_safe %></span>&nbsp;
           <% if offering.active_contents.first && offering.active_contents.first.exist? %>
