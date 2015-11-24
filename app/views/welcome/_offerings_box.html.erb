@@ -1,9 +1,9 @@
 <div class="panel-body">
-  <div class="research_join_list">
+  <div class="offering_join_list">
     <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
   </div>
   <div class="index-panel-size-1">
-    <span class = "research_header">
+    <span class = "offering_header">
         <%= overview.nil? ? '' : overview.brief.html_safe %>
     </span>
     <% unless true %>
@@ -21,22 +21,23 @@
           <% end %>
         </div>
     <% end %>
-    <% overview.children_by_position.active.each do |research| %>
-        <p class="research_descript">
-          <span class="research_name"><%= research.name.html_safe %></span>&nbsp;
-          <% if research.active_contents.first && research.active_contents.first.exist? %>
-              <span class="research_link">
-                <% if research.active_contents.first.type == "Link" %>
-                    <a href= <%= research.active_contents.first.content_url %> target="_blank">(<u>View <%= research.active_contents.first.type %> </u>)</a>
+    <% overview.children_by_position.active.each do |offering| %>
+        <p class= "offering_descript" >
+          <span class="offering_name"><%= offering.name.html_safe %></span>&nbsp;
+          <% if offering.active_contents.first && offering.active_contents.first.exist? %>
+              <span class="offering_link">
+                <% if offering.active_contents.first.type == "Link" %>
+                    <a href= <%= offering.active_contents.first.content_url %> target="_blank">(<u>View <%= offering.active_contents.first.type %> </u>)</a>
                 <% else %>
-                    <a href= <%= research.active_contents.first.url %> target="_blank">(<u>View <%= research.active_contents.first.type %> </u>)</a>
+                    <a href= <%= offering.active_contents.first.url %> target="_blank">(<u>View <%= offering.active_contents.first.type %> </u>)</a>
                 <% end %>
               </span>&nbsp;
           <% end %>
-            <span class="research_descript">
-              <%= research.brief.html_safe %>
-            </span>
+          <span class="offering_descript">
+            <%= offering.description.html_safe %>
+          </span>
         </p>
     <% end -%>
   </div>
 </div>
+

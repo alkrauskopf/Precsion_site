@@ -1,0 +1,44 @@
+<div class="panel-body">
+  <div class="tool_join_list">
+      <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
+  </div>
+    <div class="index-panel-size-1">
+      <span class = "tool_header">
+        <%= overview.nil? ? '' : overview.description.html_safe %>
+      </span>
+      <% unless true %>
+          <!-- Can't figure out how to display an image in a modal yet -->
+          <div class="about_blue_font tool_pov_list">
+            <% overview.images.each do |images| %>
+                <u><%= link_to 'View', image_show_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#imageModal'} %></u></br>
+            <% end %>
+          </div>
+      <% end %>
+      <% if !overview.user_povs.empty?%>
+          <div class="about_blue_font tool_pov_list">
+            <% overview.user_povs.each do |pov| %>
+                <u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+            <% end %>
+          </div>
+      <% end %>
+        <% overview.children_by_position.active.each do |tool| %>
+          <p class= "tool_descript" >
+              <% if tool.active_contents.first && tool.active_contents.first.exist? %>
+                  <span class='tool_link' >
+                    <% if tool.active_contents.first.type == "Link" %>
+                        <a href= <%= tool.active_contents.first.content_url %> target="_blank"><u><%= tool.name == '' ? grant.active_contents.first.title : tool.name %></u></a>
+                    <% else %>
+                        <a href= <%= tool.active_contents.first.url %> target="_blank"><u><%= tool.name == '' ? tool.active_contents.first.title : tool.name %></u></a>
+                    <% end %>
+                  </span>&nbsp;
+              <% else %>
+                <span class="tool_name">
+                  <%= tool.name == '' ? '' : (tool.name.html_safe + ' ') %>
+                </span>
+              <% end %>
+              <%= tool.brief.html_safe %>
+          </p>
+        <% end -%>
+    </div>
+</div><%= render '/session/image_show_modal' %>
+

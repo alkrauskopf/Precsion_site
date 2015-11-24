@@ -1,95 +1,30 @@
 <%= render 'layouts/main_header' %>
 <!-- Page Content -->
 <div class="container">
-  <!-- Marketing Icons Section -->
-  <div class="row mission_row">
-    <div class="col-xs-7">
 
-      <%= render 'mission_carousel' %>
+  <%= render 'mission' %>
 
-    </div>
-    <div class="col-xs-5">
-      <div class="mission_block_2" >
-        <h4 >Our Mission...</h4>
-        <div class="mission_panel">
-          <p class="mission_statement">
-            <%= current_mission ? current_mission.brief.html_safe : '' %>
-          </p>
-            <hr>
-            <p>
-              <%= current_mission ? current_mission.description.html_safe : '' %>
-              <u><%= link_to 'Learn More', about_us_path %></u>
-            </p>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="row" id="row_1">
     <hr>
     <div class="col-md-4">
       <div class="panel panel-palette_1">
         <div class="panel-heading">
-          <h4 style="text-align: center;"><i class="fa fa-search"></i> <%= @welcomes[0] ? @welcomes[0].name.html_safe : 'Standby' %></h4>
+          <h4 style="text-align: center;"></i> Grant Funding Assistance</h4>
         </div>
-        <div class="panel-body index-panel-size-1">
-          <%= @welcomes[0] ? @welcomes[0].description.html_safe : 'Rebuilding' %>
-          <% if @welcomes[0] && !@welcomes[0].user_povs.empty?%>
-              <p class="welcome_team">
-                  <div class="about_blue_font welcome_pov_list">
-                    Please Read:<br/>
-                    <% @welcomes[0].user_povs.each do |pov| %>
-                        <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
-                        <br/>
-                    <% end %>
-                  </div>
-              </p>
-          <% end -%>
-          <!--
-            <u><a href="#">Learn More</a></u>
-            -->
-        </div>
+        <% if !@grant_parent.nil? %>
+            <%= render partial: 'grant_box', locals: { overview: @grant_parent} %>
+        <% end %>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="panel panel-palette_5">
-        <div class="panel-heading">
-          <h4 style="text-align: center;"><i class="fa fa-users"></i> <%= @welcomes[1] ? @welcomes[1].name.html_safe : 'Standby' %></h4>
-        </div>
-        <div class="panel-body index-panel-size-1">
-          <%= @welcomes[1] ? @welcomes[1].description.html_safe : 'Rebuilding' %>
-          <% if @welcomes[1] && !@welcomes[1].user_povs.empty?%>
-              <p class="welcome_team">
-                  <div class="about_blue_font welcome_pov_list">
-                    Please Read:<br/>
-                    <% @welcomes[1].user_povs.each do |pov| %>
-                        <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
-                        <br/>
-                    <% end %>
-                  </div>
-              </p>
-          <% end -%>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
+
+    <div class="col-md-8">
       <div class="panel panel-palette_2">
         <div class="panel-heading">
-          <h4 style="text-align: center;"><i class="fa fa-cog fa-1x fa-spin"></i> <%= @welcomes[2] ? @welcomes[2].name.html_safe : 'Standby' %></h4>
+          <h4 style="text-align: center;"><i class="fa fa-cog fa-1x fa-spin"></i> Our School Improvement Work</h4>
         </div>
-        <div class="panel-body index-panel-size-1">
-          <%= @welcomes[2] ? @welcomes[2].description.html_safe : 'Rebuilding' %>
-          <% if @welcomes[2] && !@welcomes[2].user_povs.empty?%>
-              <p class="welcome_team">
-                  <div class="about_blue_font welcome_pov_list">
-                    Please Read:<br/>
-                    <% @welcomes[2].user_povs.each do |pov| %>
-                        <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
-                        <br/>
-                    <% end %>
-                  </div>
-              </p>
-          <% end -%>
-        </div>
+        <% if !@offering_parent.nil? %>
+            <%= render partial: 'offerings_box', locals: { overview: @offering_parent} %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -101,47 +36,25 @@
         <div class="panel-heading">
           <h4 style="text-align: center;">Research Informs Our Work</h4>
         </div>
-        <div class="panel-body index-panel-size-1">
-          <%= render partial: 'research_box', locals: { researches: @researches} %>
-        </div>
+        <% if !@research_parent.nil? %>
+            <%= render partial: 'research_box', locals: { overview: @research_parent} %>
+        <% end %>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="panel panel-palette_4">
+      <div class="panel panel-palette_5">
         <div class="panel-heading">
-          <h4 style="text-align: center;"><i class="fa fa-search"></i> Grant Assistance</h4>
+          <h4 style="text-align: center;"><i class="fa fa-wrench"></i> Integrated Toolkit</h4>
         </div>
-        <div class="panel-body index-panel-size-1">
-           <%= render partial: 'grant_box', locals: { grants: @grants} %>
-        </div>
+        <% if !@tool_parent.nil? %>
+            <%= render partial: 'tools_box', locals: { overview: @tool_parent} %>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="row" id="row_3">
       <hr>
       <div class="col-md-4">
-        <div class="panel panel-palette_2">
-          <div class="panel-heading" >
-            <h4 style="text-align: center;"><i class="fa fa-wrench"></i> <%= @welcomes[3] ? @welcomes[3].name.html_safe : 'Standby' %></h4>
-          </div>
-          <div class="panel-body index-panel-size-2">
-            <%= @welcomes[3] ? @welcomes[3].description.html_safe : 'Rebuilding' %>
-            <% if @welcomes[3] && !@welcomes[3].user_povs.empty?%>
-                <p class="welcome_team">
-                    <div class="about_blue_font welcome_pov_list">
-                      Please Read:<br/>
-                      <% @welcomes[3].user_povs.each do |pov| %>
-                          <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
-                          <br/>
-                      <% end %>
-                    </div>
-                </p>
-            <% end -%>
-            <!--
-            <u><a href="#">Learn More</a></u>
-            -->
-          </div>
-        </div>
         <% if !@testimonials.empty? %>
             <div id = "testimony" class="panel panel-palette_4">
               <div class="panel-heading" >
@@ -171,8 +84,8 @@
                           <% end %>
                       <% end %>
                     </div>
-                </p>
-            <% end -%>
+                    </p>
+                <% end -%>
             <p>
               <u><%= link_to 'Learn More', about_team_path %></u>
             </p>

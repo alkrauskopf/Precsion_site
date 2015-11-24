@@ -245,7 +245,7 @@ h1, h2, h3, h4 {
   .testimony_brief {
     line-height:.5em;
     padding-left:10px;
-    text-align: left;
+    text-align: justify;
     vertical-align: middle;
     font-size:11px;
     color: #1a2a78;
@@ -272,7 +272,7 @@ h1, h2, h3, h4 {
   .partner_descript {
     line-height:1.2em;
     padding-left:10px;
-    text-align: left;
+    text-align: justify;
     vertical-align: middle;
     font-size:12px;
     color: $dark_text;
@@ -304,12 +304,83 @@ h1, h2, h3, h4 {
   color: #0000a4;
 }
 
-.research_descript {
+.research_header {
   line-height:2.0em;
   font-weight:normal;
   font-style: normal;
   text-align: left;
   font-size:13px;
+  color: $dark_text;
+}
+
+.research_join_list {
+  line-height:1.0em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: center;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  font-size:9px;
+  color: $palette_3
+}
+
+.research_descript {
+  line-height:1.4em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: justify;
+  font-size:12px;
+  color: $dark_text;
+}
+
+.offering_header {
+  line-height:2.0em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: left;
+  font-size:13px;
+  color: $dark_text;
+}
+
+.offering_image {
+  float:left;
+}
+
+.offering_name {
+  line-height:2.0em;
+  font-style: normal;
+  font-weight:bold;
+  text-align: left;
+  font-size:13px;
+  color: #000081;
+}
+
+.offering_link {
+  line-height:2.0em;
+  font-style: normal;
+  font-weight:normal;
+  text-align: left;
+  font-size:11px;
+  color: #0000a4;
+}
+
+.offering_join_list {
+  line-height:1.0em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: center;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  font-size:9px;
+  color: $palette_2
+}
+
+.offering_descript {
+  line-height:1.4em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: justify;
+  font-size:12px;
   color: $dark_text;
 }
 
@@ -340,13 +411,76 @@ h1, h2, h3, h4 {
   color: $dark_text;
 }
 
+.grant_join_list {
+  line-height:1.0em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: center;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  font-size:9px;
+  color: $palette_1
+}
+
 .grant_descript {
   line-height:1.4em;
   font-weight:normal;
   font-style: normal;
-  text-align: left;
+  text-align: justify;
   font-size:12px;
   color: $dark_text;
+}
+
+.tool_name {
+  line-height:2.0em;
+  font-style: normal;
+  font-weight:bold;
+  text-align: left;
+  font-size:13px;
+  color: #0000a4;
+}
+
+.tool_link {
+  line-height:2.0em;
+  font-style: normal;
+  font-weight:normal;
+  text-align: left;
+  font-size:13px;
+  color: #0000a4;
+}
+
+.tool_header {
+  line-height:2.0em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: left;
+  font-size:13px;
+  color: $dark_text;
+}
+
+.tool_join_list {
+  line-height:1.0em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: center;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  font-size:9px;
+  color: $palette_5
+}
+
+.tool_descript {
+  line-height:1.4em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: justify;
+  font-size:12px;
+  color: $dark_text;
+}
+
+.tool_pov_list {
+  font-size: 10px;
+  line-height:1.4em;
 }
 
 .escent_list-container {

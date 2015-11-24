@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'login' => 'session#create'
   delete 'logout' => 'session#destroy'
   post 'contact_logs' => 'session#contact_us'
+  get 'image_show' => 'session#image_show'
   get 'about_us' => 'about#index'
   get 'about_team' => 'about#our_team'
   get 'sign_up' => 'admin/users#new'

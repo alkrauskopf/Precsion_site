@@ -1,20 +1,43 @@
-<% grants.each do |grant| %>
-    <% class_name = grant.name == '' ? 'grant_header' : 'grant_descript' %>
-       <p class= <%= class_name %> >
-      <% if grant.active_contents.first && grant.active_contents.first.exist? %>
-          <span class=<%= grant.name == '' ? 'grant_header' : 'grant_descript' %>>
-            <% if grant.active_contents.first.type == "Link" %>
-                <a href= <%= grant.active_contents.first.content_url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
-            <% else %>
-                <a href= <%= grant.active_contents.first.url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
+<div class="panel-body">
+  <div class="grant_join_list">
+    <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
+  </div>
+    <div class="index-panel-size-1">
+      <span class = "grant_header">
+        <%= overview.nil? ? '' : overview.brief.html_safe %>
+      </span>
+      <% unless true %>
+          <!-- Can't figure out how to display an image in a modal yet -->
+          <div class="about_blue_font tool_pov_list">
+            <% overview.images.each do |images| %>
+                <u><%= link_to 'View', image_show_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#imageModal'} %></u></br>
             <% end %>
-          </span>&nbsp;
-      <% else %>
-        <span class="grant_name">
-          <%= grant.name == '' ? '' : (grant.name.html_safe + ' ') %>
-        </span>
+          </div>
       <% end %>
-      <%= grant.brief.html_safe %>
-    </p>
-<% end -%>
+      <% if !overview.user_povs.empty?%>
+          <div class="about_blue_font tool_pov_list">
+            <% overview.user_povs.each do |pov| %>
+                <u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+            <% end %>
+          </div>
+      <% end %>
+      <% overview.children_by_position.active.each do |grant| %>
+          <p class= 'grant_descript' >
+              <% if grant.active_contents.first && grant.active_contents.first.exist? %>
+                <% if grant.active_contents.first.type == "Link" %>
+                    <a href= <%= grant.active_contents.first.content_url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
+                <% else %>
+                    <a href= <%= grant.active_contents.first.url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
+                <% end %>
+                &nbsp;
+              <% else %>
+                <span class="grant_name">
+                  <%= grant.name == '' ? '' : (grant.name.html_safe + ' ') %>
+                </span>
+              <% end %>
+              <%= grant.brief.html_safe %>
+          </p>
+      <% end -%>
+    </div>
+</div>
 

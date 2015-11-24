@@ -13,6 +13,10 @@ class Offering < ActiveRecord::Base
     where('parent_id IS NULL')
   end
 
+  def children_by_position
+    self.children.arrange_by_position
+  end
+
   def images
     self.offering_images.active.by_position
   end
@@ -23,6 +27,10 @@ class Offering < ActiveRecord::Base
 
   def carousel_images
     self.offering_images.carousels.active.by_position
+  end
+
+  def active_images
+    self.offering_images.active.by_position
   end
 
   def self.arrange_by_position

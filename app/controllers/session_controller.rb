@@ -28,6 +28,11 @@ class SessionController < ApplicationController
     redirect_to root_path
   end
 
+  def image_show
+    redirect_to root_path
+  end
+
+
   def destroy
     if user = current_user
       session.delete(:id)
