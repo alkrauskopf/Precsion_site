@@ -5,6 +5,7 @@
     <div class="index-panel-size-1">
       <span class = "grant_header">
         <%= overview.nil? ? '' : overview.brief.html_safe %>
+        <span syle='float:right;'><button class="btn btn-default btn-xs"><%= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal'} %></button></span>
       </span>
       <% unless true %>
           <!-- Can't figure out how to display an image in a modal yet -->
