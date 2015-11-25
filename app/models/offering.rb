@@ -65,6 +65,10 @@ class Offering < ActiveRecord::Base
     self.offering_type == 'O'
   end
 
+  def consultant?
+    self.offering_type == 'C'
+  end
+
   def tool?
     self.offering_type == 'E'
   end
@@ -95,6 +99,10 @@ class Offering < ActiveRecord::Base
 
   def self.offerings
     where('offering_type = ?', 'O').order('display_position ASC')
+  end
+
+  def self.consultants
+    where('offering_type = ?', 'C').order('display_position ASC')
   end
 
   def self.tools
@@ -143,6 +151,8 @@ class Offering < ActiveRecord::Base
       name = 'Research'
     elsif self.offering_type == 'G'
       name = 'Grant'
+    elsif self.offering_type == 'C'
+      name = 'Consultant'
     end
     name
   end
@@ -165,6 +175,8 @@ class Offering < ActiveRecord::Base
       name = 'research/'
     elsif self.offering_type == 'G'
       name = 'grant/'
+    elsif self.offering_type == 'C'
+      name = 'team/'
     end
     name
   end

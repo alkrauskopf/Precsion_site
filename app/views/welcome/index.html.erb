@@ -69,39 +69,46 @@
       <div class="col-md-8">
         <div class="panel panel-palette_5">
           <div class="panel-heading" >
-            <h4 style="text-align: center;"><%= @welcomes[4] ? @welcomes[4].name.html_safe : 'Standby' %></h4>
+            <h4 style="text-align: center;">Experience Matters</h4>
           </div>
-          <div class="panel-body index-panel-size-3">
-            <%= @welcomes[4] ? @welcomes[4].description.html_safe : 'Rebuilding' %>
-              <% if @welcomes[4] && !@welcomes[4].user_povs.empty?%>
+          <div class="panel-body">
+            <div class="team_join_list">
+              <%= @users.collect{|t| t.last_name}.join(' - ') %>
+            </div>
+            <div class="index-panel-size-3">
+              <span class = "team_header">
+                <%= !@consultant_parent.nil? ? @consultant_parent.description.html_safe : 'Rebuilding' %>
+              </span>
+                <% if !@consultant_parent.nil? && !@consultant_parent.user_povs.empty?%>
                 <p class="welcome_team">
                     <div class="about_blue_font welcome_pov_list">
-                      Team Points-Of-View:<br/>
-                      <% @welcomes[4].user_povs.each do |pov| %>
+                      Points-Of-View:<br/>
+                      <% !@consultant_parent.user_povs.each do |pov| %>
                           <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
-                          <% if pov != @welcomes[4].user_povs.last %>
+                          <% if pov != !@consultant_parent.user_povs.last %>
                               &nbsp;&nbsp;&nbsp;
                           <% end %>
                       <% end %>
                     </div>
-                    </p>
-                <% end -%>
-            <p>
-              <u><%= link_to 'Learn More', about_team_path %></u>
-            </p>
-            <%= render partial: 'team_box', locals: {users: @users }%>
+                </p>
+              <% end -%>
+                <p>
+                  <u><%= link_to 'Learn More', about_team_path %></u>
+                </p>
+                <%= render partial: 'team_box', locals: {users: @users }%>
             </div>
-            </div>
-            <% if !@partners.empty? %>
-                <div class="panel panel-palette_1">
-                  <div class="panel-heading" >
-                    <h4 style="text-align: center;">Partners</h4>
-                  </div>
-                  <div class="panel-body index-panel-size-2">
-                      <%= render partial: 'partner_box', locals: { partners: @partners} %>
-                  </div>
-                </div>
-            <% end %>
+          </div>
         </div>
+        <% if !@partners.empty? %>
+            <div class="panel panel-palette_1">
+              <div class="panel-heading" >
+                <h4 style="text-align: center;">Partners</h4>
+              </div>
+              <div class="panel-body index-panel-size-2">
+                  <%= render partial: 'partner_box', locals: { partners: @partners} %>
+              </div>
+            </div>
+        <% end %>
+      </div>
   </div>
 </div>

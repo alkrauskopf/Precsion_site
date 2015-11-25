@@ -484,6 +484,26 @@ h1, h2, h3, h4 {
   line-height:1.4em;
 }
 
+.team_header {
+  line-height:2.0em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: left;
+  font-size:14px;
+  color: $header_text;
+}
+
+.team_join_list {
+  line-height:1.0em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: center;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  font-size:9px;
+  color: $palette_5
+}
+
 .escent_list-container {
   padding-left:20%;
   padding-top:3em;
