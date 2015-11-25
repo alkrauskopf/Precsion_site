@@ -2,7 +2,7 @@
   <div class="offering_join_list">
     <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
   </div>
-  <div class="index-panel-size-1">
+  <div class="index-panel-size-2">
     <span class = "offering_header">
         <%= overview.nil? ? '' : overview.brief.html_safe %>
     </span>
