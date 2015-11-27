@@ -10,7 +10,7 @@
         <% grp = 'p' %>
         <div class="about_blue_font image_list">
           <% overview.images.each_with_index do |image, idx| %>
-              View:&nbsp;<%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %>
+              View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u>
               <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
           <% end %>
         </div>
@@ -43,7 +43,7 @@
             <% grp = 'c1' %>
             <div class="about_blue_font image_list">
               <% offering.images.each_with_index do |image, idx| %>
-                  View:&nbsp;<%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %><br/>
+                  View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
                   <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
               <% end %>
             </div>
