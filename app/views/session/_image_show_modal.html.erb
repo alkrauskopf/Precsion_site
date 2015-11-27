@@ -8,14 +8,14 @@
       </div>
       <div class="modal-body modal-image-name">
         <%= image.name %>
-          <div class="modal-image-descript">
-            </br><!--
-            <%#=image.description %>
-          -->  description
+        <% if !image.description.nil? && image.description != '' %>
+            <div class="modal-image-descript">
+            </br><%=image.description.html_safe %>
           </div>
+        <% end %>
       </div>
       <div class="modal-body modal-image-panel">
-        <%= image_tag(image.pic, width:550 ) %>
+        <%= image_tag(image.pic, width:570 ) %>
 
       </div>
       <div class="modal-footer">

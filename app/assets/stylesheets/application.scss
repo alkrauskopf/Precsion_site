@@ -219,6 +219,7 @@ h1, h2, h3, h4 {
 
 .modal-image-panel {
   color: $dark_text;
+  font-style: normal;
   text-align: left;
   background-color: $page_background;
 }
@@ -226,8 +227,9 @@ h1, h2, h3, h4 {
 .modal-image-name {
   color: $dark_text;
   font-size: 13px;
-  text-align: center;
+  text-align: left;
   font-weight:bold;
+  font-style: normal;
   background-color: $page_background;
 }
 
@@ -236,6 +238,7 @@ h1, h2, h3, h4 {
   font-size: 12px;
   text-align: left;
   font-weight:normal;
+  font-style: normal;
   background-color: $page_background;
 }
   .welcome_team {
@@ -258,12 +261,14 @@ h1, h2, h3, h4 {
 .image_list {
   font-size: 11px;
   line-height:1.4em;
+  font-style: normal;
   text-decoration: underline;
 }
 
 .pov_list {
   font-size: 11px;
   line-height:1.4em;
+  font-style: normal;
   text-decoration: underline;
 }
 

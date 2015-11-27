@@ -180,5 +180,4 @@ class Offering < ActiveRecord::Base
     end
     name
   end
-
 end

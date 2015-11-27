@@ -188,7 +188,7 @@ class Admin::OfferingsController < ApplicationController
   def image_params
     params.require(:offering_image).permit(:name, :url, :is_carousel_img,
                                            :display_position, :is_active,
-                                           :offering_id, :image)
+                                           :offering_id, :description, :image)
   end
 
   def content_params
