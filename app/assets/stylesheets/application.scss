@@ -217,6 +217,27 @@ h1, h2, h3, h4 {
     background-color: $page_background;
   }
 
+.modal-image-panel {
+  color: $dark_text;
+  text-align: left;
+  background-color: $page_background;
+}
+
+.modal-image-name {
+  color: $dark_text;
+  font-size: 13px;
+  text-align: center;
+  font-weight:bold;
+  background-color: $page_background;
+}
+
+.modal-image-descript {
+  color: $dark_text;
+  font-size: 12px;
+  text-align: left;
+  font-weight:normal;
+  background-color: $page_background;
+}
   .welcome_team {
     line-height:2em;
   }
@@ -233,6 +254,19 @@ h1, h2, h3, h4 {
     margin: 0px 0px 13px 13px;
     border-bottom: 1px solid #eee;
   }
+
+.image_list {
+  font-size: 11px;
+  line-height:1.4em;
+  text-decoration: underline;
+}
+
+.pov_list {
+  font-size: 11px;
+  line-height:1.4em;
+  text-decoration: underline;
+}
+
   .testimony_table {
     padding-left:15px;
     padding-right:15px;
@@ -402,6 +436,11 @@ h1, h2, h3, h4 {
   color: #0000a4;
 }
 
+.grant_contact {
+  font-size: 11px;
+  text-decoration: underline;
+}
+
 .grant_header {
   line-height:2.0em;
   font-weight:normal;
@@ -477,11 +516,6 @@ h1, h2, h3, h4 {
   text-align: justify;
   font-size:13px;
   color: $dark_text;
-}
-
-.tool_pov_list {
-  font-size: 10px;
-  line-height:1.4em;
 }
 
 .team_header {

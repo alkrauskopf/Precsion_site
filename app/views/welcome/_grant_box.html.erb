@@ -4,21 +4,22 @@
   </div>
     <div class="index-panel-size-2">
       <span class = "grant_header">
-        <%= overview.nil? ? '' : overview.brief.html_safe %>
-        <span syle='float:right;'><button class="btn btn-default btn-xs"><%= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal'} %></button></span>
+        <%= overview.nil? ? '' : overview.brief.html_safe %>&nbsp;
+        <span class = "grant_contact" ><%= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal'} %></span>
       </span>
-      <% unless true %>
-          <!-- Can't figure out how to display an image in a modal yet -->
-          <div class="about_blue_font tool_pov_list">
-            <% overview.images.each do |images| %>
-                <u><%= link_to 'View', image_show_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#imageModal'} %></u></br>
+      <% if !overview.images.empty? %>
+          <% grp = 'p' %>
+          <div class="about_blue_font image_list">
+            <% overview.images.each_with_index do |image, idx| %>
+                <%= link_to "View #{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %>
+                <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
             <% end %>
           </div>
       <% end %>
       <% if !overview.user_povs.empty?%>
-          <div class="about_blue_font tool_pov_list">
+          <div class="about_blue_font pov_list">
             <% overview.user_povs.each do |pov| %>
-                <u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+                <u><a href= <%= pov.url %> target="_blank"> <%= 'Read ' + pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
             <% end %>
           </div>
       <% end %>
@@ -39,6 +40,22 @@
               <% end %>
               <%= grant.brief.html_safe %>
           </p>
+          <% if !grant.images.empty? %>
+              <% grp = 'c1' %>
+              <div class="about_blue_font image_list">
+                <% grant.images.each_with_index do |image, idx| %>
+                    <%= link_to "View #{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %>
+                    <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
+                <% end %>
+              </div>
+          <% end %>
+          <% if !grant.user_povs.empty?%>
+              <div class="about_blue_font pov_list">
+                <% grant.user_povs.each do |pov| %>
+                    <u><a href= <%= pov.url %> target="_blank"> <%= 'Read ' + pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+                <% end %>
+              </div>
+          <% end %>
       <% end -%>
     </div>
 </div>
