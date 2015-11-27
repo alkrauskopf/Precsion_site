@@ -18,7 +18,7 @@
       <% if !overview.user_povs.empty?%>
           <div class="about_blue_font pov_list">
             <% overview.user_povs.each do |pov| %>
-                <u><a href= <%= pov.url %> target="_blank"> <%= 'Read ' + pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+                <u><a href= <%= pov.url %> target="_blank"> <%= 'Read: ' + pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
             <% end %>
           </div>
       <% end %>
@@ -52,7 +52,7 @@
           <% if !tool.user_povs.empty?%>
               <div class="about_blue_font pov_list">
                 <% tool.user_povs.each do |pov| %>
-                    <u><a href= <%= pov.url %> target="_blank"> <%= 'Read ' + pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+                    <u><a href= <%= pov.url %> target="_blank"> <%= 'Read: ' + pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
                 <% end %>
               </div>
           <% end %>
