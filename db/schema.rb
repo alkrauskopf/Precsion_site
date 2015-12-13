@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127210101) do
+ActiveRecord::Schema.define(version: 20151213125435) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name"
@@ -87,6 +87,16 @@ ActiveRecord::Schema.define(version: 20151127210101) do
     t.integer "parent_id"
     t.boolean "is_visible",                 default: false
     t.string  "offering_type",    limit: 1, default: "O"
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.integer  "offering_id"
+    t.integer  "stat"
+    t.string   "name"
+    t.integer  "position"
+    t.boolean  "is_active"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "user_authorizations", force: :cascade do |t|

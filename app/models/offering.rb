@@ -5,6 +5,7 @@ class Offering < ActiveRecord::Base
   has_many :user_povs, through: :offering_user_povs
   has_many :offering_images, dependent: :destroy
   has_many :contents, dependent: :destroy
+  has_many :stats, dependent: :destroy
 
   validates_presence_of :offering_type
 

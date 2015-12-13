@@ -1,0 +1,35 @@
+<div class = "container image_list-container">
+  <div class="row ">
+    <hr>
+      <%= button_to 'Add Stat', admin_add_stat_path(offering_id: offering), class: 'btn btn-primary' %>
+  </div>
+  <div class=" col-md-9 image_panel">
+    <div class="panel panel-palette_5 ">
+      <div class="panel-heading">
+        <h5><%= pluralize(offering.stats.size, offering.name + ' Stat')%></h5>
+      </div>
+      <div class="panel-body, table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <tbody>
+          <%= content_tag_for(:tr, offering.stats.by_position) do |stat| %>
+              <td>
+                <%= stat.position%>)
+              </td>
+              <td >
+                <%= stat.stat %>&nbsp;-&nbsp;<%= stat.name %>
+                <br/>
+                <%= stat.active? ? "Active" : "Not Active" %>
+              </td>
+              <td>
+                <%= link_to 'Destroy', [:admin,stat], method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+              <td>
+                <%= link_to 'Edit', [:admin, stat], url: admin_stat_path(stat) %>
+              </td>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

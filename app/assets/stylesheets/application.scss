@@ -241,6 +241,50 @@ h1, h2, h3, h4 {
   font-style: normal;
   background-color: $page_background;
 }
+
+.modal-stat-panel {
+  color: $dark_text;
+  font-style: normal;
+  text-align: left;
+  background-color: $page_background;
+}
+
+.modal-stat-name {
+  color: $dark_text;
+  font-size: 17px;
+  padding-top: 1em;
+  padding-left:4em;
+  padding-right:4em;
+  line-height:1.5em;
+  text-align: left;
+  font-weight:normal;
+  font-style: normal;
+  background-color: $page_background;
+}
+
+.modal-stat-descript {
+  color: $dark_text;
+  font-size: 12px;
+  padding-top: 1em;
+  padding-left: 4em;
+  text-align: left;
+  font-weight:normal;
+  font-style: normal;
+  background-color: $page_background;
+}
+
+.modal-stat-table {
+  color: $blue_text;
+  font-size: 16px;
+  padding-top: 1em;
+  padding-left: 4em;
+  text-align: left;
+  line-height:2.0em;
+  font-weight:normal;
+  font-style: normal;
+  background-color: $page_background;
+}
+
   .welcome_team {
     line-height:2em;
   }

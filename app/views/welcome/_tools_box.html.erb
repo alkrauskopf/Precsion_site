@@ -2,6 +2,12 @@
   <div class="tool_join_list">
       <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
   </div>
+  <% if !overview.stats.empty? %>
+      <div class="about_blue_font image_list">
+            View:&nbsp;<u><%= link_to "Toolkit Statistics", "#statModal#{overview.id}", "data-toggle" => "modal" %></u>
+            <%= render partial: 'session/stat_show_modal', locals: {offering: overview} %>
+      </div>
+  <% end %>
     <div class="index-panel-size-1">
       <span class = "tool_header">
         <%= overview.nil? ? '' : overview.description.html_safe %>

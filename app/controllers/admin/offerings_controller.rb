@@ -4,6 +4,7 @@ class Admin::OfferingsController < ApplicationController
   before_action :set_offering, only: [:edit, :show, :update, :destroy, :assign_pov]
   before_action :set_image, only: [:edit_image, :update_image, :destroy_image]
   before_action :set_content, only: [:edit_content, :update_content, :destroy_content]
+  before_action :set_stat, only: [:edit_stat, :update_stat, :destroy_stat]
 
   def index
     @parents = Offering.all_parents.by_type.arrange_by_position
@@ -21,6 +22,11 @@ class Admin::OfferingsController < ApplicationController
 
   def new_content
     @content = Content.new
+    @offering = Offering.find(params[:offering_id])
+  end
+
+  def new_stat
+    @stat = Stat.new
     @offering = Offering.find(params[:offering_id])
   end
 
@@ -66,6 +72,20 @@ class Admin::OfferingsController < ApplicationController
     end
   end
 
+  def create_stat
+    @stat = Stat.new(stat_params)
+
+    respond_to do |format|
+      if @stat.save
+        format.html { redirect_to edit_admin_offering_path(@stat.offering), notice: "#{@stat.name} has been created." }
+        format.json { render :show, status: :ok, location: @stat }
+      else
+        format.html { render :new }
+        format.json { render json: @stat.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def edit
     parent_options
   end
@@ -74,6 +94,9 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def edit_content
+  end
+
+  def edit_stat
   end
 
   def update
@@ -112,6 +135,18 @@ class Admin::OfferingsController < ApplicationController
     end
   end
 
+  def update_stat
+    respond_to do |format|
+      if @stat.update(stat_params)
+        format.html { redirect_to edit_admin_offering_path(@stat.offering), notice: "#{@stat.name} has been updated." }
+        format.json { render :show, status: :ok, location: @stat }
+      else
+        format.html { render :edit }
+        format.json { render json: @stat.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def show
     @parent = @offering.parent
   end
@@ -138,6 +173,15 @@ class Admin::OfferingsController < ApplicationController
     @content.destroy
     respond_to do |format|
       format.html { redirect_to edit_admin_offering_path(@offering), notice: 'Content has been deleted.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def destroy_stat
+    @offering = @stat.offering
+    @stat.destroy
+    respond_to do |format|
+      format.html { redirect_to edit_admin_offering_path(@offering), notice: 'Stat has been deleted.' }
       format.json { head :no_content }
     end
   end
@@ -185,6 +229,13 @@ class Admin::OfferingsController < ApplicationController
     end
   end
 
+  def set_stat
+    if params[:id]
+      @stat = Stat.find(params[:id])
+    end
+  end
+
+
   def image_params
     params.require(:offering_image).permit(:name, :url, :is_carousel_img,
                                            :display_position, :is_active,
@@ -197,6 +248,11 @@ class Admin::OfferingsController < ApplicationController
                                            :content_type, :offering_id)
   end
 
+  def stat_params
+    params.require(:stat).permit(:name, :name, :stat,
+                                    :position, :is_active,
+                                    :offering_id)
+  end
 end
 
 # Trivial change -- delete me
