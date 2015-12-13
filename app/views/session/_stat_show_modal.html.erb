@@ -12,8 +12,8 @@
           As Of <%= Date.today.strftime('%b %d, %Y')%>
         </div>
         <div class="modal-stat-table">
-          <% offering.stats.each do |stat| %>
-            <%=stat.stat %>&nbsp;-&nbsp;<%=stat.name %><br/>
+          <% offering.stats.active.by_position.each do |stat| %>
+            <strong><%=stat.stat %></strong>&nbsp;<%=stat.name %><br/>
           <% end %>
         </div>
       </div>
