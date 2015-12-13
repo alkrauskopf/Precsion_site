@@ -3,8 +3,8 @@
       <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
   </div>
   <% if !overview.stats.empty? %>
-      <div class="about_blue_font image_list">
-            View:&nbsp;<u><%= link_to "Our Knowledge Base Statistics", "#statModal#{overview.id}", "data-toggle" => "modal" %></u>
+      <div class="about_blue_font stat_list">
+            <u><%= link_to "View Our Statistics", "#statModal#{overview.id}", "data-toggle" => "modal" %></u>
             <%= render partial: 'session/stat_show_modal', locals: {offering: overview} %>
       </div>
   <% end %>

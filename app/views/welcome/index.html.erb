@@ -9,7 +9,7 @@
     <div class="col-md-4">
       <div class="panel panel-palette_1">
         <div class="panel-heading">
-          <h4 style="text-align: center;"></i> Grant Funding Assistance</h4>
+          <h4 style="text-align: center;"></i><%= @grant_parent.nil? ? 'Grant Funding Assistance' : @grant_parent.name %></h4>
         </div>
         <% if !@grant_parent.nil? %>
             <%= render partial: 'grant_box', locals: { overview: @grant_parent} %>
@@ -20,7 +20,7 @@
     <div class="col-md-8">
       <div class="panel panel-palette_2">
         <div class="panel-heading">
-          <h4 style="text-align: center;"><i class="fa fa-cog fa-1x fa-spin"></i> Our School Improvement Work</h4>
+          <h4 style="text-align: center;"><i class="fa fa-cog fa-1x fa-spin"></i> <%= @offering_parent.nil? ? 'Our School Improvement Work' : @offering_parent.name %></h4>
         </div>
         <% if !@offering_parent.nil? %>
             <%= render partial: 'offerings_box', locals: { overview: @offering_parent} %>
@@ -34,7 +34,7 @@
     <div class="col-md-8">
       <div class="panel panel-palette_3">
         <div class="panel-heading">
-          <h4 style="text-align: center;">Research & Standards Inform Our Work</h4>
+          <h4 style="text-align: center;"><%= @research_parent.nil? ? 'Research & Standards Inform Our Work' : @research_parent.name %></h4>
         </div>
         <% if !@research_parent.nil? %>
             <%= render partial: 'research_box', locals: { overview: @research_parent} %>
@@ -44,7 +44,7 @@
     <div class="col-md-4">
       <div class="panel panel-palette_5">
         <div class="panel-heading">
-          <h4 style="text-align: center;"><i class="fa fa-wrench"></i> Integrated Toolkit</h4>
+          <h4 style="text-align: center;"><i class="fa fa-wrench"></i> <%= @tool_parent.nil? ? 'Integrated Toolkit' : @tool_parent.name %></h4>
         </div>
         <% if !@tool_parent.nil? %>
             <%= render partial: 'tools_box', locals: { overview: @tool_parent} %>
@@ -69,7 +69,7 @@
       <div class="col-md-8">
         <div class="panel panel-palette_5">
           <div class="panel-heading" >
-            <h4 style="text-align: center;">Experience Matters</h4>
+            <h4 style="text-align: center;"><%= @consultant_parent.nil? ? 'Experience Matters' : @consultant_parent.name %></h4>
           </div>
           <div class="panel-body">
             <div class="team_join_list">
