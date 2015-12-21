@@ -26,7 +26,8 @@
               </td>
               <td>
                 <%=  user.contactee? ? 'Contact' : '' %><br/>
-                <%= user.user_class ? user.user_class.name : 'Unassigned Class'%>
+                <%= user.user_class ? user.user_class.name : 'Unassigned Class'%><br/>
+                <%= user.emailee? ? 'Can Be Emailed' : '' %>
               </td>
               <td>
                 <%= button_to 'Destroy User', [:admin, user], method: :delete, data: { confirm: 'Are you sure?' } %>

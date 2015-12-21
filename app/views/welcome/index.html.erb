@@ -54,20 +54,8 @@
   </div>
   <div class="row" id="row_3">
       <hr>
-      <div class="col-md-4">
-        <% if !@testimonials.empty? %>
-            <div id = "testimony" class="panel panel-palette_4">
-              <div class="panel-heading" >
-                <h4 style="text-align: center;"><i class="glyphicon glyphicon-thumbs-up"></i>Testimonials</h4>
-              </div>
-              <div class="panel-body index-panel-size-3">
-                  <%= render partial: 'testimony_box', locals: { testimonials: @testimonials} %>
-              </div>
-            </div>
-        <% end %>
-      </div>
-      <div class="col-md-8">
-        <div class="panel panel-palette_5">
+      <div class="col-md-12">
+        <div class="panel panel-palette_4">
           <div class="panel-heading" >
             <h4 style="text-align: center;"><%= @consultant_parent.nil? ? 'Experience Matters' : @consultant_parent.name %></h4>
           </div>
@@ -82,7 +70,7 @@
                 <% if !@consultant_parent.nil? && !@consultant_parent.user_povs.empty?%>
                 <p class="welcome_team">
                     <div class="about_blue_font welcome_pov_list">
-                      Points-Of-View:<br/>
+                      Points-Of-View:&nbsp;
                       <% !@consultant_parent.user_povs.each do |pov| %>
                           <u><a href= <%= pov.url %>> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small>
                           <% if pov != !@consultant_parent.user_povs.last %>
@@ -99,16 +87,33 @@
             </div>
           </div>
         </div>
-        <% if !@partners.empty? %>
-            <div class="panel panel-palette_1">
-              <div class="panel-heading" >
-                <h4 style="text-align: center;">Partners</h4>
-              </div>
-              <div class="panel-body index-panel-size-2">
-                  <%= render partial: 'partner_box', locals: { partners: @partners} %>
-              </div>
-            </div>
-        <% end %>
       </div>
+  </div>
+  <div class="row" id="row_3">
+    <hr>
+    <div class="col-md-4">
+      <% if !@testimonials.empty? %>
+          <div id = "testimony" class="panel panel-palette_5">
+            <div class="panel-heading" >
+              <h4 style="text-align: center;"><i class="glyphicon glyphicon-thumbs-up"></i>Testimonials</h4>
+            </div>
+            <div class="panel-body index-panel-size-3">
+              <%= render partial: 'testimony_box', locals: { testimonials: @testimonials} %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <% if !@partners.empty? %>
+          <div class="panel panel-palette_1">
+            <div class="panel-heading" >
+              <h4 style="text-align: center;">Partners</h4>
+            </div>
+            <div class="panel-body index-panel-size-2">
+              <%= render partial: 'partner_box', locals: { partners: @partners} %>
+            </div>
+          </div>
+      <% end %>
+    </div>
   </div>
 </div>

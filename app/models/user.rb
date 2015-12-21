@@ -88,8 +88,16 @@ class User < ActiveRecord::Base
     self.contactee == 'Yes'
   end
 
+  def emailee?
+    self.is_emailee
+  end
+
   def self.contactees
     where(contactee: 'Yes')
+  end
+
+  def self.emailees
+    where(is_emailee: true)
   end
 
   def self.contact_list

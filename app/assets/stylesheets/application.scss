@@ -217,6 +217,31 @@ h1, h2, h3, h4 {
     background-color: $page_background;
   }
 
+.modal-email-panel {
+  color: $dark_text;
+  font-style: normal;
+  text-align: left;
+  background-color: $page_background;
+}
+
+.modal-email-name {
+  color: $dark_text;
+  font-size: 13px;
+  text-align: left;
+  font-weight:bold;
+  font-style: normal;
+  background-color: $page_background;
+}
+
+.modal-email-descript {
+  color: $dark_text;
+  font-size: 12px;
+  text-align: left;
+  font-weight:normal;
+  font-style: normal;
+  background-color: $page_background;
+}
+
 .modal-image-panel {
   color: $dark_text;
   font-style: normal;
@@ -571,12 +596,17 @@ h1, h2, h3, h4 {
   color: $dark_text;
 }
 
+.team_contact {
+  font-size: 11px;
+  text-decoration: underline;
+}
+
 .team_header {
   line-height:2.0em;
   font-weight:normal;
   font-style: normal;
   text-align: left;
-  font-size:14px;
+  font-size:15px;
   color: $dark_text;
 }
 

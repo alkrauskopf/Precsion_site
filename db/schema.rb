@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213125435) do
+ActiveRecord::Schema.define(version: 20151221035654) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name"
@@ -144,14 +144,15 @@ ActiveRecord::Schema.define(version: 20151213125435) do
     t.string   "last_name"
     t.string   "title"
     t.string   "password_digest"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "email"
     t.string   "picture"
     t.integer  "user_class_id"
     t.string   "contactee",        default: "No"
     t.integer  "display_position", default: 9999
     t.string   "prefix"
+    t.boolean  "is_emailee",       default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

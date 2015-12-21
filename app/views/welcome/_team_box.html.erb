@@ -1,45 +1,51 @@
-<div class="container">
+<div class="containerx">
   <% idx = 1 %>
   <% while idx <= users.size do %>
-      <div class="row">
-        <div class="col-md-4">
+      <div class="row" style="width:99%">
+        <div class="col-md-6" >
             <table class="table" style="width:90%">
                 <tbody>
                     <tr>
-                      <td class="thumbnail-med" style="width:30%">
+                      <td class="thumbnail-med" style="width:20%">
                         <% pic_url = (users[idx-1] && users[idx-1].picture) ? ("team/" + users[idx-1].picture) : '' %>
                         <%= image_tag(pic_url) %>
+                        <% if users[idx-1].emailee? %>
+                            </br><span class = "team_contact" >
+                            <%=mail_to(users[idx-1].email, name= "Email #{users[idx-1].first_name}")%>
+                            </span>
+                        <% end %>
                       </td>
                       <td style ="vertical-align:top;">
                         <span style = "font-weight:bold;"><%=users[idx-1].name_with_prefix %></span></br>
-                        <small>
                           <% if !users[idx-1].title.empty? %>
                               <%= users[idx-1].title %></br>
                           <% end %>
                           <%= users[idx-1].user_bio ? users[idx-1].user_bio.brief : ''%>
-                        </small>
                       </td>
                     </tr>
                 </tbody>
               </table>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <% if idx < users.size %>
           <table class="table" style="width:90%">
             <tbody>
                 <tr>
-                  <td class="thumbnail-med" style="width:30%">
+                  <td class="thumbnail-med" style="width:20%">
                     <% pic_url = users[idx].picture ? ("team/" + users[idx].picture) : '' %>
                     <%= image_tag(pic_url)  %>
+                    <% if users[idx].emailee? %>
+                        </br><span class = "team_contact" >
+                            <%=mail_to(users[idx].email, name= "Email #{users[idx].first_name}")%>
+                            </span>
+                    <% end %>
                   </td>
                   <td style ="vertical-align:top;">
                     <span style = "font-weight:bold;"><%= (users[idx].prefix.nil? || users[idx].prefix.empty?) ? '' : users[idx].prefix + ' '%> <%= users[idx].full_name  %></span></br>
-                    <small>
                       <% if !users[idx].title.empty? %>
                           <%= users[idx].title %></br>
                       <% end %>
                       <%= users[idx].user_bio ? users[idx].user_bio.brief : ''%>
-                    </small>
                   </td>
                 </tr>
             </tbody>

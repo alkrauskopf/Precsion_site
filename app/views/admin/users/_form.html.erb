@@ -80,6 +80,15 @@
         <%= f.select :contactee, [['Yes', 'Yes'], ['No', 'No']] %>
       </div>
     </div>
+    <div class="row form_row">
+      <%= f.label :is_emailee, 'Can Be Emailed Directly', class: "col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.radio_button(:is_emailee, true) %>
+        <%= f.label(:emails_yes, 'Yes') %>
+        <%= f.radio_button(:is_emailee, false) %>
+        <%= f.label(:emails_no, 'No') %>
+      </div>
+    </div>
   <div class="row form_row">
     <div class="col-sm-offset-2 col-sm-8">
       <%= f.submit class: "btn btn-primary" %>
