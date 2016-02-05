@@ -17,13 +17,17 @@ class SessionController < ApplicationController
   end
 
   def contact_us
-    contact_log = ContactLog.create(contact_us_params)
-    contact_log.distribution = User.contact_list
-    if contact_log.save
-      flash[:notice] = "Message Sent."
-      contact_log.email_us!
+    if contact_us_filtered?
+      contact_log = ContactLog.create(contact_us_params)
+      contact_log.distribution = User.contact_list
+      if contact_log.save
+        flash[:notice] = "Message Sent."
+        contact_log.email_us!
+      else
+        flash[:error] = contact_log.errors.full_messages
+      end
     else
-      flash[:error] = contact_log.errors.full_messages
+      flash[:error] = "Please Contact Us without including a link in your Message, Name, or Workplace.  Thank You."
     end
     redirect_to root_path
   end
@@ -43,5 +47,13 @@ class SessionController < ApplicationController
   private
   def contact_us_params
     params.require(:contact_log).permit(:user_email, :workplace, :message, :name)
+  end
+
+  def contact_us_filtered?
+    filtered = true
+    if (contact_us_params[:message] =~ /\bhttp?:/) || (contact_us_params[:name] =~ /\bhttp?:/) || (contact_us_params[:workplace] =~ /\bhttp?:/)
+      filtered = false
+    end
+    filtered
   end
 end

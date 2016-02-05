@@ -1,13 +1,15 @@
 <div class="container">
     <%= form_for contact_log do |f|  %>
       <div class="row">
+        <div class="col-md-8 contact_no_links">
+          Please:  No Website Links In Your Message To Us. Thank You!
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-8">
           Your Name
           <div class="panel-body">
             <%= f.text_field :name, size: 30 %>
-            <span  style="padding-left:30px">
-              <%= f.submit 'Send Message' %>
-            </span>
           </div>
         </div>
       </div>
@@ -33,6 +35,9 @@
           <div class="panel-body">
             <%= f.text_area :message, size: "65x6" %>
           </div>
+            <span  style="padding-left:30px">
+              <%= f.submit 'Send Message' %>
+            </span>
         </div>
       </div>
     <% end -%>

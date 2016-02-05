@@ -1,9 +1,9 @@
 
 <div class="row mission_row">
   <div class="col-xs-7">
-
-    <%= render 'mission_carousel' %>
-
+    <% unless @carousel_images.empty? %>
+      <%= render 'mission_carousel' %>
+    <% end %>
   </div>
   <div class="col-xs-5">
     <div class="mission_block_2" >

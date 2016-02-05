@@ -1,5 +1,18 @@
+
+@import "application-variables.scss";
+
 .emailing {
   display: none;
   margin: auto;
   width: 150px;
+}
+
+.contact_no_links {
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  padding-top: 0%;
+  padding-left:8%;
+  padding-bottom:1.5em;
+  text-align: left;
+  color: $red_text;
+  font-size: 14px;
 }
