@@ -1,6 +1,6 @@
 class Offering < ActiveRecord::Base
   acts_as_tree
-  # trivial change
+
   has_many :offering_user_povs, dependent: :destroy
   has_many :user_povs, through: :offering_user_povs
   has_many :offering_images, dependent: :destroy
@@ -46,12 +46,28 @@ class Offering < ActiveRecord::Base
    UserPov.all - self.user_povs
   end
 
+  def expired?
+    !self.expire_date.nil? && self.expire_date < Date.today
+  end
+
+  def days_til_expire
+    self.expire_date.nil? ? (10000): (self.expire_date - Date.today).to_i
+  end
+
   def visible?
     self.is_visible
   end
 
   def self.active
-    where('is_visible = ?', true)
+    where('is_visible =?', true)
+  end
+
+  def self.expired
+    where('expire_date <= ?', Date.today)
+  end
+
+  def self.not_expired
+    where('expire_date > ?', Date.today)
   end
 
   def add_remove_pov!(pov)
@@ -134,6 +150,14 @@ class Offering < ActiveRecord::Base
     where('offering_type = ?','G').order('display_position ASC')
   end
 
+  def self.marque_stream
+    self.marques.active.not_expired.empty? ? '' : (' . . . . ' + (self.marques.active.not_expired.map{|m| m.brief}.join(' . . . . ')).squeeze(" "))
+  end
+
+  def self.marques
+    where('offering_type = ?','Q').order('display_position ASC')
+  end
+
   def type_name
     name = 'Unknown Type'
     if self.offering_type == 'O'
@@ -152,6 +176,8 @@ class Offering < ActiveRecord::Base
       name = 'Research'
     elsif self.offering_type == 'G'
       name = 'Grant'
+    elsif self.offering_type == 'Q'
+      name = 'Marque'
     elsif self.offering_type == 'C'
       name = 'Consultant'
     end
@@ -176,6 +202,8 @@ class Offering < ActiveRecord::Base
       name = 'research/'
     elsif self.offering_type == 'G'
       name = 'grant/'
+    elsif self.offering_type == 'Q'
+      name = 'marque/'
     elsif self.offering_type == 'C'
       name = 'team/'
     end

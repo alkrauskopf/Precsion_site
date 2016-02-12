@@ -11,6 +11,7 @@ class WelcomeController < ApplicationController
     @offering_parent = Offering.offerings.active.all_parents.first
     @tool_parent = Offering.tools.active.all_parents.first
     @consultant_parent = Offering.consultants.active.all_parents.first
+    @marque = Offering.marque_stream
   end
 
 end

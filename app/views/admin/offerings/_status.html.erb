@@ -14,6 +14,9 @@
       <p>Sub-offering of: <strong><%= offering.parent.name %></strong></p>
     <% end %>
 
+
+  <p>Expiration: <%= offering.expire_date.nil? ? "Never" : offering.expire_date.strftime('%m/%d/%Y') %> </p>
+
   <p><%= pluralize(offering.user_povs.size, 'POV') %></p>
   <p><%= pluralize(offering.offering_images.size, 'Image') %></p>
   <p><%= pluralize(offering.contents.size, 'Content') %></p>
