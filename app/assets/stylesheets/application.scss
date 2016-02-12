@@ -149,11 +149,16 @@ h1, h2, h3, h4 {
 }
 
 .marque_row {
-  margin-top: 0em;
-  margin-bottom:0em;
-  width:50%;
-  margin-left:22%;
-  padding-right:0%;
+  padding-top: .5em;
+  padding-bottom: 0em;
+  width:80%;
+  margin-left:10%;
+  padding-left:0%;
+  border-style: double;
+  border-color: $palette_1;
+  line-height: 1.5em;
+  border-width:3px 3px 3px 3px;
+  vertical-align:middle;
 }
 
 .marque_label {
@@ -170,7 +175,7 @@ h1, h2, h3, h4 {
 .marque_text {
   font-weight:normal;
   font-style: italic;
-  font-size:13px;
+  font-size:14px;
   color: $palette_2;
 }
 

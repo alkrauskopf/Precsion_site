@@ -3,22 +3,6 @@
 <div class="container">
 
   <%= render 'mission' %>
-  <% if !@marque.empty? %>
-    <div class="row">
-      <table class="marque_row">
-        <tbody>
-          <tr>
-            <td class='marque_label'>
-              Just In:&nbsp;
-            </td>
-            <td class='marque_text'>
-              <marquee behavior="scroll" direction="left" ><%= @marque %></marquee>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  <% end %>
   <div class="row" id="row_1">
     <hr>
     <div class="col-md-4">
