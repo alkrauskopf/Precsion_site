@@ -1,15 +1,6 @@
 
 <div class="row mission_row">
   <div class="col-xs-7">
-    <% if !@marque.empty? %>
-        <div class="row">
-          <div class = 'marque_row'>
-            <span class='marque_text'>
-            <marquee behavior="scroll" direction="left" ><%= @marque %></marquee>
-            </span>
-          </div>
-        </div>
-    <% end %>
     <% unless @carousel_images.empty? %>
       <%= render 'mission_carousel' %>
     <% end %>
