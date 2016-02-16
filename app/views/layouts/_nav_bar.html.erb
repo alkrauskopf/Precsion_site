@@ -21,7 +21,6 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     Our Community<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#row_3">Our Partners</a></li>
                     <% escent_main_pages.each do |escent| %>
                         <li><a href=<%= escent.url %> target="_blank"><%=escent.name%></a></li>
                     <% end %>
@@ -47,7 +46,7 @@
                         <li role="separator" class="divider"></li>
                         <li><%= link_to 'Manage Content', admin_offerings_path %></li>
                         <li role="separator" class="divider"></li>
-                        <li><%= link_to 'Escent Links', admin_escents_path %></li>
+                        <li><%= link_to 'Community Links', admin_escents_path %></li>
                       </ul>
                     </li>
             <% end %>
