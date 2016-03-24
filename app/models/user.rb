@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     order('display_position ASC')
   end
 
+  def self.active
+    where(is_active: true)
+  end
+
   def full_name
     [self.first_name, self.last_name].join(' ')
   end
@@ -73,15 +77,15 @@ class User < ActiveRecord::Base
   end
 
   def self.full_team
-    User.all.by_position.select{ |u| u.consultant? || u.core?}
+    User.active.by_position.select{ |u| u.consultant? || u.core?}
   end
 
   def self.core_team
-    User.all.by_position.select{ |u| u.core? }
+    User.active.by_position.select{ |u| u.core? }
   end
 
   def self.consultants
-    User.all.by_position.select{ |u| u.consultant? }
+    User.active.by_position.select{ |u| u.consultant? }
   end
 
   def contactee?
@@ -90,6 +94,10 @@ class User < ActiveRecord::Base
 
   def emailee?
     self.is_emailee
+  end
+
+  def active?
+    self.is_active
   end
 
   def self.contactees

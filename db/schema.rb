@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211205027) do
+ActiveRecord::Schema.define(version: 20160324030231) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20160211205027) do
     t.integer  "display_position", default: 9999
     t.string   "prefix"
     t.boolean  "is_emailee",       default: false
+    t.boolean  "is_active",        default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email"
