@@ -30,10 +30,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       :address => "smtp.sendgrid.net",
       :port => 587,
-      :domain => "davinci-coders-beer-recipes.herokuapp.com",
+      :domain => "precisionschoolimprovement.com",
       :authenication => :plain,
       :user_name => "alkrauskopf",
-      :password => "b33rtopia"
+      :password => "florentin0"
   }
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
