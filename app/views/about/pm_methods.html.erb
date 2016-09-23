@@ -1,0 +1,205 @@
+<div class="row">
+  <div class="col-md-7">
+    <div class="pm_header_image" >
+    </div>
+  </div>
+  <div class="col-md-5">
+    <h2 class="pm_header ">
+      <% if !@method.nil? %>
+          <%= @method.name %>
+      <% end %>
+    </h2>
+    <p class="pm_brief" >
+      <%= @method.brief %>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p class="pm_descript" >
+      <%= @method.description %>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <% if !@methods.empty? %>
+      <span class="pm_read_more">
+        Click Heading to Read More
+      </span>
+      <table class="table table-striped pm_table">
+        <thead>
+          <tr class="pm_table_header">
+            <td  style="width:17%;">
+
+            </td>
+            <td style="width:18%; vertical-align:middle;">
+              <a class="pm_entity" href="#<%=@methods[0].id%>">Student</a>
+            </td>
+            <td class="glyphicon glyphicon-resize-horizontal" style="width:3%; font-size:20px; vertical-align:middle;">
+            </td>
+            <td  style="width:18%; vertical-align:middle;">
+              <a class="pm_entity" href="#<%=@methods[1].id%>">Teacher</a>
+            </td>
+            <td class="glyphicon glyphicon-resize-horizontal" style="width:3%; font-size:20px; vertical-align:middle;">
+            </td>
+            <td style="width:18%; vertical-align:middle;">
+              <a class="pm_entity" href="#<%=@methods[2].id%>">School</a>
+            </td>
+            <td class="glyphicon glyphicon-resize-horizontal" style="width:3%; font-size:20px; vertical-align:middle;">
+            </td>
+            <td style="width:20%; vertical-align:middle;">
+              <a class="pm_entity" href="#<%=@methods[3].id%>">District</a>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pm_table_row_header">
+              Imperative
+            </td>
+            <td >
+              Growth
+            </td>
+            <td></td>
+            <td>
+              Effectivity
+            </td>
+            <td></td>
+            <td>
+              Efficiency
+            </td>
+            <td></td>
+            <td>
+              Synergy
+            </td>
+          </tr>
+          <tr>
+            <td class="pm_table_row_header">
+              Cycle
+            </td>
+            <td >
+              Continuous
+            </td>
+            <td></td>
+            <td>
+              Monthly
+            </td>
+            <td></td>
+            <td>
+              Bi-Annually
+            </td>
+            <td></td>
+            <td>
+              Annually
+            </td>
+          </tr>
+          <tr>
+            <td class="pm_table_row_header">
+             Indicators
+            </td>
+            <td>
+              SAT, ACT, CC
+            </td>
+            <td></td>
+            <td>
+             Best Practice Research
+            </td>
+            <td></td>
+            <td>
+              State Standards
+              </br>
+              Turnaround Research
+            </td>
+            <td></td>
+            <td>
+              State Standards
+              </br>
+              Turnaround Research
+            </td>
+          </tr>
+          <tr>
+            <td class="pm_table_row_header">
+              Measurement Process
+            </td>
+            <td>
+              In-Classroom Formative Assessment
+            </td>
+            <td></td>
+            <td>
+              Peer Observation & PD
+            </td>
+            <td></td>
+            <td>
+              School Diagnostic & Ongoing PM
+            </td>
+            <td></td>
+            <td>
+              District-wide Diagnostic & Ongoing PM
+            </td>
+          </tr>
+          <tr>
+            <td class="pm_table_row_header">
+              Precision's Method
+            </td>
+            <td>
+              Integrated Formative Assemsment (IFA)
+            </td>
+            <td></td>
+            <td>
+              Collaborative Time In Learning (CTL)
+            </td>
+            <td></td>
+            <td>
+              School PM (PM)
+            </td>
+            <td></td>
+            <td>
+              System PM  (PM)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+<% @methods.each do |meth| %>
+  <hr id = "<%= meth.id%>">
+  <div  class="row">
+    <div  class="col-md-7">
+      <h3 class="pm_subheader ">
+        <% if !meth.nil? %>
+            <%= meth.name %>
+        <% end %>
+      </h3>
+    </div>
+    <div  class="col-md-5">
+      <h3 class="pm_subheader ">
+        Our Method & Tool
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <div  class = "method_descript">
+        <%= meth.description.html_safe %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="image_list">
+        <% meth.images.each do |img| %>
+          <div  class = "image_name">
+            <%= img.name.html_safe %>
+          </div>
+         <div  class = "image_descript">
+           <%= img.description.html_safe %>
+         </div>
+          <%= img.pic? ? image_tag(img.pic ):'' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

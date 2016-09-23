@@ -114,6 +114,10 @@ class Offering < ActiveRecord::Base
     self.offering_type == 'G'
   end
 
+  def pm_method?
+    self.offering_type == 'I'
+  end
+
   def self.offerings
     where('offering_type = ?', 'O').order('display_position ASC')
   end
@@ -158,6 +162,14 @@ class Offering < ActiveRecord::Base
     where('offering_type = ?','Q').order('display_position ASC')
   end
 
+  def self.pm_methods
+    where('offering_type = ?','I').order('display_position ASC')
+  end
+
+  def self.pm_parent
+    Offering.all_parents.where('offering_type= ?', 'I').first
+  end
+
   def type_name
     name = 'Unknown Type'
     if self.offering_type == 'O'
@@ -180,6 +192,8 @@ class Offering < ActiveRecord::Base
       name = 'Marque'
     elsif self.offering_type == 'C'
       name = 'Consultant'
+    elsif self.offering_type == 'I'
+      name = 'Performance Monitoring'
     end
     name
   end
@@ -206,6 +220,8 @@ class Offering < ActiveRecord::Base
       name = 'marque/'
     elsif self.offering_type == 'C'
       name = 'team/'
+    elsif self.offering_type == 'I'
+      name = 'pm/'
     end
     name
   end

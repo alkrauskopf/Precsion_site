@@ -15,18 +15,29 @@
  *= require font-awesome
  *= require jquery-ui
  */
+@import "bootstrap-generators";
+@import "bootstrap-variables";
 @import "application-variables.scss";
-
+@import 'bootstrap';
 
 nav.navbar {
   background-color: $navbar-background;
   li {
     color: $light_text;
   }
+  margin:0em 1em 0em 1em;
 }
 
 h1, h2, h3, h4 {
   color: red;
+}
+
+.site-frame {
+  margin:0em 1em 0em 1em;
+}
+
+.nav-inout {
+  float:right;
 }
 
 .page_background {
@@ -220,6 +231,12 @@ h1, h2, h3, h4 {
   border-color: #ddd;
 }
 
+/*
+ * Glyphicons
+ */
+
+
+
 .index-panel-size-1 {
   overflow: scroll;
   max-height: 300px;
@@ -241,11 +258,11 @@ h1, h2, h3, h4 {
   line-height:2.0em;
 }
 
-  .contact-panel {
-    color: #333;
-    text-align: left;
-    background-color: $page_background;
-  }
+.contact-panel {
+  color: #333;
+  text-align: left;
+  background-color: $page_background;
+}
 
 .modal-email-panel {
   color: $dark_text;
@@ -270,6 +287,35 @@ h1, h2, h3, h4 {
   font-weight:normal;
   font-style: normal;
   background-color: $page_background;
+}
+
+.career-panel {
+  background-color: $page_background;
+}
+.career-box {
+  margin: 0em 2em 1em 2em;
+  color: $dark-text;
+  text-align: left;
+}
+
+.career_title {
+  color:$palette_2;
+  font-size:20px;
+}
+
+.career_header {
+  margin:1em 0em 0em 0em;
+  color:$palette_2;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.career_text {
+  margin:1em 0em 0em 1em;
+  color:$dark_text;
+  text-align:left;
+  font-size:13px;
+  font-weight:normal;
 }
 
 .modal-image-panel {

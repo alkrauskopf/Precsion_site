@@ -18,7 +18,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="container, page_background">
-
+  <div class="site-frame">
     <%= render 'layouts/nav_bar' %>
   <div class="container">
     <% flash.each do |name, msg| %>
@@ -45,6 +45,6 @@
         interval: 5000 //changes the speed
     })
 </script>
-
+  </div>
 </body>
 </html>

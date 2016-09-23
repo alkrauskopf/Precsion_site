@@ -4,8 +4,8 @@
   </div>
   <% if !overview.stats.empty? %>
       <div class="about_blue_font stat_list">
-            <u><%= link_to "View Our Statistics", "#statModal#{overview.id}", "data-toggle" => "modal" %></u>
-            <%= render partial: 'session/stat_show_modal', locals: {offering: overview} %>
+        <u><%= link_to "View Our Statistics", "#statModal#{overview.id}", "data-toggle" => "modal" %></u>
+        <%= render partial: 'session/stat_show_modal', locals: {offering: overview} %>
       </div>
   <% end %>
     <div class="index-panel-size-1">

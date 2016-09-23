@@ -139,3 +139,129 @@
   border-bottom: 1px solid #67655D;
   padding-bottom:1em;
 }
+
+.pm_header_image {
+  background: url(/assets/offerings/pm_banner.jpg) no-repeat;
+  background-size: cover;
+  /*  background-color: $palette_2;  */
+  height: 230px;
+  width: 100%;
+  margin: 0px;
+}
+.pm_header {
+  color:$palette_2;
+  margin:0em 1em .5em 1em;
+  font-weight:bold;
+  text-align:center;
+}
+.pm_subheader {
+  color: $palette_2;
+  margin:2em 0em 0em 0em;
+  text-align: left;
+  vertical-align:bottom;
+}
+
+.pm_header_label {
+  color:$palette_2;
+  padding-left:1em;
+  padding-right:1em;
+  font-size:12.5px;
+  font-weight:bold;
+}
+.pm_header_text {
+  padding-left:2em;
+  font-size:12px;
+}
+
+.pm_brief {
+  color: $palette_2;
+  margin:0em 1em 1em 1em;
+  font-weight: normal;
+  line-height: 1.8em;
+  text-align: justify;
+  font-size: 14px;
+}
+
+.pm_descript {
+  color: $palette_2;
+  margin:2em 1em 1em 1em;
+  font-weight: normal;
+  line-height: 1.8em;
+  text-align: justify;
+  font-size: 14px;
+}
+
+.method_descript {
+  color: $dark_text;
+  margin:1em 0em .5em 1em;
+  font-weight:normal;
+  line-height: 1.8em;
+  font-size:14px;
+}
+
+.image_descript {
+  color: $dark_text;
+  margin:0em 0em .5em 0em;
+  font-weight:normal;
+  line-height: 1.8em;
+  font-size:13px;
+}
+.image_name {
+  color: $dark_text;
+  margin:1.5em 0em 0em 0em;
+  text-align:left;
+  font-weight:bold;
+  line-height: 1.5em;
+  font-size:13px;
+}
+
+
+.pm_entity {
+  color: $light_text;
+  background-color:$palette_2;
+  text-align:left;
+  font-size:15px;
+  font-weight:bold;
+  text-decoration:underline;
+}
+
+.pm_table {
+  color:$dark_text;
+  font-weight:normal;
+  text-align:center;
+  line-height:1.5em;
+  font-size:14px;
+  border: 2px solid $dark_text;
+  border-radius: 5px;
+}
+.pm_table_header {
+  color: $light_text;
+  background-color:$palette_2;
+  font-size:14px;
+  font-weight:bold;
+  line-height:.5em;
+}
+
+.pm_table_row_header {
+  color:$palette_2;
+  font-size:14px;
+  font-weight:bold;
+  text-align:center;
+  vertical-align:middle;
+}
+
+.pm_read_more {
+  color: $palette_2;
+  padding-left:36em;
+  text-align: center;
+  font-size:11px;
+  font-style:italic;
+  font-weight:normal;
+  vertical-align:middle;
+}
+
+.image_list {
+  margin: 1em 0em 1em 0em;
+  overflow: scroll;
+  max-height: 40em;
+}
