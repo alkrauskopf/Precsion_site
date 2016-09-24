@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+
+    <div class="partner_brief" >
+      <% if !@method.nil? %>
+        <h4>
+          <%= @method.brief.html_safe %>
+        </h4>
+      <% end %>
+    </div>
+    <hr>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+
+  <div  class="row">
+    <div  class="col-md-5">
+      <% meth = @methods[0] %>
+      <h3 class="pm_subheader ">
+        <% if !meth.nil? %>
+            <%= meth.name %>
+        <% end %>
+      </h3>
+      <div  class = " row method_descript">
+        <%= meth.description.html_safe %>
+      </div>
+    </div>
+    <div  class="col-md-7">
+      <% meth = @methods[1] %>
+      <h3 class="pm_subheader ">
+        <% if !meth.nil? %>
+            <%= meth.name %>
+        <% end %>
+      </h3>
+      <div  class = " row method_descript">
+        <%= meth.description.html_safe %>
+      </div>
+    </div>
+  </div>
+

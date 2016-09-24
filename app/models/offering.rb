@@ -102,6 +102,10 @@ class Offering < ActiveRecord::Base
     self.offering_type == 'P'
   end
 
+  def partnering?
+    self.offering_type == 'A'
+  end
+
   def mission?
     self.offering_type == 'M'
   end
@@ -140,6 +144,14 @@ class Offering < ActiveRecord::Base
 
   def self.partners
     where('offering_type = ?','P').order('display_position ASC')
+  end
+
+  def self.partnerings
+    where('offering_type = ?','A').order('display_position ASC')
+  end
+
+  def self.partnering_parent
+    Offering.all_parents.where('offering_type= ?', 'A').first
   end
 
   def self.missions
@@ -182,6 +194,8 @@ class Offering < ActiveRecord::Base
       name = 'Testimonial'
     elsif self.offering_type == 'P'
       name = 'Partner'
+    elsif self.offering_type == 'A'
+      name = 'Partnering'
     elsif self.offering_type == 'M'
       name = 'Mission'
     elsif self.offering_type == 'R'
@@ -209,6 +223,8 @@ class Offering < ActiveRecord::Base
     elsif self.offering_type == 'T'
       name = 'testimonials/'
     elsif self.offering_type == 'P'
+      name = 'partners/'
+    elsif self.offering_type == 'A'
       name = 'partners/'
     elsif self.offering_type == 'M'
       name = 'mission/'

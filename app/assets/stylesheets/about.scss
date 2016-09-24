@@ -141,19 +141,20 @@
 }
 
 .pm_header_image {
-  background: url(/assets/offerings/pm_banner.jpg) no-repeat;
+  background: url(/assets/pm/pm_banner.png) no-repeat;
   background-size: cover;
   /*  background-color: $palette_2;  */
-  height: 230px;
+  height: 20em;
   width: 100%;
   margin: 0px;
 }
 .pm_header {
   color:$palette_2;
-  margin:0em 1em .5em 1em;
+  margin:.5em 1em .5em 1em;
   font-weight:bold;
   text-align:center;
 }
+
 .pm_subheader {
   color: $palette_2;
   margin:2em 0em 0em 0em;
@@ -189,6 +190,30 @@
   line-height: 1.8em;
   text-align: justify;
   font-size: 14px;
+}
+
+.partner_header_image {
+  background: url(/assets/partners/partnering_banner.jpg) no-repeat;
+  background-size: cover;
+  /*  background-color: $palette_2;  */
+  height: 23em;
+  width: 100%;
+  margin: 0px;
+}
+
+.partner_header {
+  color:$palette_2;
+  margin:1em 1em 1em 1em;
+  font-weight:bold;
+  text-align:center;
+}
+
+.partner_brief {
+  color: $palette_2;
+  margin:1em 1em 1em 1em;
+  font-weight: normal;
+  line-height: 2em;
+  text-align: center;
 }
 
 .method_descript {

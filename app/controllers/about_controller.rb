@@ -13,4 +13,10 @@ class AboutController < ApplicationController
     @method = Offering.pm_parent
     @methods = @method.nil? ? [] : @method.children_by_position
   end
+
+  def partnering
+    @method = Offering.partnering_parent
+    @methods = @method.nil? ? [] : @method.children_by_position
+  end
+
 end
