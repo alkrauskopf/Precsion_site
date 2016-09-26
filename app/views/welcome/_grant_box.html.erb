@@ -24,22 +24,36 @@
           </div>
       <% end %>
       <% overview.children_by_position.active.each do |grant| %>
-          <hr>
-          <p class= 'grant_descript' >
-              <% if grant.active_contents.first && grant.active_contents.first.exist? %>
-                <% if grant.active_contents.first.type == "Link" %>
-                    <a href= <%= grant.active_contents.first.content_url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
-                <% else %>
-                    <a href= <%= grant.active_contents.first.url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
-                <% end %>
-                &nbsp;
+        <hr>
+        <p class= 'grant_descript' >
+          <% if grant.active_contents.first && grant.active_contents.first.exist? %>
+            <% if grant.active_contents.first.type == "Link" %>
+                <a href= <%= grant.active_contents.first.content_url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
+            <% else %>
+                <a href= <%= grant.active_contents.first.url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
+            <% end %>
+            &nbsp;
+          <% else %>
+            <span class="grant_name">
+              <%= grant.name == '' ? '' : (grant.name.html_safe + ' ') %>
+            </span>
+          <% end %>
+          <%= grant.brief.html_safe %>
+          <% if !grant.active_contents.empty? %>
+            <%  links = grant.active_contents %>
+            <% idx = 0 %>
+            <% while idx < links.size %>
+              <% l= links[idx] %>
+              </br>
+              <% if l.type == "Link" %>
+                  <a href= <%= l.content_url %> target="_blank"><u><%= l.title%></u></a>
               <% else %>
-                <span class="grant_name">
-                  <%= grant.name == '' ? '' : (grant.name.html_safe + ' ') %>
-                </span>
+                  <a href= <%= l.url %> target="_blank"><u><%= l.title %></u></a>
               <% end %>
-              <%= grant.brief.html_safe %>
-          </p>
+              <% idx += 1 %>
+            <% end %>
+          <% end %>
+        </p>
           <% if !grant.images.empty? %>
               <% grp = 'c1' %>
               <div class="about_blue_font image_list">
