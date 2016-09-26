@@ -44,7 +44,6 @@
       <div class="panel panel-palette_5">
         <div class="panel-heading">
           <h4 style="text-align: center;"><i class="fa fa-wrench"></i> <%= @tool_parent.nil? ? 'Integrated Toolkit' : @tool_parent.name %></h4>
-          <a href= 'www.escentpartners.com' target="_blank"><u>Register</u></a>
         </div>
         <% if !@tool_parent.nil? %>
             <%= render partial: 'tools_box', locals: { overview: @tool_parent} %>
