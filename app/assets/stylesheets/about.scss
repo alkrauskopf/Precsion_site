@@ -208,19 +208,40 @@
   text-align:center;
 }
 
+.partner_subheader {
+  color: $palette_2;
+  margin:1em 0em 0em 0em;
+  text-align: left;
+  vertical-align:bottom;
+}
 .partner_brief {
   color: $palette_2;
-  margin:1em 1em 1em 1em;
+  margin:2em 1em 1em 1em;
   font-weight: normal;
   line-height: 2em;
   text-align: center;
 }
+.partner_brief2 {
+  color: $dark_text;
+  margin:1em 1em 1em 0em;
+  font-weight: normal;
+  line-height: 2em;
+  text-align: left;
+}
+
 
 .partner_descript {
   color: $dark_text;
   margin:1em 0em .5em 0em;
   font-weight:normal;
   line-height: 1.8em;
+  font-size:14px;
+}
+.partner_list {
+  color: $dark_text;
+  margin:0em 0em 0em 0em;
+  font-weight:normal;
+  line-height: 2em;
   font-size:14px;
 }
 
@@ -231,6 +252,7 @@
   line-height: 1.8em;
   font-size:14px;
 }
+
 
 .image_descript {
   color: $dark_text;
