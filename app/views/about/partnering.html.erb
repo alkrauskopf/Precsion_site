@@ -17,41 +17,12 @@
 
   <div  class="row">
     <div  class="col-md-5">
-      <% meth = @methods[0] %>
-      <h4 class="partner_subheader ">
-        <% if !meth.nil? %>
-            <%= meth.name %>
-        <% end %>
-      </h4>
-      <% if !meth.brief.empty? %>
-        <div  class = " row partner_brief2">
-          <%= meth.brief.html_safe %>
-        </div>
-        <% meth.children_by_position.each do |p| %>
-            <div class="row partner_list"%>
-              <div class="col-md-1">
-                <i style="float:right" class="glyphicon glyphicon-hand-right"></i>
-              </div>
-              <div class="col-md-11">
-                <%= p.brief.html_safe %>
-              </div>
-            </div>
-        <% end %>
-      <% end %>
-      <% if !meth.description.empty? %>
-        <div  class = " row partner_descript">
-          <%= meth.description.html_safe %>
-        </div>
-      <% end %>
-    </div>
-    <div  class="col-md-7">
-      <% meth = @methods[1] %>
-      <h4 class="partner_subheader ">
-        <% if !meth.nil? %>
-            <%= meth.name %>
-        <% end %>
-      </h4>
-      <% if !meth.brief.empty? %>
+      <% if !@methods[0].nil? %>
+        <% meth = @methods[0] %>
+        <h4 class="partner_subheader ">
+              <%= meth.name %>
+        </h4>
+        <% if !meth.brief.empty? %>
           <div  class = " row partner_brief2">
             <%= meth.brief.html_safe %>
           </div>
@@ -65,11 +36,40 @@
                 </div>
               </div>
           <% end %>
-      <% end %>
-      <% if !meth.description.empty? %>
+        <% end %>
+        <% if !meth.description.empty? %>
           <div  class = " row partner_descript">
             <%= meth.description.html_safe %>
           </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div  class="col-md-7">
+      <% if !@methods[1].nil? %>
+        <% meth = @methods[1] %>
+        <h4 class="partner_subheader ">
+          <%= meth.name %>
+        </h4>
+        <% if !meth.brief.empty? %>
+            <div  class = " row partner_brief2">
+              <%= meth.brief.html_safe %>
+            </div>
+            <% meth.children_by_position.each do |p| %>
+                <div class="row partner_list"%>
+                  <div class="col-md-1">
+                    <i style="float:right" class="glyphicon glyphicon-hand-right"></i>
+                  </div>
+                  <div class="col-md-11">
+                    <%= p.brief.html_safe %>
+                  </div>
+                </div>
+            <% end %>
+        <% end %>
+        <% if !meth.description.empty? %>
+            <div  class = " row partner_descript">
+              <%= meth.description.html_safe %>
+            </div>
+        <% end %>
       <% end %>
     </div>
   </div>

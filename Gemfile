@@ -17,7 +17,7 @@ group :development, :test do
   gem 'launchy'
   gem 'faker'
  # gem 'sqlite3'
-  gem 'mysql2', '~> 0.3.10'
+  gem 'mysql2'
   gem 'shoulda-matchers'
   gem 'awesome_print'
 end

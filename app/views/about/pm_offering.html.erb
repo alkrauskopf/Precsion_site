@@ -36,22 +36,22 @@
 
             </td>
             <td style="width:18%; vertical-align:middle;">
-              <a class="pm_entity" href="#<%=@offerings[0].id%>">Student</a>
+              <%= link_to 'Student', pm_path(@offerings[0].id) %>
             </td>
             <td class="glyphicon glyphicon-resize-horizontal" style="width:3%; font-size:20px; vertical-align:middle;">
             </td>
             <td  style="width:18%; vertical-align:middle;">
-              <a class="pm_entity" href="#<%=@offerings[1].id%>">Teacher</a>
+              <%= link_to 'Teacher', pm_path(@offerings[1].id) %>
             </td>
             <td class="glyphicon glyphicon-resize-horizontal" style="width:3%; font-size:20px; vertical-align:middle;">
             </td>
             <td style="width:18%; vertical-align:middle;">
-              <a class="pm_entity" href="#<%=@offerings[2].id%>">School</a>
+              <%= link_to 'School', pm_path(@offerings[2].id) %>
             </td>
             <td class="glyphicon glyphicon-resize-horizontal" style="width:3%; font-size:20px; vertical-align:middle;">
             </td>
             <td style="width:20%; vertical-align:middle;">
-              <a class="pm_entity" href="#<%=@offerings[3].id%>">District</a>
+              <%= link_to 'District', pm_path(@offerings[3].id) %>
             </td>
           </tr>
         </thead>

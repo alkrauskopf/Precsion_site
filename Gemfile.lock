@@ -281,7 +281,7 @@ DEPENDENCIES
   jquery-ui-rails
   launchy
   letter_opener
-  mysql2 (~> 0.3.10)
+  mysql2
   paperclip (~> 4.3)
   pg
   rails (= 4.2.3)
