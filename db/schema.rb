@@ -14,149 +14,155 @@
 ActiveRecord::Schema.define(version: 20160324030231) do
 
   create_table "authorizations", force: :cascade do |t|
-    t.string   "name"
-    t.string   "long_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "contact_logs", force: :cascade do |t|
-    t.boolean  "was_sent",     default: false
-    t.string   "user_email"
-    t.string   "workplace"
-    t.string   "distribution"
-    t.text     "message"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "name"
-  end
-
-  create_table "contents", force: :cascade do |t|
-    t.integer  "offering_id"
-    t.string   "content_url"
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "position",     default: 1
-    t.boolean  "is_active",    default: false
-    t.string   "content_type"
-  end
-
-  create_table "escents", force: :cascade do |t|
-    t.string   "name"
-    t.string   "url"
-    t.integer  "position",    default: 1
-    t.string   "escent_type"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "is_active",   default: false
-  end
-
-  create_table "offering_images", force: :cascade do |t|
-    t.string   "name"
-    t.string   "url"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.integer  "offering_id"
-    t.boolean  "is_carousel_img",    default: false
-    t.integer  "display_position",   default: 1
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.boolean  "is_active",          default: false
-    t.text     "description"
-  end
-
-  create_table "offering_user_povs", force: :cascade do |t|
-    t.integer  "offering_id"
-    t.integer  "user_pov_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "offering_user_povs", ["offering_id"], name: "index_offering_user_povs_on_offering_id"
-  add_index "offering_user_povs", ["user_pov_id"], name: "index_offering_user_povs_on_user_pov_id"
-
-  create_table "offerings", force: :cascade do |t|
-    t.string  "name"
-    t.text    "brief"
-    t.text    "description"
-    t.integer "display_position",           default: 999
-    t.integer "parent_id"
-    t.boolean "is_visible",                 default: false
-    t.string  "offering_type",    limit: 1, default: "O"
-    t.date    "expire_date"
-  end
-
-  create_table "stats", force: :cascade do |t|
-    t.integer  "offering_id"
-    t.integer  "stat"
-    t.string   "name"
-    t.integer  "position"
-    t.boolean  "is_active"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "user_authorizations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "authorization_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "user_authorizations", ["authorization_id"], name: "index_user_authorizations_on_authorization_id"
-  add_index "user_authorizations", ["user_id"], name: "index_user_authorizations_on_user_id"
-
-  create_table "user_bios", force: :cascade do |t|
-    t.text     "history"
-    t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.text     "education",  default: ""
-    t.string   "brief",      default: ""
-    t.string   "passion",    default: ""
-  end
-
-  add_index "user_bios", ["user_id"], name: "index_user_bios_on_user_id"
-
-  create_table "user_classes", force: :cascade do |t|
-    t.string   "abbrev",      limit: 8
-    t.string   "name",        limit: 30
-    t.text     "description"
+    t.string   "name",       limit: 255
+    t.string   "long_name",  limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  create_table "user_povs", force: :cascade do |t|
-    t.string   "name"
-    t.string   "url"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "contact_logs", force: :cascade do |t|
+    t.boolean  "was_sent",                   default: false
+    t.string   "user_email",   limit: 255
+    t.string   "workplace",    limit: 255
+    t.string   "distribution", limit: 255
+    t.text     "message",      limit: 65535
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "name",         limit: 255
   end
 
-  add_index "user_povs", ["user_id"], name: "index_user_povs_on_user_id"
+  create_table "contents", force: :cascade do |t|
+    t.integer  "offering_id",  limit: 4
+    t.string   "content_url",  limit: 255
+    t.string   "title",        limit: 255
+    t.text     "description",  limit: 65535
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.integer  "position",     limit: 4,     default: 1
+    t.boolean  "is_active",                  default: false
+    t.string   "content_type", limit: 255
+  end
+
+  create_table "escents", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "url",         limit: 255
+    t.integer  "position",    limit: 4,   default: 1
+    t.string   "escent_type", limit: 255
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.boolean  "is_active",               default: false
+  end
+
+  create_table "offering_images", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.string   "url",                limit: 255
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.integer  "offering_id",        limit: 4
+    t.boolean  "is_carousel_img",                  default: false
+    t.integer  "display_position",   limit: 4,     default: 1
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.boolean  "is_active",                        default: false
+    t.text     "description",        limit: 65535
+  end
+
+  create_table "offering_user_povs", force: :cascade do |t|
+    t.integer  "offering_id", limit: 4
+    t.integer  "user_pov_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "offering_user_povs", ["offering_id"], name: "index_offering_user_povs_on_offering_id", using: :btree
+  add_index "offering_user_povs", ["user_pov_id"], name: "index_offering_user_povs_on_user_pov_id", using: :btree
+
+  create_table "offerings", force: :cascade do |t|
+    t.string  "name",             limit: 255
+    t.text    "brief",            limit: 65535
+    t.text    "description",      limit: 65535
+    t.integer "display_position", limit: 4,     default: 999
+    t.integer "parent_id",        limit: 4
+    t.boolean "is_visible",                     default: false
+    t.string  "offering_type",    limit: 1,     default: "O"
+    t.date    "expire_date"
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.integer  "offering_id", limit: 4
+    t.integer  "stat",        limit: 4
+    t.string   "name",        limit: 255
+    t.integer  "position",    limit: 4
+    t.boolean  "is_active"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "user_authorizations", force: :cascade do |t|
+    t.integer  "user_id",          limit: 4
+    t.integer  "authorization_id", limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "user_authorizations", ["authorization_id"], name: "index_user_authorizations_on_authorization_id", using: :btree
+  add_index "user_authorizations", ["user_id"], name: "index_user_authorizations_on_user_id", using: :btree
+
+  create_table "user_bios", force: :cascade do |t|
+    t.text     "history",    limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.text     "education",  limit: 65535
+    t.string   "brief",      limit: 255,   default: ""
+    t.string   "passion",    limit: 255,   default: ""
+  end
+
+  add_index "user_bios", ["user_id"], name: "index_user_bios_on_user_id", using: :btree
+
+  create_table "user_classes", force: :cascade do |t|
+    t.string   "abbrev",      limit: 8
+    t.string   "name",        limit: 30
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "user_povs", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "url",        limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "user_povs", ["user_id"], name: "index_user_povs_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "title"
-    t.string   "password_digest"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.string   "email"
-    t.string   "picture"
-    t.integer  "user_class_id"
-    t.string   "contactee",        default: "No"
-    t.integer  "display_position", default: 9999
-    t.string   "prefix"
-    t.boolean  "is_emailee",       default: false
-    t.boolean  "is_active",        default: false
+    t.string   "first_name",       limit: 255
+    t.string   "last_name",        limit: 255
+    t.string   "title",            limit: 255
+    t.string   "password_digest",  limit: 255
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "email",            limit: 255
+    t.string   "picture",          limit: 255
+    t.integer  "user_class_id",    limit: 4
+    t.string   "contactee",        limit: 255, default: "No"
+    t.integer  "display_position", limit: 4,   default: 9999
+    t.string   "prefix",           limit: 255
+    t.boolean  "is_emailee",                   default: false
+    t.boolean  "is_active",                    default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
+  add_foreign_key "offering_user_povs", "offerings"
+  add_foreign_key "offering_user_povs", "user_povs"
+  add_foreign_key "user_authorizations", "authorizations"
+  add_foreign_key "user_authorizations", "users"
+  add_foreign_key "user_bios", "users"
+  add_foreign_key "user_povs", "users"
 end

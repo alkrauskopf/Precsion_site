@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :contact_log, :admin_authorized?, :current_mission, :escent_main_pages, :community_web_pages
+  helper_method :current_user, :logged_in?, :contact_log, :admin_authorized?,
+                :current_mission, :escent_main_pages, :initial_setup?, :community_web_pages
 
 
   def admin_authorize
@@ -18,8 +19,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def initial_setup?
+    User.all.empty?
+  end
+
   def logged_in?
-    !current_user.nil?
+    !current_user.nil? || initial_setup?
   end
 
   def current_user
@@ -34,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_authorized?
-    Authorization.admin.user_authorizations.empty? || (logged_in? && current_user.admin?)
+    Authorization.admin.user_authorizations.empty? || (logged_in? && current_user.admin?) || initial_setup?
   end
 
   def current_mission
