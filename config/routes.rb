@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post 'contact_logs' => 'session#contact_us'
   get 'image_show' => 'session#image_show'
   get 'about_us' => 'about#index'
-  get 'pm' => 'about#pm_methods'
+  get 'pm' => 'about#pm_offering'
   get 'partner' => 'about#partnering'
   get 'about_team' => 'about#our_team'
   get 'sign_up' => 'admin/users#new'

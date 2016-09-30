@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
 
+  before_action :pm_offerings, except: []
   before_action :admin_authorize
   before_action :set_user, only: [:roles, :destroy, :profile, :update]
   before_action :set_bio, only: [:update_bio]

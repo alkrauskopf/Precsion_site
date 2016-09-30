@@ -1,5 +1,6 @@
 class Admin::EscentsController < ApplicationController
 
+  before_action :pm_offerings, except: []
   before_action :admin_authorize, :set_escent, only: [:edit, :show, :update, :destroy]
 
   def index

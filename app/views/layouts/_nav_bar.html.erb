@@ -5,7 +5,17 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to 'Precision Home', root_path %></li>
-            <li><%#= link_to 'Our Methods & Tools', pm_path %></li>
+            <% if !@pm_offerings.nil? && !@pm_offerings.empty? %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Our Methods & Tools<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <% @pm_offerings.each do |pm| %>
+                        <li><%= link_to pm.name, pm_path(:id => pm.id) %></li>
+                    <% end %>
+                  </ul>
+                </li>
+            <% end %>
             <li><%= link_to 'Our Team', about_team_path %></li>
             <% if !escent_main_pages.empty? || !community_web_pages.empty? %>
                 <li class="dropdown">

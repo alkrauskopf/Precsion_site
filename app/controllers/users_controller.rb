@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :pm_offerings, except: []
   before_action :set_user, only: []
-
 
   def index
     if admin_authorized?

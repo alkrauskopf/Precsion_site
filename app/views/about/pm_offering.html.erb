@@ -5,12 +5,12 @@
   </div>
   <div class="col-md-5">
     <h2 class="pm_header ">
-      <% if !@method.nil? %>
-          <%= @method.name %>
+      <% if !@offering.nil? %>
+          <%= @offering.name %>
       <% end %>
     </h2>
     <p class="pm_brief" >
-      <%= @method.brief %>
+      <%= @offering.brief %>
     </p>
   </div>
 </div>
@@ -18,14 +18,14 @@
 <div class="row">
   <div class="col-md-12">
     <p class="pm_descript" >
-      <%= @method.description %>
+      <%= @offering.description %>
     </p>
   </div>
 </div>
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
-    <% if !@methods.empty? %>
+    <% if @offering.parent? && !@offerings.empty? %>
       <span class="pm_read_more">
         Click Heading to Read More
       </span>
@@ -36,22 +36,22 @@
 
             </td>
             <td style="width:18%; vertical-align:middle;">
-              <a class="pm_entity" href="#<%=@methods[0].id%>">Student</a>
+              <a class="pm_entity" href="#<%=@offerings[0].id%>">Student</a>
             </td>
             <td class="glyphicon glyphicon-resize-horizontal" style="width:3%; font-size:20px; vertical-align:middle;">
             </td>
             <td  style="width:18%; vertical-align:middle;">
-              <a class="pm_entity" href="#<%=@methods[1].id%>">Teacher</a>
+              <a class="pm_entity" href="#<%=@offerings[1].id%>">Teacher</a>
             </td>
             <td class="glyphicon glyphicon-resize-horizontal" style="width:3%; font-size:20px; vertical-align:middle;">
             </td>
             <td style="width:18%; vertical-align:middle;">
-              <a class="pm_entity" href="#<%=@methods[2].id%>">School</a>
+              <a class="pm_entity" href="#<%=@offerings[2].id%>">School</a>
             </td>
             <td class="glyphicon glyphicon-resize-horizontal" style="width:3%; font-size:20px; vertical-align:middle;">
             </td>
             <td style="width:20%; vertical-align:middle;">
-              <a class="pm_entity" href="#<%=@methods[3].id%>">District</a>
+              <a class="pm_entity" href="#<%=@offerings[3].id%>">District</a>
             </td>
           </tr>
         </thead>
@@ -166,7 +166,7 @@
   </div>
   <div class="col-md-1"></div>
 </div>
-<% @methods.each do |meth| %>
+<% @offerings.each do |meth| %>
   <hr id = "<%= meth.id%>">
   <div  class="row">
     <div  class="col-md-7">

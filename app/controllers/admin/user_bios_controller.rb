@@ -1,5 +1,6 @@
 class Admin::UserBiosController < ApplicationController
 
+  before_action :pm_offerings, except: []
   before_action :admin_authorize
   before_action :set_user_bio, only: [:show, :edit, :update, :destroy]
 

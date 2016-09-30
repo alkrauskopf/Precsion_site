@@ -1,5 +1,7 @@
 class WelcomeController < ApplicationController
 
+  before_action :pm_offerings, except: []
+
   def index
   #  load_team
     @testimonials = Offering.testimonials.active

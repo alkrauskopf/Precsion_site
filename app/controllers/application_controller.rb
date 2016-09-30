@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def pm_offerings
+    @pm_offerings = Offering.pm.active
+  end
+
   private
 
   def logged_in?

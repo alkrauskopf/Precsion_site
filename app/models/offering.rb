@@ -18,6 +18,10 @@ class Offering < ActiveRecord::Base
     self.children.arrange_by_position
   end
 
+  def parent?
+    self.parent_id.nil?
+  end
+
   def images
     self.offering_images.active.by_position
   end
@@ -174,7 +178,7 @@ class Offering < ActiveRecord::Base
     where('offering_type = ?','Q').order('display_position ASC')
   end
 
-  def self.pm_methods
+  def self.pm
     where('offering_type = ?','I').order('display_position ASC')
   end
 
