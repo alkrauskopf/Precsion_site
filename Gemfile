@@ -22,8 +22,8 @@ group :development, :test do
   gem 'awesome_print'
 end
 group :production do
-  gem 'pg'
-  gem 'rails_12factor'
+#  gem 'pg'      ----    Postgress only
+#  gem 'rails_12factor'    ---   Heroku only
 end
 
 gem 'sendgrid'
