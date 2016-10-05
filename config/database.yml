@@ -28,7 +28,7 @@ production:
   reconnect: false
   database: precision_production
   pool: 5
-  username: allen
-  password:
+  username: precision
+  password: florentin0
   host: localhost
   socket: /var/lib/mysql/mysql.sock
