@@ -16,14 +16,19 @@
                 <%= image.display_position%>)&nbsp;<%= image.name %>
               </td>
               <td class = 'thumbnail-small'>
-                <% if image.exist? %>
-                    <%= image_tag(image.pic)  %>
+                <% if image.pic? %>
+                    <%= image_tag(image.image)  %>
                 <% else %>
                  -
                 <% end %>
               </td>
               <td>
-                <%=  image.carousel? ? 'Carousel' : '' %><br/>
+                <% if image.is_head %>
+                    Header<br/>
+                <% end %>
+                <% if image.carousel? %>
+                    Carousel<br/>
+                <% end %>
                 <%= image.active? ? "Active" : "Not Active" %>
               </td>
               <td>

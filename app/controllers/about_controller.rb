@@ -15,6 +15,10 @@ class AboutController < ApplicationController
 
   def pm_offering
     @offerings = @offering.nil? ? [] : @offering.children_by_position
+    @povs = @offering.nil? ? [] : @offering.povs
+    @header_image = @offering.nil? ? nil : @offering.header_image
+    @images = @offering.nil? ? [] : @offering.non_header_image
+    @stats = @offering.nil? ? [] : @offering.active_stats
   end
 
   def partnering

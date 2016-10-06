@@ -116,4 +116,8 @@ class User < ActiveRecord::Base
     User.select{|u| !u.user_povs.empty?}
   end
 
+  def image
+    !self.picture.empty? ? ("team/" + self.picture) : ''
+  end
+
 end

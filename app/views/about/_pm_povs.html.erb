@@ -1,0 +1,18 @@
+
+<div class="row">
+    <h5 class="pm_pov_header">
+      Points-Of-View
+    </h5>
+</div>
+<% povs.each do |pov| %>
+  <div  class="row pm_pov_line">
+    <div  class="col-md-1 thumbnail-small">
+      <%= image_tag(pov.user.image) %>
+    </div>
+    <div  class="col-md-10">
+      <div class="pm_pov_link ">
+        <a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -3,8 +3,7 @@
       <% users.each do |user| %>
           <div class="row team_row">
             <div class="col-md-2 thumbnail-large-x">
-                <% pic_url = !user.picture.empty? ? ("team/" + user.picture) : '' %>
-                <%= image_tag(pic_url) %>
+                <%= image_tag(user.image) %>
             </div>
             <div class="col-md-10">
                 <h2 class="about_blue_font">

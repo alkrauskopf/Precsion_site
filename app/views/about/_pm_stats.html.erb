@@ -1,0 +1,13 @@
+
+<div class="row">
+    <h5 class="pm_stats_header">
+      As Of <%= Date.today.strftime('%B %e')%>
+    </h5>
+</div>
+<div class="pm_stats">
+  <% stats.each do |stat| %>
+      <li>
+          <%= stat.stat %>&nbsp;<%= stat.name %>
+      </li>
+  <% end %>
+</div>

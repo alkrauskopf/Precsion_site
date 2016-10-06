@@ -1,0 +1,14 @@
+  <div class="row">
+    <p  class = "image_name">
+      <%= image.name.html_safe %>
+    </p>
+    <div class="col-md-6">
+      <p  class="pm_image">
+        <%= image.pic? ? image_tag(image.image) : '' %>
+      </p>
+    </div>
+    <div class="col-md-6 image_descript">
+      <%= image.description.html_safe %>
+    </div>
+  </div>
+  <hr>

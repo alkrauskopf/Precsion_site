@@ -26,6 +26,26 @@ class Offering < ActiveRecord::Base
     self.offering_images.active.by_position
   end
 
+  def header_image
+    self.header_images.empty? ? nil : self.header_images.first
+  end
+
+  def non_header_image
+    if !self.images.empty?
+      self.images.select{ |i| !i.header?}
+    else
+      []
+    end
+  end
+
+  def header_images
+    if !self.images.empty?
+      self.images.select{ |i| i.header?}
+    else
+      []
+    end
+  end
+
   def active_contents
     self.contents.active.by_position
   end
@@ -38,12 +58,20 @@ class Offering < ActiveRecord::Base
     self.offering_images.active.by_position
   end
 
+  def active_stats
+    self.stats.active.by_position
+  end
+
   def self.arrange_by_position
     order('display_position ASC')
   end
 
   def self.by_type
     order('offering_type ASC')
+  end
+
+  def povs
+    self.user_povs
   end
 
   def available_povs

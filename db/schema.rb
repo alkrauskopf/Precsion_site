@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324030231) do
+ActiveRecord::Schema.define(version: 20160930204837) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20160324030231) do
     t.datetime "image_updated_at"
     t.boolean  "is_active",                        default: false
     t.text     "description",        limit: 65535
+    t.boolean  "is_header",                        default: false
+    t.boolean  "is_head"
   end
 
   create_table "offering_user_povs", force: :cascade do |t|

@@ -3,7 +3,12 @@ class OfferingImage < ActiveRecord::Base
   # Note:  Heroku does not support images stored in public/,   so image upload is not being implemented.
   # But here's how it is done below, anyway
 
-  has_attached_file :image, styles: {thumb: "60x60>", small_thumb: "50x50>", carousel: "1000x450>"}
+ # has_attached_file :image, styles: {thumb: "60x60>", small_thumb: "50x50>", carousel: "1000x450>"}
+
+  has_attached_file :image,
+                    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
+                    :url => "/system/:attachment/:id/:style/:filename",
+                    :styles => {thumb: "60x60>", small_thumb: "50x50>", carousel: "1000x450>"}
 
   belongs_to :offering
 
@@ -34,10 +39,16 @@ class OfferingImage < ActiveRecord::Base
   end
 
   def pic
-    self.offering ? self.offering.content_directory + (self.url.nil? ? '' : self.url) : ''
+  #  self.offering ? self.offering.content_directory + (self.url.nil? ? '' : self.url) : ''
+    self.image
   end
 
   def pic?
-    self.exist?
+    self.image?
   end
+
+  def header?
+    self.display_position == 0
+  end
+
 end

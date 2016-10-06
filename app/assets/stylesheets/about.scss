@@ -140,24 +140,51 @@
   padding-bottom:1em;
 }
 
-.pm_header_image {
-  background: url(/assets/pm/pm_banner.png) no-repeat;
-  background-size: cover;
+.pm_header_image img {
+ /*  background: url(/assets/pm/pm_banner.png) no-repeat;   */
+ /*  background-size: cover;  */
   /*  background-color: $palette_2;  */
-  height: 20em;
-  width: 100%;
+  max-height: 20em;
+  max-width: 100%;
   margin: 0px;
 }
+.pm_image img {
+  max-height: 40em;
+  max-width: 100%;
+  margin:0em 1em 0em 1em;
+  float:right;
+}
+.pm_method_box {
+  overflow: scroll;
+  max-height: 45em;
+  line-height:1.5em;
+}
+
 .pm_header {
   color:$palette_2;
-  margin:.5em 1em .5em 1em;
+  margin:0em 1em .5em 1em;
   font-weight:bold;
   text-align:center;
 }
+.pm_pov_header {
+  color:$palette_2;
+  margin:.5em 1em .5em 1em;
+  text-decoration:underline;
+  text-align:left;
+}
+.pm_pov_line {
+  margin:.5em 1em .5em 1em;
+}
 
+.pm_stats_header {
+  color:$palette_2;
+  margin:.5em 1em .5em 1em;
+  text-decoration:underline;
+  text-align:left;
+}
 .pm_subheader {
   color: $palette_2;
-  margin:2em 0em 0em 0em;
+  margin:0em 0em .5em 0em;
   text-align: left;
   vertical-align:bottom;
 }
@@ -229,7 +256,6 @@
   text-align: left;
 }
 
-
 .partner_descript {
   color: $dark_text;
   margin:1em 0em .5em 0em;
@@ -253,23 +279,21 @@
   font-size:14px;
 }
 
-
 .image_descript {
   color: $dark_text;
-  margin:0em 0em .5em 0em;
+  margin:1.5em 0em 0em 0em;
   font-weight:normal;
   line-height: 1.8em;
-  font-size:13px;
+  font-size:14px;
 }
 .image_name {
   color: $dark_text;
-  margin:1.5em 0em 0em 0em;
-  text-align:left;
+  margin:0em 0em 1em 0em;
+  text-align:center;
   font-weight:bold;
   line-height: 1.5em;
   font-size:13px;
 }
-
 
 .pm_entity {
   color: $light_text;
@@ -292,11 +316,16 @@
 .pm_table_header {
   color: $light_text;
   background-color:$palette_2;
-  font-size:14px;
+  font-size:16px;
   font-weight:bold;
   line-height:.5em;
 }
-
+.pm_table_link {
+  color: $light_text;
+  text-decoration:underline;
+  font-weight:bold;
+  line-height:.5em;
+}
 .pm_table_row_header {
   color:$palette_2;
   font-size:14px;
@@ -304,7 +333,15 @@
   text-align:center;
   vertical-align:middle;
 }
-
+.pm_pov_link {
+  color:$palette_2;
+  padding-left:1em;
+  font-size:12px;
+  font-weight:normal;
+  text-align:left;
+  vertical-align:middle;
+  text-decoration:underline;
+}
 .pm_read_more {
   color: $palette_2;
   padding-left:36em;
@@ -319,4 +356,12 @@
   margin: 1em 0em 1em 0em;
   overflow: scroll;
   max-height: 40em;
+}
+.pm_stats {
+  color:$dark_text;
+  margin:0em 1em 0em 1em;
+  line-height:1.8em;
+  font-size:14px;
+  font-weight:normal;
+  text-align:left;
 }
