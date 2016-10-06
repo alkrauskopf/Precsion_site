@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <div class="pm_header_image" >
       <% if !@header_image.nil? %>
         <%= image_tag(@header_image.image ) %>
@@ -7,28 +7,36 @@
         No Image
       <% end %>
     </div>
+    <div class="row pm_links">
+      See Also:
+      <% @pm_offerings.each do |off| %>
+          <% if off != @offering %>
+              <span class="pm_link"><%= link_to off.name, pm_path(:id => off.id) %></span>
+          <% end %>
+      <% end %>
+    </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-7">
     <% if !@offering.nil? %>
       <h2 class="pm_header ">
         <%= @offering.name.html_safe %>
       </h2>
-      <p class="pm_brief" >
+      <div class="pm_descript" >
         <%= @offering.brief.html_safe %>
-      </p>
+      </div>
     <% else %>
-      <p class="pm_brief" >
+      <div class="pm_descript" >
         Undefined Offering
-      </p>
+      </div>
     <% end %>
   </div>
 </div>
 <% if !@offering.nil? %>
   <div class="row">
     <div class="col-md-12">
-      <p class="pm_descript" >
+      <div class="pm_descript" >
         <%= @offering.description.html_safe %>
-      </p>
+      </div>
     </div>
   </div>
   <% if @offering.parent? && !@offerings.empty? %>
@@ -174,9 +182,19 @@
       </div>
       <div class="col-md-1"></div>
     </div>
-    <% if !@povs.empty? %>
-      <%= render partial: 'pm_povs', locals: {povs: @povs}%>
-    <% end %>
+    <div class="row">
+      <hr>
+      <div class="col-md-5">
+        <% if !@povs.empty? %>
+            <%= render partial: 'pm_povs', locals: {povs: @povs}%>
+        <% end %>
+      </div>
+      <div class="col-md-7">
+        <% @images.each do |image| %>
+            <%= render partial: 'pm_image', locals: {image: image}%>
+        <% end %>
+      </div>
+    </div>
   <% else %>
     <div class="row">
       <div class="col-md-5 pm_method_box">

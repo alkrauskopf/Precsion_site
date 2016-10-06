@@ -14,8 +14,13 @@ class Offering < ActiveRecord::Base
     where('parent_id IS NULL')
   end
 
-  def children_by_position
+  def all_children_by_position
     self.children.arrange_by_position
+  end
+
+  # 1st generation only
+  def children_by_position
+    self.children.where('parent_id = ?', self.id).order('display_position ASC')
   end
 
   def parent?

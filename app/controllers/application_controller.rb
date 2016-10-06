@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def pm_offerings
-    @pm_offerings = Offering.pm.active
+    @pm_offerings = Offering.pm.active.select{ |o| o.parent_id.nil? || o.parent.parent_id.nil?}
   end
 
   private
