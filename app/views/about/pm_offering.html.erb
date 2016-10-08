@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-6">
     <div class="pm_header_image" >
       <% if !@header_image.nil? %>
         <%= image_tag(@header_image.image ) %>
@@ -16,7 +16,7 @@
       <% end %>
     </div>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-6">
     <% if !@offering.nil? %>
       <h2 class="pm_header ">
         <%= @offering.name.html_safe %>
@@ -43,14 +43,11 @@
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
-          <span class="pm_read_more">
-            Click Heading to Read More
-          </span>
           <table class="table table-striped pm_table">
             <thead>
               <tr class="pm_table_header">
                 <td  style="width:17%;">
-
+                  <small>Measurement</small>
                 </td>
                 <td style="width:18%; vertical-align:middle;">
                   <%= link_to 'Student', pm_path(:id => @offerings[0].id), :class => 'pm_table_link'  %>
@@ -139,7 +136,7 @@
               </tr>
               <tr>
                 <td class="pm_table_row_header">
-                  Measurement Process
+                 Process
                 </td>
                 <td>
                   In-Classroom Formative Assessment
@@ -159,7 +156,7 @@
               </tr>
               <tr>
                 <td class="pm_table_row_header">
-                  Precision's Method
+                  Method & Tool
                 </td>
                 <td>
                   Integrated Formative Assemsment (IFA)

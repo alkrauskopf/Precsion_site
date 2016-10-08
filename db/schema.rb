@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930204837) do
+ActiveRecord::Schema.define(version: 20161008181959) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -118,8 +118,8 @@ ActiveRecord::Schema.define(version: 20160930204837) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.text     "education",  limit: 65535
-    t.string   "brief",      limit: 255,   default: ""
     t.string   "passion",    limit: 255,   default: ""
+    t.text     "brief",      limit: 65535
   end
 
   add_index "user_bios", ["user_id"], name: "index_user_bios_on_user_id", using: :btree
