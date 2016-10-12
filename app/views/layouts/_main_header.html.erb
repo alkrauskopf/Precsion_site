@@ -1,20 +1,14 @@
 <!-- Header -->
-<header>
-  <div class="container">
-    <div class="row">
-        <div class="main_background_image" >
-          <% if !@marque.empty? %>
-              <div class="row">
-                <div class="col-md-6">
-                </div>
-                <div class = 'marque_row col-md-4'>
-                  <span class='marque_text'>
-                    <marquee behavior="scroll" direction="left" ><%= @marque %></marquee>
-                  </span>
-                </div>
-              </div>
-          <% end %>
-        </div>
+<% if !@marque.nil? && !@marque.empty? %>
+ <div class="row">
+    <div class="col-md-3">
     </div>
-  </div>
-</header>
+    <div class='col-md-6 marque_row'>
+      <span class='marque_text'>
+        <marquee behavior="scroll" direction="left" ><%= @marque %></marquee>
+      </span>
+    </div>
+    <div class="col-md-3">
+    </div>
+ </div>
+<% end %>

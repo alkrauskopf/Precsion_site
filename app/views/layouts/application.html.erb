@@ -20,6 +20,12 @@
 <body class="container, page_background">
   <div class="site-frame">
     <%= render 'layouts/nav_bar' %>
+    <div class="main_background_image" >
+      <% if !@banner_image.nil? %>
+        <%= image_tag(@banner_image.image ) %>
+      <% end %>
+        <%= render 'layouts/main_header' %>
+    </div>
   <div class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, class: "alert alert-#{ name == 'error' ? "danger" : "success" } alert-dismissable", role: "alert" do %>
@@ -27,7 +33,6 @@
         <%= msg %>
       <% end %>
     <% end %>
-
     <%= yield %>
     <%= render 'layouts/main_footer' %>
   </div>

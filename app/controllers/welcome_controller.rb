@@ -14,6 +14,8 @@ class WelcomeController < ApplicationController
     @tool_parent = Offering.tools.active.all_parents.first
     @consultant_parent = Offering.consultants.active.all_parents.first
     @marque = Offering.marque_stream
+    @m_size = Offering.marques.active.not_expired.size
+    @banner_image = current_mission.header_image
   end
 
 end
