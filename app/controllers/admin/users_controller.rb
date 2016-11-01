@@ -64,7 +64,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def roles
-    authorization_ids = params[:user][:authorization_ids]
+    if params[:user] && params[:user][:authorization_ids]
+      authorization_ids = params[:user][:authorization_ids]
+    else
+      authorization_ids = []
+    end
     @user.authorizations.destroy_all
     authorization_ids.each do |auth_id|
       @user.authorize!(auth_id)
