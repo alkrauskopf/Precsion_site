@@ -20,16 +20,155 @@
 @import "application-variables.scss";
 @import 'bootstrap';
 
-nav.navbar {
-  background-color: $navbar-background;
-  li {
-    color: $light_text;
+
+/*  From Escent  */
+
+a.btn {
+  text-decoration: none;
+}
+
+.button_blue {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-xs;
+}
+.button_red {
+  @extend .btn;
+  @extend .btn-danger;
+  @extend .btn-xs;
+}
+.button_light_blue {
+  @extend .btn;
+  @extend .btn-info;
+  @extend .btn-xs;
+}
+.button_green {
+  @extend .btn;
+  @extend .btn-success;
+  @extend .btn-xs;
+}
+.button_orange {
+  @extend .btn;
+  @extend .btn-warning;
+  @extend .btn-xs;
+}
+.button_gray {
+  @extend .btn;
+  @extend .btn-default;
+  @extend .btn-xs;
+}
+.button_contact {
+  @extend .btn;
+  @extend .btn-default;
+  @extend .btn-xs;
+  margin-top:2em;
+  margin-left:0em;
+  font-size:13px;
+}
+.navbar_row {
+  background-color:$page-background;
+  border-width:1px;
+  border-color:black;
+  margin-bottom: 0em;
+  padding-bottom:0px;
+}
+.nav.navbar-nav {
+ /*  background-color: transparent;  */
+   background-color: transparent;
+  /*  background-color: $navbar-gray;   */
+          li a {
+         /*   color: $light_text;  */
+            color:$dark_text;
+            font-weight:bold;
   }
-  margin: 0em 1em 0em 1em;
+  margin: 0em 0em 0em 0em;
+}
+.nav.navbar-header {
+  background-color: white;
+  margin: 2em 0em 10em 0em;
 }
 
 h1, h2, h3, h4 {
   color: red;
+}
+.header_container {
+  height:14em;
+}
+.main_background_image img {
+  background-image: url(Precision_banner_1.png);
+
+  /*  background-color: $palette_2;  */
+  margin:0em 0em 0em 0em;
+}
+
+.site-frame {
+  font-size:12px;
+  margin:10em 0em 0em 0em;
+  line-height: 1em;
+}
+
+.marque_row {
+  margin: 3.5em 10em 0em 6em;
+  padding-bottom: 0em;
+  font-weight:normal;
+  font-style: italic;
+  font-size: 14px;
+  border-width:0px 0px 0px 0px;
+  vertical-align:bottom;
+  color: $palette_2;
+}
+.flash_row {
+  margin: .5em 10em .5em 10em;
+  font-weight:normal;
+  font-size: 14px;
+  border-width:1px 1px 1px 1px;
+  vertical-align:middle;
+  color: $dark_text;
+}
+
+.mission_block {
+  margin-top: .5em;
+  margin-bottom: 1em;
+  line-height: 1.9em;
+  color: $palette_2;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.mission_statement {
+  margin:.5em 0em 0em 0em;
+  font-weight:normal;
+  font-style: italic;
+  font-size:17px;
+  text-align: left;
+}
+
+.mission_panel {
+  margin-top: 1em;
+  text-align: left;
+  font-size:14px;
+  color: $dark-text;
+}
+
+.mission_block_1 {
+  margin-top: 0px;
+  background: url(/assets/psin_1.png);
+  height: 270px;
+  width: 100%;
+}
+#mission-carousel {
+  margin-top: 1em;
+  height: $carousel_1_height;
+  img {
+    /* force images to fit the carousel window */
+    width: 100%;
+    height: $carousel_1_height;
+  }
+}
+
+.mission_block_2 {
+  margin-top: .5em;
+  line-height: 1.5em;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 .footers_row {
@@ -38,15 +177,15 @@ h1, h2, h3, h4 {
   height:3em;
 }
 
-.footers_text {
+.footer_text {
   color: $light_text;
   vertical-align:middle;
   text-align:center;
   padding-top:1em;
 }
 
-.site-frame {
-  margin:0em 1em 0em 1em;
+.navbar_text {
+  color: $light_text;
 }
 
 .nav-inout {
@@ -55,6 +194,7 @@ h1, h2, h3, h4 {
 
 .page_background {
   background-color: $page_background;
+  margin:0em 0em 0em 0em;
 }
 
 .thumbnail-small img {
@@ -80,14 +220,6 @@ h1, h2, h3, h4 {
 .logo-large img {
   max-height: 50px;
   max-width:140px;
-}
-.main_background_image {
- /* background: url(main_banner.png) no-repeat;
-  background-size: cover;
-/*  background-color: $palette_2;  */
-
-  width:100%;
-  margin: 0px;
 }
 
 .intro-lead-1 {
@@ -117,94 +249,27 @@ h1, h2, h3, h4 {
   margin-bottom: 0px;
 }
 
-.mission_row {
-  margin-top: 10px;
-  min-height: 410px;
-  width: 100%;
-  padding-bottom:0em;
-}
-
-.mission_block_1 {
-  margin-top: 0px;
-  background: url(/assets/psin_1.png);
-  height: 270px;
-  width: 100%;
-}
-#mission-carousel {
-  margin-top: 1em;
-  height: $carousel_1_height;
-  img {
-    /* force images to fit the carousel window */
-    width: 100%;
-    height: $carousel_1_height;
-  }
-}
-
-.mission_block_2 {
-  margin-top: 1em;
-  line-height: 1.5em;
-  width: 100%;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-}
-
-.mission_panel {
-  margin-top: 0em;
-  line-height: 1.9em;
-  text-align: justify;
-  width: 90%;
-  font-size:14px;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-}
-
-.mission_statement {
-  margin-left:10%;
-  font-weight:normal;
-  font-style: italic;
-  width: 80%;
-  font-size:17px;
-  text-align: center;
-  color: #000081;
-}
-
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
   }
 }
-
-.marque_row {
-  padding-top: .5em;
-  padding-bottom: 0em;
-  margin-left:0%;
-  padding-left:0%;
-  line-height: 1.2em;
-  border-width:0px 0px 0px 0px;
-  vertical-align:middle;
-}
-
-.marque_label {
-  width: 20%;
-  font-weight:normal;
-  font-style: normal;
-  font-size:13px;
-  text-align:right;
-  vertical-align: middle;
-  padding-right:0em;
-  color: $palette_2;
-}
-
-.marque_text {
-  font-weight:normal;
-  font-style: italic;
-  font-size:14px;
-  color: $palette_2;
-}
-
 .panel-default > .panel-heading {
   color: $dark_text;
   text-align: center;
   background-color: $panel_background;
   border-color: #ddd;
+}
+
+.panel .panel-heading {
+  border-color:$dark-text;
+}
+
+.header-panel > .panel-heading {
+  color: $page_background;
+  background-color: $page_background;
+  border-width:2px;
+  border-color:$page_background;
 }
 
 .panel-palette_1 > .panel-heading {
@@ -322,10 +387,10 @@ h1, h2, h3, h4 {
 }
 
 .career_text {
-  margin:1em 0em 0em 1em;
+  margin:.5em 0em .5em 1em;
   color:$dark_text;
   text-align:left;
-  font-size:13px;
+  font-size:14px;
   font-weight:normal;
 }
 

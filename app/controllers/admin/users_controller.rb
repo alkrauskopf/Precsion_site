@@ -5,6 +5,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:roles, :destroy, :profile, :update]
   before_action :set_bio, only: [:update_bio]
   before_action :set_pov, only: [:destroy_pov]
+  before_action :banner_image, except: []
 
   def index
     @users = User.by_position

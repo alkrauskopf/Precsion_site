@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?, :contact_log, :admin_authorized?,
                 :current_mission, :escent_main_pages, :initial_setup?, :community_web_pages
 
-
   def admin_authorize
     if !admin_authorized?
       redirect_to root_path
@@ -15,6 +14,11 @@ class ApplicationController < ActionController::Base
 
   def pm_offerings
     @pm_offerings = Offering.pm.active.select{ |o| o.parent_id.nil? || o.parent.parent_id.nil?}
+  end
+
+  def banner_image
+    @banner_image = current_mission.header_image
+    @marque = Offering.marque_stream
   end
 
   private

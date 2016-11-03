@@ -1,24 +1,41 @@
 
-<div class="row mission_row">
-  <div class="col-xs-7">
-    <% unless @carousel_images.empty? %>
-      <%= render 'mission_carousel' %>
-    <% end %>
-  </div>
-  <div class="col-xs-5">
-    <div class="mission_block_2" >
-      <h4 >Our Mission...</h4>
-      <div class="mission_panel">
-        <p class="mission_statement">
-          <%= current_mission ? current_mission.brief.html_safe : '' %>
-        </p>
-        <hr>
-        <p>
-          <%= current_mission ? current_mission.description.html_safe : '' %>
-          <u><%= link_to 'Learn More', about_us_path %></u>
-        </p>
+<div class="row mission_block">
+  <% if false %>
+    <div class="col-xs-7">
+      <% unless @carousel_images.empty? %>
+        <%= render 'mission_carousel' %>
+      <% end %>
+    </div>
+    <div class="col-xs-5">
+      <div class="mission_block_2" >
+        <h4 >Our Mission...</h4>
+        <div class="mission_panel">
+          <p class="mission_statement">
+            <%= current_mission ? current_mission.brief.html_safe : '' %>
+          </p>
+          <hr>
+          <p>
+            <%= current_mission ? current_mission.description.html_safe : '' %>
+            <u><%= link_to 'Learn More', about_us_path %></u>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  <% else %>
+    <div class="col-md-2" style="text-align:right">
+      <h4 >Our Mission...</h4>
+    </div>
+    <div class="col-md-9">
+      <h4>
+        <%= current_mission ? current_mission.brief.html_safe : '' %>
+      </h4>
+      <div class="mission_panel">
+        <%= current_mission ? current_mission.description.html_safe : '' %>
+        <!-- <u><%#= link_to 'Learn More', about_us_path %></u> -->
+      </div>
+      <hr>
+    </div>
+    <div class="col-md-1"></div>
+  <% end %>
 </div>
 

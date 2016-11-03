@@ -17,25 +17,17 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="container, page_background">
-  <div class="site-frame">
+<body class="container page_background">
     <%= render 'layouts/nav_bar' %>
-    <div class="main_background_image" >
-      <% if !@banner_image.nil? %>
-        <%= image_tag(@banner_image.image ) %>
-      <% end %>
-        <%= render 'layouts/main_header' %>
-    </div>
-  <div class="container">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, class: "alert alert-#{ name == 'error' ? "danger" : "success" } alert-dismissable", role: "alert" do %>
-        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <%= msg %>
-      <% end %>
-    <% end %>
-    <%= yield %>
+
+      <div class="row site-frame">
+          <% if !flash.empty? %>
+            <%= render 'layouts/flash_bar' %>
+          <% end %>
+          <%= yield %>
+      </div>
     <%= render 'layouts/main_footer' %>
-  </div>
+
 <!-- /.container -->
 
 <!-- jQuery -->
@@ -50,6 +42,5 @@
         interval: 5000 //changes the speed
     })
 </script>
-  </div>
 </body>
 </html>

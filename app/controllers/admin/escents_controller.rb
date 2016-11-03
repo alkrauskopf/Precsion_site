@@ -2,6 +2,7 @@ class Admin::EscentsController < ApplicationController
 
   before_action :pm_offerings, except: []
   before_action :admin_authorize, :set_escent, only: [:edit, :show, :update, :destroy]
+  before_action :banner_image, except: []
 
   def index
   @escents = Escent.by_position

@@ -6,6 +6,7 @@ class Admin::OfferingsController < ApplicationController
   before_action :set_image, only: [:edit_image, :update_image, :destroy_image]
   before_action :set_content, only: [:edit_content, :update_content, :destroy_content]
   before_action :set_stat, only: [:edit_stat, :update_stat, :destroy_stat]
+  before_action :banner_image, except: []
 
   def index
     @parents = Offering.all_parents.by_type.arrange_by_position

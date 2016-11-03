@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
 
   before_action :pm_offerings, except: []
+  before_action :banner_image, except: []
 
   def index
   #  load_team
@@ -13,9 +14,7 @@ class WelcomeController < ApplicationController
     @offering_parent = Offering.offerings.active.all_parents.first
     @tool_parent = Offering.tools.active.all_parents.first
     @consultant_parent = Offering.consultants.active.all_parents.first
-    @marque = Offering.marque_stream
     @m_size = Offering.marques.active.not_expired.size
-    @banner_image = current_mission.header_image
   end
 
 end

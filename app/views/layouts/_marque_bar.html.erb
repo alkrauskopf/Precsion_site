@@ -1,0 +1,8 @@
+<!-- Header -->
+<% if !@marque.nil? && !@marque.empty? %>
+ <div class="row">
+  <div class='marque_row'>
+    <marquee behavior="scroll" direction="left" ><%= @marque %></marquee>
+  </div>
+ </div>
+<% end %>
