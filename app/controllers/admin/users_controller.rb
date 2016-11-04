@@ -41,7 +41,7 @@ class Admin::UsersController < ApplicationController
     else
       flash[:error] = @user.errors.full_messages
     end
-    redirect_to root_path
+    redirect_to admin_user_path(@user.id)
   end
 
   def profile

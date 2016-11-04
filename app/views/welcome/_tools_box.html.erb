@@ -1,68 +1,78 @@
 <div class="panel-body">
-  <div class="tool_join_list">
-      <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
-  </div>
-  <% if !overview.stats.empty? %>
+  <div class="index-panel-size-1">
+    <% hr_break = false %>
+    <% if false %>
+        <div class="tool_join_list">
+          <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
+        </div>
+    <% end %>
+    <% if !overview.stats.empty? %>
       <div class="about_blue_font stat_list">
         <u><%= link_to "View Our Statistics", "#statModal#{overview.id}", "data-toggle" => "modal" %></u>
         <%= render partial: 'session/stat_show_modal', locals: {offering: overview} %>
       </div>
-  <% end %>
-    <div class="index-panel-size-1">
-      <span class = "tool_header">
-        <%= overview.nil? ? '' : overview.description.html_safe %>
-      </span>
+      <% hr_break = true %>
+    <% end %>
+      <% if !overview.nil?  && !overview.description.strip.empty? %>
+        <span class = "tool_header">
+          <%= overview.description.html_safe %>
+          <% hr_break = true %>
+        </span>
+      <% end %>
       <% if !overview.images.empty? %>
-          <% grp = 'p' %>
-          <div class="about_blue_font image_list">
-            <% overview.images.each_with_index do |image, idx| %>
-                View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u>
-                <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
-            <% end %>
-          </div>
+        <% grp = 'p' %>
+        <div class="about_blue_font image_list">
+          <% overview.images.each_with_index do |image, idx| %>
+              View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u>
+              <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
+          <% end %>
+        </div>
+        <% hr_break = true %>
       <% end %>
       <% if !overview.user_povs.empty?%>
-          <div class="about_blue_font pov_list">
-            <% overview.user_povs.each do |pov| %>
-                Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
-            <% end %>
-          </div>
+        <div class="about_blue_font pov_list">
+          <% overview.user_povs.each do |pov| %>
+              Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+          <% end %>
+        </div>
+        <% hr_break = true %>
       <% end %>
-        <% overview.children_by_position.active.each do |tool| %>
-          <hr>
-          <p class= "tool_descript" >
-              <% if tool.active_contents.first && tool.active_contents.first.exist? %>
-                  <span class='tool_link' >
-                    <% if tool.active_contents.first.type == "Link" %>
-                        <a href= <%= tool.active_contents.first.content_url %> target="_blank"><u><%= tool.name == '' ? grant.active_contents.first.title : tool.name %></u></a>
-                    <% else %>
-                        <a href= <%= tool.active_contents.first.url %> target="_blank"><u><%= tool.name == '' ? tool.active_contents.first.title : tool.name %></u></a>
-                    <% end %>
-                  </span>&nbsp;
-              <% else %>
-                <span class="tool_name">
-                  <%= tool.name == '' ? '' : (tool.name.html_safe + ' ') %>
-                </span>
+      <% if hr_break %> <hr> <% end %>
+      <% overview.children_by_position.active.each do |tool| %>
+        <p class= "tool_descript" >
+            <% if tool.active_contents.first && tool.active_contents.first.exist? %>
+                <span class='tool_link' >
+                  <% if tool.active_contents.first.type == "Link" %>
+                      <a href= <%= tool.active_contents.first.content_url %> target="_blank"><u><%= tool.name == '' ? grant.active_contents.first.title : tool.name %></u></a>
+                  <% else %>
+                      <a href= <%= tool.active_contents.first.url %> target="_blank"><u><%= tool.name == '' ? tool.active_contents.first.title : tool.name %></u></a>
+                  <% end %>
+                </span>&nbsp;
+            <% else %>
+              <span class="tool_name">
+                <%= tool.name == '' ? '' : (tool.name.html_safe + ' ') %>
+              </span>
+            <% end %>
+            <%= tool.brief.html_safe %>
+        </p>
+        <% if !tool.images.empty? %>
+            <% grp = 'c1' %>
+            <div class="about_blue_font image_list">
+              <% tool.images.each_with_index do |image, idx| %>
+                  View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
+                  <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
               <% end %>
-              <%= tool.brief.html_safe %>
-          </p>
-          <% if !tool.images.empty? %>
-              <% grp = 'c1' %>
-              <div class="about_blue_font image_list">
-                <% tool.images.each_with_index do |image, idx| %>
-                    View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
-                    <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
-                <% end %>
-              </div>
-          <% end %>
-          <% if !tool.user_povs.empty?%>
-              <div class="about_blue_font pov_list">
-                <% tool.user_povs.each do |pov| %>
-                    Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
-                <% end %>
-              </div>
-          <% end %>
-        <% end -%>
+            </div>
+        <% end %>
+        <% if !tool.user_povs.empty?%>
+            <div class="about_blue_font pov_list">
+              <% tool.user_povs.each do |pov| %>
+                  Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+              <% end %>
+            </div>
+        <% end %>
+        <hr>
+      <% end -%>
     </div>
 </div>
 

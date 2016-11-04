@@ -1,29 +1,37 @@
 <div class="panel-body">
-  <div class="research_join_list">
-    <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
-  </div>
   <div class="index-panel-size-1">
-    <span class = "research_header">
-        <%= overview.nil? ? '' : overview.brief.html_safe %>
-    </span>
-    <% if !overview.images.empty? %>
-        <% grp = 'p' %>
-        <div class="about_blue_font image_list">
-          <% overview.images.each_with_index do |image, idx| %>
-              View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u>
-              <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
-          <% end %>
+    <% hr_break = false %>
+    <% if false %>
+        <div class="research_join_list">
+          <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
         </div>
+    <% end %>
+    <% if !overview.nil?  && !overview.brief.strip.empty? %>
+      <span class = "research_header">
+        <%= overview.brief.html_safe %>
+        <% hr_break = true %>
+      </span>
+    <% end %>
+    <% if !overview.images.empty? %>
+      <% grp = 'p' %>
+      <div class="about_blue_font image_list">
+        <% overview.images.each_with_index do |image, idx| %>
+            View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u>
+            <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
+        <% end %>
+      </div>
+      <% hr_break = true %>
     <% end %>
     <% if !overview.user_povs.empty?%>
-        <div class="about_blue_font pov_list">
-          <% overview.user_povs.each do |pov| %>
-              Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
-          <% end %>
-        </div>
+      <div class="about_blue_font pov_list">
+        <% overview.user_povs.each do |pov| %>
+            Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+        <% end %>
+      </div>
+      <% hr_break = true %>
     <% end %>
+    <% if hr_break %> <hr> <% end %>
     <% overview.children_by_position.active.each do |research| %>
-        <hr>
         <p class="research_descript">
           <span class="research_name"><%= research.name.html_safe %></span>&nbsp;
           <% if research.active_contents.first && research.active_contents.first.exist? %>
@@ -35,26 +43,27 @@
                 <% end %>
               </span>&nbsp;
           <% end %>
-            <span class="research_descript">
-              <%= research.brief.html_safe %>
-            </span>
+          <span class="research_descript">
+            <%= research.brief.html_safe %>
+          </span>
         </p>
         <% if !research.images.empty? %>
-            <% grp = 'c1' %>
-            <div class="about_blue_font image_list">
-              <% research.images.each_with_index do |image, idx| %>
-                  View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
-                  <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
-              <% end %>
-            </div>
+          <% grp = 'c1' %>
+          <div class="about_blue_font image_list">
+            <% research.images.each_with_index do |image, idx| %>
+                View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
+                <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
+            <% end %>
+          </div>
         <% end %>
         <% if !research.user_povs.empty?%>
-            <div class="about_blue_font pov_list">
-              <% research.user_povs.each do |pov| %>
-                  Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
-              <% end %>
-            </div>
+          <div class="about_blue_font pov_list">
+            <% research.user_povs.each do |pov| %>
+                Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+            <% end %>
+          </div>
         <% end %>
+        <hr>
     <% end -%>
   </div>
 </div>

@@ -19,12 +19,11 @@
 </head>
 <body class="container page_background">
     <%= render 'layouts/nav_bar' %>
-
       <div class="row site-frame">
-          <% if !flash.empty? %>
-            <%= render 'layouts/flash_bar' %>
-          <% end %>
-          <%= yield %>
+        <% if !flash.empty? %>
+          <%= render 'layouts/flash_bar' %>
+        <% end %>
+        <%= yield %>
       </div>
     <%= render 'layouts/main_footer' %>
 

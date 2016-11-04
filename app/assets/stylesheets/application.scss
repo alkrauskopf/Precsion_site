@@ -79,7 +79,9 @@ a.btn {
           li a {
          /*   color: $light_text;  */
             color:$dark_text;
-            font-weight:bold;
+            font-weight:normal;
+            font-size:16px;
+            font-family: Arial, Helvetica, sans-serif;
   }
   margin: 0em 0em 0em 0em;
 }
@@ -108,7 +110,7 @@ h1, h2, h3, h4 {
 }
 
 .marque_row {
-  margin: 3.5em 10em 0em 6em;
+  margin: 3.5em 4em 0em 11em;
   padding-bottom: 0em;
   font-weight:normal;
   font-style: italic;
@@ -316,22 +318,16 @@ h1, h2, h3, h4 {
 .index-panel-size-1 {
   overflow: scroll;
   max-height: 300px;
-  font-size:13px;
-  line-height:2.0em;
 }
 
 .index-panel-size-2 {
   overflow: scroll;
   max-height: 400px;
-  font-size:13px;
-  line-height:2.0em;
 }
 
 .index-panel-size-3 {
   overflow: scroll;
   max-height: 500px;
-  font-size:13px;
-  line-height:2.0em;
 }
 
 .contact-panel {
@@ -556,7 +552,7 @@ h1, h2, h3, h4 {
   font-weight:bold;
   text-align: left;
   font-size:13px;
-  color: #000081;
+  color: $header_text;
 }
 
 .research_link {
@@ -565,16 +561,17 @@ h1, h2, h3, h4 {
   font-weight:normal;
   text-align: left;
   font-size:11px;
-  color: #0000a4;
+  color: $link;
 }
 
 .research_header {
-  line-height:2.0em;
-  font-weight:normal;
+  margin: 0em 0em 0em 0em;
+  line-height:1.5em;
+  font-weight:bold;
   font-style: normal;
   text-align: left;
   font-size:14px;
-  color: $dark_text;
+  color: $palette_3;
 }
 
 .research_join_list {
@@ -589,11 +586,11 @@ h1, h2, h3, h4 {
 }
 
 .research_descript {
-  line-height:1.4em;
+  line-height:1.8em;
   font-weight:normal;
   font-style: normal;
-  text-align: justify;
-  font-size:13px;
+  text-align: left;
+  font-size:14px;
   color: $dark_text;
 }
 
@@ -616,7 +613,7 @@ h1, h2, h3, h4 {
   font-weight:bold;
   text-align: left;
   font-size:13px;
-  color: #000081;
+  color: $header_text;
 }
 
 .offering_link {
@@ -625,7 +622,7 @@ h1, h2, h3, h4 {
   font-weight:normal;
   text-align: left;
   font-size:11px;
-  color: #0000a4;
+  color: $link;
 }
 
 .offering_join_list {
@@ -640,11 +637,11 @@ h1, h2, h3, h4 {
 }
 
 .offering_descript {
-  line-height:1.4em;
+  line-height:1.8em;
   font-weight:normal;
   font-style: normal;
-  text-align: justify;
-  font-size:13px;
+  text-align: left;
+  font-size:14px;
   color: $dark_text;
 }
 
@@ -654,16 +651,16 @@ h1, h2, h3, h4 {
   font-weight:bold;
   text-align: left;
   font-size:13px;
-  color: #0000a4;
+  color: $header_text;
 }
 
 .grant_link {
-  line-height:2.0em;
+  line-height:1.3em;
   font-style: normal;
   font-weight:normal;
   text-align: left;
-  font-size:13px;
-  color: #0000a4;
+  font-size:12px;
+  color: $link;
 }
 
 .grant_contact {
@@ -693,11 +690,11 @@ h1, h2, h3, h4 {
 }
 
 .grant_descript {
-  line-height:1.4em;
+  line-height:1.8em;
   font-weight:normal;
   font-style: normal;
-  text-align: justify;
-  font-size:13px;
+  text-align: left;
+  font-size:14px;
   color: $dark_text;
 }
 

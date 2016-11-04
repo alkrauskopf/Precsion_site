@@ -10,8 +10,8 @@
             <% partners.each do |partner| %>
                 <tr>
                   <td class= "partner_image logo-large">
-                    <% if (!partner.images.empty? && partner.images.first.exist? ) %>
-                        <%= image_tag (partner.images.first.pic) %>
+                    <% if (!partner.active_images.empty? ) %>
+                        <%= image_tag (partner.active_images.first.pic) %>
                     <% else %>
                         -
                     <% end %>

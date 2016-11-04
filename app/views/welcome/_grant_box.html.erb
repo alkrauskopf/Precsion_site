@@ -1,11 +1,19 @@
 <div class="panel-body">
-  <div class="grant_join_list">
-    <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
-  </div>
+  <% hr_break = false %>
+  <% if false %>
+    <div class="grant_join_list">
+      <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
+    </div>
+  <% end %>
     <div class="index-panel-size-2">
       <span class = "grant_header">
-        <%= overview.nil? ? '' : overview.brief.html_safe %>&nbsp;
-        <span class = "grant_contact" ><%= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal'} %></span>
+        <% if !overview.nil?  && !overview.brief.strip.empty? %>
+          <%= overview.brief.html_safe %>
+          <% hr_break = true %>
+        <% end %>
+       <!--
+        <span class = "grant_contact" ><%#= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal'} %></span>
+       -->
       </span>
       <% if !overview.images.empty? %>
           <% grp = 'p' %>
@@ -15,45 +23,39 @@
                 <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
             <% end %>
           </div>
+          <% hr_break = true %>
       <% end %>
       <% if !overview.user_povs.empty?%>
-          <div class="about_blue_font pov_list">
-            <% overview.user_povs.each do |pov| %>
-                Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
-            <% end %>
-          </div>
-      <% end %>
-      <% overview.children_by_position.active.each do |grant| %>
-        <hr>
-        <p class= 'grant_descript' >
-          <% if grant.active_contents.first && grant.active_contents.first.exist? %>
-            <% if grant.active_contents.first.type == "Link" %>
-                <a href= <%= grant.active_contents.first.content_url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
-            <% else %>
-                <a href= <%= grant.active_contents.first.url %> target="_blank"><u><%= grant.name == '' ? grant.active_contents.first.title : grant.name %></u></a>
-            <% end %>
-            &nbsp;
-          <% else %>
-            <span class="grant_name">
-              <%= grant.name == '' ? '' : (grant.name.html_safe + ' ') %>
-            </span>
+        <div class="about_blue_font pov_list">
+          <% overview.user_povs.each do |pov| %>
+              Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
           <% end %>
+        </div>
+        <% hr_break = true %>
+      <% end %>
+      <% if hr_break %> <hr> <% end %>
+      <% overview.children_by_position.active.each do |grant| %>
+          <div class="grant_name">
+            <%= grant.name == '' ? '' : (grant.name.html_safe + ' ') %>
+          </div>
+        <p class= 'grant_descript' >
           <%= grant.brief.html_safe %>
+        </p>
           <% if !grant.active_contents.empty? %>
             <%  links = grant.active_contents %>
             <% idx = 0 %>
             <% while idx < links.size %>
               <% l= links[idx] %>
-              </br>
-              <% if l.type == "Link" %>
-                  <a href= <%= l.content_url %> target="_blank"><u><%= l.title%></u></a>
-              <% else %>
-                  <a href= <%= l.url %> target="_blank"><u><%= l.title %></u></a>
-              <% end %>
+              <p class="grant_link">
+                <% if l.type == "Link" %>
+                    <a href= <%= l.content_url %> target="_blank"><u><%= l.title%></u></a>
+                <% else %>
+                    <a href= <%= l.url %> target="_blank"><u><%= l.title %></u></a>
+                <% end %>
+              </p>
               <% idx += 1 %>
             <% end %>
           <% end %>
-        </p>
           <% if !grant.images.empty? %>
               <% grp = 'c1' %>
               <div class="about_blue_font image_list">
@@ -70,6 +72,7 @@
                 <% end %>
               </div>
           <% end %>
+          <hr>
       <% end -%>
     </div>
 </div>

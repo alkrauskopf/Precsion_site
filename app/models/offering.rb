@@ -28,7 +28,7 @@ class Offering < ActiveRecord::Base
   end
 
   def images
-    self.offering_images.active.by_position
+    self.active_images
   end
 
   def header_image

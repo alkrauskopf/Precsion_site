@@ -1,11 +1,17 @@
 <div class="panel-body">
-  <div class="offering_join_list">
-    <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
-  </div>
   <div class="index-panel-size-2">
-    <span class = "offering_header">
-        <%= overview.nil? ? '' : overview.brief.html_safe %>
-    </span>
+    <% hr_break = false %>
+    <% if false %>
+      <div class="offering_join_list">
+        <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
+      </div>
+    <% end %>
+    <% if !overview.nil?  && !overview.brief.strip.empty? %>
+      <span class = "offering_header">
+        <%=  overview.brief.html_safe %>
+        <% hr_break = true %>
+      </span>
+    <% end %>
     <% if !overview.images.empty? %>
         <% grp = 'p' %>
         <div class="about_blue_font image_list">
@@ -14,6 +20,7 @@
               <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
           <% end %>
         </div>
+        <% hr_break = true %>
     <% end %>
     <% if !overview.user_povs.empty?%>
         <div class="about_blue_font pov_list">
@@ -21,9 +28,10 @@
               Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
           <% end %>
         </div>
+        <% hr_break = true %>
     <% end %>
+    <% if hr_break %> <hr> <% end %>
     <% overview.children_by_position.active.each do |offering| %>
-        <hr>
         <p class= "offering_descript" >
           <span class="offering_name"><%= offering.name.html_safe %></span>&nbsp;
           <% if offering.active_contents.first && offering.active_contents.first.exist? %>
@@ -55,7 +63,7 @@
               <% end %>
             </div>
         <% end %>
+        <hr>
     <% end -%>
   </div>
 </div>
-
