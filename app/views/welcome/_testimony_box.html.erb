@@ -9,10 +9,8 @@
               </colgroup>
               <tr>
                 <td class= "testimony_image thumbnail-small">
-                  <% if (!testimony.images.empty? && testimony.images.first.exist? ) %>
+                  <% if (!testimony.images.empty? ) %>
                       <%= image_tag (testimony.images.first.pic) %>
-                  <% else %>
-                      <i class="glyphicon glyphicon-thumbs-up"></i>
                   <% end %>
                 </td>
                 <td class= "testimony_brief">
