@@ -2,6 +2,7 @@ class SessionController < ApplicationController
   before_action :banner_image, except: []
   def login
     # GET action for the login page
+    @login = true
   end
 
   def create
