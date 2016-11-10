@@ -136,22 +136,35 @@ h1, h2, h3, h4 {
   margin-top: .5em;
   margin-bottom: 1em;
   line-height: 1.9em;
-  color: $palette_2;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
+  border: 3px $palette_2;
+  border-style: solid;
+  background:white;
+  border-radius: 5px;
+  color: $dark-text;
+  font-family: Garamond, Georgia, "Times New Roman", Times, serif;
+}
+
+.mission_label {
+  margin:.5em 0em 0em .5em;
+  font-weight:normal;
+  font-size:13px;
+  text-align: left;
+  text-decoration:underline;
 }
 
 .mission_statement {
-  margin:.5em 0em 0em 0em;
-  font-weight:normal;
-  font-style: italic;
+  margin:0em 0em 0em 0em;
+  font-weight:bold;
+  color: $palette_2;
   font-size:17px;
-  text-align: left;
+  text-align: center;
 }
 
 .mission_panel {
-  margin-top: 1em;
+  margin: 1em 3em 1.5em 3em;
   text-align: left;
-  font-size:14px;
+  line-height: 1.7em;
+  font-size:15px;
   color: $dark-text;
 }
 
@@ -174,7 +187,7 @@ h1, h2, h3, h4 {
 .mission_block_2 {
   margin-top: .5em;
   line-height: 1.5em;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-family: Garamond, Georgia, "Times New Roman", Times, serif;
 }
 
 .footers_row {
