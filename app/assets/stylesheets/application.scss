@@ -21,6 +21,13 @@
 @import 'bootstrap';
 
 
+.ajax_loading {
+  display: none;
+  margin: auto;
+  width: 150px;
+}
+
+
 /*  From Escent  */
 
 a.btn {
@@ -59,14 +66,39 @@ a.btn {
 }
 .button_contact {
   @extend .btn;
-  @extend .btn-default;
+  @extend .btn-primary;
   @extend .btn-xs;
   margin-top:2em;
   margin-left:0em;
   font-size:13px;
 }
+.right-hand {
+  @extend .glyphicon;
+  @extend .glyphicon-hand-right;
+  color:$blue_hand;
+  margin-top:0em;
+  margin-left:0em;
+  font-size:13px;
+}
+.check-mark {
+  @extend .glyphicon;
+  @extend .glyphicon-ok;
+  color:green;
+  margin-top:0em;
+  margin-left:0em;
+  font-size:13px;
+}
+.thumbs-up {
+  @extend .glyphicon;
+  @extend .glyphicon-thumbs-up;
+  color:$red_hand;
+  margin-top:0em;
+  margin-left:0em;
+  font-size:13px;
+}
+
 .navbar_row {
-  background-color:$page-background;
+  background-color:$header_background;
   border-width:1px;
   border-color:black;
   margin-bottom: 0em;
@@ -78,7 +110,7 @@ a.btn {
   /*  background-color: $navbar-gray;   */
           li a {
          /*   color: $light_text;  */
-            color:$dark_text;
+            color:$light_text;
             font-weight:normal;
             font-size:16px;
             font-family: Arial, Helvetica, sans-serif;
@@ -96,6 +128,10 @@ h1, h2, h3, h4 {
 .header_container {
   height:14em;
 }
+
+.header_background {
+  background-color:$header_background;
+}
 .main_background_image img {
   background-image: url(Precision_banner_1.png);
 
@@ -105,9 +141,32 @@ h1, h2, h3, h4 {
 
 .site-frame {
   font-size:12px;
-  margin:10em 0em 0em 0em;
+  margin:5em 0em 0em 0em;
   line-height: 1em;
 }
+
+.site-list {
+  font-size:14px;
+  margin:0em 0em 0em 0em;
+  border-width:0px;
+  line-height: 1.6em;
+  color:$dark_text;
+}
+.site-link {
+  text-align:left;
+  border:0px;
+  font-size:14px;
+  margin:0em 0em 0em 0em;
+  color:$dark_text;
+}
+
+.offering_image img {
+  max-height: 40em;
+  max-width: 100%;
+  margin:0em 1em 0em 1em;
+  float:right;
+}
+
 
 .login {
   margin:10em 0em 0em 10em;
@@ -121,7 +180,7 @@ h1, h2, h3, h4 {
   font-size: 13px;
   border-width:0px 0px 0px 0px;
   vertical-align:bottom;
-  color: $palette_2;
+  color: $light-text;
 }
 .flash_row {
   margin: .5em 10em .5em 10em;
@@ -131,18 +190,42 @@ h1, h2, h3, h4 {
   vertical-align:middle;
   color: $dark_text;
 }
+.mission_row {
+  margin-top: .3em;
+  margin-bottom: 2em;
+}
 
 .mission_block {
-  margin-top: .5em;
-  margin-bottom: 1em;
   line-height: 1.9em;
-  border: 3px $palette_2;
-  border-style: solid;
-  background:white;
-  border-radius: 5px;
-  color: $dark-text;
+  background: $mission_gray;
+  color: $header_background;
   font-family: Garamond, Georgia, "Times New Roman", Times, serif;
 }
+.mission_border_1 {
+  border: 3px $palette_1;
+  border-style: solid;
+  border-radius: 5px;
+}
+.mission_border_2 {
+  border: 3px $palette_2;
+  border-style: solid;
+  border-radius: 5px;
+}
+.mission_border_3 {
+   border: 3px $palette_3;
+   border-style: solid;
+   border-radius: 5px;
+ }
+.mission_border_4 {
+    border: 3px $palette_4;
+    border-style: solid;
+    border-radius: 5px;
+  }
+.mission_border_5 {
+     border: 3px $palette_5;
+     border-style: solid;
+     border-radius: 5px;
+   }
 
 .mission_label {
   margin:.5em 0em 0em .5em;
@@ -150,6 +233,11 @@ h1, h2, h3, h4 {
   font-size:13px;
   text-align: left;
   text-decoration:underline;
+}
+.mission_label_2 {
+  font-weight:normal;
+  font-size:12px;
+  text-align: left;
 }
 
 .mission_statement {
@@ -159,13 +247,24 @@ h1, h2, h3, h4 {
   font-size:17px;
   text-align: center;
 }
-
+.mission_statement_2 {
+  margin:1em 0em 0em 0em;
+  font-weight:bold;
+  font-size:15px;
+  text-align: center;
+}
 .mission_panel {
   margin: 1em 3em 1.5em 3em;
   text-align: left;
   line-height: 1.7em;
   font-size:15px;
   color: $dark-text;
+}
+.mission_panel_2 {
+  margin: .5em 4em 1em 4em;
+  text-align: justify;
+  line-height: 1.6em;
+  font-size:14px;
 }
 
 .mission_block_1 {
@@ -192,7 +291,8 @@ h1, h2, h3, h4 {
 
 .footers_row {
   margin: 2em 0em 2em 0em;
-  background-color: $navbar-background;
+  width:100%;
+  background-color: $header_background;
   height:3em;
 }
 
@@ -291,6 +391,12 @@ h1, h2, h3, h4 {
   border-color:$page_background;
 }
 
+.panel-palette > .panel-heading {
+  text-align: center;
+  color: $light_text;
+  border-color: #ddd;
+}
+
 .panel-palette_1 > .panel-heading {
   color: $light_text;
   text-align: center;
@@ -331,6 +437,22 @@ h1, h2, h3, h4 {
  */
 
 
+.welcome-panel {
+  line-height:1.8em;
+  color:$dark-text;
+  background-color: transparent;
+  font-size: 14px;
+  overflow: scroll;
+  max-height: 750px;
+}
+.welcome-panel-left {
+  overflow: scroll;
+  max-height: 900px;
+}
+
+.panel {
+  background:red;
+}
 
 .index-panel-size-1 {
   overflow: scroll;
@@ -452,6 +574,30 @@ h1, h2, h3, h4 {
   background-color: $page_background;
 }
 
+.offering-stat-box {
+  margin: 1em 0em 1em 0em;
+}
+
+.offering-stats {
+  font-size: 13px;
+  color:$dark_text;
+  border-top:1px solid $dark_text;
+  padding-top:1em;
+  padding-bottom:1em;
+  text-align: center;
+  font-weight:normal;
+}
+
+.offering-stat {
+  font-size: 12px;
+  line-height:1.5em;
+  padding-top: 0em;
+  padding-left: 0em;
+  padding-rightt: 1em;
+  text-align: left;
+  font-weight:normal;
+}
+
 .modal-stat-descript {
   color: $dark_text;
   font-size: 12px;
@@ -510,49 +656,60 @@ h1, h2, h3, h4 {
   font-style: normal;
 }
 
-  .testimony_table {
-    padding-left:15px;
-    padding-right:15px;
-    margin-top:0px;
-    overflow:scroll;
-    max-height:500px;
-    font-size:10px;
-  }
+.testimony_brief {
+  padding-top:1.5em;
+  line-height:1.4em;
+  padding-right:3em;
+  text-align: left;
+  vertical-align: top;
+  font-size:11px;
+  color: $dark_text;
+}
 
-  .testimony_brief {
-    line-height:.6em;
-    padding-left:10px;
-    text-align: left;
-    vertical-align: middle;
-    font-size:11px;
-    color: $dark_text;
-  }
+.testimony_image {
+  float:left;
+  padding-left:1em;
+  margin: 1.5em 0em 0em 0em;
+}
 
-  .testimony_image {
-    float:right;
-    padding-right:3px;
-  }
+.testimony_row2 {
+  line-height:1.5em;
+  vertical-align: top;
+  padding-top:1.5em;
+  font-style:italic;
+  font-size:13px;
+  color: $dark_text;
+}
+.testimony_table {
+  margin: 1em 2em 0em 2em;
+  border-top: 1px solid $dark_text;
+  font-style:normal;
+  font-size:12px;
+  color: $dark_text;
+}
 
-  .testimony_row2 {
-    line-height:1.5em;
-    margin: 1em 2em 0em 1em;
-    font-style:italic;
-    font-size:12px;
-    color: $dark_text;
-  }
+.partner_table {
+  margin: 2em 2em 0em 2em;
+  border-top: 1px solid $dark_text;
+  font-style:normal;
+  font-size:12px;
+  color: $dark_text;
+}
 
-  .partner_image {
-    float:left;
-  }
+.partner_image {
+  float:left;
+  padding-left:1em;
+  margin: 2.5em 0em 0em 0em;
+}
 
-  .partner_descript {
-    line-height:1.2em;
-    padding-left:10px;
-    text-align: justify;
-    vertical-align: middle;
-    font-size:12px;
-    color: $dark_text;
-  }
+.partner_descript {
+  line-height:1.5em;
+  vertical-align: top;
+  padding-top:2.0em;
+  font-style:normal;
+  font-size:20px;
+  color: red;
+}
 
   h1 {
     color: $h1_dark_text;
@@ -561,15 +718,6 @@ h1, h2, h3, h4 {
   .research_image {
     float:left;
   }
-
-.research_name {
-  line-height:2.0em;
-  font-style: normal;
-  font-weight:bold;
-  text-align: left;
-  font-size:13px;
-  color: $header_text;
-}
 
 .research_link {
   line-height:2.0em;
@@ -580,14 +728,14 @@ h1, h2, h3, h4 {
   color: $link;
 }
 
-.research_header {
+.offering_header {
   margin: 0em 0em 0em 0em;
   line-height:1.5em;
-  font-weight:bold;
+  font-weight:normal;
   font-style: normal;
   text-align: left;
-  font-size:14px;
-  color: $palette_3;
+  font-size:16px;
+  color: $dark_text;
 }
 
 .research_join_list {
@@ -601,22 +749,9 @@ h1, h2, h3, h4 {
   color: $palette_3
 }
 
-.research_descript {
-  line-height:1.8em;
-  font-weight:normal;
-  font-style: normal;
-  text-align: left;
-  font-size:14px;
-  color: $dark_text;
-}
-
-.offering_header {
-  line-height:2.0em;
-  font-weight:normal;
-  font-style: normal;
-  text-align: left;
-  font-size:14px;
-  color: $dark_text;
+.offering_image_box {
+  border-top:1px solid $dark_text;
+  margin: 0em 0em 0em 0em;
 }
 
 .offering_image {
@@ -628,7 +763,7 @@ h1, h2, h3, h4 {
   font-style: normal;
   font-weight:bold;
   text-align: left;
-  font-size:13px;
+  font-size:16px;
   color: $header_text;
 }
 
@@ -661,15 +796,6 @@ h1, h2, h3, h4 {
   color: $dark_text;
 }
 
-.grant_name {
-  line-height:2.0em;
-  font-style: normal;
-  font-weight:bold;
-  text-align: left;
-  font-size:13px;
-  color: $header_text;
-}
-
 .grant_link {
   line-height:1.3em;
   font-style: normal;
@@ -684,16 +810,6 @@ h1, h2, h3, h4 {
   text-decoration: underline;
 }
 
-.grant_header {
-  line-height:2.0em;
-  font-weight:normal;
-  font-style: normal;
-  text-align: left;
-  font-size:14px;
- padding-bottom:15px;
-  color: $dark_text;
-}
-
 .grant_join_list {
   line-height:1.0em;
   font-weight:normal;
@@ -703,15 +819,6 @@ h1, h2, h3, h4 {
   margin-bottom: 10px;
   font-size:9px;
   color: $palette_1
-}
-
-.grant_descript {
-  line-height:1.8em;
-  font-weight:normal;
-  font-style: normal;
-  text-align: left;
-  font-size:14px;
-  color: $dark_text;
 }
 
 .tool_name {
@@ -750,15 +857,6 @@ h1, h2, h3, h4 {
   margin-bottom: 10px;
   font-size:9px;
   color: $palette_5
-}
-
-.tool_descript {
-  line-height:1.4em;
-  font-weight:normal;
-  font-style: normal;
-  text-align: justify;
-  font-size:13px;
-  color: $dark_text;
 }
 
 .team_contact {
