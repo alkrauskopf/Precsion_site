@@ -1,41 +1,20 @@
 
-<div class="row">
-  <% if false %>
-    <div class="col-xs-7">
-      <% unless @carousel_images.empty? %>
-        <%= render 'mission_carousel' %>
-      <% end %>
-    </div>
-    <div class="col-xs-5">
-      <div class="mission_block_2" >
-        <h4 >Our Mission...</h4>
-        <div class="mission_panel">
-          <p class="mission_statement">
-            <%= current_mission ? current_mission.brief.html_safe : '' %>
-          </p>
-          <hr>
-          <p>
+<div class="row mission_row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="mission_block">
+        <div style=" border: 2px <%= active_offering.panel_color%>; border-style: solid; border-radius: 5px;">
+            <p class="mission_statement_2">
+              <span class="mission_label_2">Mission:</span>&nbsp;&nbsp;
+              <%= current_mission ? current_mission.brief.html_safe : '' %>
+            </p>
+          <div class="mission_panel_2">
             <%= current_mission ? current_mission.description.html_safe : '' %>
-            <u><%= link_to 'Learn More', about_us_path %></u>
-          </p>
+            <!-- <u><%#= link_to 'Learn More', about_us_path %></u> -->
+          </div>
+        </div>
         </div>
       </div>
-    </div>
-  <% else %>
-    <div class="col-md-1"></div>
-    <div class="col-md-10 mission_block">
-      <p class="mission_label">
-        Mission:
-      </p>
-      <p class="mission_statement">
-        <%= current_mission ? current_mission.brief.html_safe : '' %>
-      </p>
-      <div class="mission_panel">
-        <%= current_mission ? current_mission.description.html_safe : '' %>
-        <!-- <u><%#= link_to 'Learn More', about_us_path %></u> -->
-      </div>
-    </div>
-    <div class="col-md-1"></div>
-  <% end %>
+      <div class="col-md-1"></div>
 </div>
 

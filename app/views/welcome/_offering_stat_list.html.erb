@@ -1,0 +1,17 @@
+<% if !active_offering.stats.empty? %>
+  <div class="offering-stat-box">
+    <div class="row offering-stats">
+      Stats: <%= Date.today.strftime('%b %d, %Y')%>
+    </div>
+      <% active_offering.stats.by_position.each do|stat| %>
+        <div class="row offering-stat" >
+          <div class="col-md-2" style="text-align:right">
+            <%=stat.stat %>
+          </div>
+          <div class="col-md-9">
+            <%=stat.name %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+<% end %>

@@ -1,11 +1,48 @@
-<div class="testimony_table">
-  <% testimonials.each do |testimony| %>
-      <div class = "row">
-        <table style="width:95%">
-          <tbody>
+<div class="panel-palette">
+  <div class="panel-heading"  style="background-color: <%=overview.panel_color%>">
+    <h4><%= overview.panel_header %></h4>
+  </div>
+  <div class="panel-body">
+    <div class="welcome-panel">
+      <% hr_break = false %>
+      <% if false %>
+          <div class="offering_join_list">
+            <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
+          </div>
+      <% end %>
+      <% if !overview.nil?  && !overview.brief.strip.empty? %>
+        <span class = "offering_header">
+          <%=  overview.brief.html_safe %>
+          <% hr_break = true %>
+        </span>
+      <% end %>
+      <% if !overview.images.empty?  && false %>
+          <% grp = 'p' %>
+          <div class="about_blue_font image_list">
+            <% overview.images.each_with_index do |image, idx| %>
+                View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u>
+                <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
+            <% end %>
+          </div>
+          <% hr_break = true %>
+      <% end %>
+      <% if !overview.user_povs.empty?%>
+          <div class="about_blue_font pov_list">
+            <% overview.user_povs.each do |pov| %>
+                Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+            <% end %>
+          </div>
+          <% hr_break = true %>
+      <% end %>
+      <% if false %> <hr> <% end %>
+      <% overview.children_by_position.active.each.each do |testimony| %>
+        <div class = "row testimony_table">
+          <table>
+            <tbody>
               <colgroup>
+                <col style="width:10%">
                 <col style="width:20%">
-                <col style="width:80%">
+                <col style="width:70%">
               </colgroup>
               <tr>
                 <td class= "testimony_image thumbnail-small">
@@ -14,16 +51,16 @@
                   <% end %>
                 </td>
                 <td class= "testimony_brief">
-                <%= testimony.brief.html_safe %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class = "row testimony_row2">
-          <%= testimony.description.html_safe %>
-      </div>
-      <hr>
-  <% end %>
+                  <%= testimony.brief.html_safe %>
+                </td>
+                <td class="testimony_row2">
+                  <%= testimony.description.html_safe %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-

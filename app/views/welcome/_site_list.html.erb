@@ -1,0 +1,30 @@
+<div class="row">
+  <table class="table table-hover" style="width:95%;">
+    <tbody>
+      <colgroup>
+        <col style="width:10%">
+        <col style="width:90%">
+      </colgroup>
+      <% @offering_list.sort_by{|o| o.display_position}.each do |offering| %>
+        <tr >
+          <% if active_offering != offering %>
+            <td class="right-hand" style="border:0px;"></td>
+            <% if offering.career? %>
+              <td class="site-link" style="border:0px;">
+                <%= link_to offering.name, "#careerModal", "data-toggle" => "modal" %>
+              </td>
+            <% else %>
+            <td class="site-link" style="border:0px;">
+              <%= link_to offering.name, root_path(:id => offering.id) %>
+            </td>
+            <% end %>
+          <% else %>
+            <td colspan=2 class="site-link" style="text-align:left; border:0px; color:<%=offering.panel_color%>; font-weight:bold;">
+              <%= offering.name %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

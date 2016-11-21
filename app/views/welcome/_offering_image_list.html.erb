@@ -1,0 +1,17 @@
+<% if !active_offering.offering_images.empty? %>
+    <div class="row offering_image_box">    </div>
+    <% active_offering.offering_images.active.by_position.each do|image| %>
+      <div class="row">
+        <hr>
+        <p  class = "image_name">
+          <%= image.name.html_safe %>
+        </p>
+        <p class="image_descript">
+          <%= image.description.html_safe %>
+        </p>
+        <p  class="offering_image">
+          <%= image.pic? ? image_tag(image.image) : '' %>
+        </p>
+      </div>
+    <% end %>
+<% end %>

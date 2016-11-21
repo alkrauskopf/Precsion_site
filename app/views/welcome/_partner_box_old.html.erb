@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table" style="width:90%;">
+        <tbody>
+            <colgroup>
+              <col style="width:27%">
+              <col style="width:73%">
+            </colgroup>
+            <% partners.each do |partner| %>
+                <tr>
+                  <td class= "partner_image logo-large">
+                    <% if (!partner.active_images.empty? ) %>
+                        <%= image_tag (partner.active_images.first.pic) %>
+                    <% else %>
+                        -
+                    <% end %>
+                  </td>
+                  <td class= "partner_descript">
+                    <%= partner.brief.html_safe %>
+                  </td>
+                </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

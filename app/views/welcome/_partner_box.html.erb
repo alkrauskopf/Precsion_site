@@ -1,28 +1,42 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <table class="table" style="width:90%;">
-        <tbody>
-            <colgroup>
-              <col style="width:27%">
-              <col style="width:73%">
-            </colgroup>
-            <% partners.each do |partner| %>
-                <tr>
-                  <td class= "partner_image logo-large">
-                    <% if (!partner.active_images.empty? ) %>
-                        <%= image_tag (partner.active_images.first.pic) %>
-                    <% else %>
-                        -
-                    <% end %>
-                  </td>
-                  <td class= "partner_descript">
-                    <%= partner.brief.html_safe %>
-                  </td>
-                </tr>
-            <% end %>
-        </tbody>
-      </table>
+<div class="panel-palette">
+  <div class="panel-heading"  style="background-color: <%=overview.panel_color%>">
+    <h4><%= overview.panel_header %></h4>
+  </div>
+  <div class="panel-body">
+    <div class="welcome-panel">
+      <% hr_break = false %>
+      <% if !overview.nil?  && !overview.brief.strip.empty? %>
+        <span class = "offering_header">
+          <%=  overview.brief.html_safe %>
+          <% hr_break = true %>
+        </span>
+      <% end %>
+      <% overview.children_by_position.active.each.each do |partner| %>
+        <div class="row partner_table">
+          <table >
+            <tbody>
+              <colgroup>
+                <col style="width:23%">
+                <col style="width:67%">
+                <col style="width:10%">
+              </colgroup>
+              <tr>
+                <td class= "partner_image logo-large" style="border-top: 0px;">
+                  <% if (!partner.active_images.empty? ) %>
+                      <%= image_tag (partner.active_images.first.pic) %>
+                  <% else %>
+                      -
+                  <% end %>
+                </td>
+                <td class="partner_descript" >
+                  <%= partner.brief.html_safe %>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+       </div>
+      <% end %>
     </div>
   </div>
 </div>
