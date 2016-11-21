@@ -118,6 +118,9 @@ class Offering < ActiveRecord::Base
   def offering?
     self.offering_type == 'O'
   end
+  def services?
+    self.offering?
+  end
 
   def consultant?
     self.offering_type == 'C'
@@ -148,7 +151,7 @@ class Offering < ActiveRecord::Base
   end
 
   def research?
-    self.offering_type == 'T'
+    self.offering_type == 'R'
   end
 
   def grant?
@@ -159,6 +162,23 @@ class Offering < ActiveRecord::Base
     self.offering_type == 'I'
   end
 
+  def career?
+    self.offering_type == 'Z'
+  end
+
+  def self.welcome_offerings
+    off = []
+    off << Offering.testimonials.active.all_parents.first
+    off << Offering.partners.active.all_parents.first
+    off << Offering.offerings.active.all_parents.first
+    off << Offering.grants.active.all_parents.first
+    off << Offering.researches.active.all_parents.first
+    off << Offering.tools.active.all_parents.first
+    off << Offering.consultants.active.all_parents.first
+    off << Offering.careers.active.all_parents.first
+    o_list = off.compact
+
+  end
   def self.offerings
     where('offering_type = ?', 'O').order('display_position ASC')
   end
@@ -203,6 +223,10 @@ class Offering < ActiveRecord::Base
     where('offering_type = ?','G').order('display_position ASC')
   end
 
+  def self.careers
+    where('offering_type = ?','Z').order('display_position ASC')
+  end
+
   def self.marque_stream
     self.marques.active.not_expired.empty? ? '' : (' . . . . ' + (self.marques.active.not_expired.map{|m| m.brief}.join(' . . . . ')).squeeze(" "))
   end
@@ -245,6 +269,8 @@ class Offering < ActiveRecord::Base
       name = 'Consultant'
     elsif self.offering_type == 'I'
       name = 'Performance Monitoring'
+    elsif self.offering_type == 'Z'
+      name = 'Career'
     end
     name
   end
@@ -275,6 +301,8 @@ class Offering < ActiveRecord::Base
       name = 'team/'
     elsif self.offering_type == 'I'
       name = 'pm/'
+    elsif self.offering_type == 'Z'
+      name = 'team/'
     end
     name
   end

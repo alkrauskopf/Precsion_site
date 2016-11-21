@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user, :logged_in?, :contact_log, :admin_authorized?,
-                :current_mission, :escent_main_pages, :initial_setup?, :community_web_pages
+                :current_mission, :escent_main_pages, :initial_setup?, :community_web_pages,
+                :career
 
   def admin_authorize
     if !admin_authorized?
@@ -36,6 +37,10 @@ class ApplicationController < ActionController::Base
   rescue ActiveRecord::RecordNotFound
     session.delete(:id)
     nil
+  end
+
+  def career
+    Offering.careers.active.all_parents.first
   end
 
   def contact_log

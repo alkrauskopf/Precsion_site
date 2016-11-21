@@ -213,7 +213,8 @@ class Admin::OfferingsController < ApplicationController
 
   def offering_params
     params.require(:offering).permit(:name, :brief, :description,
-      :display_position, :is_visible, :parent_id, :offering_type)
+      :display_position, :is_visible, :parent_id, :offering_type,
+      :panel_header, :panel_color)
   end
 
   def expire_days_params
