@@ -19,13 +19,23 @@
 </head>
 <body class="container page_background">
     <%= render 'layouts/nav_bar' %>
-    <div class="row site-frame">
-      <% if !flash.empty? %>
-        <%= render 'layouts/flash_bar' %>
-      <% end %>
-      <%#= render 'layouts/ajax_loader'%>
-      <%= yield %>
-    </div>
+    <% if current_user %>
+      <div class="row site-frame2">
+        <% if !flash.empty? %>
+          <%= render 'layouts/flash_bar' %>
+        <% end %>
+        <%#= render 'layouts/ajax_loader'%>
+        <%= yield %>
+      </div>
+    <% else %>
+      <div class="row site-frame">
+        <% if !flash.empty? %>
+            <%= render 'layouts/flash_bar' %>
+        <% end %>
+        <%#= render 'layouts/ajax_loader'%>
+        <%= yield %>
+      </div>
+    <% end %>
     <%= render 'layouts/main_footer' %>
 
 <!-- /.container -->
