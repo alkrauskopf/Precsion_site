@@ -7,7 +7,7 @@
         <h4 class="modal-title panel modal-image-panel" id="myModalLabel"><%= image.offering.name %></h4>
       </div>
       <div class="modal-body modal-image-name">
-        <%= image.name %>
+        <%= image.name.html_safe %>
         <% if !image.description.nil? && image.description != '' %>
             <div class="modal-image-descript">
             </br><%=image.description.html_safe %>
