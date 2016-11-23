@@ -37,20 +37,25 @@
       <% if hr_break %> <hr> <% end %>
       <% overview.children_by_position.active.each do |offering| %>
           <p>
-            <span class="offering_name"><%= offering.name.html_safe %></span>&nbsp;
-            <% if offering.active_contents.first && offering.active_contents.first.exist? %>
-                <span class="offering_link">
-                  <% if offering.active_contents.first.type == "Link" %>
-                      <a href= <%= offering.active_contents.first.content_url %> target="_blank">(<u>View <%= offering.active_contents.first.type %> </u>)</a>
-                  <% else %>
-                      <a href= <%= offering.active_contents.first.url %> target="_blank">(<u>View <%= offering.active_contents.first.type %> </u>)</a>
-                  <% end %>
-                </span>&nbsp;
-            <% end %>
+            <span class="offering_name"><%= offering.name.html_safe %></span>
             <span class="offering_descript">
               <%= offering.description.html_safe %>
             </span>
           </p>
+          <% if !offering.active_contents.empty? %>
+              <div class="image_list">
+            <% offering.active_contents.each do |content| %>
+              <% if content.exist? %>
+                  <% if content.type == "Link" %>
+                      View:&nbsp;&nbsp;<a href= <%= content.content_url %> target="_blank"><u><%= content.title%></u></a>
+                  <% else %>
+                      View:&nbsp;&nbsp;<a href= <%= content.url %> target="_blank"><u><%= content.title%></u></a>
+                  <% end %>
+                  <br/>
+              <% end %>
+            <% end %>
+              </div>
+          <% end %>
           <% if !offering.images.empty? %>
               <% grp = 'c1' %>
               <div class="about_blue_font image_list">
