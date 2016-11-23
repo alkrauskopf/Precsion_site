@@ -54,7 +54,7 @@ class Admin::OfferingsController < ApplicationController
         format.html { redirect_to edit_admin_offering_path(@offering_image.offering), notice: "#{@offering_image.name} has been created." }
         format.json { render :show, status: :ok, location: @offering_image }
       else
-        format.html { render :new }
+        format.html { render :new_image }
         format.json { render json: @offering_image.errors, status: :unprocessable_entity }
       end
     end
@@ -62,13 +62,13 @@ class Admin::OfferingsController < ApplicationController
 
   def create_content
     @content = Content.new(content_params)
-
+    @offering = Offering.find(params[:content][:offering_id])
     respond_to do |format|
       if @content.save
         format.html { redirect_to edit_admin_offering_path(@content.offering), notice: "#{@content.title} has been created." }
         format.json { render :show, status: :ok, location: @content }
       else
-        format.html { render :new }
+        format.html { render :new_content }
         format.json { render json: @content.errors, status: :unprocessable_entity }
       end
     end
@@ -82,7 +82,7 @@ class Admin::OfferingsController < ApplicationController
         format.html { redirect_to edit_admin_offering_path(@stat.offering), notice: "#{@stat.name} has been created." }
         format.json { render :show, status: :ok, location: @stat }
       else
-        format.html { render :new }
+        format.html { render :new_stat }
         format.json { render json: @stat.errors, status: :unprocessable_entity }
       end
     end
@@ -252,13 +252,12 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def content_params
-    params.require(:content).permit(:name, :content_url, :title,:description,
-                                           :position, :is_active,
-                                           :content_type, :offering_id)
+    params.require(:content).permit(:content_url, :title,:description, :position, :is_active, :content_type, :offering_id,
+                                    :attached_report)
   end
 
   def stat_params
-    params.require(:stat).permit(:name, :name, :stat,
+    params.require(:stat).permit(:name, :stat,
                                     :position, :is_active,
                                     :offering_id)
   end

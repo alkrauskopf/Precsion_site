@@ -49,7 +49,8 @@
                   <% if content.type == "Link" %>
                       View:&nbsp;&nbsp;<a href= <%= content.content_url %> target="_blank"><u><%= content.title%></u></a>
                   <% else %>
-                      View:&nbsp;&nbsp;<a href= <%= content.url %> target="_blank"><u><%= content.title%></u></a>
+                  <!--    View:&nbsp;<a href= <%#= asset_path(content.url) %> target="_blank"><u><%= content.title%></u></a> -->
+                    <%= link_to 'Download WhitePaper', asset_path('/images/IFA_White_Paper.pdf') %>
                   <% end %>
                   <br/>
               <% end %>

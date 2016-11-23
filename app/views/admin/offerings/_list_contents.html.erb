@@ -19,9 +19,9 @@
                 <%= content.title %><br/>
                 <% if content.exist? %>
                     <% if content.type == "Link" %>
-                        <u><a href= <%=content.content_url%>target="_blank"> <%= content.content_url %> </a></u>
+                        <u><a href= <%=content.content_url%> target="_blank"> <%= content.title %> </a></u>
                     <% else %>
-                        <a href= <%= content.url %> target="_blank"><%=content.content_url%></a>
+                        <a href= <%= content.attached_report %> target="_blank"><%=content.title%></a>
                     <% end %>
                 <% else %>
                     <em>No Content</em>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117013123) do
+ActiveRecord::Schema.define(version: 20161123195955) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -32,15 +32,19 @@ ActiveRecord::Schema.define(version: 20161117013123) do
   end
 
   create_table "contents", force: :cascade do |t|
-    t.integer  "offering_id",  limit: 4
-    t.string   "content_url",  limit: 255
-    t.string   "title",        limit: 255
-    t.text     "description",  limit: 65535
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.integer  "position",     limit: 4,     default: 1
-    t.boolean  "is_active",                  default: false
-    t.string   "content_type", limit: 255
+    t.integer  "offering_id",                  limit: 4
+    t.string   "content_url",                  limit: 255
+    t.string   "title",                        limit: 255
+    t.text     "description",                  limit: 65535
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
+    t.integer  "position",                     limit: 4,     default: 1
+    t.boolean  "is_active",                                  default: false
+    t.string   "content_type",                 limit: 255
+    t.string   "attached_report_file_name",    limit: 255
+    t.string   "attached_report_content_type", limit: 255
+    t.integer  "attached_report_file_size",    limit: 4
+    t.datetime "attached_report_updated_at"
   end
 
   create_table "escents", force: :cascade do |t|

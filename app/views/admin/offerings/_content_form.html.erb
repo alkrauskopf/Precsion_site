@@ -1,5 +1,5 @@
 <div class="container">
-<%= form_for([:admin, content], html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+<%= form_for([:admin, content], html: {class: 'form-horizontal', role: 'form', multipart: true}) do |f| %>
 
   <% if content.errors.any? %>
     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -15,6 +15,12 @@
   <% end %>
     <%= f.hidden_field :offering_id, value: offering.id %>
     <div class="form-group">
+      <%= f.label 'Title', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
       <%= f.label :content_url, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.text_field :content_url, class: "form-control" %>
@@ -24,12 +30,6 @@
       <%= f.label :position, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.number_field :position, size: 1 %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label 'Title', class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :title, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
@@ -51,6 +51,15 @@
           <%= f.label(:active_yes, 'Yes') %>
           <%= f.radio_button(:is_active, false) %>
           <%= f.label(:active_no, 'No') %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-2">
+          <%= content.attached_report.present? ? '+' : '-' %>
+        </div>
+        <div class="col-sm-10">
+          <h4>Upload PDF:</h4>
+          <%= f.file_field :attached_report %>
         </div>
       </div>
     <div class="form-group">
