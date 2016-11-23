@@ -1,4 +1,4 @@
-<h1>Add Image To <%= @offering.name %>:</h1>
+<h1>Add Image To <%= @offering.name.html_safe %>:</h1>
 <div class="row">
     <%= render partial: 'image_form', locals: { offering_image: @offering_image, offering: @offering } %>
     <hr>
