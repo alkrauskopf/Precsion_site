@@ -27,7 +27,7 @@ class Content < ActiveRecord::Base
   def url
     if self.offering && self.exist?
  #     '../../../assets/images/' + self.offering.content_directory + self.content_url
-      '../../../assets/' + self.content_url
+      '../../../assets/images/' + self.content_url
     else
       ''
     end
