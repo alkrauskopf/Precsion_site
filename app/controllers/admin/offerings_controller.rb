@@ -62,13 +62,13 @@ class Admin::OfferingsController < ApplicationController
 
   def create_content
     @content = Content.new(content_params)
-    @offering = Offering.find(params[:content][:offering_id])
+    @content.title = params[:content][:title]
     respond_to do |format|
       if @content.save
         format.html { redirect_to edit_admin_offering_path(@content.offering), notice: "#{@content.title} has been created." }
         format.json { render :show, status: :ok, location: @content }
       else
-        format.html { render :new_content }
+        format.html { redirect_to edit_admin_offering_path(@offering), notice: "#{}@content.errors}" }
         format.json { render json: @content.errors, status: :unprocessable_entity }
       end
     end
@@ -127,12 +127,14 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def update_content
+    @offering = Offering.find(params[:content][:offering_id])
+    @content.title = params[:content][:title]
     respond_to do |format|
       if @content.update(content_params)
         format.html { redirect_to edit_admin_offering_path(@content.offering), notice: "#{@content.title} has been updated." }
         format.json { render :show, status: :ok, location: @content }
       else
-        format.html { render :edit }
+        format.html { render :edit_content }
         format.json { render json: @content.errors, status: :unprocessable_entity }
       end
     end
@@ -252,9 +254,9 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def content_params
-    params.require(:content).permit(:content_url, :title,:description, :position, :is_active, :content_type, :offering_id,
-                                    :attached_report)
+    params.require(:content).permit(:content_url, :description, :position, :is_active, :content_type, :offering_id, :attached_report)
   end
+
 
   def stat_params
     params.require(:stat).permit(:name, :stat,

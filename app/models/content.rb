@@ -7,8 +7,7 @@ class Content < ActiveRecord::Base
                     :path => ":rails_root/public/system/:attachment/:id/:filename",
                     :url => "/system/:attachment/:id/:filename"
 
-  validates_attachment :attached_report,
-                       content_type: {content_type: ['application/pdf']}
+  validates_attachment_content_type :attached_report, :content_type => ['application/pdf']
 
   validates_presence_of :content_url, :title
 
