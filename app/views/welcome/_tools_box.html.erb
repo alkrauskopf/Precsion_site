@@ -17,9 +17,9 @@
         </div>
         <% hr_break = true %>
       <% end %>
-        <% if !overview.nil?  && !overview.description.strip.empty? %>
+        <% if !overview.nil?  && !overview.brief.strip.empty? %>
           <span class = "tool_header">
-            <%= overview.description.html_safe %>
+            <%= overview.brief.html_safe %>
             <% hr_break = true %>
           </span>
         <% end %>
@@ -75,6 +75,23 @@
                 <% end %>
               </div>
           <% end %>
+          <div class= "feature_descript" >
+            <% tool.children_by_position.active.each do |feature| %>
+              <span class="feature_name">
+                <%= feature.name == '' ? '' : (feature.name.html_safe + ' ') %>
+              </span>
+              <%= feature.brief.html_safe %>
+              <% if !feature.images.empty? %>
+                <% grp = 'c1' %>
+                <div class="about_blue_font image_list">
+                  <% feature.images.each_with_index do |image, idx| %>
+                      View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
+                      <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
           <hr>
         <% end -%>
       </div>

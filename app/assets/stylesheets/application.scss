@@ -772,6 +772,15 @@ h1, h2, h3, h4 {
   color: $palette_2;
 }
 
+.feature_name {
+  line-height:2.0em;
+  font-style: normal;
+  font-weight:bold;
+  text-align: left;
+  font-size:14px;
+  color: $dark_text;
+}
+
 .offering_link {
   line-height:2.0em;
   font-style: normal;
@@ -793,6 +802,16 @@ h1, h2, h3, h4 {
 }
 
 .offering_descript {
+  line-height:1.8em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: left;
+  font-size:14px;
+  color: $dark_text;
+}
+
+.feature_descript {
+  margin:0em 0em 0em 2em;
   line-height:1.8em;
   font-weight:normal;
   font-style: normal;
