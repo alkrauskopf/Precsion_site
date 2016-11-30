@@ -1,0 +1,13 @@
+# Here you can specify default options for TinyMCE across all controllers
+#
+plugins:
+  - image
+  - link
+  - emoticons
+  - code
+  - textcolor colorpicker
+  - print
+  - lists
+  - advlist
+toolbar:
+  - bullist numlist outdent indent | forecolor backcolor emoticons | bold italic underline | undo redo | alignleft aligncenter alignright| code |

@@ -22,6 +22,10 @@ class OfferingImage < ActiveRecord::Base
     where('is_carousel_img = ?', true)
   end
 
+  def self.not_carousels
+    where('is_carousel_img = ?', false)
+  end
+
   def carousel?
     self.is_carousel_img
   end

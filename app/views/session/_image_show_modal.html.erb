@@ -14,10 +14,11 @@
           </div>
         <% end %>
       </div>
-      <div class="modal-body modal-image-panel">
-        <%= image_tag(image.pic, width:570 ) %>
-
-      </div>
+      <% if image.exist? %>
+        <div class="modal-body modal-image-panel">
+          <%= image_tag(image.pic, width:570 ) %>
+        </div>
+      <% end %>
       <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>

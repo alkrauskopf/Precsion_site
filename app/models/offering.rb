@@ -71,6 +71,10 @@ class Offering < ActiveRecord::Base
     order('display_position ASC')
   end
 
+  def self.arrange_by_name
+    order('name ASC')
+  end
+
   def self.by_type
     order('offering_type ASC')
   end

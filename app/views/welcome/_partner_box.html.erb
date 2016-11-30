@@ -22,8 +22,8 @@
               </colgroup>
               <tr>
                 <td class= "partner_image logo-large" style="border-top: 0px;">
-                  <% if (!partner.active_images.empty? ) %>
-                      <%= image_tag (partner.active_images.first.pic) %>
+                  <% if (!partner.active_images.not_carousels.empty? ) %>
+                      <%= image_tag (partner.active_images.not_carousels.first.pic) %>
                   <% else %>
                       -
                   <% end %>

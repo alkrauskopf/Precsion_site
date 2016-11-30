@@ -15,6 +15,11 @@ class Content < ActiveRecord::Base
     order('position ASC')
   end
 
+  def self.by_name
+    order('name ASC')
+  end
+
+
   def type
     self.content_type
   end

@@ -19,7 +19,7 @@
           </div>
 
           <div class="panel-body">
-            <p id="brief"><em><%= offering.brief %></em></p>
+            <p id="brief"><em><%= offering.brief.html_safe %></em></p>
 
             <%= render partial: 'status', locals: {offering: offering} %>
 

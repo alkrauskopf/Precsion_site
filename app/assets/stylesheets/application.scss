@@ -542,8 +542,8 @@ h1, h2, h3, h4 {
 }
 
 .modal-image-name {
-  color: $dark_text;
-  font-size: 13px;
+  color: $palette_2;
+  font-size: 15px;
   text-align: left;
   font-weight:bold;
   font-style: normal;
@@ -552,7 +552,8 @@ h1, h2, h3, h4 {
 
 .modal-image-descript {
   color: $dark_text;
-  font-size: 12px;
+  font-size: 13px;
+  line-height:1.7em;
   text-align: left;
   font-weight:normal;
   font-style: normal;
