@@ -1,5 +1,5 @@
 <% if !active_offering.offering_images.active.carousels.empty? %>
-    <div class="row offering_image_box">    </div>
+    <div class="row offering_image_box">
     <% active_offering.offering_images.active.carousels.by_position.each do|image| %>
       <div class="row">
         <hr>
@@ -14,4 +14,5 @@
         </p>
       </div>
     <% end %>
+    </div>
 <% end %>
