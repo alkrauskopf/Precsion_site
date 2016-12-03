@@ -1,6 +1,9 @@
 <div class="panel-palette">
   <div class="panel-heading"  style="background-color: <%=overview.panel_color%>">
     <h4><%= overview.panel_header %></h4>
+    <div class="tool_contact">
+      Live Demo? 'Contact Us'
+    </div>
   </div>
   <div class="panel-body">
     <div class="welcome-panel">
@@ -23,7 +26,7 @@
             <% hr_break = true %>
           </span>
         <% end %>
-        <% if !overview.images.not_carousels.empty?%>
+          <% if !overview.images.not_carousels.empty?%>
           <% grp = 'p' %>
           <div class="about_blue_font image_list">
             <% overview.images.not_carousels.each_with_index do |image, idx| %>

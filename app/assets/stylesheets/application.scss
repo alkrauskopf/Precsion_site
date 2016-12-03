@@ -536,6 +536,7 @@ h1, h2, h3, h4 {
 
 .modal-image-panel {
   color: $dark_text;
+  margin-left:0em;
   font-style: normal;
   text-align: left;
   background-color: $page_background;
@@ -854,6 +855,11 @@ h1, h2, h3, h4 {
   text-align: left;
   font-size:13px;
   color: #0000a4;
+}
+
+.tool_contact {
+  text-align:right;
+  font-size:11px;
 }
 
 .tool_link {
