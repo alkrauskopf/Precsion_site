@@ -8,17 +8,17 @@
       </div>
       <div class="modal-body modal-image-name">
         <%= image.name.html_safe %>
+        <% if image.pic? %>
+          <div class="modal-body modal-image-panel">
+            <%= image_tag(image.pic, width:470 ) %>
+          </div>
+        <% end %>
         <% if !image.description.nil? && image.description != '' %>
-            <div class="modal-image-descript">
+          <div class="modal-image-descript">
             </br><%=image.description.html_safe %>
           </div>
         <% end %>
       </div>
-      <% if image.pic? %>
-        <div class="modal-body modal-image-panel">
-          <%= image_tag(image.pic, width:570 ) %>
-        </div>
-      <% end %>
       <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>
