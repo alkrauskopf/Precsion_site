@@ -46,7 +46,7 @@
               <div class="image_list">
             <% offering.active_contents.each do |content| %>
               <% if content.exist? %>
-                  <% if content.type == "Link" %>
+                  <% if content.type.upcase == "LINK" %>
                       View:&nbsp;&nbsp;<a href= <%= content.content_url %> target="_blank"><u><%= content.title.html_safe%></u></a>
                   <% else %>
                             View:&nbsp;&nbsp;<a href= <%= content.attached_report %> target="_blank"><u><%= content.title.html_safe%></u></a>

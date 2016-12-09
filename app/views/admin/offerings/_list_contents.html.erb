@@ -18,7 +18,7 @@
               <td >
                 <%= content.title %><br/>
                 <% if content.exist? %>
-                    <% if content.type == "Link" %>
+                    <% if content.type.upcase == "LINK" %>
                         <u><a href= <%=content.content_url%> target="_blank"> <%= content.title %> </a></u>
                     <% else %>
                         <a href= <%= content.attached_report %> target="_blank"><%=content.title%></a>
