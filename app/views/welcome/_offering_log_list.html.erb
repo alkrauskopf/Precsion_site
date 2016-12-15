@@ -1,0 +1,17 @@
+<% if !active_offering.offering_logs.empty? %>
+  <div class="offering-log-box">
+    <div class="row offering-logs">
+      <%= active_offering.name %>
+    </div>
+      <% active_offering.offering_logs.period_down.each do|log| %>
+        <div class="row offering-log" >
+          <div class="col-md-2" style="text-align:right">
+            <%=log.counter %>
+          </div>
+          <div class="col-md-9">
+            <%= log.period %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+<% end %>

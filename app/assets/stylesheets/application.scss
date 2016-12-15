@@ -450,6 +450,7 @@ h1, h2, h3, h4 {
   overflow: scroll;
   max-height: 150em;
 }
+
 .welcome-panel-left {
   overflow: scroll;
   max-height: 160em;
@@ -596,6 +597,39 @@ h1, h2, h3, h4 {
 }
 
 .offering-stat {
+  font-size: 12px;
+  line-height:1.5em;
+  padding-top: 0em;
+  padding-left: 0em;
+  padding-rightt: 1em;
+  text-align: left;
+  font-weight:normal;
+}
+
+.offering-log-list {
+  line-height:1.8em;
+  color:$dark-text;
+  background-color: transparent;
+  font-size: 13px;
+  overflow: scroll;
+  max-height: 15em;
+}
+
+.offering-log-box {
+  margin: 1em 0em 1em 0em;
+}
+
+.offering-logs {
+  font-size: 13px;
+  color:$dark_text;
+  border-top:1px solid $dark_text;
+  padding-top:1em;
+  padding-bottom:1em;
+  text-align: center;
+  font-weight:normal;
+}
+
+.offering-log {
   font-size: 12px;
   line-height:1.5em;
   padding-top: 0em;

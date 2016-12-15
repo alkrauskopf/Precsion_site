@@ -49,7 +49,7 @@
           <p class= "offering_descript" >
               <% if tool.active_contents.first && tool.active_contents.first.exist? %>
                   <span class='tool_link' >
-                    <% if tool.active_contents.first.type == "Link" %>
+                    <% if tool.active_contents.first.type.upcase == "LINK" %>
                         <a href= <%= tool.active_contents.first.content_url %> target="_blank"><u><%= tool.name == '' ? grant.active_contents.first.title : tool.name %></u></a>
                     <% else %>
                         <a href= <%= tool.active_contents.first.url %> target="_blank"><u><%= tool.name == '' ? tool.active_contents.first.title : tool.name %></u></a>

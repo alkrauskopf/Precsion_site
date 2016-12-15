@@ -40,7 +40,7 @@
             <span class="offering_name"><%= research.name.html_safe %></span>&nbsp;
             <% if research.active_contents.first && research.active_contents.first.exist? %>
                 <span class="research_link">
-                  <% if research.active_contents.first.type == "Link" %>
+                  <% if research.active_contents.first.type.upcase == "LINK" %>
                       <a href= <%= research.active_contents.first.content_url %> target="_blank">(<u>View <%= research.active_contents.first.type %> </u>)</a>
                   <% else %>
                       <a href= <%= research.active_contents.first.url %> target="_blank">(<u>View <%= research.active_contents.first.type %> </u>)</a>

@@ -52,7 +52,7 @@
               <% while idx < links.size %>
                 <% l= links[idx] %>
                 <p class="grant_link">
-                  <% if l.type == "Link" %>
+                  <% if l.type.upcase == "LINK" %>
                       <a href= <%= l.content_url %> target="_blank"><u><%= l.title%></u></a>
                   <% else %>
                       <a href= <%= l.url %> target="_blank"><u><%= l.title %></u></a>

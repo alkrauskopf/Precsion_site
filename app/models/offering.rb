@@ -6,6 +6,7 @@ class Offering < ActiveRecord::Base
   has_many :offering_images, dependent: :destroy
   has_many :contents, dependent: :destroy
   has_many :stats, dependent: :destroy
+  has_many :offering_logs, dependent: :destroy
 
   validates_presence_of :offering_type
 
@@ -310,4 +311,22 @@ class Offering < ActiveRecord::Base
     end
     name
   end
+
+  def page_view
+    log = self.offering_logs.current
+    if log.nil?
+      log = OfferingLog.new
+      log.period = current_period
+      self.offering_logs << log
+    else
+      log.update_attribute(:counter, (log.counter + 1))
+    end
+  end
+
+  private
+
+  def current_period
+    Date.current.year.to_s + Date.current.month.to_s
+  end
+
 end

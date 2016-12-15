@@ -6,6 +6,9 @@ class WelcomeController < ApplicationController
   def index
     get_offering
     get_welcome_info
+    unless current_user
+      @offering.page_view
+    end
   end
 
 
