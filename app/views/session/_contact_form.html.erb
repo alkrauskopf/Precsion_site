@@ -1,6 +1,6 @@
 <div class="container">
     <%= form_for contact_log do |f|  %>
-      <%= f.hidden_field :captcha_id, value: captcha_image.id %>
+      <%= f.hidden_field :captcha_id, value: (captcha_image.nil? ? '' : captcha_image.id) %>
       <% if !captcha_image.nil? %>
         <div class="row captcha_line">
           What Do You See In The Picture?&nbsp;

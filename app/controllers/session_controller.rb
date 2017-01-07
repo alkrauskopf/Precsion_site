@@ -67,6 +67,6 @@ class SessionController < ApplicationController
   def used_captcha
     @captcha = CaptchaImage.find_by_id(params[:contact_log][:captcha_id]) rescue nil
     @captcha_guess = params[:captcha_guess]
-    @captcha_pass = (!@captcha.nil? && @captcha_guess.upcase.include?(@captcha.name.upcase))
+    @captcha_pass = (!@captcha.nil? && @captcha_guess.upcase.include?(@captcha.name.upcase)) || @captcha.nil?
   end
 end
