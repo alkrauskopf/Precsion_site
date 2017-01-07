@@ -35,7 +35,7 @@ class SessionController < ApplicationController
         flash[:error] = "Please Contact Us without including a link in your Message, Name, or Workplace.  Thank You."
       end
     else
-      flash[:error] = "Sorry. You Did Not Correctly Identify The Picture"
+      flash[:error] = "Sorry. You Did Not Correctly Identify The Picture. Please Try Again."
     end
     redirect_to root_path
   end
