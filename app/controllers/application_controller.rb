@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?, :contact_log, :admin_authorized?,
                 :current_mission, :escent_main_pages, :initial_setup?, :community_web_pages,
-                :career
+                :career, :current_captcha
 
   def admin_authorize
     if !admin_authorized?
@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
     @marque = Offering.marque_stream
   end
 
+
   private
 
   def initial_setup?
@@ -34,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find(session[:id]) if session[:id]
-  rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound
     session.delete(:id)
     nil
   end
@@ -61,6 +62,16 @@ class ApplicationController < ActionController::Base
 
   def community_web_pages
     Escent.active.web_pages
+  end
+
+  def current_captcha
+    if CaptchaImage.all.empty?
+      current_captcha = nil
+    else
+      max = CaptchaImage.all.size - 1
+      current_captcha = CaptchaImage.all[rand(0..max)]
+    end
+    current_captcha
   end
 
 end

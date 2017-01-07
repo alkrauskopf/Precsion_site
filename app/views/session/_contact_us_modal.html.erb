@@ -5,16 +5,18 @@
 </button>
 -->
 <!-- Modal -->
+<% captcha_image = current_captcha %>
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title panel contact-panel" id="myModalLabel">Send The Precision Team A Message</h4>
+        <h4 class="modal-title panel contact-panel" id="myModalLabel">
+          <%= !captcha_image.nil? ? image_tag(captcha_image.image(:thumb)) : '' %>&nbsp;&nbsp;&nbsp;&nbsp;Send Us A Message</h4>
       </div>
       <%= render '/session/emailing' %>
       <div class="modal-body contact-panel contact-us-form">
-        <%= render partial: '/session/contact_form'%>
+        <%= render partial: '/session/contact_form', locals: {captcha_image: captcha_image} %>
       </div>
       <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>

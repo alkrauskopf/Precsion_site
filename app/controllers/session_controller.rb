@@ -1,5 +1,6 @@
 class SessionController < ApplicationController
   before_action :banner_image, except: []
+
   def login
     # GET action for the login page
     @login = true
@@ -19,17 +20,22 @@ class SessionController < ApplicationController
   end
 
   def contact_us
-    if contact_us_filtered?
-      contact_log = ContactLog.create(contact_us_params)
-      contact_log.distribution = User.contact_list
-      if contact_log.save
-        flash[:notice] = "Message Sent."
-        contact_log.email_us!
+    used_captcha
+    if @captcha_pass
+      if contact_us_filtered?
+        contact_log = ContactLog.create(contact_us_params)
+        contact_log.distribution = User.contact_list
+        if contact_log.save
+          flash[:notice] = "Message Sent."
+          contact_log.email_us!
+        else
+          flash[:error] = contact_log.errors.full_messages
+        end
       else
-        flash[:error] = contact_log.errors.full_messages
+        flash[:error] = "Please Contact Us without including a link in your Message, Name, or Workplace.  Thank You."
       end
     else
-      flash[:error] = "Please Contact Us without including a link in your Message, Name, or Workplace.  Thank You."
+      flash[:error] = "Sorry. You Did Not Correctly Identify The Picture"
     end
     redirect_to root_path
   end
@@ -37,7 +43,6 @@ class SessionController < ApplicationController
   def image_show
     redirect_to root_path
   end
-
 
   def destroy
     if user = current_user
@@ -57,5 +62,11 @@ class SessionController < ApplicationController
       filtered = false
     end
     filtered
+  end
+
+  def used_captcha
+    @captcha = CaptchaImage.find_by_id(params[:contact_log][:captcha_id]) rescue nil
+    @captcha_guess = params[:captcha_guess]
+    @captcha_pass = (!@captcha.nil? && @captcha_guess.upcase.include?(@captcha.name.upcase))
   end
 end

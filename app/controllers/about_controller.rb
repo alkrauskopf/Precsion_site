@@ -4,7 +4,6 @@ class AboutController < ApplicationController
   before_action :set_offering, only: [:pm_offering]
   before_action :banner_image, except: []
 
-
   def index
 
   end

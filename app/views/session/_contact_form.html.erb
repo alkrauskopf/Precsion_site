@@ -1,44 +1,34 @@
 <div class="container">
     <%= form_for contact_log do |f|  %>
-      <div class="row">
-        <div class="col-md-8 contact_no_links">
-          Please:  No Website Links In Your Message To Us. Thank You!
+      <%= f.hidden_field :captcha_id, value: captcha_image.id %>
+      <% if !captcha_image.nil? %>
+        <div class="row captcha_line">
+          What Do You See In The Picture?&nbsp;
+          <%= text_field_tag :captcha_guess %>
         </div>
+        <hr>
+      <% end %>
+      <div class="row contact_line">
+        Your Name:&nbsp;
+        <%= f.text_field :name, size: 30 %>
       </div>
-      <div class="row">
-        <div class="col-md-8">
-          Your Name
-          <div class="panel-body">
-            <%= f.text_field :name, size: 30 %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-8">
-          Your Email Address
-          <div class="panel-body">
+      <div class="row contact_line">
+          Your Email:&nbsp;
             <%= f.text_field :user_email, size: 50 %>
-          </div>
-        </div>
       </div>
-        <div class="row">
-          <div class="col-md-8">
-                Your Workplace
-              <div class="panel-body">
-                <%= f.text_field :workplace, size: 50 %>
-              </div>
-          </div>
-        </div>
-      <div class="row">
-        <div class="col-md-8 ">
-          Your Message
-          <div class="panel-body">
-            <%= f.text_area :message, size: "65x6" %>
-          </div>
-            <span  style="padding-left:30px">
-              <%= f.submit 'Send Message' %>
-            </span>
-        </div>
+      <div class="row contact_line">
+        Workplace:&nbsp;
+        <%= f.text_field :workplace, size: 50 %>
       </div>
-    <% end -%>
+      <div class="row contact_line">
+        Your Message&nbsp;<span class="contact_no_links">No Website Links Please</span>
+        <span class="panel-body">
+          <%= f.text_area :message, size: "65x6" %>
+        </span>
+      </div>
+      <div class="row contact_line">
+        <%= f.submit 'Send Message' %>
+      </div>
+
+<% end -%>
 </div>

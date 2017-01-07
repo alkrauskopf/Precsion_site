@@ -1,0 +1,45 @@
+<div class="container">
+<%= form_for([:admin, @captcha], html: {class: 'form-horizontal', role: 'form', multipart: true }) do |f| %>
+
+  <% if @captcha.errors.any? %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@captcha.errors.count, "error") %> prohibited this image from being updated:</h4>
+      <ul>
+        <% @captcha.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="form-group">
+      <%= f.label :name, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, size: 10 %>
+      </div>
+    </div>
+      <!-- Below code works, but Heroku keeps images in the public/ directory only temporarily,
+          so we're not doing paperclip upload.  -->
+     <!--
+      <div class="form-group">
+        <%#= f.label 'File Name', class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%#= f.text_field :url %>
+        </div>
+      </div>
+      -->
+    <div class="form-group">
+      <div class="col-sm-10">
+        <h4>Upload Image:</h4>
+        <%= f.file_field :image %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+<% end %>
+</div>

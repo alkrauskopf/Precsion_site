@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get 'offerings' => 'offerings#index'
 
   namespace :admin do
+    get 'captchas' => 'admins#captchas'
+    post 'captcha/create' => 'admins#create_captcha', as: 'captcha_images'
+    get 'captchas/destroy/:id' => 'admins#destroy_captcha', as: 'captcha_destroy'
     get 'user_roles' => 'users#index'
     post 'users' => 'users#create', as: 'users'
     patch 'user/:id/roles' => 'users#roles', as: 'role'
