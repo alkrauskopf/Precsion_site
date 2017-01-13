@@ -252,6 +252,10 @@ class Offering < ActiveRecord::Base
     current_mission.children_by_position.active.where('offering_type = ?', self.offering_type).first.description rescue ''
   end
 
+  def vision_label
+    current_mission.children_by_position.active.where('offering_type = ?', self.offering_type).first.name rescue ''
+  end
+
   def type_name
     name = 'Unknown Type'
     if self.offering_type == 'O'

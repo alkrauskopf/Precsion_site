@@ -196,7 +196,7 @@ h1, h2, h3, h4 {
   color: $dark_text;
 }
 .mission_row {
-  margin-top: .3em;
+  margin-top: 0em;
   margin-bottom: 2em;
 }
 
@@ -242,7 +242,8 @@ h1, h2, h3, h4 {
 .mission_label_2 {
   font-weight:normal;
   font-size:12px;
-  text-align: left;
+  text-align: right;
+  width:15%;
 }
 
 .mission_statement {
@@ -257,6 +258,7 @@ h1, h2, h3, h4 {
   font-weight:bold;
   font-size:15px;
   text-align: center;
+  width:85%;
 }
 .mission_panel {
   margin: 1em 3em 1.5em 3em;
@@ -265,6 +267,13 @@ h1, h2, h3, h4 {
   font-size:15px;
   color: $dark-text;
 }
+
+.vision_statement {
+  text-align: left;
+  line-height: 1.5em;
+  font-size:13px;
+}
+
 .mission_panel_2 {
   margin: .5em 4em 1em 4em;
   text-align: justify;
