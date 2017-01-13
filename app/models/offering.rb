@@ -248,6 +248,10 @@ class Offering < ActiveRecord::Base
     Offering.all_parents.where('offering_type= ?', 'I').first
   end
 
+  def vision
+    current_mission.children_by_position.active.where('offering_type = ?', self.offering_type).first.description rescue ''
+  end
+
   def type_name
     name = 'Unknown Type'
     if self.offering_type == 'O'
@@ -327,6 +331,10 @@ class Offering < ActiveRecord::Base
 
   def current_period
     Date.current.year.to_s + Date.current.month.to_s
+  end
+
+  def current_mission
+    Offering.missions.active.first rescue nil
   end
 
 end

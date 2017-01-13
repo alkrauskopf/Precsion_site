@@ -8,8 +8,8 @@
               <span class="mission_label_2">Mission:</span>&nbsp;&nbsp;
               <%= current_mission ? current_mission.brief.html_safe : '' %>
             </p>
-          <div class="mission_panel_2">
-            <%= current_mission ? current_mission.description.html_safe : '' %>
+          <div class="mission_panel_2" style="color:<%= active_offering.panel_color%>">
+            <%= active_offering.vision.html_safe %>
             <!-- <u><%#= link_to 'Learn More', about_us_path %></u> -->
           </div>
         </div>
