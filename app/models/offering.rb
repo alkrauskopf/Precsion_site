@@ -249,7 +249,7 @@ class Offering < ActiveRecord::Base
   end
 
   def vision
-    current_mission.children_by_position.active.where('offering_type = ?', self.offering_type).first.description rescue ''
+    current_mission.children_by_position.active.where('offering_type = ?', self.offering_type).first.brief rescue ''
   end
 
   def vision_label
