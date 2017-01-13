@@ -241,6 +241,9 @@ h1, h2, h3, h4 {
 }
 .mission_label_2 {
   font-weight:normal;
+  vertical-align:top;
+  padding-top:1.25em;
+  padding-bottom:1em;
   font-size:12px;
   text-align: right;
 }
@@ -254,8 +257,12 @@ h1, h2, h3, h4 {
 }
 .mission_statement_2 {
   font-weight:bold;
+  vertical-align:top;
+  padding-top:1em;
+  padding-bottom:1em;
   font-size:15px;
-  text-align: center;
+  padding-left:2em;
+  text-align: left;
   width:85%;
 }
 .mission_panel {
@@ -266,7 +273,20 @@ h1, h2, h3, h4 {
   color: $dark-text;
 }
 
+.vision_label {
+  font-weight:normal;
+  vertical-align:top;
+  padding-top:0em;
+  padding-bottom:0em;
+  font-size:12px;
+  text-align: right;
+}
+
 .vision_statement {
+  padding-top:0em;
+  padding-left:2.5em;
+  padding-right:3em;
+  padding-bottom:1.25em;
   text-align: left;
   line-height: 1.5em;
   font-size:13px;
