@@ -12,6 +12,11 @@
           <%= render partial: 'offering_stat_list', locals: { active_offering: @offering} %>
           <%= render partial: 'offering_image_list', locals: { active_offering: @offering} %>
         </div>
+        <% if @offering.prep? %>
+            <div class="col-md-9">
+              <%= render partial: 'offerings_box', locals: {overview: @offering} %>
+            </div>
+        <% end %>
         <% if @offering.services? %>
           <div class="col-md-9">
               <%= render partial: 'offerings_box', locals: {overview: @offering} %>
