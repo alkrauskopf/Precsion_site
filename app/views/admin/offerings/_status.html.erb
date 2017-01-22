@@ -1,12 +1,12 @@
 <!-- locals: { offering: @local_var, parent: @local_var2 } -->
 
-<div id="status" class="col-sm-4">
+<div id="status" class="col-sm-4" style="border: 2px solid <%= offering.ancestor.panel_color%>;" >
   <% if offering.visible? %>
-    <h4>Visible</h4>
+    <div class="status_box" style="background-color:<%= offering.ancestor.panel_color%>">Active</div>
   <% else %>
-    <h4><em>Hidden</em></h4>
+      <div class="status_box" style="background-color:<%= offering.ancestor.panel_color%>">In-Active</div>
   <% end %>
-
+  <p></p>
     <p>Offering Position: <%= offering.display_position %></p>
     <% if offering.parent_id.nil? %>
       <p>Parent offering</p>

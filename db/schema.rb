@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106180714) do
+ActiveRecord::Schema.define(version: 20170122012949) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 20170106180714) do
     t.integer "display_position", limit: 4,     default: 999
     t.integer "parent_id",        limit: 4
     t.boolean "is_visible",                     default: false
-    t.string  "offering_type",    limit: 1,     default: "O"
+    t.string  "offering_type",    limit: 2,     default: "O"
     t.date    "expire_date"
     t.string  "panel_header",     limit: 255
     t.string  "panel_color",      limit: 255,   default: "transparent"

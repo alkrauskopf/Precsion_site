@@ -15,6 +15,14 @@ class Offering < ActiveRecord::Base
     where('parent_id IS NULL')
   end
 
+  def ancestor
+    anc = self
+    until anc.parent_id.nil? do
+      anc = anc.parent
+    end
+    anc
+  end
+
   def all_children_by_position
     self.children.arrange_by_position
   end
@@ -171,6 +179,10 @@ class Offering < ActiveRecord::Base
     self.offering_type == 'Z'
   end
 
+  def prep?
+    self.offering_type == 'PP'
+  end
+
   def self.welcome_offerings
     off = []
     off << Offering.testimonials.active.all_parents.first
@@ -181,6 +193,7 @@ class Offering < ActiveRecord::Base
     off << Offering.tools.active.all_parents.first
     off << Offering.consultants.active.all_parents.first
     off << Offering.careers.active.all_parents.first
+    off << Offering.preps.active.all_parents.first
     o_list = off.compact
 
   end
@@ -244,8 +257,16 @@ class Offering < ActiveRecord::Base
     where('offering_type = ?','I').order('display_position ASC')
   end
 
+  def self.preps
+    where('offering_type = ?','PP').order('display_position ASC')
+  end
+
   def self.pm_parent
     Offering.all_parents.where('offering_type= ?', 'I').first
+  end
+
+  def self.prep_parent
+    Offering.all_parents.where('offering_type= ?', 'PP').first
   end
 
   def vision
@@ -284,6 +305,8 @@ class Offering < ActiveRecord::Base
       name = 'Performance Monitoring'
     elsif self.offering_type == 'Z'
       name = 'Career'
+    elsif self.offering_type == 'PP'
+      name = 'Precision Prep'
     end
     name
   end
@@ -316,6 +339,8 @@ class Offering < ActiveRecord::Base
       name = 'pm/'
     elsif self.offering_type == 'Z'
       name = 'team/'
+    elsif self.offering_type == 'PP'
+      name = 'prep/'
     end
     name
   end

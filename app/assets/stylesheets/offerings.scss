@@ -23,7 +23,6 @@ h1 {
 }
 
 #status {
-  border: 1px solid $palette_5;
   position: relative;
   top: 5px;
   p {
@@ -31,7 +30,13 @@ h1 {
     font-style: italic;
   }
 }
-
+.status_box {
+  color: $page_background;
+  text-align:center;
+  font-size:16px;
+  padding-top:.5em;
+  padding-bottom:.5em;
+}
 .panel {
   i {
     padding-right: 10px;
