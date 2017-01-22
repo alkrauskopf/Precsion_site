@@ -52,11 +52,11 @@
         <% end %>
         <% if hr_break %> <hr> <% end %>
         <% overview.children_by_position.active.each do |offering| %>
+            <div class="offering_name">
+              <%= offering.name == '' ? '' : (offering.name.html_safe + ' ') %>
+            </div>
             <p>
-              <span class="offering_name"><%= offering.name.html_safe %></span>
-            <span class="offering_descript">
-              <%= offering.description.html_safe %>
-            </span>
+              <%= offering.brief.html_safe %>
             </p>
             <% if !offering.active_contents.empty? %>
                 <div class="image_list">
