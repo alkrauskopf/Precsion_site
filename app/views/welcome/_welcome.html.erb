@@ -14,7 +14,7 @@
         </div>
         <% if @offering.prep? %>
             <div class="col-md-9">
-              <%= render partial: 'offerings_box', locals: {overview: @offering} %>
+              <%= render partial: 'prep_box', locals: {overview: @offering} %>
             </div>
         <% end %>
         <% if @offering.services? %>
