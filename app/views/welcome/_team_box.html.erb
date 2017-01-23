@@ -26,6 +26,15 @@
                           <%= users[idx-1].user_bio ? users[idx-1].user_bio.brief : ''%>
                       </td>
                     </tr>
+                    <% if !users[idx-1].user_povs.empty? %>
+                    <% users[idx-1].user_povs.each do |pov|%>
+                        <tr>
+                          <td colspan="2" style = "border-width:0px;">
+                            Article:&nbsp;&nbsp;<a href= <%= pov.url %> target="_blank"><u><%= pov.name.html_safe%></u></a>
+                          </td>
+                        </tr>
+                    <% end %>
+                <% end %>
                 </tbody>
               </table>
         </div>
@@ -45,12 +54,21 @@
                   </td>
                   <td style ="vertical-align:top;">
                     <span style = "font-weight:bold;"><%= (users[idx].prefix.nil? || users[idx].prefix.empty?) ? '' : users[idx].prefix + ' '%> <%= users[idx].full_name  %></span></br>
-                      <% if !users[idx].title.empty? %>
-                          <%= users[idx].title %></br>
-                      <% end %>
-                      <%= users[idx].user_bio ? users[idx].user_bio.brief : ''%>
+                    <% if !users[idx].title.empty? %>
+                        <%= users[idx].title %></br>
+                    <% end %>
+                    <%= users[idx].user_bio ? users[idx].user_bio.brief : ''%>
                   </td>
                 </tr>
+                <% if !users[idx].user_povs.empty? %>
+                  <% users[idx].user_povs.each do |pov|%>
+                    <tr>
+                      <td colspan="2" style = "border-width:0px;">
+                        Article:&nbsp;&nbsp;<a href= <%= pov.url %> target="_blank"><u><%= pov.name.html_safe%></u></a>
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
             </tbody>
           </table>
           <% end %>
