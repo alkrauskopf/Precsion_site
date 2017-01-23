@@ -1,12 +1,11 @@
 module ApplicationHelper
 
   def offering_palette(offering)
- #   if !offering.nil?
-    if false
-      background = offering.panel_color.include?('#') ? offering.panel_color : '#797980'
+    if !offering.nil? && !offering.ancestor.panel_color.nil?
+      backgrnd = offering.ancestor.panel_color.include?('#') ? offering.ancestor.panel_color : '#797980'
     else
-      background = '#ffffff'
+      backgrnd = '#ffffff'
     end
-    return background
+    return backgrnd
   end
 end
