@@ -12,7 +12,7 @@ class Offering < ActiveRecord::Base
 
 
   def self.all_parents
-    where('parent_id IS NULL')
+    where('parent_id IS NULL').sort_by{|p| p.type_name}
   end
 
   def ancestor
@@ -74,6 +74,10 @@ class Offering < ActiveRecord::Base
 
   def active_stats
     self.stats.active.by_position
+  end
+
+  def self.arrange_by_position
+    order('display_position ASC')
   end
 
   def self.arrange_by_position

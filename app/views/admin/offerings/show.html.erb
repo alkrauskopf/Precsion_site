@@ -2,7 +2,7 @@
     <div class="row col-md-12">
       <div class="panel panel-palette_5">
 
-        <div class="panel-heading" role="tab" id="heading<%= @offering.id %>">
+        <div class="panel-heading" role="tab" id="heading<%= @offering.id %>" style="background-color:<%= offering_palette(@offering)%>">
           <h4><i class="fa fa-wrench"></i><%= @offering.type_name %>:&nbsp;<%= @offering.name %></h4>
           <a class="btn btn-default" href="<%= edit_admin_offering_path(@offering) %>">Edit</a>
         </div>

@@ -9,7 +9,7 @@ class Admin::OfferingsController < ApplicationController
   before_action :banner_image, except: []
 
   def index
-    @parents = Offering.all_parents.arrange_by_position
+    @parents = Offering.all_parents
   end
 
   def new
