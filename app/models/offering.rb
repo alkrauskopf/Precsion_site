@@ -7,6 +7,8 @@ class Offering < ActiveRecord::Base
   has_many :contents, dependent: :destroy
   has_many :stats, dependent: :destroy
   has_many :offering_logs, dependent: :destroy
+  has_many :offering_testimonies, dependent: :destroy
+  has_many :testimonies, :through => :offering_testimonies
 
   validates_presence_of :offering_type
 
@@ -100,6 +102,10 @@ class Offering < ActiveRecord::Base
    UserPov.all - self.user_povs
   end
 
+  def available_testimonies
+    Offering.testimonials.active - self.testimonies
+  end
+
   def expired?
     !self.expire_date.nil? && self.expire_date < Date.today
   end
@@ -129,6 +135,14 @@ class Offering < ActiveRecord::Base
       self.offering_user_povs.create(user_pov_id: pov.id)
     else
       self.offering_user_povs.associations_with(pov.id).destroy_all
+    end
+  end
+
+  def add_remove_testimony!(tst)
+    if self.testimonies.include?(tst)
+      OfferingTestimony.for(self, tst).destroy_all
+    else
+      self.testimonies << tst
     end
   end
 

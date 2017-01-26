@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122012949) do
+ActiveRecord::Schema.define(version: 20170126050015) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -94,6 +94,16 @@ ActiveRecord::Schema.define(version: 20170122012949) do
   end
 
   add_index "offering_logs", ["offering_id"], name: "index_offering_logs_on_offering_id", using: :btree
+
+  create_table "offering_testimonies", force: :cascade do |t|
+    t.integer  "offering_id",  limit: 4
+    t.integer  "testimony_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "offering_testimonies", ["offering_id"], name: "index_offering_testimonies_on_offering_id", using: :btree
+  add_index "offering_testimonies", ["testimony_id"], name: "index_offering_testimonies_on_testimony_id", using: :btree
 
   create_table "offering_user_povs", force: :cascade do |t|
     t.integer  "offering_id", limit: 4

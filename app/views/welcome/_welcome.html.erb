@@ -10,6 +10,7 @@
             <%= render partial: 'offering_log_list', locals: { active_offering: @offering} %>
           <% end %>
           <%= render partial: 'offering_stat_list', locals: { active_offering: @offering} %>
+          <%= render partial: 'offering_testimonies', locals: { active_offering: @offering} %>
           <%= render partial: 'offering_image_list', locals: { active_offering: @offering} %>
         </div>
         <% if @offering.prep? %>

@@ -1,0 +1,31 @@
+<% if !active_offering.testimonies.active.empty? %>
+  <div class="offering-stat-box">
+    <% active_offering.testimonies.active.each do|tst| %>
+      <div class = "row offering-stats">
+        <table style="width:95%">
+          <tbody>
+          <colgroup>
+            <col style="width:30%">
+            <col style="width:70%">
+          </colgroup>
+          <tr>
+            <td class= "testimony_image thumbnail-small">
+              <% if (!tst.images.empty? ) %>
+                  <%= image_tag (tst.images.first.pic) %>
+              <% end %>
+            </td>
+            <td class= "off_testimony_brief">
+              <%= tst.brief.html_safe %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan=2 class= "off_testimony_descript">
+              <%= tst.description.html_safe %>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+<% end %>

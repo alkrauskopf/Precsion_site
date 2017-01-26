@@ -1,0 +1,41 @@
+<div class="col-md-8 pov_load-xxx-no-ajax">
+  <div class="panel panel-palette_2">
+    <div class="panel-heading">
+      <h5><%= pluralize(testimonies.size, 'Associated Testimony') %></h5>
+    </div>
+    <div class="panel-body, table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <tbody>
+          <%= content_tag_for(:tr, testimonies) do |tst| %>
+            <td style="width:15%">
+              <a><%= button_to 'Remove', admin_assign_testimony_path(offering.id, testimony_id: tst.id) %></a>
+            </td>
+            <td>
+              <%= tst.name %>&nbsp;:&nbsp;<%= tst.brief %>
+            </td>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel panel-palette_5">
+    <div class="panel-heading">
+      <h5><%= pluralize(avail_testimonies.size, 'Available Testimony') %></h5>
+    </div>
+    <div class="panel-body, table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <tbody>
+          <%= content_tag_for(:tr, avail_testimonies) do |tst| %>
+            <td style="width:15%">
+              <a><%= button_to ' Add  ', admin_assign_testimony_path(offering, testimony_id: tst.id) %></a>
+            </td>
+            <td>
+              <%= tst.name %>&nbsp;:&nbsp;<%= tst.brief %>
+            </td>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

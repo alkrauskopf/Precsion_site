@@ -740,6 +740,27 @@ h1, h2, h3, h4 {
   margin: 1.5em 0em 0em 0em;
 }
 
+.off_testimony_brief {
+  padding-top:1em;
+  line-height:1.2em;
+  padding-right:2em;
+  text-align: left;
+  vertical-align: top;
+  font-size:11px;
+  color: $dark_text;
+}
+
+.off_testimony_descript {
+  padding-top:.75em;
+  line-height:1.2em;
+  font-style:italic;
+  padding-right:2em;
+  text-align: left;
+  vertical-align: top;
+  font-size:11px;
+  color: $dark_text;
+}
+
 .testimony_row2 {
   line-height:1.5em;
   vertical-align: top;

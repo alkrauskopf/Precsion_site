@@ -2,7 +2,7 @@ class Admin::OfferingsController < ApplicationController
 
   before_action :pm_offerings, except: []
   before_action :admin_authorize
-  before_action :set_offering, only: [:edit, :show, :update, :destroy, :assign_pov]
+  before_action :set_offering, only: [:edit, :show, :update, :destroy, :assign_pov, :assign_testimony]
   before_action :set_image, only: [:edit_image, :update_image, :destroy_image]
   before_action :set_content, only: [:edit_content, :update_content, :destroy_content]
   before_action :set_stat, only: [:edit_stat, :update_stat, :destroy_stat]
@@ -198,7 +198,15 @@ class Admin::OfferingsController < ApplicationController
       format.html { redirect_to edit_admin_offering_path(@offering)}
       format.js
     end
+  end
 
+  def assign_testimony
+    tst = Offering.find(params[:testimony_id])
+    @offering.add_remove_testimony!(tst)
+    respond_to do |format|
+      format.html { redirect_to edit_admin_offering_path(@offering)}
+      format.js
+    end
   end
 
   private
