@@ -30,6 +30,15 @@
                 </td>
                 <td class="partner_descript" >
                   <%= partner.brief.html_safe %>
+                  <% if !partner.testimonies.active.empty? %>
+                      <% grp = 'prt' %>
+                      <div class="about_blue_font image_list">
+                        <% partner.testimonies.active.each_with_index do |tst, idx| %>
+                            <%=tst.tst_view_label%>&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
+                            <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
+                        <% end %>
+                      </div>
+                  <% end %>
                 </td>
                 <td></td>
               </tr>
