@@ -69,7 +69,7 @@
               <% grp = 'rsch' %>
               <div class="about_blue_font image_list">
                 <% research.testimonies.active.each_with_index do |tst, idx| %>
-                    <%=tst.tst_view_label%>:&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
+                    <%=tst.tst_view_label%>&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
                     <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
                 <% end %>
               </div>
