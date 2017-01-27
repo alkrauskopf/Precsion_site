@@ -1,0 +1,63 @@
+<!-- Modal -->
+<div class="modal fade" id='imageModal<%=grp%><%=idx%><%=testimony.id%>' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title panel modal-image-panel" id="myModalLabel"><%= testimony.brief %></h4>
+      </div>
+      <div class="modal-body modal-tst-body">
+        <div class = 'modal-tst-box'>
+            <div class="row">
+              <% if !testimony.images.empty? %>
+                <div class= "col-md-2" >
+                  <div class= "modal-tst-pic thumbnail-60x100">
+                    <%= image_tag (testimony.images.first.pic) %>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="modal-tst-person">
+                    <%= testimony.tst_person_name %>
+                  </div>
+                  <div class="modal-tst-header">
+                    <%= testimony.tst_person_role %>
+                  </div>
+                  <div class=" modal-tst-topic">
+                    <%= testimony.tst_topic %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="modal-tst-person">
+                  <%= testimony.tst_person_name %>
+                </div>
+                <div class="modal-tst-header">
+                  <%= testimony.tst_person_role %>
+                </div>
+                <div class=" modal-tst-topic">
+                  <%= testimony.tst_topic %>
+                </div>
+              <% end %>
+            </div>
+          <% if !testimony.tst_statement.blank? %>
+            <div class="row">
+              <div class="modal-tst-panel">
+                "<%= testimony.tst_statement %>"
+              </div>
+            </div>
+          <% end %>
+          <% if !testimony.tst_video.blank? %>
+            <div class="row">
+              <div class="modal-tst-video">
+                <%= testimony.tst_video.html_safe %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

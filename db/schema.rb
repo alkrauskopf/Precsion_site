@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126050015) do
+ActiveRecord::Schema.define(version: 20170126173156) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -126,6 +126,12 @@ ActiveRecord::Schema.define(version: 20170126050015) do
     t.date    "expire_date"
     t.string  "panel_header",     limit: 255
     t.string  "panel_color",      limit: 255,   default: "transparent"
+    t.string  "tst_person_name",  limit: 255
+    t.string  "tst_person_role",  limit: 255
+    t.text    "tst_statement",    limit: 65535
+    t.string  "tst_view_label",   limit: 255,   default: "Customer Feedback"
+    t.text    "tst_video",        limit: 65535
+    t.string  "tst_topic",        limit: 255
   end
 
   create_table "stats", force: :cascade do |t|

@@ -105,7 +105,7 @@ class Admin::OfferingsController < ApplicationController
     respond_to do |format|
       @offering.expire_date = expire_days_params[:num_days] == '' ? 10000.days.from_now : (Date.today + expire_days_params[:num_days].to_i)
       if @offering.update(offering_params)
-        format.html { redirect_to admin_offering_path, notice: "#{@offering.name} has been updated." }
+        format.html { redirect_to admin_offering_path, notice: "#{@offering.name} has been updatedxx." }
         format.json { render :show, status: :ok, location: @offering }
       else
         format.html { render :edit }
@@ -224,7 +224,8 @@ class Admin::OfferingsController < ApplicationController
   def offering_params
     params.require(:offering).permit(:name, :brief, :description,
       :display_position, :is_visible, :parent_id, :offering_type,
-      :panel_header, :panel_color)
+      :panel_header, :panel_color, :tst_person_name, :tst_person_role,
+      :tst_statement, :tst_view_label, :tst_video, :tst_topic)
   end
 
   def expire_days_params

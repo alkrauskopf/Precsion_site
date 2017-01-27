@@ -9,9 +9,9 @@ class Offering < ActiveRecord::Base
   has_many :offering_logs, dependent: :destroy
   has_many :offering_testimonies, dependent: :destroy
   has_many :testimonies, :through => :offering_testimonies
+  has_many :testimony_fors, :through => :offering_testimonies
 
   validates_presence_of :offering_type
-
 
   def self.all_parents
     where('parent_id IS NULL').sort_by{|p| p.type_name}
@@ -32,6 +32,10 @@ class Offering < ActiveRecord::Base
   # 1st generation only
   def children_by_position
     self.children.where('parent_id = ?', self.id).order('display_position ASC')
+  end
+
+  def children_testimonies
+    self.children.active.collect{|t| t.testimonies.active}.flatten.uniq.sort_by{|p| p.display_position} - self.testimonies.active
   end
 
   def parent?

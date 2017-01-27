@@ -352,6 +352,14 @@ h1, h2, h3, h4 {
   max-height: 50px;
   max-width:50px;
 }
+.thumbnail-80x120 img {
+  max-height: 120px;
+  max-width: 80px;
+}
+.thumbnail-60x100 img {
+  max-height: 100px;
+  max-width: 60px;
+}
 
 .thumbnail-med img {
   max-height: 80px;
@@ -589,6 +597,57 @@ h1, h2, h3, h4 {
   background-color: $page_background;
 }
 
+.modal-tst-body {
+  background-color: $page_background;
+}
+.modal-tst-box {
+  margin: 0em 1.5em 1em 1.5em;
+}
+.modal-tst-person {
+  color: $palette_2;
+  padding: 0em 0em 0em 0em;
+  font-size: 17px;
+  text-align: center;
+  font-weight:bold;
+  font-style: normal;
+}
+.modal-tst-header {
+  color: $palette_2;
+  padding: 1em 0em 0em 0em;
+  font-size: 15px;
+  text-align: center;
+  font-weight:bold;
+  font-style: normal;
+}
+.modal-tst-topic {
+  padding: 1em 0em 0em 0em;
+  color: $dark_text;
+  font-size: 13px;
+  text-align: center;
+  font-weight:bold;
+  font-style:normal;
+}
+.modal-tst-panel {
+  color: $dark_text;
+  padding: 1.2em 1.5em 1.2em 1.5em;
+  font-size: 12px;
+  text-align: justify;
+  font-weight:normal;
+  font-style:italic;
+}
+.modal-tst-pic {
+  margin: 0em 0em 0em 0em;
+  float:left;
+}
+.modal-tst-video {
+  color: $red_text;
+  margin:1em 1em 1em 1em;
+  font-size: 12px;
+  text-align: left;
+  font-weight:normal;
+  font-style:normal;
+}
+
 .modal-stat-panel {
   color: $dark_text;
   font-style: normal;
@@ -628,7 +687,7 @@ h1, h2, h3, h4 {
   line-height:1.5em;
   padding-top: 0em;
   padding-left: 0em;
-  padding-rightt: 1em;
+  padding-right: 1em;
   text-align: left;
   font-weight:normal;
 }
@@ -661,7 +720,7 @@ h1, h2, h3, h4 {
   line-height:1.5em;
   padding-top: 0em;
   padding-left: 0em;
-  padding-rightt: 1em;
+  padding-right: 1em;
   text-align: left;
   font-weight:normal;
 }
@@ -740,24 +799,47 @@ h1, h2, h3, h4 {
   margin: 1.5em 0em 0em 0em;
 }
 
-.off_testimony_brief {
+.off-testimony-box {
+  margin: 1em 0em 0em 0em;
+  color:$dark_text;
+}
+.off-testimony {
+  border-top:1px solid $dark_text;
   padding-top:1em;
-  line-height:1.2em;
-  padding-right:2em;
-  text-align: left;
-  vertical-align: top;
-  font-size:11px;
-  color: $dark_text;
+  padding-bottom:1em;
+}
+.off-testimony-row {
+  border-bottom:1px dashed $navbar_gray;
+  padding-top:1em;
+  padding-bottom:1em;
 }
 
-.off_testimony_descript {
-  padding-top:.75em;
+.off-testimony_image {
+  float:left;
+  padding-left:1em;
+  margin: 0em 0em 0em 0em;
+}
+.off_testimony_person {
+  padding-top:0em;
   line-height:1.2em;
-  font-style:italic;
   padding-right:2em;
   text-align: left;
   vertical-align: top;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.off_testimony_role {
+  font-weight:normal;
+}
+.off_testimony_statement {
+  padding:1em 2em 0em 1em;
+  line-height:1.2em;
+  text-align: justify;
+  vertical-align: top;
   font-size:11px;
+  font-weight:normal;
+  font-style:italic;
   color: $dark_text;
 }
 

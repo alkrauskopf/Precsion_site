@@ -62,7 +62,7 @@
               <% end %>
             <% end %>
             <% if !grant.images.not_carousels.empty? %>
-                <% grp = 'c1' %>
+                <% grp = 'grt' %>
                 <div class="about_blue_font image_list">
                   <% grant.images.not_carousels.each_with_index do |image, idx| %>
                       View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u>
@@ -74,6 +74,15 @@
                 <div class="about_blue_font pov_list">
                   <% grant.user_povs.each do |pov| %>
                       Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+                  <% end %>
+                </div>
+            <% end %>
+            <% if !grant.testimonies.active.empty? %>
+                <% grp = 'grt' %>
+                <div class="about_blue_font image_list">
+                  <% grant.testimonies.active.each_with_index do |tst, idx| %>
+                      <%=tst.tst_view_label%>:&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
+                      <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
                   <% end %>
                 </div>
             <% end %>

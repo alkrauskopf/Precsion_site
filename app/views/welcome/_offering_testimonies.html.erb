@@ -1,7 +1,7 @@
+<div class="off-testimony-box off-testimony">
 <% if !active_offering.testimonies.active.empty? %>
-  <div class="offering-stat-box">
     <% active_offering.testimonies.active.each do|tst| %>
-      <div class = "row offering-stats">
+      <div class = "row off-testimony-row">
         <table style="width:95%">
           <tbody>
           <colgroup>
@@ -9,23 +9,35 @@
             <col style="width:70%">
           </colgroup>
           <tr>
-            <td class= "testimony_image thumbnail-small">
+            <td class= "off-testimony_image thumbnail-small">
               <% if (!tst.images.empty? ) %>
                   <%= image_tag (tst.images.first.pic) %>
               <% end %>
             </td>
-            <td class= "off_testimony_brief">
-              <%= tst.brief.html_safe %>
+            <td class = "off_testimony_person">
+                <%= tst.tst_person_name %><br/>
+              <span class = "off_testimony_role">
+                <%= tst.tst_person_role %>
+              </span>
             </td>
           </tr>
           <tr>
-            <td colspan=2 class= "off_testimony_descript">
-              <%= tst.description.html_safe %>
+            <td colspan=2 class= "off_testimony_statement">
+              <%= tst.tst_statement %>
             </td>
           </tr>
           </tbody>
         </table>
       </div>
     <% end %>
+<% end %>
+<% if !active_offering.children_testimonies.empty? %>
+  <% grp = 'chil' %>
+  <div class="about_blue_font image_list">
+    <% active_offering.children_testimonies.each_with_index do |tst, idx| %>
+        <%=tst.tst_view_label%>:&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
+        <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
+    <% end %>
   </div>
 <% end %>
+</div>
