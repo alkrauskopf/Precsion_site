@@ -12,8 +12,10 @@ Rails.application.config.assets.version = '1.0'
 #
 #  Stylesheets
 Rails.application.config.assets.precompile += [
+    'application.css',
+    'application-variables.css',
     'about.css',
-    'offeirngs.css',
+    'offerings.css',
     'session.css',
     'users.css'
     ]

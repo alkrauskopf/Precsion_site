@@ -105,7 +105,7 @@ class Admin::OfferingsController < ApplicationController
     respond_to do |format|
       @offering.expire_date = expire_days_params[:num_days] == '' ? 10000.days.from_now : (Date.today + expire_days_params[:num_days].to_i)
       if @offering.update(offering_params)
-        format.html { redirect_to admin_offering_path, notice: "#{@offering.name} has been updatedxx." }
+        format.html { redirect_to admin_offering_path, notice: "#{@offering.name} has been updated." }
         format.json { render :show, status: :ok, location: @offering }
       else
         format.html { render :edit }
