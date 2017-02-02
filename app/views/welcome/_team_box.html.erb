@@ -61,7 +61,7 @@
                   </td>
                 </tr>
                 <% if !users[idx].user_povs.empty? %>
-                  <% users[idx].user_povs.each do |pov|%>
+                  <% users[idx].user_povs.active.each do |pov|%>
                     <tr>
                       <td colspan="2" style = "border-width:0px;">
                         <%= pov.label %>&nbsp;&nbsp;<a href= <%= pov.url %> target="_blank"><u><%= pov.name.html_safe%></u></a>

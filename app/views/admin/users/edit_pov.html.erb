@@ -1,0 +1,8 @@
+<h1>Edit <%= @user_pov.user.last_name %> POV</h1>
+<div class="row">
+    <%= render partial: 'pov_form', locals: { new_pov: @user_pov, user: @user_pov.user} %>
+    <hr>
+</div>
+<div class="row col-md-offset-2 col-md-2" >
+  <%= link_to 'Back', admin_user_roles_path %>
+</div>

@@ -1,8 +1,8 @@
 <div class = "container pov_list-container">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-1">
     </div>
-    <div class="col-md-8">
+    <div class="col-md-10">
       <div class="panel panel-default-2">
         <div class="panel-heading">
           <h5><i class="fa fa-fw fa-user"></i> <%= user.first_name%> has <%= pluralize(user.user_povs.size, 'POV URL')%></h5>
@@ -12,13 +12,18 @@
               <tbody>
                   <%= content_tag_for(:tr, user.user_povs) do |pov| %>
                       <td>
-                        <%= pov.name %>
+                        <%= pov.label %><br/>
+                        <%= pov.name %><br/>
+                        <%=pov.active? ? "Active" : "Inactive" %>
                       </td>
                       <td>
                         <a href= <%= pov.url %>> <%= pov.url %> </a>
                       </td>
                       <td>
-                        <%= link_to 'Destroy POV', [:admin, pov], method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <%= link_to 'Destroy ', [:admin, pov], method: :delete, data: { confirm: 'Are you sure?' } %>
+                      </td>
+                      <td>
+                        <%= link_to 'Edit ', [:admin, pov] %>
                       </td>
                   <% end %>
               </tbody>

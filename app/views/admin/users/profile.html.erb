@@ -1,4 +1,5 @@
 <h2>Edit <%= @user.last_name %> Profile</h2>
 <%= render 'form' %>
 <%= render partial: 'bio_form', locals: {user_bio: @user_bio, user: @user}%>
+<%= render partial: 'pov_list', locals: {user: @user}%>
 <%= render partial: 'pov_form', locals: {user_povs: @user_povs, new_pov: @new_pov, user: @user}%>

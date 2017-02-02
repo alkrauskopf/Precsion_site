@@ -6,5 +6,11 @@ class UserPov < ActiveRecord::Base
   has_many :offerings, through: :offering_user_povs
 
 
+  def self.active
+    where('is_active =?', true)
+  end
 
+  def active?
+    self.is_active
+  end
 end

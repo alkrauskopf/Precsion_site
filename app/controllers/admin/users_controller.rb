@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   before_action :admin_authorize
   before_action :set_user, only: [:roles, :destroy, :profile, :update]
   before_action :set_bio, only: [:update_bio]
-  before_action :set_pov, only: [:destroy_pov]
+  before_action :set_pov, only: [:edit_pov, :destroy_pov, :update_pov]
   before_action :banner_image, except: []
 
   def index
@@ -45,7 +45,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def profile
-
     if @user.user_bio.nil?
       @user_bio = UserBio.new
     else
@@ -103,8 +102,19 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_user_path(@user.id)
   end
 
-  def destroy_pov
+  def edit_pov
+  end
 
+  def update_pov
+    if @user_pov.update(user_pov_params)
+      flash[:notice] = 'Updated User POV'
+    else
+      flash[:error] = 'Something went wrong'
+    end
+    redirect_to admin_user_path(@user_pov.user.id)
+  end
+
+  def destroy_pov
     if @user_pov.destroy
       flash[:notice] = 'POV was successfully destroyed.'
     else
@@ -151,7 +161,7 @@ class Admin::UsersController < ApplicationController
   def user_pov_params
     @user = User.find(params[:user_pov][:user_id])
     params.require(:user_pov).permit(
-        :user_id, :name, :url, :label
+        :user_id, :name, :url, :label, :is_active
     )
   end
 end

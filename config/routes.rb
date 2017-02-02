@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     patch 'user/:id' => 'users#update'
     post 'user_bios' => 'users#create_bio', as: 'user_bios'
     patch 'user_bio/:id' => 'users#update_bio', as: 'user_bio'
+    get 'user_pov/:id' => 'users#edit_pov', as: 'edit_pov'
+    patch 'user_pov/:id' => 'users#update_pov'
     post 'user_povs' => 'users#create_pov', as: 'user_povs'
     delete 'user_pov/:id' => 'users#destroy_pov', as: 'user_pov'
     post 'offering_pov/:id' => 'offerings#assign_pov', as: 'assign_pov'
