@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+#  mount Wirispluginengine::Engine => 'wirispluginengine'
+
   default_url_options host: 'localhost', port: 3000
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

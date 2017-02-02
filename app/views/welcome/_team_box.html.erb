@@ -30,7 +30,7 @@
                     <% users[idx-1].user_povs.each do |pov|%>
                         <tr>
                           <td colspan="2" style = "border-width:0px;">
-                            Article:&nbsp;&nbsp;<a href= <%= pov.url %> target="_blank"><u><%= pov.name.html_safe%></u></a>
+                            <%= pov.label %>&nbsp;&nbsp;<a href= <%= pov.url %> target="_blank"><u><%= pov.name.html_safe%></u></a>
                           </td>
                         </tr>
                     <% end %>
@@ -64,7 +64,7 @@
                   <% users[idx].user_povs.each do |pov|%>
                     <tr>
                       <td colspan="2" style = "border-width:0px;">
-                        Article:&nbsp;&nbsp;<a href= <%= pov.url %> target="_blank"><u><%= pov.name.html_safe%></u></a>
+                        <%= pov.label %>&nbsp;&nbsp;<a href= <%= pov.url %> target="_blank"><u><%= pov.name.html_safe%></u></a>
                       </td>
                     </tr>
                   <% end %>

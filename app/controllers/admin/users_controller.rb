@@ -151,7 +151,7 @@ class Admin::UsersController < ApplicationController
   def user_pov_params
     @user = User.find(params[:user_pov][:user_id])
     params.require(:user_pov).permit(
-        :user_id, :name, :url
+        :user_id, :name, :url, :label
     )
   end
 end
