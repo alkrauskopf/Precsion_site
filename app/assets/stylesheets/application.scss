@@ -916,6 +916,14 @@ h1, h2, h3, h4 {
   font-size:16px;
   color: $dark_text;
 }
+.pp_enroll {
+  margin: 0em 0em 0em 14em;
+  line-height:1.0em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: center;
+  font-size:11px;
+}
 
 .research_join_list {
   line-height:1.0em;
@@ -1093,4 +1101,80 @@ h1, h2, h3, h4 {
   padding-top:3em;
   padding-bottom:1em;
 }
+.admin_container {
+  margin: 3em 3em 3em 3em;
+}
 
+.reservation {
+  line-height:2.0em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: left;
+  font-size:14px;
+  color: $dark_text;
+}
+
+.reservation .venue {
+  width:25%;
+  font-weight:bold;
+  text-align: center;
+}
+
+.enroll_venue {
+  padding: 2em 0em 0em 0em;
+  font-weight:bold;
+  font-style: normal;
+  text-align: left;
+  font-size:18px;
+  color: $red_text;
+}
+.enroll_dates {
+  padding: 1em 0em 0em 0em;
+  font-weight:bold;
+  font-style: normal;
+  text-align: left;
+  font-size:14px;
+  color: $dark_text;
+}
+.enroll_status {
+  padding: 1em 0em 0em 0em;
+  font-weight:bold;
+  font-style: normal;
+  text-align: left;
+  font-size:11px;
+  color: $red_text;
+}
+.reservation_edit {
+  margin: 0em 2em 0em 1em;
+  line-height:1.5em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: left;
+  font-size:12px;
+  border-width:0px;
+  color: $blue_text;
+}
+.reservation_edit .edit_button{
+  width:15%;
+  line-height:1.5em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: left;
+  font-size:10px;
+  color: $blue_text;
+}
+
+.reservation_edit .status {
+  font-weight:bold;
+  font-size:11px;
+  text-align: center;
+}
+.enroll_return {
+  padding: 1em 0em 0em 3em;
+  font-weight:normal;
+  font-style: normal;
+  text-decoration:underline;
+  text-align: left;
+  font-size:14px;
+  color: $link;
+}
