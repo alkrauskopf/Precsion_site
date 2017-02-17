@@ -7,14 +7,20 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 # User Roles
-Authorization.destroy_all
-Authorization.create(id: 1, name: 'admin', long_name: 'System Administrator')
-Authorization.create(id: 2, name: 'team', long_name: 'Core Team Member')
+if false
+  Authorization.destroy_all
+  Authorization.create(name: 'admin', long_name: 'System Administrator')
+  Authorization.create(name: 'team', long_name: 'Core Team Member')
+  Authorization.create(name: 'prep', long_name: 'Precision Prep Admin')
+end
 #
 
 #  User Classes
-UserClass.destroy_all
-UserClass.create(id: 1, abbrev: 'core', name: 'Core Team', description: 'Core Team Member')
-UserClass.create(id: 2, abbrev: 'consult', name: 'Exended Team', description: 'Extended Team Member')
+if false
+  UserClass.destroy_all
+  UserClass.create( abbrev: 'core', name: 'Core Team', description: 'Core Team Member')
+  UserClass.create( abbrev: 'consult', name: 'Exended Team', description: 'Extended Team Member')
+  UserClass.create(abbrev: 'prep', name: 'Prep Team', description: 'Precision Prep Team')
+end
 #
 

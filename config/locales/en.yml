@@ -26,3 +26,10 @@ en:
       subject: Precision Contact Us Notice
     contact_us_reply:
       subject: Precision Thank You
+
+  site_name: Precision Prep
+  reservation_notifier:
+    notify_us:
+      subject: Precision Prep Enrollment Notification
+    confirmation:
+      subject: Precision Prep Confirmation

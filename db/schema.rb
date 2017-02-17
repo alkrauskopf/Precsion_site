@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202044009) do
+ActiveRecord::Schema.define(version: 20170217163553) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -66,6 +66,21 @@ ActiveRecord::Schema.define(version: 20170202044009) do
     t.datetime "updated_at",                              null: false
     t.boolean  "is_active",               default: false
   end
+
+  create_table "events", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "capacity",    limit: 4
+    t.integer  "price_cents", limit: 8
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "venue_id",    limit: 4
+    t.text     "location",    limit: 65535
+    t.text     "time",        limit: 65535
+    t.boolean  "is_active",                 default: true
+  end
+
+  add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
   create_table "offering_images", force: :cascade do |t|
     t.string   "name",               limit: 255
@@ -134,6 +149,20 @@ ActiveRecord::Schema.define(version: 20170202044009) do
     t.string  "tst_topic",        limit: 255
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "event_id",     limit: 4
+    t.string   "first_name",   limit: 255
+    t.string   "last_name",    limit: 255
+    t.string   "email",        limit: 255
+    t.integer  "status",       limit: 4,     default: 0
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.text     "notes",        limit: 65535
+    t.boolean  "was_notified",               default: false
+  end
+
+  add_index "reservations", ["event_id"], name: "index_reservations_on_event_id", using: :btree
+
   create_table "stats", force: :cascade do |t|
     t.integer  "offering_id", limit: 4
     t.integer  "stat",        limit: 4
@@ -201,9 +230,18 @@ ActiveRecord::Schema.define(version: 20170202044009) do
     t.string   "prefix",           limit: 255
     t.boolean  "is_emailee",                   default: false
     t.boolean  "is_active",                    default: false
+    t.boolean  "is_p_emailee",                 default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name",       limit: 64
+    t.text     "notes",      limit: 65535
+    t.boolean  "is_active",                default: true
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
 
   add_foreign_key "offering_user_povs", "offerings"
   add_foreign_key "offering_user_povs", "user_povs"
