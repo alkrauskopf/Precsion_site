@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 # User Roles
-if true
+if false
   Authorization.destroy_all
   Authorization.create(name: 'admin', long_name: 'System Administrator')
   Authorization.create(name: 'team', long_name: 'Core Team Member')
@@ -16,8 +16,8 @@ end
 #
 
 #  User Classes
-if true
-  
+if false
+
   UserClass.destroy_all
   UserClass.create( abbrev: 'core', name: 'Core Team', description: 'Core Team Member')
   UserClass.create( abbrev: 'consult', name: 'Exended Team', description: 'Extended Team Member')

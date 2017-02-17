@@ -66,7 +66,11 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params[:reservation][:status] = (params[:reservation][:status] == '' ? @reservation.status : params[:reservation][:status].to_i)
+    if params[:reservation][:status].present? && !@reservation.status.nil?
+      params[:reservation][:status] = (params[:reservation][:status] == '' ? @reservation.status : params[:reservation][:status].to_i)
+    else
+      params[:reservation][:status] = 0
+    end
     params.require(:reservation).permit(:event_id, :first_name, :last_name, :email, :status, :notes)
   end
 
