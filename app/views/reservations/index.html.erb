@@ -1,0 +1,57 @@
+
+  <div class = "container admin_container">
+    <div class="row">
+      <div class="col-md-2">
+        <%= link_to 'Return', root_path(:id => Offering.prep_parent.id), class: 'enroll_return' %>
+      </div>
+      <div class="col-md-8">
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+        <div class="row">
+        <div class="col-md-2"></div>
+          <div class=" col-md-8 image_panel">
+            <div class="panel panel-palette_2">
+              <div class="panel-heading" style="background:<%=@prep.panel_color%>">
+                <h4><%= pluralize(@pending_events.size, @prep.name + ' Offering')%></h4>
+              </div>
+              <div class="panel-body, table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                  <tbody class="reservation">
+                  <%= content_tag_for(:tr, @pending_events) do |event| %>
+                      <td class="venue">
+                        <%= event.venue.name %>
+                      </td>
+                      <td>
+                        <%= !event.start_date.nil? ? event.start_date.strftime('%b %d, %Y') : '-'%>&nbsp;-&nbsp;
+                        <%= !event.end_date.nil? ? event.end_date.strftime('%b %d, %Y') : '-'%><br/>
+                        <%= event.time%>
+                        <% if @padmin %>
+                          <hr>
+                          <%= pluralize(event.reservations.pendings.size, ' Pending')%>,&nbsp;
+                          <%= pluralize(event.reservations.valids.size, ' Valid')%>,&nbsp;
+                          <%= pluralize(event.reservations.confirms.size, ' Confirm')%>
+                          <%= render partial: 'edit_list', locals: {:event=> event} %>
+                        <% end %>
+                      </td>
+
+                      <td>
+                        <%= humanized_money_with_symbol(event.price) %>
+                      </td>
+                      <td>
+                        <% if event.open?%>
+                            <%= button_to 'Enroll', prep_enroll_path(:event_id=>event.id), class: 'button_green' %>
+                        <% else %>
+                          Closed
+                        <% end %>
+                      </td>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        <div class="col-md-2"></div>
+      </div>
+  </div>
+

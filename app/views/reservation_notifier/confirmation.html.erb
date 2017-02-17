@@ -1,0 +1,19 @@
+<h4><%= @name %>,&nbsp;Thank You For Enrolling In <em>Precision Prep</em></h4>
+
+<h5>Location:&nbsp;<%=@enrollment.event.venue.name%></h5>
+
+<h5><%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%>&nbsp;-&nbsp;
+  <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%></h5>
+
+<p>
+  Your reservation is currently <%=@enrollment.status.upcase %>
+</p>
+<p>
+  The course fee is <%= humanized_money_with_symbol(@enrollment.event.price) %>
+</p>
+<p>
+  We will be following up with you shortly to confirm your attendance.
+</p>
+<p>
+  Thanks Again!<br/>The Precision Prep Team
+</p>

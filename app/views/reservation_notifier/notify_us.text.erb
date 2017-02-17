@@ -1,0 +1,16 @@
+
+<%= t('site_name') %> Enrollment Notification
+
+
+Name: <%=@name%>
+
+Email: <%=@email%>
+
+<%= @enrollment.event.venue.name %>
+
+<%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%> - <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%>
+
+Capacity:&nbsp;<%= @enrollment.event.capacity %>
+<%= pluralize(@enrollment.event.reservations.pendings.size, ' Pending')%>
+<%= pluralize(@enrollment.event.reservations.valids.size, ' Valid')%>
+<%= pluralize(@enrollment.event.reservations.confirms.size, ' Confirm')%>

@@ -89,6 +89,15 @@
       </div>
     </div>
     <div class="row form_row">
+      <%= f.label :is_p_emailee, 'Prep Prep Emailee', class: "col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.radio_button(:is_p_emailee, true) %>
+        <%= f.label(:p_emails_yes, 'Yes') %>
+        <%= f.radio_button(:is_p_emailee, false) %>
+        <%= f.label(:p_emails_no, 'No') %>
+      </div>
+    </div>
+    <div class="row form_row">
       <%= f.label :is_active, 'Is Active', class: "col-sm-2 control-label" %>
       <div class="col-sm-8">
         <%= f.radio_button(:is_active, true) %>

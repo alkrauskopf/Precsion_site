@@ -1,0 +1,40 @@
+<%= form_for [:admin, @venue], html: { class: "form-horizontal", role: "form" } do |f| %>
+    <% if @venue.errors.any? %>
+        <div class="alert alert-danger alert-dismissable" role="alert">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4><%= pluralize(@venue.errors.count, "error") %> prevented this account from being created:</h4>
+          <ul>
+            <% @venue.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="row form_row">
+      <%= f.label :name, "Name",class: "col-sm-2 control-label" %>
+      <div class="col-sm-3">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row form_row">
+      <%= f.label :notes, "Notes",class: "col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_area :notes, class: "form-control  tinymce", size: '60x15' %>
+        <%= tinymce %>
+      </div>
+    </div>
+    <div class="row form_row">
+      <%= f.label :is_active, 'Active?', class: "col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.radio_button(:is_active, true) %>
+        <%= f.label(:active_yes, 'Active') %>
+        <%= f.radio_button(:is_active, false) %>
+        <%= f.label(:active_no, 'Inactive') %>
+      </div>
+    </div>
+    <div class="row form_row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="row reservation_edit">
+ <table class="table ">
+  <tbody>
+    <%= content_tag_for(:tr, event.reservations) do |reservation| %>
+      <td class="edit_button">
+        <%= button_to 'Edit', prep_enroll_edit_path(:id=>reservation.id), class: 'button_gray' %>
+      </td>
+      <td >
+        <%= reservation.full_name %>
+      </td>
+      <td class="status">
+        <%= reservation.status ? reservation.status.upcase : 'No Status' %>
+      </td>
+      <td class="edit_button">
+        <% if reservation.removed? %>
+          <%= link_to 'Destroy', prep_reservation_destroy_path(reservation), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </td>
+    <% end %>
+  </tbody>
+</table>
+</div>
+

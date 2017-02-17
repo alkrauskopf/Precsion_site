@@ -28,6 +28,7 @@
                 <%=  user.contactee? ? 'Contact' : '' %><br/>
                 <%= user.user_class ? user.user_class.name : 'Unassigned Class'%><br/>
                 <%= user.emailee? ? 'Can Be Emailed' : '' %><br/>
+                <%= user.prep_emailee? ? 'Prep Emailee' : '' %><br/>
                 <%= user.active? ? 'Active' : 'Not Active' %>
               </td>
               <td>

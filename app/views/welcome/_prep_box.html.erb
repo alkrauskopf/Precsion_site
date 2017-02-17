@@ -1,6 +1,20 @@
+<div class="row pp_enroll">
+  <div class="col-md-1">
+
+  </div>
+  <div class="col-md-10"></div>
+</div>
 <div class="panel-palette">
   <div class="panel-heading"  style="background-color: <%=overview.panel_color%>">
-    <h4><%= overview.panel_header %></h4>
+    <div class="row pp_enroll">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h4><%= overview.panel_header %></h4>
+      </div>
+      <div class="col-md-1">
+        <%= button_to 'Enroll', prep_enroll_online_path, class: 'button_green' %>
+      </div>
+    </div>
   </div>
   <div class="panel-body">
     <div class="welcome-panel">

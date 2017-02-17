@@ -1,0 +1,15 @@
+<h4><%= t('site_name') %>&nbsp;Enrollment Notification</h4>
+
+<h5>Name:&nbsp;<%=@name%></h5>
+
+<h5>Email:&nbsp;<%=@email%></h5>
+
+<h5><%= @enrollment.event.venue.name %></h5>
+
+<h5><%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%>&nbsp;-&nbsp;
+  <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%></h5>
+
+<h5>Capacity:&nbsp;<%= @enrollment.event.capacity %></h5>
+<h5><%= pluralize(@enrollment.event.reservations.pendings.size, ' Pending')%></h5>
+<h5><%= pluralize(@enrollment.event.reservations.valids.size, ' Valid')%></h5>
+<h5><%= pluralize(@enrollment.event.reservations.confirms.size, ' Confirm')%></h5>

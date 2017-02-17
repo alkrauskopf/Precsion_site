@@ -9,9 +9,7 @@
 
         <div class="panel-body">
           <h4>Brief:</h4>
-
           <p id="brief"><%= @offering.brief.html_safe %></p>
-
           <h4>Description:</h4>
           <!-- so .html_safe might not be the best thing to use here, but since all this content
           is admin-generated, then it is likely not susceptible to malicious script insertion XSS attacks. -->
