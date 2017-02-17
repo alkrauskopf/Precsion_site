@@ -9,7 +9,7 @@ class Admin::OfferingsController < ApplicationController
   before_action :banner_image, except: []
 
   def index
-    @parents = Offering.all_parents
+    @parents = Offering.all_parents.sort_by{|p| p.type_name}
   end
 
   def new
@@ -34,7 +34,6 @@ class Admin::OfferingsController < ApplicationController
 
   def create
     @offering = Offering.new(offering_params)
-
     respond_to do |format|
       if @offering.save
         format.html { redirect_to admin_offering_path(@offering.id), notice: "#{@offering.name} has been created." }

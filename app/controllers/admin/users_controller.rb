@@ -137,7 +137,8 @@ class Admin::UsersController < ApplicationController
         :first_name, :last_name, :email,
         :title, :picture, :contactee, :display_position,
         :password, :password_confirmation,
-        :user_class_id, :prefix, :is_emailee, :is_active
+        :user_class_id, :prefix, :is_emailee, :is_active,
+        :is_p_emailee
     )
   end
 

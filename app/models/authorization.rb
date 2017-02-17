@@ -11,4 +11,8 @@ class Authorization < ActiveRecord::Base
     where(name: 'team').first
   end
 
+  def self.prep
+    where(name: 'prep').first
+  end
+
 end

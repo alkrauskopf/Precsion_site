@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     self.authorizations.include?(Authorization.admin) ? true : false
   end
 
+  def prep_admin?
+    self.authorizations.include?(Authorization.prep) ? true : false
+  end
+
   def team?
     self.authorizations.include?(Authorization.team) ? true : false
   end
@@ -76,8 +80,16 @@ class User < ActiveRecord::Base
     self.user_class && self.user_class.abbrev == 'consult'
   end
 
+  def prep_team?
+    self.user_class && self.user_class.abbrev == 'prep'
+  end
+
   def self.full_team
     User.active.by_position.select{ |u| u.consultant? || u.core?}
+  end
+
+  def self.prep_team
+    User.active.by_position.select{ |u| u.prep_team?}
   end
 
   def self.core_team
@@ -96,6 +108,10 @@ class User < ActiveRecord::Base
     self.is_emailee
   end
 
+  def prep_emailee?
+    self.is_p_emailee
+  end
+
   def active?
     self.is_active
   end
@@ -108,8 +124,16 @@ class User < ActiveRecord::Base
     where(is_emailee: true)
   end
 
+  def self.prep_emailees
+    where(is_p_emailee: true)
+  end
+
   def self.contact_list
     self.contactees.map(&:email).join(', ')
+  end
+
+  def self.prep_notify_list
+    self.prep_emailees.map(&:email).join(', ')
   end
 
   def self.with_povs

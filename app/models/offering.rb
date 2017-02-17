@@ -14,7 +14,7 @@ class Offering < ActiveRecord::Base
   validates_presence_of :offering_type
 
   def self.all_parents
-    where('parent_id IS NULL').sort_by{|p| p.type_name}
+    where('parent_id IS NULL')
   end
 
   def ancestor

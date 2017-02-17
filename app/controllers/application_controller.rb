@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def precision_prep_admin?
+    @padmin = prep_authorized?
+  end
+
   def pm_offerings
     @pm_offerings = Offering.pm.active.select{ |o| o.parent_id.nil? || o.parent.parent_id.nil?}
   end
@@ -20,6 +24,10 @@ class ApplicationController < ActionController::Base
   def banner_image
     @banner_image = current_mission.header_image
     @marque = Offering.marque_stream
+  end
+
+  def no_flash
+    @no_flash = true
   end
 
 
@@ -50,6 +58,10 @@ class ApplicationController < ActionController::Base
 
   def admin_authorized?
     Authorization.admin.user_authorizations.empty? || (logged_in? && current_user.admin?) || initial_setup?
+  end
+
+  def prep_authorized?
+    Authorization.admin.user_authorizations.empty? || (logged_in? && current_user.prep_admin?) || initial_setup?
   end
 
   def current_mission
