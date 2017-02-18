@@ -51,7 +51,8 @@ class Admin::PrepController < ApplicationController
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :notes, :is_active)
+    params[:venue][:abbrev] = params[:venue][:abbrev].upcase if params[:venue][:abbrev].present?
+    params.require(:venue).permit(:name, :notes, :is_active, :abbrev)
   end
 
 end

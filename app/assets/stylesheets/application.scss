@@ -1104,7 +1104,21 @@ h1, h2, h3, h4 {
 .admin_container {
   margin: 3em 3em 3em 3em;
 }
-
+.admin_title {
+  line-height:2.0em;
+  font-weight:bold;
+  font-style: normal;
+  text-align: center;
+  font-size:26px;
+  color: $dark_text;
+}
+.admin_panel {
+  line-height:1.5em;
+  font-weight:bold;
+  font-style: normal;
+  text-align: center;
+  font-size:18px;
+}
 .reservation {
   line-height:2.0em;
   font-weight:normal;

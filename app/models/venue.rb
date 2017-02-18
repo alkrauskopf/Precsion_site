@@ -3,6 +3,7 @@ class Venue < ActiveRecord::Base
   has_many :events
   has_many :reservations, through: :events
 
+
   before_destroy :confirm_inactive?
 
   def self.by_name

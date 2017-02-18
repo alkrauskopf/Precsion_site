@@ -7,7 +7,7 @@ class Reservation < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
   validates_format_of :email, :with => /\A[\w._%+-]+@[\w.-]+\.[\w]{2,6}\z/, :message => 'invalid email format',
                       :allow_nil => false
-
+  validates_uniqueness_of :enrollment
   before_destroy :confirm_removed?
 
   def self.pendings

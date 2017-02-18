@@ -20,6 +20,7 @@ class ReservationsController < ApplicationController
     set_event
     used_captcha
     @reservation = Reservation.new(reservation_params)
+    @reservation.enrollment = enrollment_number(@event)
     @reservation.event_id = @event.id
     if @reservation.save && @captcha_pass
       @reservation.email_us!
@@ -85,5 +86,8 @@ class ReservationsController < ApplicationController
     @captcha_error = 'Picture Not Identified Correctly'
   end
 
+  def enrollment_number(event)
+    event.venue.abbrev + Date.today.year.to_s[2..3] + Reservation.last.id.to_s
+  end
 
 end
