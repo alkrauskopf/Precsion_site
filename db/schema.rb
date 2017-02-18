@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217163553) do
+ActiveRecord::Schema.define(version: 20170218210030) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -159,8 +159,10 @@ ActiveRecord::Schema.define(version: 20170217163553) do
     t.datetime "updated_at",                                 null: false
     t.text     "notes",        limit: 65535
     t.boolean  "was_notified",               default: false
+    t.string   "enrollment",   limit: 255
   end
 
+  add_index "reservations", ["enrollment"], name: "index_reservations_on_enrollment", unique: true, using: :btree
   add_index "reservations", ["event_id"], name: "index_reservations_on_event_id", using: :btree
 
   create_table "stats", force: :cascade do |t|
@@ -241,6 +243,7 @@ ActiveRecord::Schema.define(version: 20170217163553) do
     t.boolean  "is_active",                default: true
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.string   "abbrev",     limit: 4
   end
 
   add_foreign_key "offering_user_povs", "offerings"

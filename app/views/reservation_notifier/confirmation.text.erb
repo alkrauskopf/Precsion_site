@@ -4,6 +4,7 @@ Location: <%=@enrollment.event.venue.name%>
 
 <%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%> - <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%></h5>
 
+Enrollment #: <%= @enrollment.enrollment %>
 
 Your reservation is currently <%=@enrollment.status.upcase %>
 The course fee is <%= humanized_money_with_symbol(@enrollment.event.price) %>

@@ -1,4 +1,4 @@
-<h1 id="title_row">Edit Event</h1>
+<h1 id="title_row">Edit Enrollment</h1>
 <%= form_for(:reservation, :url=> prep_enroll_update_path(:id=> @reservation.id), html: { class: "form-horizontal", role: "form" }) do |f| %>
   <%= render partial: 'form', locals: {:f=> f, :event => @event} %>
 <% end %>

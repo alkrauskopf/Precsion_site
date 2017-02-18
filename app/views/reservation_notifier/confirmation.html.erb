@@ -5,6 +5,8 @@
 <h5><%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%>&nbsp;-&nbsp;
   <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%></h5>
 
+<h5>Enrollment #: <%= @enrollment.enrollment %></h5>
+
 <p>
   Your reservation is currently <%=@enrollment.status.upcase %>
 </p>

@@ -6,6 +6,8 @@ Name: <%=@name%>
 
 Email: <%=@email%>
 
+Enrollment #: <%= @enrollment.enrollment %>
+
 <%= @enrollment.event.venue.name %>
 
 <%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%> - <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%>

@@ -4,6 +4,8 @@
 
 <h5>Email:&nbsp;<%=@email%></h5>
 
+<h5>Enrollment #: <%= @enrollment.enrollment %></h5>
+
 <h5><%= @enrollment.event.venue.name %></h5>
 
 <h5><%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%>&nbsp;-&nbsp;

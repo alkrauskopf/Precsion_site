@@ -17,6 +17,12 @@
       </div>
     </div>
     <div class="row form_row">
+      <%= f.label :abbrev, "Abbreviation",class: "col-sm-2 control-label" %>
+      <div class="col-sm-3">
+        <%= f.text_field :abbrev, size: 4, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row form_row">
       <%= f.label :notes, "Notes",class: "col-sm-2 control-label" %>
       <div class="col-sm-8">
         <%= f.text_area :notes, class: "form-control  tinymce", size: '60x15' %>
