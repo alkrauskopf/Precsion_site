@@ -4,14 +4,24 @@
 
 <h5>Email:&nbsp;<%=@email%></h5>
 
-<h5>Enrollment #: <%= @enrollment.enrollment %></h5>
+<h5>Email:&nbsp;<%=@phone%></h5>
 
-<h5><%= @enrollment.event.venue.name %></h5>
+<h5>Enrollment: <%= @enrollment.enrollment %></h5>
 
-<h5><%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%>&nbsp;-&nbsp;
-  <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%></h5>
+<h5>Venue: <%= @enrollment.event.venue.name %></h5>
+
+<h5>Event: <%= @enrollment.event.name %></h5>
+
+<h5>Contact: <%= @enrollment.event.contact_name %>, <%= @enrollment.event.contact_email %></h5>
+
+<h5>
+  Start: <%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%>
+</h5>
+<h5>
+  End: <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%>
+</h5>
 
 <h5>Capacity:&nbsp;<%= @enrollment.event.capacity %></h5>
 <h5><%= pluralize(@enrollment.event.reservations.pendings.size, ' Pending')%></h5>
 <h5><%= pluralize(@enrollment.event.reservations.valids.size, ' Valid')%></h5>
-<h5><%= pluralize(@enrollment.event.reservations.confirms.size, ' Confirm')%></h5>
+<h5><%= pluralize(@enrollment.event.confirmed_reservations.size, ' Confirm')%></h5>

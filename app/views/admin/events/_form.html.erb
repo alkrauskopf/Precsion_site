@@ -11,10 +11,34 @@
           </ul>
         </div>
     <% end %>
+  <div class="row form_row">
+    <%= f.label :name, "Event Name",class: "col-sm-2 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form_row">
+    <%= f.label :contact_name, "Contact Name",class: "col-sm-2 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :contact_name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form_row">
+    <%= f.label :contact_email, "Contact Email",class: "col-sm-2 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :contact_email, class: "form-control" %>
+    </div>
+  </div>
     <div class="row form_row">
       <%= f.label :venue_id, "Venue", class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.select(:venue_id, @venue_select, value: @event.venue_id) %>
+      </div>
+    </div>
+    <div class="row form_row">
+      <%= f.label :e_type, "Type", class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.select(:e_type, Event.e_types,{ :include_blank => true}) %>
       </div>
     </div>
     <div class="row form_row">
@@ -38,7 +62,7 @@
     <div class="row form_row">
       <%= f.label :price, "Student Fee",class: "col-sm-2 control-label" %>
       <div class="col-sm-3">
-        <%= f.number_field :price, class: "form-control" %>
+        <%= f.number_field :price, class: "form-control", step: :any%>
       </div>
     </div>
     <div class="row form_row">
@@ -51,6 +75,12 @@
       <%= f.label :time, "Time Slot",class: "col-sm-2 control-label" %>
       <div class="col-sm-8">
         <%= f.text_field :time, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row form_row">
+      <%= f.label :message, "Message",class: "col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :message, class: "form-control" %>
       </div>
     </div>
     <div class="row form_row">

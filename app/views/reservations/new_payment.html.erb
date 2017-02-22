@@ -1,0 +1,28 @@
+<div class="row">
+  <div class=" col-md-2"></div>
+  <div class="col-md-9">
+    <h2><%=@reservation.full_name %> Precision Prep Payment</h2>
+  </div>
+</div>
+<div class="row">
+  <div class=" col-md-2"></div>
+  <div class="col-md-9 enroll_venue">
+    <%= @reservation.event.venue.name%>
+  </div>
+</div>
+<div class="row">
+  <div class=" col-md-2"></div>
+  <div class="col-md-9 enroll_dates">
+    <%= @reservation.event.start_date.strftime('%b %d, %Y')%> - <%= @reservation.event.end_date.strftime('%b %d, %Y')%>
+  </div>
+</div>
+<div class="row">
+  <div class=" col-md-2"></div>
+  <div class="col-md-9 enroll_status">
+    <%= @reservation.enrollment.nil? ? '' : " #{@reservation.enrollment}, "%><%= !@reservation.status.nil? ? @reservation.status.upcase : '' %>
+  </div>
+</div>
+<hr>
+<%#= form_for(:reservation, :url=> prep_reservation_path(:event_id => @event.id), html: { class: "form-horizontal", role: "form" }) do |f| %>
+    <%#= render partial: 'form', locals: {:f=> f, :event => @event} %>
+<%# end %>

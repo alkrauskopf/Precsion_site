@@ -1,4 +1,15 @@
-<h1 id="title_row">Edit Event</h1>
+<div class="row enroll_header">
+  <div class=" col-md-2"></div>
+  <div class="col-md-9">
+    <h2>Edit: <%=@event.name %></h2>
+  </div>
+</div>
+<div class="row enroll_header">
+  <div class=" col-md-2"></div>
+  <div class="col-md-9">
+    - - <%=@event.e_type %> - -
+  </div>
+</div>
 <%#= form_for [@event], :url=> prep_event_update_path, html: { class: "form-horizontal", role: "form" } do |f| %>
 <%= form_for(:event, :url=> prep_event_update_path(:id=> @event.id), html: { class: "form-horizontal", role: "form" }) do |f| %>
   <%= render partial: 'form', locals: {:f=> f} %>

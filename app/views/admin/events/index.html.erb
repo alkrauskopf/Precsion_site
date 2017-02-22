@@ -20,24 +20,28 @@
                   <tbody>
                   <%= content_tag_for(:tr, venue.events.by_date) do |event| %>
                       <td>
-                        <%= !event.start_date.nil? ? event.start_date.strftime('%b %d, %Y') : '-'%>&nbsp;-&nbsp;
-                        <%= !event.end_date.nil? ? event.end_date.strftime('%b %d, %Y') : '-'%>
+                        <%= event.name%><br/>
+                        <%= event.contact_name %><br/>
+                        <%= event.contact_email %>
                       </td>
                       <td>
-                        <%= event.time %>,&nbsp;<%= event.location %>
+                        Start:&nbsp;<%= !event.start_date.nil? ? event.start_date.strftime('%b %d, %Y') : '-'%><br/>
+                        End:&nbsp;<%= !event.end_date.nil? ? event.end_date.strftime('%b %d, %Y') : '-'%><br/>
+                        <%= event.time %><br/><%= event.location %>
                       </td>
                       <td>
                         <%= humanized_money_with_symbol(event.price) %>
                       </td>
                       <td>
-                        <%= event.capacity %>
+                        <%= event.valid_confirmed_reservations.size%> of <%= pluralize(event.capacity, ' Seat') %>
                       </td>
                       <td>
                         <% if !event.active?%>
                          <%= link_to 'Destroy', prep_event_destroy_path(event), method: :delete, data: { confirm: 'Are you sure?' } %>
                         <% else %>
                           Active
-                        <% end %>
+                        <% end %><br/>
+                        <%= event.e_type.nil? ? 'No Type':event.e_type%>
                       </td>
                       <td>
                         <%= link_to 'Edit', prep_event_edit_path(event) %>

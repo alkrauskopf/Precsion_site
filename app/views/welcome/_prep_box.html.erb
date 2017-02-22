@@ -7,13 +7,7 @@
 <div class="panel-palette">
   <div class="panel-heading"  style="background-color: <%=overview.panel_color%>">
     <div class="row pp_enroll">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <h4><%= overview.panel_header %></h4>
-      </div>
-      <div class="col-md-1">
-        <%= button_to 'Enroll', prep_enroll_online_path, class: 'button_green' %>
-      </div>
+      <h4><%= overview.panel_header %></h4>
     </div>
   </div>
   <div class="panel-body">
@@ -24,13 +18,17 @@
         <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
       </div>
     <% end %>
+    <% unless pending_preps.empty? && next_webinar.nil? %>
+      <%= render 'prep_enroll_buttons'%>
+      <hr>
+    <% end %>
       <div>
-        <span class = "offering_header">
+        <div class = "offering_header">
           <% if !overview.nil?  && !overview.brief.strip.empty? %>
             <%= overview.brief.html_safe %>
             <% hr_break = true %>
           <% end %>
-        </span>
+        </div>
         <% if !overview.images.not_carousels.empty? && false%>
             <% grp = 'p' %>
             <div class="about_blue_font image_list">
@@ -111,6 +109,7 @@
                 <% end %>
               </div>
             <% end %>
+            <%= render 'prep_enroll_buttons'%>
             <hr>
         <% end -%>
       </div>

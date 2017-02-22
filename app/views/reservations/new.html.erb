@@ -1,7 +1,8 @@
-<div class="row">
+<div class="row enroll_header">
   <div class=" col-md-2"></div>
   <div class="col-md-9">
-    <h2>Precision Prep Enrollment</h2>
+    <h4>Sign-up</h4>
+    <h2><%=@event.name %></h2>
   </div>
 </div>
 <%= form_for(:reservation, :url=> prep_reservation_path(:event_id => @event.id), html: { class: "form-horizontal", role: "form" }) do |f| %>

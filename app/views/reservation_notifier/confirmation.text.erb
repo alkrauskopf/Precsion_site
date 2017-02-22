@@ -1,15 +1,27 @@
-<h4><%= @name %>,&nbsp;Thank You For Enrolling In <em>Precision Prep</em></h4>
+<%= @name %>, Thank You For Signing Up For  "<%=@enrollment.event.name %>"
+
+Please click <%= link_to 'Here', prep_validate_url(:enrollment => @enrollment.enrollment) %> to validate your email address.
+
+Your Enrollment Number Is <%= @enrollment.enrollment %>
 
 Location: <%=@enrollment.event.venue.name%>
 
-<%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%> - <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%></h5>
+Start:  <%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%>
+End:  <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%>
 
-Enrollment #: <%= @enrollment.enrollment %>
+Fee: <%= humanized_money_with_symbol(@enrollment.event.price) %>
 
-Your reservation is currently <%=@enrollment.status.upcase %>
-The course fee is <%= humanized_money_with_symbol(@enrollment.event.price) %>
+Contact: <%= @enrollment.event.contact_name %> - <%= @enrollment.event.contact_email %>
 
-We will be following up with you shortly to confirm your attendance.
+
+  <% if !@enrollment.event.message.empty? %>
+      Note: <%= @enrollment.event.message %>
+  <% end %>
+
+  Your reservation is currently <%=@enrollment.status.upcase %>
+
+  Thanks Again!
+  The Precision Prep Team
 
 
 Thanks Again!
