@@ -64,8 +64,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'tinymce-rails', '~> 4.4', '>= 4.4.1'
 # gem 'wirispluginengine', '~> 3.62', '>= 3.62.0.1322'
 
-
- gem 'money-rails'
+gem 'dotenv-rails'
+gem 'money-rails'
+gem 'stripe'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
