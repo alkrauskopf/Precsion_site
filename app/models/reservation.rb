@@ -3,10 +3,12 @@ class Reservation < ActiveRecord::Base
   enum status: {pending: 0, validated: 1, confirmed: 2, removed: 3}
 
   belongs_to :event
+  has_many :payments, :as => :buyable, :dependent => :destroy
 
   validates_presence_of :first_name, :last_name
   validates_format_of :email, :with => /\A[\w._%+-]+@[\w.-]+\.[\w]{2,6}\z/, :message => 'invalid email format',
                       :allow_nil => false
+  validates :phone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "bad phone number format" }
   validates_uniqueness_of :enrollment
   before_destroy :confirm_removed?
 
@@ -42,6 +44,10 @@ class Reservation < ActiveRecord::Base
     self.status == 'removed'
   end
 
+  def payable?
+    self.validated? && self.event.payable?
+  end
+
   def email_us!
     self.update(was_notified: true)
     ReservationNotifier.notify_us(self).deliver_now
@@ -50,6 +56,20 @@ class Reservation < ActiveRecord::Base
 
   def full_name
     self.first_name + ' ' + self.last_name
+  end
+
+  def validate!
+    if self.pending? || self.status.nil?
+      self.update(:status=>'validated')
+    end
+  end
+
+  def notification_list
+   users = User.prep_emailees.map(&:email)
+    if !self.event.contact_email.empty?
+      users << self.event.contact_email
+    end
+    users.uniq.join(', ')
   end
 
   private

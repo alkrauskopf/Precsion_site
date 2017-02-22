@@ -6,8 +6,9 @@ class ReservationNotifier < ApplicationMailer
   def notify_us(reservation)
     @name = reservation.full_name
     @email = reservation.email
+    @phone = reservation.phone
     @enrollment = reservation
-    mail to: User.prep_notify_list
+    mail to: reservation.notification_list
   end
 
   def confirmation(reservation)

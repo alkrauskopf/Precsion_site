@@ -29,10 +29,11 @@ class Admin::EventsController < ApplicationController
   def update
     if @event.update(event_params)
       flash[:notice] = 'Updated Event'
+      redirect_to prep_event_path
     else
-      flash[:error] = 'Something went wrong'
+      venue_list
+      render :edit
     end
-    redirect_to prep_event_path
   end
 
   def destroy
@@ -53,8 +54,14 @@ class Admin::EventsController < ApplicationController
   def event_params
     params[:event][:start_date] = Date.strptime(params[:event][:start_date], "%m/%d/%Y") if params[:event][:start_date].present?
     params[:event][:end_date] = Date.strptime(params[:event][:end_date], "%m/%d/%Y") if params[:event][:end_date].present?
+    params[:event][:price] = Money.new(params[:event][:price_cents]) if params[:event][:price_cents].present?
+    if !@event.nil? && !@event.e_type.nil?
+      params[:event][:e_type] = (params[:event][:e_type] == '' ? @event.e_type : params[:event][:e_type].to_i)
+    else
+      params[:event][:e_type] = (params[:event][:e_type] == '' ? 0 : params[:event][:e_type].to_i)
+    end
     params.require(:event).permit(:venue_id, :start_date, :end_date, :capacity, :price,
-                                  :location, :time, :is_active)
+                                  :location, :time, :is_active, :e_type, :message, :name, :contact_name, :contact_email)
   end
 
   def venue_list

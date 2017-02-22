@@ -8,4 +8,13 @@ module ApplicationHelper
     end
     return backgrnd
   end
+
+  def next_webinar
+    Event.next_webinar
+  end
+
+  def pending_preps
+    Event.pending('prep')
+  end
+
 end

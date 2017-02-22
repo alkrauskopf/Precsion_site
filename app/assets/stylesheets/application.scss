@@ -72,6 +72,23 @@ a.btn {
   margin-left:0em;
   font-size:13px;
 }
+.button_enroll {
+  @extend .btn;
+  @extend .btn-success;
+  @extend .btn-xs;
+  margin-top:2em;
+  margin-left:0em;
+  font-size:16px;
+}
+.button_webinar {
+  @extend .btn;
+  @extend .btn-info;
+  @extend .btn-xs;
+  margin-top:2em;
+  margin-left:0em;
+  font-size:16px;
+}
+
 .right-hand {
   @extend .glyphicon;
   @extend .glyphicon-hand-right;
@@ -1133,9 +1150,50 @@ h1, h2, h3, h4 {
   font-weight:bold;
   text-align: center;
 }
+.reservation .venue .event_type {
+  font-size:12px;
+  font-weight:normal;
+  text-align: center;
+}
+
+.reservation .event {
+  font-size:13px;
+}
+
+.reservation .event .event_name {
+  font-size:12px;
+  font-weight:bold;
+}
+
+.reservation .closed {
+  font-size:12px;
+  vertical-align:middle;
+  text-align:center;
+  font-weight:bold;
+  color:$red_text;
+}
+
+.reservation .event .padmin {
+  font-size:12px;
+  color:$blue_text;
+}
+
+.enroll_message {
+  line-height:1.5em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: left;
+  font-size:14px;
+  color: $red_text;
+}
+.enroll_header {
+  padding: 1em 0em 0em 0em;
+  text-align: center;
+  color: $dark_text;
+}
 
 .enroll_venue {
-  padding: 2em 0em 0em 0em;
+  padding: 1em 0em 0em 0em;
   font-weight:bold;
   font-style: normal;
   text-align: left;
@@ -1191,4 +1249,7 @@ h1, h2, h3, h4 {
   text-align: left;
   font-size:14px;
   color: $link;
+}
+.enroll_buttons {
+  font-size:14px;
 }

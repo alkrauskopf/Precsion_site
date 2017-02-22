@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218210030) do
+ActiveRecord::Schema.define(version: 20170221210250) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -70,14 +70,19 @@ ActiveRecord::Schema.define(version: 20170218210030) do
   create_table "events", force: :cascade do |t|
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "capacity",    limit: 4
-    t.integer  "price_cents", limit: 8
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.integer  "venue_id",    limit: 4
-    t.text     "location",    limit: 65535
-    t.text     "time",        limit: 65535
-    t.boolean  "is_active",                 default: true
+    t.integer  "capacity",      limit: 4
+    t.integer  "price_cents",   limit: 8
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.integer  "venue_id",      limit: 4
+    t.text     "location",      limit: 65535
+    t.text     "time",          limit: 65535
+    t.boolean  "is_active",                   default: true
+    t.integer  "e_type",        limit: 4,     default: 0
+    t.string   "message",       limit: 255,   default: ""
+    t.string   "name",          limit: 255
+    t.string   "contact_name",  limit: 255
+    t.string   "contact_email", limit: 255
   end
 
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
@@ -149,6 +154,21 @@ ActiveRecord::Schema.define(version: 20170218210030) do
     t.string  "tst_topic",        limit: 255
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.integer  "buyable_id",     limit: 4
+    t.integer  "price_cents",    limit: 4,   default: 0,     null: false
+    t.string   "price_currency", limit: 255, default: "USD", null: false
+    t.integer  "status",         limit: 4
+    t.integer  "payment_method", limit: 4
+    t.string   "response_id",    limit: 255
+    t.string   "full_response",  limit: 255
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "transaction",    limit: 255
+  end
+
+  add_index "payments", ["buyable_id"], name: "index_payments_on_buyable_id", using: :btree
+
   create_table "reservations", force: :cascade do |t|
     t.integer  "event_id",     limit: 4
     t.string   "first_name",   limit: 255
@@ -160,6 +180,8 @@ ActiveRecord::Schema.define(version: 20170218210030) do
     t.text     "notes",        limit: 65535
     t.boolean  "was_notified",               default: false
     t.string   "enrollment",   limit: 255
+    t.string   "phone",        limit: 13
+    t.string   "school",       limit: 255
   end
 
   add_index "reservations", ["enrollment"], name: "index_reservations_on_enrollment", unique: true, using: :btree
