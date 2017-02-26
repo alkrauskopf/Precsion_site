@@ -32,8 +32,8 @@ Rails.application.configure do
       :port => 587,
       :domain => "precisionschoolimprovement.com",
       :authenication => :plain,
-      :user_name => "alkrauskopf",
-      :password => "florentin0"
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD']
   }
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
