@@ -21,6 +21,11 @@
   End: <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%>
 </h5>
 
+<h5>
+  Agreed Fee: <%= humanized_money_with_symbol(@fee) %>
+</h5>
+
+
 <h5>Capacity:&nbsp;<%= @enrollment.event.capacity %></h5>
 <h5><%= pluralize(@enrollment.event.reservations.pendings.size, ' Pending')%></h5>
 <h5><%= pluralize(@enrollment.event.reservations.valids.size, ' Valid')%></h5>

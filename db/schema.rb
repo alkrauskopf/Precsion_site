@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221210250) do
+ActiveRecord::Schema.define(version: 20170227190247) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -156,15 +156,17 @@ ActiveRecord::Schema.define(version: 20170221210250) do
 
   create_table "payments", force: :cascade do |t|
     t.integer  "buyable_id",     limit: 4
-    t.integer  "price_cents",    limit: 4,   default: 0,     null: false
-    t.string   "price_currency", limit: 255, default: "USD", null: false
+    t.integer  "price_cents",    limit: 4,     default: 0,     null: false
+    t.string   "price_currency", limit: 255,   default: "USD", null: false
     t.integer  "status",         limit: 4
-    t.integer  "payment_method", limit: 4
+    t.string   "payment_method", limit: 255
     t.string   "response_id",    limit: 255
-    t.string   "full_response",  limit: 255
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.string   "transaction",    limit: 255
+    t.text     "full_response",  limit: 65535
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "description",    limit: 255
+    t.string   "reference",      limit: 255
+    t.string   "buyable_type",   limit: 255
   end
 
   add_index "payments", ["buyable_id"], name: "index_payments_on_buyable_id", using: :btree
@@ -182,6 +184,7 @@ ActiveRecord::Schema.define(version: 20170221210250) do
     t.string   "enrollment",   limit: 255
     t.string   "phone",        limit: 13
     t.string   "school",       limit: 255
+    t.integer  "price_cents",  limit: 4,     default: 0
   end
 
   add_index "reservations", ["enrollment"], name: "index_reservations_on_enrollment", unique: true, using: :btree

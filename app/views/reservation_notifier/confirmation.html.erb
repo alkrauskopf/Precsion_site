@@ -9,7 +9,7 @@
 <h5>Start: <%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%><br/>
   End: <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%></h5>
 <h5>
-  Fee: <%= humanized_money_with_symbol(@enrollment.event.price) %>
+  Fee: <%= humanized_money_with_symbol(@fee) %>
 </h5>
 <h5>
   Contact: <%= @enrollment.event.contact_name %> - <%= @enrollment.event.contact_email %>

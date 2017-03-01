@@ -15,6 +15,8 @@ Enrollment #: <%= @enrollment.enrollment %>
 Start: <%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%>
 End: <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%>
 
+Agreed Fee: <%= humanized_money_with_symbol(@fee) %>
+
 Capacity:&nbsp;<%= @enrollment.event.capacity %>
 <%= pluralize(@enrollment.event.reservations.pendings.size, ' Pending')%>
 <%= pluralize(@enrollment.event.reservations.valids.size, ' Valid')%>

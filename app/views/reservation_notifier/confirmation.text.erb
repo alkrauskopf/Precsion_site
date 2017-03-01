@@ -9,7 +9,7 @@ Location: <%=@enrollment.event.venue.name%>
 Start:  <%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%>
 End:  <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%>
 
-Fee: <%= humanized_money_with_symbol(@enrollment.event.price) %>
+Fee: <%= humanized_money_with_symbol(@fee) %>
 
 Contact: <%= @enrollment.event.contact_name %> - <%= @enrollment.event.contact_email %>
 

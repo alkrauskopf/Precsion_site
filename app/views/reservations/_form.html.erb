@@ -60,9 +60,9 @@
       </div>
     </div>
     <div class="row form_row">
-      <%= f.label :phone, "Contact Phone",class: "col-sm-2 control-label" %>
+      <%= f.label :phone, "Contact Phone", class: "col-sm-2 control-label" %>
       <div class="col-sm-3">
-        <%= f.telephone_field(:phone) %>
+        <%= f.text_field :phone, class: "form-control", placeholder: 'xxx-xxx-xxxx' %>
       </div>
     </div>
     <div class="row form_row">
@@ -97,6 +97,12 @@
       <hr>
     <% end %>
     <% if @padmin%>
+     <div class="row form_row">
+       <%= f.label :price, "Agreed Fee",class: "col-sm-2 control-label" %>
+       <div class="col-sm-3">
+         <%= f.number_field :price, class: "form-control", step: :any%>
+       </div>
+     </div>
       <div class="row form_row">
         <%= f.label :email, "Notes",class: "col-sm-2 control-label" %>
         <div class="col-sm-8">
@@ -109,6 +115,8 @@
           <%= f.select(:status, Reservation.statuses, include_blank: true, prompt: (@reservation.status.nil? ? 'No Status': @reservation.status.upcase)) %>
         </div>
       </div>
+     <% else %>
+     <%= f.hidden_field :notes, value: '' %>
     <% end %>
 <div class="row form_row">
       <div class="col-md-2">
