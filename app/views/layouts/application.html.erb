@@ -30,7 +30,13 @@
   <![endif]-->
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag("#{STRIPE_JS_HOST}/v2/#{STRIPE_JS_FILE}") %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <script>
+    Stripe.setPublishableKey(
+      "#{Rails.application.secrets.stripe_publishable_key}");
+  </script>
   <%= csrf_meta_tags %>
 </head>
 <body class="container page_background">

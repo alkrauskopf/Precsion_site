@@ -1,0 +1,52 @@
+<div class="row pay_box">
+  <h2><%=@buyer %> Payment Work Flow Completed</h2>
+</div>
+<div class="row pay_box token">
+  <%= @token%>
+</div>
+<div class="row pay_box item">
+  <%= @item%>
+</div>
+<div class="row pay_box item">
+  <%= @start_date.strftime('%b %d, %Y')%> - <%= @end_date.strftime('%b %d, %Y')%>
+</div>
+<div class="row pay_box item">
+    <%= @venue%>
+</div>
+<div class="row pay_box item">
+    Amount: <%= humanized_money_with_symbol(@price) %>
+</div>
+<div class="row pay_box item">
+  Status: <%= @status.upcase %>
+</div>
+<hr>
+<div class="row pay_box payment">
+  # Payments: <%= @payments.size %>
+</div>
+<% @payments.each do |payment| %>
+  <div class="row pay_box payment">
+   Payment ID:  <%= payment.id%>
+  </div>
+  <div class="row pay_box payment">
+    Amount: <%= humanized_money_with_symbol(payment.price) %>&nbsp;<%= payment.price_currency %>
+  </div>
+  <div class="row pay_box payment">
+    Description: <%= payment.description %>
+  </div>
+  <div class="row pay_box payment">
+   Status:  <%= payment.status%>
+  </div>
+  <div class="row pay_box payment">
+    Method:  <%= payment.payment_method%>
+  </div>
+  <div class="row pay_box payment">
+    Reference:  <%= payment.reference%>
+  </div>
+  <div class="row pay_box payment">
+    Response ID:  <%= payment.response_id%>
+  </div>
+  <div class="row pay_box payment">
+    Full Response:  <%= payment.full_response%>
+  </div>
+<hr>
+<% end %>

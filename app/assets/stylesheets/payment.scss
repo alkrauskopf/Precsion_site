@@ -1,0 +1,35 @@
+@import 'application-variables';
+
+h1 {
+  color: $h1_dark_text;
+}
+
+#title_row {
+  border-bottom: 1px solid $h1_dark_text;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+.pay_box {
+  margin: 0em 0em 0em 10em;
+  text-align:left;
+  font-size:13px;
+}
+
+.item {
+  color: $blue_text;
+  line-height:1.5em;
+  font-size:16px;
+}
+
+.token {
+  color: $red_text;
+  line-height:1.5em;
+  font-size:18px;
+}
+
+.payment {
+  color: $blue_text;
+  line-height:2em;
+  font-size:13px;
+}
