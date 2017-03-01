@@ -1,9 +1,6 @@
 class CreatePayments < ActiveRecord::Migration
   def change
-#    drop_table :payments
     create_table :payments do |t|
-
-#      t.references :buyable, index: true, polymorhpic: true, foreign_key: true
       t.references :buyable, index: true, polymorhpic: true
       t.monetize :price
       t.integer :status

@@ -35,8 +35,10 @@ Rails.application.routes.draw do
   post 'prep/reservation' => 'reservations#create'
   post 'prep/enroll/update/:id' => 'reservations#update', as: 'prep_enroll_update'
   delete 'prep/reservation/destroy/:id' => 'reservations#destroy', as: 'prep_reservation_destroy'
-  get 'prep/payment' => 'reservations#new_payment', as: 'prep_payment'
   get 'prep/validate' => 'reservations#validate', as: 'prep_validate'
+  get 'payment/new' => 'payment#new', as: 'payment_new'
+  post 'payments' => 'payment#create', as: 'payments'
+  get 'payment/show' => 'payment#show', as: 'payment_show'
 
   namespace :admin do
     get 'prep' => 'prep#index'

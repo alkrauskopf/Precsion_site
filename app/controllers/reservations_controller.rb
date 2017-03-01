@@ -23,9 +23,12 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.enrollment = enrollment_number(@event)
     @reservation.event_id = @event.id
+    @reservation.price = @event.price
+    @reservation.status = 'pending'
     if @reservation.save && @captcha_pass
       @reservation.email_us!
-      redirect_to prep_payment_path(:enrollment => @reservation.enrollment), notice: "#{@reservation.last_name.upcase} Enrollment Request Status: #{@reservation.status.upcase}"
+      redirect_to root_path(:id => Offering.prep_parent.id), notice: "#{@reservation.full_name} Sign-up: #{@reservation.status.upcase}.  Notification Sent For Email Validation."
+ #     redirect_to prep_payment_path(:enrollment => @reservation.enrollment), notice: "#{@reservation.last_name.upcase} Enrollment Request Status: #{@reservation.status.upcase}"
     else
       render :new
     end
@@ -68,21 +71,15 @@ class ReservationsController < ApplicationController
       flash[:error] = "Your Sign-up Is Already Confirmed"
     else
       @reservation.validate!
-      flash[:notice] = 'Your Sign-up Is ' + @reservation.status.upcase
-      if !@reservation.event.free?
-        go_pay = false
-      end
+      flash[:notice] = 'Your Sign-up Status: ' + @reservation.status.upcase
+      go_pay = (@reservation.event.payable? && !@reservation.free?) ? true : false
     end
+    go_pay = false
     if go_pay
-      render :new_payment
+      redirect_to payment_new_path(:buyable_id => @reservation.id, :buyable_type => @reservation.class.to_s)
     else
       redirect_to root_path(:id => Offering.prep_parent.id)
     end
-  end
-
-
-  def new_payment
-    set_enrollment
   end
 
   private
@@ -106,7 +103,7 @@ class ReservationsController < ApplicationController
       params[:reservation][:status] = 0
     end
     params[:reservation][:phone] = phone_format(params[:reservation][:phone]) if params[:reservation][:phone].present?
-    params.require(:reservation).permit(:event_id, :first_name, :last_name, :email, :status, :notes, :phone, :school)
+    params.require(:reservation).permit(:event_id, :first_name, :last_name, :email, :status, :notes, :phone, :school, :price)
   end
 
   def phone_format(string)

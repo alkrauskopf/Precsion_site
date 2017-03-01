@@ -1,22 +1,21 @@
 class Payment < ActiveRecord::Base
+  include HasReference
+
   belongs_to :buyable, polymorphic: true
 
-  enum payment_method: {check: 0, cc: 1}
+  monetize :price_cents
 
-  def self.checks
-    where('payment_method = ?', 0)
+  enum status: [:created, :succeeded]
+
+  def self.stripes
+    where('payment_method = ?', 'stripe')
   end
 
-  def self.credit_cards
-    where('payment_method = ?', 1)
+  def stripe?
+    self.payment_method == 'stripe'
   end
 
-  def check?
-    self.payment_method == 'check'
+  def total_cost
+    self.buyable.price
   end
-
-  def credit_card?
-    self.payment_method == 'cc'
-  end
-
 end

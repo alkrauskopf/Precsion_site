@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
   end
 
   def payable?
-    self.active? && !self.expired? && !self.free? && self.at_capacity?
+    self.active? && !self.expired? && !self.at_capacity?
   end
 
   def expired?

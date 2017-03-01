@@ -1,6 +1,7 @@
 class Reservation < ActiveRecord::Base
 
   enum status: {pending: 0, validated: 1, confirmed: 2, removed: 3}
+  monetize :price_cents
 
   belongs_to :event
   has_many :payments, :as => :buyable, :dependent => :destroy
@@ -45,7 +46,11 @@ class Reservation < ActiveRecord::Base
   end
 
   def payable?
-    self.validated? && self.event.payable?
+    self.validated? && self.event.payable? && !self.free?
+  end
+
+  def free?
+    self.price_cents == 0
   end
 
   def email_us!
@@ -64,12 +69,30 @@ class Reservation < ActiveRecord::Base
     end
   end
 
+  def confirm!
+    self.update(:status=>'confirmed')
+  end
+
   def notification_list
    users = User.prep_emailees.map(&:email)
     if !self.event.contact_email.empty?
       users << self.event.contact_email
     end
     users.uniq.join(', ')
+  end
+
+  def description
+    desc = ''
+    if self.event
+      desc += self.event.name[0..10] + ', '
+      if self.event.venue
+        desc += self.event.venue.name[0..6] + ', '
+      end
+      desc += self.event.start_date.to_s
+    else
+      desc = 'Event Not Identified'
+    end
+    desc
   end
 
   private
