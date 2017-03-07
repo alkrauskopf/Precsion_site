@@ -153,6 +153,7 @@ class Offering < ActiveRecord::Base
   def offering?
     self.offering_type == 'O'
   end
+
   def services?
     self.offering?
   end

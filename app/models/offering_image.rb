@@ -26,6 +26,18 @@ class OfferingImage < ActiveRecord::Base
     where('is_carousel_img = ?', false)
   end
 
+  def self.headers
+    where('is_head = ?', true)
+  end
+
+  def self.not_headers
+    where('is_head = ?', false)
+  end
+
+  def self.not_carousel_headers
+    where('is_head = ? AND is_carousel_img = ?', false, false)
+  end
+
   def carousel?
     self.is_carousel_img
   end
@@ -53,6 +65,10 @@ class OfferingImage < ActiveRecord::Base
 
   def header?
     self.display_position == 0
+  end
+
+  def head?
+    self.is_head
   end
 
 end

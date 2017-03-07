@@ -4,7 +4,7 @@ class Admin::OfferingsController < ApplicationController
   before_action :admin_authorize
   before_action :set_offering, only: [:edit, :show, :update, :destroy, :assign_pov, :assign_testimony]
   before_action :set_image, only: [:edit_image, :update_image, :destroy_image]
-  before_action :set_content, only: [:edit_content, :update_content, :destroy_content]
+  before_action :set_content, only: [:edit_content, :update_content, :destroy_content, :create_content]
   before_action :set_stat, only: [:edit_stat, :update_stat, :destroy_stat]
   before_action :banner_image, except: []
 
@@ -62,14 +62,11 @@ class Admin::OfferingsController < ApplicationController
   def create_content
     @content = Content.new(content_params)
     @content.title = params[:content][:title]
-    respond_to do |format|
-      if @content.save
-        format.html { redirect_to edit_admin_offering_path(@content.offering), notice: "#{@content.title} has been created." }
-        format.json { render :show, status: :ok, location: @content }
-      else
-        format.html { redirect_to edit_admin_offering_path(@offering), notice: "#{}@content.errors}" }
-        format.json { render json: @content.errors, status: :unprocessable_entity }
-      end
+    if @content.save
+      redirect_to edit_admin_offering_path(@content.offering), notice: "#{@content.title} has been created."
+    else
+      flash[:error] = @content.errors.full_messages
+      redirect_to edit_admin_offering_path(@offering)
     end
   end
 
@@ -211,7 +208,7 @@ class Admin::OfferingsController < ApplicationController
   private
 
   def set_offering
-    @offering = Offering.find(params[:id])
+    @offering = Offering.find(params[:id]) rescue nil
   end
 
   def parent_options
@@ -245,6 +242,9 @@ class Admin::OfferingsController < ApplicationController
   def set_content
     if params[:id]
       @content = Content.find(params[:id])
+    end
+    if params[:content]
+      @offering = Offering.find(params[:content][:offering_id]) rescue nil
     end
   end
 

@@ -32,5 +32,6 @@ class WelcomeController < ApplicationController
     if @offering.nil?
       @offering = Offering.offerings.active.all_parents.first
     end
+    @offering_images = @offering.offering_images.headers.active
   end
 end
