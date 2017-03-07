@@ -3,7 +3,7 @@
     <%= overview.panel_header %>
   </div>
   <div class="panel-body">
-    <div class="welcome-panel">
+    <div class="welcome-panelx">
       <% hr_break = false %>
       <% if false %>
         <div class="offering_join_list">
@@ -38,7 +38,7 @@
       <% overview.children_by_position.active.each do |offering| %>
         <div class="row offering_row">
           <% if offering.offering_images.active.headers.empty?%>
-              <% div_class= "col-md-12" %>
+              <% div_class= "col-md-11" %>
           <% else%>
             <% div_class= "col-md-7" %>
           <% end %>
@@ -91,18 +91,16 @@
           </div>
           <% if !offering.offering_images.active.headers.empty?%>
           <div class="col-md-5">
-            <div class="offering_name">&nbsp;</div>
               <div class="offering_image_scroll">
                 <% offering.offering_images.active.headers.by_position.each do |image| %>
-                  <div class="row">
-                    <p  class = "image_name_2">
+                  <div class="panel-body offering_image_block">
+                    <p  class = "offering_image_name_2">
                       <%= image.name.html_safe %>
                     </p>
                     <p  class="offering_image">
                       <%= image.pic? ? image_tag(image.image) : '' %>
                     </p>
                   </div>
-                    <hr>
                 <% end %>
               </div>
             </div>
