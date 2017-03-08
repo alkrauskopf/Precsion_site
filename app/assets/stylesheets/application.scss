@@ -976,6 +976,7 @@ h1, h2, h3, h4 {
 .offering_image_scroll {
   overflow: scroll;
   max-height: 35em;
+  border:1px solid $border_gray;
 }
 .offering_image_block {
   margin: 1em 0em 0em 0em;
