@@ -1,15 +1,10 @@
 <div class="panel-palette">
-  <div class="panel-heading"  style="background-color: <%=overview.panel_color%>">
-    <h4><%= overview.panel_header %></h4>
+  <div class="precision_panel"  style="background-color: <%=overview.panel_color%>">
+    <%= overview.panel_header %>
   </div>
   <div class="panel-body">
     <div class="welcome-panel">
       <% hr_break = false %>
-      <% if false %>
-          <div class="research_join_list">
-            <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
-          </div>
-      <% end %>
       <% if !overview.nil?  && !overview.brief.strip.empty? %>
         <span class = "offering_header">
           <%= overview.brief.html_safe %>
@@ -36,44 +31,7 @@
       <% end %>
       <% if hr_break %> <hr> <% end %>
       <% overview.children_by_position.active.each do |research| %>
-          <p class="offering_descript">
-            <span class="offering_name"><%= research.name.html_safe %></span>&nbsp;
-            <% if research.active_contents.first && research.active_contents.first.exist? %>
-                <span class="research_link">
-                  <% if research.active_contents.first.type.upcase == "LINK" %>
-                      <a href= <%= research.active_contents.first.content_url %> target="_blank">(<u>View <%= research.active_contents.first.type %> </u>)</a>
-                  <% else %>
-                      <a href= <%= research.active_contents.first.url %> target="_blank">(<u>View <%= research.active_contents.first.type %> </u>)</a>
-                  <% end %>
-                </span>&nbsp;
-            <% end %>
-            <%= research.brief.html_safe %>
-          </p>
-          <% if !research.images.not_carousels.empty? %>
-            <% grp = 'c1' %>
-            <div class="about_blue_font image_list">
-              <% research.images.not_carousels.each_with_index do |image, idx| %>
-                  View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
-                  <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
-              <% end %>
-            </div>
-          <% end %>
-          <% if !research.user_povs.empty?%>
-            <div class="about_blue_font pov_list">
-              <% research.user_povs.each do |pov| %>
-                  Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
-              <% end %>
-            </div>
-          <% end %>
-          <% if !research.testimonies.active.empty? %>
-              <% grp = 'rsch' %>
-              <div class="about_blue_font image_list">
-                <% research.testimonies.active.each_with_index do |tst, idx| %>
-                    <%=tst.tst_view_label%>&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
-                    <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
-                <% end %>
-              </div>
-          <% end %>
+          <%= render partial: 'offering_child_show', locals: {offering: research} %>
           <hr>
       <% end -%>
     </div>

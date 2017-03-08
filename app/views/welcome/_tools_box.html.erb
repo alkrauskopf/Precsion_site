@@ -1,18 +1,10 @@
 <div class="panel-palette">
-  <div class="panel-heading"  style="background-color: <%=overview.panel_color%>">
-    <h4><%= overview.panel_header %></h4>
-    <div class="tool_contact">
-      Live Demo? 'Contact Us'
-    </div>
+  <div class="precision_panel"  style="background-color: <%=overview.panel_color%>">
+    <%= overview.panel_header %>
   </div>
   <div class="panel-body">
     <div class="welcome-panel">
       <% hr_break = false %>
-      <% if false %>
-          <div class="tool_join_list">
-            <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
-          </div>
-      <% end %>
       <% if !overview.stats.empty?  && false %>
         <div class="about_blue_font stat_list">
           <u><%= link_to "View Our Statistics", "#statModal#{overview.id}", "data-toggle" => "modal" %></u>
@@ -46,64 +38,7 @@
         <% end %>
         <% if hr_break %> <hr> <% end %>
         <% overview.children_by_position.active.each do |tool| %>
-          <p class= "offering_descript" >
-              <% if tool.active_contents.first && tool.active_contents.first.exist? %>
-                  <span class='tool_link' >
-                    <% if tool.active_contents.first.type.upcase == "LINK" %>
-                        <a href= <%= tool.active_contents.first.content_url %> target="_blank"><u><%= tool.name == '' ? grant.active_contents.first.title : tool.name %></u></a>
-                    <% else %>
-                        <a href= <%= tool.active_contents.first.url %> target="_blank"><u><%= tool.name == '' ? tool.active_contents.first.title : tool.name %></u></a>
-                    <% end %>
-                  </span>&nbsp;
-              <% else %>
-                <span class="offering_name">
-                  <%= tool.name == '' ? '' : (tool.name.html_safe + ' ') %>
-                </span>
-              <% end %>
-              <%= tool.brief.html_safe %>
-          </p>
-          <% if !tool.images.not_carousels.empty? %>
-              <% grp = 'c1' %>
-              <div class="about_blue_font image_list">
-                <% tool.images.not_carousels.each_with_index do |image, idx| %>
-                    View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
-                    <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
-                <% end %>
-              </div>
-          <% end %>
-          <% if !tool.user_povs.empty?%>
-              <div class="about_blue_font pov_list">
-                <% tool.user_povs.each do |pov| %>
-                    Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
-                <% end %>
-              </div>
-          <% end %>
-          <% if !tool.testimonies.active.empty? %>
-            <% grp = 'tool' %>
-            <div class="about_blue_font image_list">
-              <% tool.testimonies.active.each_with_index do |tst, idx| %>
-                  <%=tst.tst_view_label%>&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
-                  <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
-              <% end %>
-            </div>
-          <% end %>
-          <div class= "feature_descript" >
-            <% tool.children_by_position.active.each do |feature| %>
-              <span class="feature_name">
-                <%= feature.name == '' ? '' : (feature.name.html_safe + ' ') %>
-              </span>
-              <%= feature.brief.html_safe %>
-              <% if !feature.images.not_carousels.empty? %>
-                <% grp = 'c1' %>
-                <div class="about_blue_font image_list">
-                  <% feature.images.not_carousels.each_with_index do |image, idx| %>
-                      View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
-                      <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
-                  <% end %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
+          <%= render partial: 'offering_child_show', locals: {offering: tool} %>
           <hr>
         <% end -%>
       </div>

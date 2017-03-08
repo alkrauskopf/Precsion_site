@@ -1,23 +1,10 @@
-<div class="row pp_enroll">
-  <div class="col-md-1">
-
-  </div>
-  <div class="col-md-10"></div>
-</div>
 <div class="panel-palette">
-  <div class="panel-heading"  style="background-color: <%=overview.panel_color%>">
-    <div class="row pp_enroll">
-      <h4><%= overview.panel_header %></h4>
-    </div>
+  <div class="precision_panel"  style="background-color: <%=overview.panel_color%>">
+      <%= overview.panel_header %>
   </div>
   <div class="panel-body">
     <div class="welcome-panel">
     <% hr_break = false %>
-    <% if false %>
-      <div class="grant_join_list">
-        <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
-      </div>
-    <% end %>
     <% unless pending_preps.empty? && next_webinar.nil? %>
       <%= render 'prep_enroll_buttons'%>
       <hr>
@@ -64,51 +51,7 @@
         <% end %>
         <% if hr_break %> <hr> <% end %>
         <% overview.children_by_position.active.each do |offering| %>
-            <div class="offering_name">
-              <%= offering.name == '' ? '' : (offering.name.html_safe + ' ') %>
-            </div>
-            <p>
-              <%= offering.brief.html_safe %>
-            </p>
-            <% if !offering.active_contents.empty? %>
-                <div class="image_list">
-                  <% offering.active_contents.each do |content| %>
-                      <% if content.exist? %>
-                          <% if content.type.upcase == "LINK" %>
-                              View:&nbsp;&nbsp;<a href= <%= content.content_url %> target="_blank"><u><%= content.title.html_safe%></u></a>
-                          <% else %>
-                              View:&nbsp;&nbsp;<a href= <%= content.attached_report %> target="_blank"><u><%= content.title.html_safe%></u></a>
-                          <% end %>
-                          <br/>
-                      <% end %>
-                  <% end %>
-                </div>
-            <% end %>
-            <% if !offering.images.not_carousels.empty? %>
-                <% grp = 'c1' %>
-                <div class="about_blue_font image_list">
-                  <% offering.images.not_carousels.each_with_index do |image, idx| %>
-                      View:&nbsp;<u><%= link_to image.name.html_safe, "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
-                      <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
-                  <% end %>
-                </div>
-            <% end %>
-            <% if !offering.user_povs.empty?%>
-                <div class="about_blue_font pov_list">
-                  <% offering.user_povs.each do |pov| %>
-                      Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name.html_safe %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
-                  <% end %>
-                </div>
-            <% end %>
-            <% if !offering.testimonies.active.empty? %>
-              <% grp = 'prp' %>
-              <div class="about_blue_font image_list">
-                <% offering.testimonies.active.each_with_index do |tst, idx| %>
-                    <%=tst.tst_view_label%>&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
-                    <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
-                <% end %>
-              </div>
-            <% end %>
+            <%= render partial: 'offering_child_show', locals: {offering: offering} %>
             <%= render 'prep_enroll_buttons'%>
             <hr>
         <% end -%>

@@ -509,8 +509,6 @@ h1, h2, h3, h4 {
   color:$dark-text;
   background-color: transparent;
   font-size: 14px;
-  overflow: scroll;
-  max-height: 150em;
 }
 
 .welcome-panel-left {
@@ -943,14 +941,6 @@ h1, h2, h3, h4 {
   font-size:16px;
   color: $dark_text;
 }
-.pp_enroll {
-  margin: 0em 0em 0em 14em;
-  line-height:1.0em;
-  font-weight:normal;
-  font-style: normal;
-  text-align: center;
-  font-size:11px;
-}
 
 .research_join_list {
   line-height:1.0em;
@@ -976,7 +966,7 @@ h1, h2, h3, h4 {
 .offering_image_scroll {
   overflow: scroll;
   max-height: 35em;
-  border:1px solid $border_gray;
+  border:0px solid $border_gray;
 }
 .offering_image_block {
   margin: 1em 0em 0em 0em;

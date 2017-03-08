@@ -1,25 +1,17 @@
 <div class="panel-palette">
-  <div class="panel-heading"  style="background-color: <%=overview.panel_color%>">
-    <h4><%= overview.panel_header %></h4>
+  <div class="precision_panel"  style="background-color: <%=overview.panel_color%>">
+    <%= overview.panel_header %>
   </div>
   <div class="panel-body">
     <div class="welcome-panel">
     <% hr_break = false %>
-    <% if false %>
-      <div class="grant_join_list">
-        <%= overview.nil? ? '' : overview.children_by_position.active.collect{|t| t.name}.join(' - ') %>
-      </div>
-    <% end %>
       <div>
-        <span class = "offering_header">
+        <div class = "offering_header">
           <% if !overview.nil?  && !overview.brief.strip.empty? %>
             <%= overview.brief.html_safe %>
             <% hr_break = true %>
           <% end %>
-         <!--
-          <span class = "grant_contact" ><%#= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal'} %></span>
-         -->
-        </span>
+        </div>
         <% if !overview.images.not_carousels.empty? && false%>
             <% grp = 'p' %>
             <div class="about_blue_font image_list">
@@ -40,52 +32,7 @@
         <% end %>
         <% if hr_break %> <hr> <% end %>
         <% overview.children_by_position.active.each do |grant| %>
-            <div class="offering_name">
-              <%= grant.name == '' ? '' : (grant.name.html_safe + ' ') %>
-            </div>
-          <p>
-            <%= grant.brief.html_safe %>
-          </p>
-            <% if !grant.active_contents.empty? %>
-              <%  links = grant.active_contents %>
-              <% idx = 0 %>
-              <% while idx < links.size %>
-                <% l= links[idx] %>
-                <p class="grant_link">
-                  <% if l.type.upcase == "LINK" %>
-                      <a href= <%= l.content_url %> target="_blank"><u><%= l.title%></u></a>
-                  <% else %>
-                      <a href= <%= l.url %> target="_blank"><u><%= l.title %></u></a>
-                  <% end %>
-                </p>
-                <% idx += 1 %>
-              <% end %>
-            <% end %>
-            <% if !grant.images.not_carousels.empty? %>
-                <% grp = 'grt' %>
-                <div class="about_blue_font image_list">
-                  <% grant.images.not_carousels.each_with_index do |image, idx| %>
-                      View:&nbsp;<u><%= link_to "#{image.name}", "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u>
-                      <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image} %>
-                  <% end %>
-                </div>
-            <% end %>
-            <% if !grant.user_povs.empty?%>
-                <div class="about_blue_font pov_list">
-                  <% grant.user_povs.each do |pov| %>
-                      Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
-                  <% end %>
-                </div>
-            <% end %>
-            <% if !grant.testimonies.active.empty? %>
-                <% grp = 'grt' %>
-                <div class="about_blue_font image_list">
-                  <% grant.testimonies.active.each_with_index do |tst, idx| %>
-                      <%=tst.tst_view_label%>&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
-                      <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
-                  <% end %>
-                </div>
-            <% end %>
+            <%= render partial: 'offering_child_show', locals: {offering: grant} %>
             <hr>
         <% end -%>
       </div>

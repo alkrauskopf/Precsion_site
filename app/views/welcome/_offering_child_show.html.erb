@@ -1,0 +1,71 @@
+
+<div class="row offering_row">
+  <% if offering.offering_images.active.headers.empty?%>
+      <% div_class= "col-md-12" %>
+  <% else%>
+    <% div_class= "col-md-7" %>
+  <% end %>
+  <div class= <%= div_class %>>
+    <div class="offering_name">
+      <%= offering.name == '' ? '' : (offering.name.html_safe + ' ') %>
+    </div>
+    <div class="offering_descript">
+      <%= offering.description.html_safe %>
+    </div>
+    <% if !offering.images.not_carousel_headers.empty? %>
+        <% grp = 'c1' %>
+        <div class="about_blue_font image_list">
+          <% offering.images.not_carousel_headers.each_with_index do |image, idx| %>
+              View:&nbsp;<u><%= link_to image.name.html_safe, "#imageModal#{grp}#{idx}#{image.id}", "data-toggle" => "modal" %></u><br/>
+              <%= render partial: 'session/image_show_modal', locals: {grp: grp, idx: idx, image: image } %>
+          <% end %>
+        </div>
+    <% end %>
+    <% if !offering.active_contents.empty? %>
+      <div class="image_list">
+        <% offering.active_contents.each do |content| %>
+          <% if content.exist? %>
+            <% if content.type.upcase == "LINK" %>
+                View:&nbsp;&nbsp;<a href= <%= content.content_url %> target="_blank"><u><%= content.title.html_safe%></u></a>
+            <% else %>
+                View:&nbsp;&nbsp;<a href= <%= content.attached_report %> target="_blank"><u><%= content.title.html_safe%></u></a>
+            <% end %>
+            <br/>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if !offering.user_povs.empty?%>
+      <div class="about_blue_font pov_list">
+        <% offering.user_povs.each do |pov| %>
+            Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name.html_safe %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
+        <% end %>
+      </div>
+    <% end %>
+    <% if !offering.testimonies.active.empty? %>
+        <% grp = 'ofr' %>
+        <div class="about_blue_font image_list">
+          <% offering.testimonies.active.each_with_index do |tst, idx| %>
+              <%=tst.tst_view_label%>&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
+              <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+  <% if !offering.offering_images.active.headers.empty?%>
+  <div class="col-md-5">
+      <div class="offering_image_scroll">
+        <% offering.offering_images.active.headers.by_position.each do |image| %>
+          <div class="panel-body offering_image_block">
+            <p  class = "offering_image_name_2">
+              <%= image.name.html_safe %>
+            </p>
+            <p  class="offering_image">
+              <%= image.pic? ? image_tag(image.image) : '' %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
