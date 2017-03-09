@@ -1,44 +1,46 @@
-<div class="off-testimony-box off-testimony">
-<% if !active_offering.testimonies.active.empty? %>
-    <% active_offering.testimonies.active.each do|tst| %>
-      <div class = "row off-testimony-row">
-        <table style="width:95%">
-          <tbody>
-          <colgroup>
-            <col style="width:30%">
-            <col style="width:70%">
-          </colgroup>
-          <tr>
-            <td class= "off-testimony_image thumbnail-small">
-              <% if (!tst.images.empty? ) %>
-                  <%= image_tag (tst.images.first.pic) %>
-              <% end %>
-            </td>
-            <td class = "off_testimony_person">
-                <%= tst.tst_person_name %><br/>
-              <span class = "off_testimony_role">
-                <%= tst.tst_person_role %><br/>
-                On:&nbsp;<%= tst.tst_topic %>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td colspan=2 class= "off_testimony_statement">
-              <%= tst.tst_statement %>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+<% if !active_offering.testimonies.active.empty? || !active_offering.children_testimonies.empty? %>
+  <div class="off-testimony-box off-testimony">
+    <% if !active_offering.testimonies.active.empty? %>
+      <% active_offering.testimonies.active.each do|tst| %>
+        <div class = "row off-testimony-row">
+          <table style="width:95%">
+            <tbody>
+            <colgroup>
+              <col style="width:30%">
+              <col style="width:70%">
+            </colgroup>
+            <tr>
+              <td class= "off-testimony_image thumbnail-small">
+                <% if (!tst.images.empty? ) %>
+                    <%= image_tag (tst.images.first.pic) %>
+                <% end %>
+              </td>
+              <td class = "off_testimony_person">
+                  <%= tst.tst_person_name %><br/>
+                <span class = "off_testimony_role">
+                  <%= tst.tst_person_role %><br/>
+                  On:&nbsp;<%= tst.tst_topic %>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan=2 class= "off_testimony_statement">
+                <%= tst.tst_statement %>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
     <% end %>
-<% end %>
-<% if !active_offering.children_testimonies.empty? %>
-  <% grp = 'chil' %>
-  <div class="about_blue_font testimony_list">
-    <% active_offering.children_testimonies.each_with_index do |tst, idx| %>
-        <u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
-        <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
+    <% if !active_offering.children_testimonies.empty? %>
+      <% grp = 'chil' %>
+      <div class="about_blue_font testimony_list">
+        <% active_offering.children_testimonies.each_with_index do |tst, idx| %>
+            <u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
+            <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 <% end %>
-</div>

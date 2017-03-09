@@ -1,18 +1,18 @@
 <% if !active_offering.offering_images.active.carousels.empty? %>
-      <div class="offering_image_box">
-        <% active_offering.offering_images.active.carousels.by_position.each do|image| %>
-          <div class="row">
-            <hr>
-            <p  class = "image_name">
-              <%= image.name.html_safe %>
-            </p>
-            <p class="image_descript">
-              <%= image.description.html_safe %>
-            </p>
-            <p  class="offering_image">
-              <%= image.pic? ? image_tag(image.image) : '' %>
-            </p>
-          </div>
-        <% end %>
+  <div class="offering_image_box">
+    <% active_offering.offering_images.active.carousels.by_position.each do|image| %>
+      <div class="row">
+        <hr>
+        <p  class = "image_name">
+          <%= image.name.html_safe %>
+        </p>
+        <p class="image_descript">
+          <%= image.description.html_safe %>
+        </p>
+        <p  class="offering_image">
+          <%= image.pic? ? image_tag(image.image) : '' %>
+        </p>
       </div>
+    <% end %>
+  </div>
 <% end %>
