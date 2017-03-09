@@ -790,7 +790,7 @@ h1, h2, h3, h4 {
     border-bottom: 1px solid #eee;
   }
 
-.image_list {
+.off_image_list {
   font-size: 12px;
   line-height:1.7em;
   font-style: normal;
@@ -986,7 +986,7 @@ h1, h2, h3, h4 {
 
 .offering_name {
   margin-top:1em;
-  margin-bottom:0em;
+  margin-bottom:1em;
   font-style: normal;
   font-weight:bold;
   text-align: left;
@@ -995,7 +995,7 @@ h1, h2, h3, h4 {
 }
 
 .offering_descript {
-  margin-top:1em;
+  margin-top:0em;
   line-height:1.8em;
   font-weight:normal;
   font-style: normal;
