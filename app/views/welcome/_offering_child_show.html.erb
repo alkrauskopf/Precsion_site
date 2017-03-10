@@ -18,6 +18,9 @@
         <% end %>
       </div>
     <% end %>
+    <div class="offering_descript">
+      <%= offering.description.html_safe %>
+    </div>
     <% if !offering.testimonies.active.empty? %>
         <% grp = 'ofr' %>
         <div class="about_blue_font off_image_list">
@@ -27,9 +30,6 @@
           <% end %>
         </div>
     <% end %>
-    <div class="offering_descript">
-      <%= offering.description.html_safe %>
-    </div>
     <% if !offering.active_contents.empty? %>
       <div class="off_image_list">
         <% offering.active_contents.each do |content| %>
