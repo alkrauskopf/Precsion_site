@@ -1,5 +1,5 @@
 <div class="container">
-<%= form_for([:admin, stat], html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+<%= form_for([:admin, stat], html: {id: "id", class: 'form-horizontal', role: 'form'}) do |f| %>
 
   <% if stat.errors.any? %>
     <div class="alert alert-danger alert-dismissible" role="alert">

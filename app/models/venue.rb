@@ -21,6 +21,9 @@ class Venue < ActiveRecord::Base
   private
 
   def confirm_inactive?
-    !self.active?
+    if self.active?
+      self.errors.add(:base, "Can not delete active venues!")
+      false
+    end
   end
 end

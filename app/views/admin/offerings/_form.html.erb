@@ -1,4 +1,4 @@
-<%= form_for([:admin, @offering], html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+<%= form_for([:admin, @offering], html: {id: "id", class: 'form-horizontal', role: 'form'}) do |f| %>
 
   <% if @offering.errors.any? %>
     <div class="alert alert-danger alert-dismissible" role="alert">

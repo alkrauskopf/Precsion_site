@@ -8,7 +8,9 @@
   <meta name="author" content="">
   <title>Precision School Improvement</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <% if false %>
   <link rel="stylesheet" href="/resources/demos/style.css">
+      <% end %>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
@@ -30,14 +32,14 @@
   <![endif]-->
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%#= javascript_include_tag("#{STRIPE_JS_HOST}/v2/#{STRIPE_JS_FILE}") %>
+  <%= javascript_include_tag("#{STRIPE_JS_HOST}/v2/#{STRIPE_JS_FILE}") %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<!--
   <script>
     Stripe.setPublishableKey(
-      "#{Rails.application.secrets.stripe_publishable_key}");
+      "<%= Rails.application.secrets.stripe_publishable_key %>");
   </script>
-  -->
+
+
   <%= csrf_meta_tags %>
 </head>
 <body class="container page_background">
@@ -64,16 +66,23 @@
 <!-- /.container -->
 
 <!-- jQuery -->
+    <% if false %>
 <script src="/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="/js/bootstrap.min.js"></script>
-
+<% end %>
 <!-- Script to Activate the Carousel -->
 <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
 </script>
+<script>
+  $('form#id').submit(function(){
+    $(this).find(':input[type=submit]').prop('disabled', true);
+  });
+</script>
+
 </body>
 </html>

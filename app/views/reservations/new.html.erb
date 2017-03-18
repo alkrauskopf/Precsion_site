@@ -5,6 +5,6 @@
     <h2><%=@event.name %></h2>
   </div>
 </div>
-<%= form_for(:reservation, :url=> prep_reservation_path(:event_id => @event.id), html: { class: "form-horizontal", role: "form" }) do |f| %>
+<%= form_for(:reservation, :url=> prep_reservation_path(:event_id => @event.id), html: { id: "id", class: "form-horizontal", role: "form" }) do |f| %>
     <%= render partial: 'form', locals: {:f=> f, :event => @event} %>
 <% end %>

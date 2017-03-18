@@ -11,6 +11,6 @@
   </div>
 </div>
 <%#= form_for [@event], :url=> prep_event_update_path, html: { class: "form-horizontal", role: "form" } do |f| %>
-<%= form_for(:event, :url=> prep_event_update_path(:id=> @event.id), html: { class: "form-horizontal", role: "form" }) do |f| %>
+<%= form_for(:event, :url=> prep_event_update_path(:id=> @event.id), html: { id: "id", class: "form-horizontal", role: "form" }) do |f| %>
   <%= render partial: 'form', locals: {:f=> f} %>
 <% end %>
