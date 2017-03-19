@@ -46,7 +46,7 @@
     Response ID:  <%= payment.response_id%>
   </div>
   <div class="row pay_box payment">
-    Full Response:  <%= payment.full_response%>
+    Full Response:  <%= payment.full_response{:object}%>
   </div>
 <hr>
 <% end %>

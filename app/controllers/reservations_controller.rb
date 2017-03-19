@@ -72,7 +72,7 @@ class ReservationsController < ApplicationController
     else
       @reservation.validate!
       flash[:notice] = 'Your Sign-up Status: ' + @reservation.status.upcase
-      go_pay = (@reservation.event.payable? && !@reservation.free?) ? true : false
+      go_pay = (@reservation.buyable?) ? true : false
     end
     go_pay = false
     if go_pay

@@ -45,8 +45,8 @@ class Reservation < ActiveRecord::Base
     self.status == 'removed'
   end
 
-  def payable?
-    self.validated? && self.event.payable? && !self.free?
+  def buyable?
+    self.validated? && self.event.reservable? && !self.free?
   end
 
   def free?

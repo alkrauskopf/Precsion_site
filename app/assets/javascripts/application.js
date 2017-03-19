@@ -16,7 +16,7 @@
 // require turbolinks
 //= require bootstrap
 // require bootstrap-sprockets
-// require jquery.payment
+//= require jquery.payment
 //= require jquery.turbolinks
 // require purchases_cart
 //= require tinymce

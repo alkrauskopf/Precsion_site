@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
     self.capacity > self.reservations.confirmed.size
   end
 
-  def payable?
+  def reservable?
     self.active? && !self.expired? && !self.at_capacity?
   end
 

@@ -32,13 +32,13 @@ class StripeCharge
   end
 
   def success_attributes
-    {status: :succeeded,
-  #  response_id: response.id, full_response: response.to_json}
-    response_id: response.id, full_response: response.serialize}
+#    {status: :succeeded,
+  #  response_id: response.id, full_response: response.serialize}
+    {status: response.status,
+    response_id: response.id, full_response: response.to_json}
   end
 
   def failure_attributes
-    {status: :failed,
-     response_id: response.id, full_response: error.serialize}
+    {status: :failed, full_response: error.to_json}
   end
 end

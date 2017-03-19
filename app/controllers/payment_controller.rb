@@ -5,20 +5,27 @@ class PaymentController < ApplicationController
   before_action :banner_image, except: []
   before_action :set_buyable
 
+
   def new
-    @token = 'new'
+
   end
 
   def create
     token = StripeToken.new(**card_params)
-    workflow = PurchasesCart.new(
-      buyable: @buyable, stripe_token: token,
-      payment_amount_cents: @buyable.price_cents
+    workflow = PurchasesCartViaStripe.new(
+      buyable: @buyable,
+      stripe_token: token,
+      purchase_amount_cents: @buyable.price_cents
     )
     workflow.run
-    #  check status ---  assume success for now
-    @buyable.confirm!
-    redirect_to payment_show_path(:buyable_id => @buyable.id, :buyable_type => @buyable.class.to_s)
+    if workflow.success
+      @buyable.confirm!
+      flash[:notice] = workflow.payment ? ('ID: ' + workflow.payment.id.to_s + ' Status: ' + workflow.payment.status) : "No Workflow Payment"
+      redirect_to payment_show_path(:buyable_id => @buyable.id, :buyable_type => @buyable.class.to_s)
+    else
+      flash[:error] = workflow.payment ? ('ID: ' + workflow.payment.id.to_s + ' Status: ' + workflow.payment.status) : "No Workflow Payment"
+      redirect_to payment_new_path(:buyable_id => @buyable.id, :buyable_type => @buyable.class.to_s)
+    end
   end
 
   def show
@@ -33,6 +40,7 @@ class PaymentController < ApplicationController
       if !@buyable.nil?
         @buyer = @buyable.full_name
         @item = @buyable.event.name
+        @time_frame = @buyable.event.time
         @venue = @buyable.event.venue.name
         @start_date = @buyable.event.start_date
         @end_date = @buyable.event.end_date

@@ -1,0 +1,58 @@
+
+<%= form_tag(payments_path, class: "credit-card-form form-horizontal", id: "payment-form") do  %>
+  <%= hidden_field_tag(:price_cents, price_cents) %>
+  <%= hidden_field_tag(:buyable_id, item.id) %>
+  <%= hidden_field_tag(:buyable_type, item.class.to_s) %>
+  <div class="row pay_cc_box">
+    <h3> Credit Card Info</h3>
+  </div>
+  <div class="pay_cc_box">
+    <div class="row pay_cc_amount">
+      <div class="form-group">
+        <div class="col-sm-2">
+          &nbsp;
+        </div>
+        <div class="col-sm-3">
+          <%= humanized_money_with_symbol(price_cents) %>
+        </div>
+      </div>
+    </div>
+    <div class="row pay_cc_label">
+      <div class="form-group">
+        <div class="col-sm-2">
+          <%= label_tag(:credit_card_number, "Credit Card Number", class: "control-label")%>
+        </div>
+        <div class="col-sm-3">
+          <input class='form-control valid-field' placeholder='Credit Card #' data-stripe="number" id='credit_card_number' >
+        </div>
+      </div>
+    </div>
+    <div class="row pay_cc_label">
+      <div class="form-group">
+        <div class="col-sm-2">
+          <%= label_tag :expiration_date, "Expiration Date", class: "control-label"%>
+        </div>
+        <div class="col-sm-3">
+          <input class='form-control valid-field' placeholder='MM / YY' data-stripe="exp" id='expiration_date' >
+        </div>
+      </div>
+    </div>
+    <div class="row pay_cc_label">
+      <div class="form-group">
+        <div class="col-sm-2">
+          <%= label_tag :cvc, "CVC", class: "control-label" %>
+        </div>
+        <div class="col-sm-1">
+          <input class='form-control valid-field' placeholder='###' data-stripe="cvc" id='cvc' >
+        </div>
+      </div>
+    </div>
+    <div class="row pay_cc_label">
+      <div class="form-group">
+        <div class="col-sm-3">
+          <%= submit_tag "Purchase", class: "button_blue", id: 'purchase' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

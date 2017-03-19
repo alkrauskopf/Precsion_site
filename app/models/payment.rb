@@ -5,7 +5,7 @@ class Payment < ActiveRecord::Base
 
   monetize :price_cents
 
-  enum status: [:created, :succeeded]
+  enum status: {created: 0, succeeded: 1, pending: 2, failed: 3}
 
   def self.stripes
     where('payment_method = ?', 'stripe')

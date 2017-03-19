@@ -10,10 +10,20 @@ h1 {
   padding-bottom: 5px;
 }
 
-.pay_box {
-  margin: 0em 0em 0em 10em;
+.pay_cc_box {
+  margin: 1em 0em 0em 10em;
   text-align:left;
   font-size:13px;
+}
+.pay_cc_amount {
+  text-align:center;
+  font-weight:bold;
+  color:$blue_text;
+  font-size: 16px;
+}
+
+.pay_cc_label {
+  text-align:right;
 }
 
 .item {

@@ -1,43 +1,20 @@
-<div class="row pay_box">
-  <h2><%=@buyer %> Checkout</h2>
-</div>
-<div class="row pay_box token">
-  <%= @token%>
-</div>
-<div class="row pay_box item">
-  <%= @item%>
-</div>
-<div class="row pay_box item">
-  <%= @start_date.strftime('%b %d, %Y')%> - <%= @end_date.strftime('%b %d, %Y')%>
-</div>
-<div class="row pay_box item">
-    <%= @venue%>
-</div>
-<div class="row pay_box item">
-    Amount: <%= humanized_money_with_symbol(@price) %>
+
+<div class="pay_cc_box">
+  <div class="row">
+    <h3><%=@buyer %> Checkout</h3>
+  </div>
+  <div class="row item">
+    <%= @item%>
+  </div>
+  <div class="row item">
+    <%= @start_date.strftime('%b %d, %Y')%> - <%= @end_date.strftime('%b %d, %Y')%>
+  </div>
+  <div class="row item">
+    <%= @time_frame %>
+  </div>
+  <div class="row item">
+      <%= @venue%>
+  </div>
 </div>
 <hr>
-<%= form_tag(payments_path, class: "form-inline", id: "payment-form") do  %>
-  <%= hidden_field_tag(:price_cents, @price) %>
-  <%= hidden_field_tag(:buyable_id, @buyable.id) %>
-  <%= hidden_field_tag(:buyable_type, @buyable.class.to_s) %>
-  <div class="row form_row pay_box">
-    <%= label_tag(:credit_card_number, "Credit Card Number", class: "sr-only")%>
-     <input class='form-control' placeholder='Credit Card #' data-stripe="number" id='credit_card_number' >
-    <%#= text_field_tag :credit_card_number, "", class: "form-control", placeholder: 'Credit Card #' %>
-  </div>
-  <div class="row form_row pay_box">
-    <%= label_tag :expiration_month, "Month", class: "sr-only"%>
-    <input class='form-control' placeholder='Month (mm)' data-stripe="exp-month" id='expiration_month' >
-    <%#= text_field_tag :expiration_month, "", class: "form-control", placeholder: 'Month (mm)' %>
-    <%= label_tag :expiration_year, "Month", class: "sr-only" %>
-    <input class='form-control' placeholder='Year (yyyy)' data-stripe="exp-year" id='expiration_year' >
-    <%#= text_field_tag :expiration_year, "", class: "form-control", placeholder: 'Year (yyyy)' %>
-    <%= label_tag :cvc, "CVC", class: "sr-only" %>
-    <input class='form-control' placeholder='CVC #' data-stripe="cvc" id='cvc' >
-    <%#= text_field_tag :cvc, "", class: "form-control", placeholder: 'CVC #' %>
-  </div>
-  <div class="row form_row pay_box">
-    <%= submit_tag "Purchase", class: "button_gray", id: 'purchase' %>
-  </div>
-<% end %>
+<%= render partial: 'credit_card_info', locals: {price_cents: @price, item: @buyable} %>
