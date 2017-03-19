@@ -1,52 +1,112 @@
-<div class="row pay_box">
+<div class="pay_cc_box">
+<div class="row ">
+  <div class="col-md-10">
   <h2><%=@buyer %> Payment Work Flow Completed</h2>
+  </div>
 </div>
-<div class="row pay_box token">
-  <%= @token%>
-</div>
-<div class="row pay_box item">
+<div class="row item">
+  <div class="col-md-10">
   <%= @item%>
+  </div>
 </div>
-<div class="row pay_box item">
+<div class="row item">
+  <div class="col-md-10">
   <%= @start_date.strftime('%b %d, %Y')%> - <%= @end_date.strftime('%b %d, %Y')%>
+  </div>
 </div>
-<div class="row pay_box item">
+<div class="row item">
+  <div class="col-md-10">
     <%= @venue%>
+  </div>
 </div>
-<div class="row pay_box item">
-    Amount: <%= humanized_money_with_symbol(@price) %>
+<div class="row item">
+  <div class="col-md-10">
+    Fee Amount: <%= humanized_money_with_symbol(@price) %>
+  </div>
 </div>
-<div class="row pay_box item">
-  Status: <%= @status.upcase %>
+<div class="row item">
+  <div class="col-md-10">
+  Charged Amount: <%= @payment.nil? ? humanized_money_with_symbol(0) :  humanized_money_with_symbol(@payment.price)%>
+  </div>
+</div>
+<div class="row item">
+  <div class="col-md-10">
+  Sign-up: <%= @status.upcase %>
+  </div>
 </div>
 <hr>
-<div class="row pay_box payment">
+<% if false %>
+<div class="row  payment">
   # Payments: <%= @payments.size %>
 </div>
 <% @payments.each do |payment| %>
-  <div class="row pay_box payment">
+  <div class="row payment">
    Payment ID:  <%= payment.id%>
   </div>
-  <div class="row pay_box payment">
+  <div class="row payment">
     Amount: <%= humanized_money_with_symbol(payment.price) %>&nbsp;<%= payment.price_currency %>
   </div>
-  <div class="row pay_box payment">
+  <div class="row payment">
     Description: <%= payment.description %>
   </div>
-  <div class="row pay_box payment">
+  <div class="row payment">
    Status:  <%= payment.status%>
   </div>
-  <div class="row pay_box payment">
+  <div class="row payment">
     Method:  <%= payment.payment_method%>
   </div>
-  <div class="row pay_box payment">
+  <div class="row payment">
     Reference:  <%= payment.reference%>
   </div>
-  <div class="row pay_box payment">
+  <div class="row payment">
     Response ID:  <%= payment.response_id%>
   </div>
-  <div class="row pay_box payment">
+  <div class="row payment">
     Full Response:  <%= payment.full_response{:object}%>
   </div>
 <hr>
 <% end %>
+<% elsif false %>
+    <div class="row payment">
+      <div class="col-md-10">
+      Payment ID:  <%= @payment.id%>
+      </div>
+    </div>
+    <div class="row payment">
+      <div class="col-md-10">
+      Amount: <%= humanized_money_with_symbol(@payment.price) %>&nbsp;<%= @payment.price_currency %>
+      </div>
+    </div>
+    <div class="row payment">
+      <div class="col-md-10">
+      Description: <%= @payment.description %>
+      </div>
+    </div>
+    <div class="row payment">
+      <div class="col-md-10">
+      Status:  <%= @payment.status%>
+      </div>
+    </div>
+    <div class="row payment">
+      <div class="col-md-10">
+      Method:  <%= @payment.payment_method%>
+      </div>
+    </div>
+    <div class="row payment">
+      <div class="col-md-10">
+      Reference:  <%= @payment.reference%>
+      </div>
+    </div>
+    <div class="row payment">
+      <div class="col-md-10">
+      Response ID:  <%= @payment.response_id%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10  payment">
+        Full Response:  <%= @payment.full_response{:object}%>
+      </div>
+    </div>
+    <hr>
+<% end %>
+</div>

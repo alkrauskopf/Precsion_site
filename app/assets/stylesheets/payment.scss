@@ -24,6 +24,7 @@ h1 {
 
 .pay_cc_label {
   text-align:right;
+  word-wrap:break-word;
 }
 
 .item {
@@ -42,4 +43,5 @@ h1 {
   color: $blue_text;
   line-height:2em;
   font-size:13px;
+  word-wrap:break-word;
 }

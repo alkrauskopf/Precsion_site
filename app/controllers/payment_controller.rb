@@ -3,11 +3,12 @@ class PaymentController < ApplicationController
   before_action :admin_authorize, only: []
   before_action :precision_prep_admin?
   before_action :banner_image, except: []
-  before_action :set_buyable
+  before_action :set_buyable, except: [:show]
+  before_action :set_payment, only: [:show]
 
 
   def new
-
+    buyable_instance_variables
   end
 
   def create
@@ -18,18 +19,33 @@ class PaymentController < ApplicationController
       purchase_amount_cents: @buyable.price_cents
     )
     workflow.run
+    payment_id = workflow.payment ? workflow.payment.id : nil
+    charged_amount = workflow.payment ? (JSON.parse(workflow.payment.full_response)['amount'].to_i) : 0
+    charged_string = Money.us_dollar(charged_amount).format(:with_currency => false)
+    fee_string =  Money.us_dollar(@buyable.price_cents).format(:with_currency => false)
+    cc_message = (workflow.payment && !JSON.parse(workflow.payment.full_response)['message'].nil?) ? (', ' + JSON.parse(workflow.payment.full_response)['message']) : ''
+    status = workflow.payment ? workflow.payment.status.upcase : 'nil'
     if workflow.success
       @buyable.confirm!
-      flash[:notice] = workflow.payment ? ('ID: ' + workflow.payment.id.to_s + ' Status: ' + workflow.payment.status) : "No Workflow Payment"
-      redirect_to payment_show_path(:buyable_id => @buyable.id, :buyable_type => @buyable.class.to_s)
+      if workflow.payment
+        matched_amount = @buyable.price_cents != charged_amount
+        flash[:notice] = matched_amount ? ('Status: ' + status + ',  Charged Amount: ' + charged_string + cc_message) :
+            ('Status: ' + status + ',  Charged Amount: ' + charged_string + ', Does Not Match Fee: ' + fee_string + cc_message)
+      else
+        flash[:error] = "Your Payment Was Successful, However We See No Immediate Record Of It.   Please Contact Us"
+      end
+        redirect_to payment_show_path(:buyable_id => @buyable.id, :buyable_type => @buyable.class.to_s, :payment_id => payment_id)
     else
-      flash[:error] = workflow.payment ? ('ID: ' + workflow.payment.id.to_s + ' Status: ' + workflow.payment.status) : "No Workflow Payment"
+      flash[:error] = workflow.payment ? ('Status: ' + status + ',  Charged Amount: ' + charged_string +  cc_message) : "No Workflow Payment Recorded"
       redirect_to payment_new_path(:buyable_id => @buyable.id, :buyable_type => @buyable.class.to_s)
     end
   end
 
   def show
-    @payments = @buyable.payments
+    @buyable = @payment.buyable
+    if !@buyable.nil?
+      buyable_instance_variables
+    end
   end
 
   private
@@ -37,16 +53,6 @@ class PaymentController < ApplicationController
   def set_buyable
     if params[:buyable_type] && params[:buyable_type] == 'Reservation'
       @buyable = Reservation.find_by_id(params[:buyable_id]) rescue nil
-      if !@buyable.nil?
-        @buyer = @buyable.full_name
-        @item = @buyable.event.name
-        @time_frame = @buyable.event.time
-        @venue = @buyable.event.venue.name
-        @start_date = @buyable.event.start_date
-        @end_date = @buyable.event.end_date
-        @price = @buyable.price
-        @status = @buyable.status
-      end
     else
       @buyable = nil
     end
@@ -61,4 +67,19 @@ class PaymentController < ApplicationController
                     :expiration_year, :cvc, :stripe_token).to_h.symbolize_keys
   end
 
+  def set_payment
+    @payment = Payment.find_by_id(params[:payment_id])
+  end
+
+  def buyable_instance_variables
+    @buyer = @buyable.full_name
+    @item = @buyable.event.name
+    @time_frame = @buyable.event.time
+    @venue = @buyable.event.venue.name
+    @start_date = @buyable.event.start_date
+    @end_date = @buyable.event.end_date
+    @price = @buyable.price
+    @status = @buyable.status
+    @payments = @buyable.payments
+  end
 end

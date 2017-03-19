@@ -107,7 +107,7 @@ class ReservationsController < ApplicationController
   end
 
   def phone_format(string)
-    string.gsub(/[- ]/, '').insert(3,'-').insert(7,'-')
+    string.gsub(/[- ]/, '').insert(3,'-').insert(7,'-')[0..11]
   end
 
   def prep_offering
