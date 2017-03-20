@@ -1,6 +1,6 @@
 <h4><%= @name %>,&nbsp;Thank You For Signing Up For <em><%= @enrollment.event.name %></em></h4>
 <h5>
-  Please click <%= link_to 'Here', prep_validate_url(:enrollment => @enrollment.enrollment) %> to validate your email address.
+  Click <%= link_to 'VALIDATE HERE', prep_validate_url(:enrollment => @enrollment.enrollment) %> to validate your email address.
 </h5>
 <h5>Your Enrollment Number Is <ul><%= @enrollment.enrollment %></ul></h5>
 

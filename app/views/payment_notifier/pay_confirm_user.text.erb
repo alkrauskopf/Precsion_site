@@ -1,0 +1,21 @@
+<%= @name %>, Your Credit Card Transaction Has Been Completed.
+
+Enrollment Number:  <%= @enrollment %>
+
+Event: <%=@event%>
+
+Venue: <%=@venue%>
+
+Date: <%= !@event_date.nil? ? @event_date.strftime('%b %d, %Y') : 'No Date Defined'%>
+
+Event Fee: <%= @fee %>
+
+Payment: <%= @amount %>
+
+This does not confirm that payment has been accepted.
+Your credit card information was not captured by, nor stored in, our system.
+
+Your reservation is <%=@enroll_status %>
+
+
+  Thanks Again!

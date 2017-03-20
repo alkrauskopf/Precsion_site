@@ -9,7 +9,7 @@ class ReservationNotifier < ApplicationMailer
     @phone = reservation.phone
     @enrollment = reservation
     @fee = reservation.price
-    mail to: reservation.notification_list
+    mail to: User.prep_notify_list
   end
 
   def confirmation(reservation)
@@ -19,4 +19,14 @@ class ReservationNotifier < ApplicationMailer
     @enrollment = reservation
     mail to: @email
   end
+
+  def pay_confirm_no_payment(reservation)
+    @name = reservation.full_name
+    @email = reservation.email
+    @phone = reservation.phone
+    @enrollment = reservation.enrollment
+    @fee = reservation.price
+    mail to: User.prep_notify_list
+  end
+
 end

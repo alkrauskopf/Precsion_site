@@ -45,11 +45,6 @@ class PurchasesCartViaStripe < PurchasesCart
   end
 
   def post_purchase
-    if payment.failed?
-    #  flash[:error] = 'Fail Fail Fail ' + payment.full_response.to_json
-    else
-    #  flash[:notice] = 'Good Good Good'  + payment.payment_method
-    end
     return if !@continue
     @continue = calculate_success
   end

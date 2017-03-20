@@ -1,0 +1,18 @@
+<%= @name %>, Payment Has Been Received.
+
+Email: <%= @email %>
+
+Enrollment Number: <%= @enrollment %>
+
+Event: <%=@event%>
+
+Venue: <%=@venue%>
+
+Date: <%= !@event_date.nil? ? @event_date.strftime('%b %d, %Y') : 'No Date Defined'%>
+
+
+  Event Fee: <%= @fee %></br>
+  Payment: <%= @amount %>
+
+  Enrollment Status: <%=@enroll_status%>
+  Payment Status: <%= @status%>

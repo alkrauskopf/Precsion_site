@@ -53,10 +53,18 @@ class Reservation < ActiveRecord::Base
     self.price_cents == 0
   end
 
+  def amount
+    amount = Money.us_dollar(self.price.nil? ? 0 : self.price).format(:with_currency => false)
+  end
+
   def email_us!
     self.update(was_notified: true)
     ReservationNotifier.notify_us(self).deliver_now
     ReservationNotifier.confirmation(self).deliver_now
+  end
+
+  def email_payment_problem!
+    ReservationNotifier.pay_confirm_no_payment(self).deliver_now
   end
 
   def full_name

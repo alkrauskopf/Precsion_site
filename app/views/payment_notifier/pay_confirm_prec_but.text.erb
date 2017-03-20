@@ -1,0 +1,22 @@
+Payment Anomaly
+
+<%= @name %>, Payment Has Been Received For An Unknown Event.<
+
+Email: <%= @email %>
+
+Enrollment Number: <%= @enrollment %>
+
+Event: <%=@event%>
+
+Venue: <%=@venue%>
+
+Date: <%= !@event_date.nil? ? @event_date.strftime('%b %d, %Y') : 'No Date Defined'%>
+
+
+  Event Fee: <%= @fee %>
+  Payment: <%= @amount %>
+
+
+
+  Enrollment Status: <%=@enroll_status%>
+  Payment Status: <%= @status%>

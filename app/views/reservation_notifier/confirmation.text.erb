@@ -1,6 +1,6 @@
 <%= @name %>, Thank You For Signing Up For  "<%=@enrollment.event.name %>"
 
-Please click <%= link_to 'Here', prep_validate_url(:enrollment => @enrollment.enrollment) %> to validate your email address.
+Click <%= link_to 'VALIDATE HERE', prep_validate_url(:enrollment => @enrollment.enrollment) %> to validate your email address.
 
 Your Enrollment Number Is <%= @enrollment.enrollment %>
 

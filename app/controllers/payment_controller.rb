@@ -31,8 +31,10 @@ class PaymentController < ApplicationController
         matched_amount = @buyable.price_cents != charged_amount
         flash[:notice] = matched_amount ? ('Status: ' + status + ',  Charged Amount: ' + charged_string + cc_message) :
             ('Status: ' + status + ',  Charged Amount: ' + charged_string + ', Does Not Match Fee: ' + fee_string + cc_message)
+        workflow.payment.email_payment_confirm!
       else
         flash[:error] = "Your Payment Was Successful, However We See No Immediate Record Of It.   Please Contact Us"
+        @buyable.email_payment_problem!
       end
         redirect_to payment_show_path(:buyable_id => @buyable.id, :buyable_type => @buyable.class.to_s, :payment_id => payment_id)
     else

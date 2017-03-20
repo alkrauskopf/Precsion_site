@@ -33,3 +33,14 @@ en:
       subject: Precision Prep Enrollment Notification
     confirmation:
       subject: Precision Prep Confirmation
+    pay_confirm_no_payment:
+      subject: Precision Payment Problem
+
+  site_name: Precision Prep
+  payment_notifier:
+    pay_confirm_user:
+      subject: Precision Payment Confirmation
+    pay_confirm_prec:
+      subject: Precision Payment Notice
+    pay_confirm_prec_but:
+      subject: Precision Payment Anomaly
