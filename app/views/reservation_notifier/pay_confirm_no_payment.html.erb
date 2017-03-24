@@ -1,32 +1,13 @@
-<h4><%= t('site_name') %>&nbsp;Enrollment Notification</h4>
+<h3><%= t('site_name') %>&nbsp;Payment Problem</h3>
+
+<h4>A Successful Payment Was Made But Payment Record Was Lost</h4>
 
 <h5>Name:&nbsp;<%=@name%></h5>
 
 <h5>Email:&nbsp;<%=@email%></h5>
 
-<h5>Email:&nbsp;<%=@phone%></h5>
+<h5>Phone:&nbsp;<%=@phone%></h5>
 
-<h5>Enrollment: <%= @enrollment.enrollment %></h5>
+<h5>Enrollment #: <%= @enrollment %></h5>
 
-<h5>Venue: <%= @enrollment.event.venue.name %></h5>
-
-<h5>Event: <%= @enrollment.event.name %></h5>
-
-<h5>Contact: <%= @enrollment.event.contact_name %>, <%= @enrollment.event.contact_email %></h5>
-
-<h5>
-  Start: <%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%>
-</h5>
-<h5>
-  End: <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%>
-</h5>
-
-<h5>
-  Agreed Fee: <%= humanized_money_with_symbol(@fee) %>
-</h5>
-
-
-<h5>Capacity:&nbsp;<%= @enrollment.event.capacity %></h5>
-<h5><%= pluralize(@enrollment.event.reservations.pendings.size, ' Pending')%></h5>
-<h5><%= pluralize(@enrollment.event.reservations.valids.size, ' Valid')%></h5>
-<h5><%= pluralize(@enrollment.event.confirmed_reservations.size, ' Confirm')%></h5>
+<h5>Fee: <%= @amount %></h5>

@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.pending(e_type)
-    events = Event.where('start_date > ? AND is_active', Date.today).by_date
+    events = Event.where('start_date >= ? AND is_active', Date.today).by_date
     if !e_type.nil?
       events = events.select{|e| e.e_type == e_type}
     end
@@ -87,4 +87,10 @@ class Event < ActiveRecord::Base
   def valid_confirmed_reservations
     self.reservations.select{|r| r.validated? || r.confirmed?}
   end
+
+  def pay_term
+    PayTerm.for(self)
+  end
+
 end
+

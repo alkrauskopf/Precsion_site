@@ -45,6 +45,25 @@ class Admin::EventsController < ApplicationController
     redirect_to prep_event_path
   end
 
+  def event_terms_index
+    @event_terms = PayTerm.all
+  end
+  def event_terms_new
+    @event_terms = PayTerm.all
+  end
+  def event_terms_create
+    @event_terms = PayTerm.all
+  end
+  def event_terms_update
+    @event_terms = PayTerm.all
+  end
+  def event_terms_edit
+    @event_terms = PayTerm.all
+  end
+  def event_terms_destroy
+    @event_terms = PayTerm.all
+  end
+
   private
 
   def set_event

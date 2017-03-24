@@ -103,6 +103,10 @@ class Reservation < ActiveRecord::Base
     desc
   end
 
+  def pay_term
+    self.event ? self.event.pay_term : nil
+  end
+
   private
 
   def confirm_removed?

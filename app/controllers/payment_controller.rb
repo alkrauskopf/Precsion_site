@@ -83,5 +83,6 @@ class PaymentController < ApplicationController
     @price = @buyable.price
     @status = @buyable.status
     @payments = @buyable.payments
+    @pay_term = @buyable.pay_term
   end
 end

@@ -23,13 +23,13 @@
                   <tbody class="reservation">
                   <%= content_tag_for(:tr, @pending_events) do |event| %>
                       <td class="venue">
-                        <%= event.venue.name %></br/>
-                        <span class = 'event_type'><%=event.type_name%></span>
+                        <%= event.start_date.strftime('%b %d, %Y')%></br>
+                        <%= event.venue.name %>
                       </td>
                       <td class="event">
                         <span class="event_name"> <%=event.name %></span></br>
-                        Start: <%= !event.start_date.nil? ? event.start_date.strftime('%b %d, %Y') : '-'%><br/>
-                        End: <%= !event.end_date.nil? ? event.end_date.strftime('%b %d, %Y') : '-'%><br/>
+                        <%= !event.start_date.nil? ? event.start_date.strftime("%m/%d/%Y") : ''%>&nbsp;-&nbsp;
+                        <%= !event.end_date.nil? ? event.end_date.strftime("%m/%d/%Y") : ''%><br/>
                         <%= event.time%>
                         <% if @padmin %>
                           <hr>
@@ -41,10 +41,11 @@
                           </span>
                         <% end %>
                       </td>
-
-                      <td>
-                        <%= humanized_money_with_symbol(event.price) %>
-                      </td>
+                      <% if event.price > 0 %>
+                        <td>
+                          <%= humanized_money_with_symbol(event.price) %>
+                        </td>
+                      <% end %>
                       <td>
                         <% if event.open?%>
                             <%= button_to 'Enroll', prep_enroll_path(:event_id=>event.id), class: 'button_green' %>

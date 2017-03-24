@@ -9,6 +9,9 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.all
     @reservation = Reservation.new
     @pending_events = Event.pending(@e_type)
+    if @pending_events.size == 1
+      redirect_to prep_enroll_direct_path(:event_id=>@pending_events.first.id), method: :post
+    end
   end
 
   def new

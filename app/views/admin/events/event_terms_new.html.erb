@@ -1,0 +1,4 @@
+<h2>New Precision Event</h2>
+<%= form_for(:event, :url=> event_terms_create_path, html: { id: "id", class: "form-horizontal", role: "form" }) do |f| %>
+  <%= render partial: 'event_terms_form', locals: {:f=> f} %>
+<% end %>

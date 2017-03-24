@@ -1,0 +1,15 @@
+<div class="row enroll_header">
+  <div class=" col-md-2"></div>
+  <div class="col-md-9">
+    <h2>Edit Terms</h2>
+  </div>
+</div>
+<div class="row enroll_header">
+  <div class=" col-md-2"></div>
+  <div class="col-md-9">
+    - - <%#=@event.e_type %> - -
+  </div>
+</div>
+<%= form_for(:event, :url=> event_terms_update_path(:id=> nil), html: { id: "id", class: "form-horizontal", role: "form" }) do |f| %>
+  <%= render partial: 'form', locals: {:f=> f} %>
+<% end %>

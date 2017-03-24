@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227190247) do
+ActiveRecord::Schema.define(version: 20170323185252) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -152,6 +152,15 @@ ActiveRecord::Schema.define(version: 20170227190247) do
     t.string  "tst_view_label",   limit: 255,   default: "Customer Feedback"
     t.text    "tst_video",        limit: 65535
     t.string  "tst_topic",        limit: 255
+  end
+
+  create_table "pay_terms", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.text     "terms",      limit: 65535
+    t.boolean  "is_active",                default: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "e_type"
   end
 
   create_table "payments", force: :cascade do |t|

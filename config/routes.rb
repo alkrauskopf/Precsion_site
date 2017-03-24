@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'prep/event/edit/:id' => 'admin/events#edit', as: 'prep_event_edit'
   get 'prep/reservation' => 'reservations#index', as:'prep_reservation'
   post 'prep/enroll/online' => 'reservations#index', as: 'prep_enroll_online'
+  get 'prep/enroll' => 'reservations#new', as:'prep_enroll_direct'
   post 'prep/enroll' => 'reservations#new', as:'prep_enroll'
   post 'prep/enroll/edit' => 'reservations#edit', as:'prep_enroll_edit'
   post 'prep/reservation' => 'reservations#create'
@@ -39,6 +40,12 @@ Rails.application.routes.draw do
   get 'payment/new' => 'payment#new', as: 'payment_new'
   post 'payments' => 'payment#create', as: 'payments'
   get 'payment/show' => 'payment#show', as: 'payment_show'
+  get 'prep/event/terms' => 'admin/events#event_terms_index', as: 'event_terms'
+  get 'prep/event/terms_new' => 'admin/events#event_terms_new', as: 'event_terms_new'
+  post 'prep/event/terms_new' => 'admin/events#event_terms_create', as: 'event_terms_create'
+  post 'prep/event/terms_update/:id' => 'admin/events#event_terms_update', as: 'event_terms_update'
+  delete 'prep/event/terms_destroy/:id' => 'admin/events#event_terms_destroy', as: 'event_terms_destroy'
+  get 'prep/event/terms_edit/:id' => 'admin/events#event_terms_edit', as: 'event_terms_edit'
 
   namespace :admin do
     get 'prep' => 'prep#index'

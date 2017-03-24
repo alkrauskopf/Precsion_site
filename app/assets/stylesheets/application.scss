@@ -595,6 +595,21 @@ h1, h2, h3, h4 {
   font-weight:normal;
 }
 
+.terms_title {
+  color:$palette_2;
+  font-size:20px;
+  text-align:left;
+}
+
+.terms-panel {
+  background-color: $page_background;
+}
+.terms-box {
+  margin: 0em 2em 1em 2em;
+  color: $dark-text;
+  text-align: left;
+}
+
 .modal-image-panel {
   color: $dark_text;
   margin-left:0em;
