@@ -30,6 +30,12 @@
          <%= event.time %>
        </div>
      </div>
+   <div class="row">
+     <div class=" col-md-2"></div>
+     <div class="col-md-9 enroll_dates">
+       Fee:&nbsp;<%= humanized_money_with_symbol(event.price) %>
+     </div>
+   </div>
     <div class="row">
       <div class=" col-md-2"></div>
       <div class="col-md-9 enroll_status">
@@ -121,8 +127,15 @@
           <%= f.select(:status, Reservation.statuses, include_blank: true, prompt: (@reservation.status.nil? ? 'No Status': @reservation.status.upcase)) %>
         </div>
       </div>
+     <div class="row form_row">
+       <%= f.label :notify, 'Notify User?', class: "col-sm-2 control-label" %>
+       <div class="col-sm-8">
+         <%= radio_button("user", "notify", true) %>&nbsp;Yes &nbsp;&nbsp;
+         <%= radio_button("user", "notify", false, :checked => true) %>&nbsp;No
+       </div>
+     </div>
      <% else %>
-     <%= f.hidden_field :notes, value: '' %>
+     <%= f.hidden_field :notes, value: 'User Reservation' %>
     <% end %>
 <div class="row form_row">
       <div class="col-md-2">
@@ -132,9 +145,7 @@
         <%= f.submit class: "btn btn-primary" %>
       </div>
       <div class="col-md-8 enroll_message">
-        Your Email Needs To Be Validated<br/>
-        Shortly, You Will Receive An Email Acknowledging Your Sign-up<br/>
-        From Which Please Validate Your Email Address.
+        Shortly, you will receive an Email to VALIDATE your information.
       </div>
     </div>
 

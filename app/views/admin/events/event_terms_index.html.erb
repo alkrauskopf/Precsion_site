@@ -1,59 +1,42 @@
  <div class = "container admin_container">
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-        <%= button_to 'New Terms', event_terms_new_path, method: :get, class: 'button_blue' %>
-      </div>
-      <div class="col-md-2"></div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= button_to 'New Terms', event_terms_new_path, method: :get, class: 'button_blue' %>
     </div>
-    <% if false %>
-    <% @venues.each do |venue| %>
-        <div class="row">
-        <div class="col-md-2"></div>
-          <div class=" col-md-8 image_panel">
-            <div class="panel panel-palette_2">
-              <div class="panel-heading">
-                <h4><%= pluralize(venue.events.size, venue.name + ' Precision Prep')%></h4>
-              </div>
-              <div class="panel-body, table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                  <tbody>
-                  <%= content_tag_for(:tr, venue.events.by_date) do |event| %>
-                      <td>
-                        <%= event.name%><br/>
-                        <%= event.contact_name %><br/>
-                        <%= event.contact_email %>
-                      </td>
-                      <td>
-                        Start:&nbsp;<%= !event.start_date.nil? ? event.start_date.strftime('%b %d, %Y') : '-'%><br/>
-                        End:&nbsp;<%= !event.end_date.nil? ? event.end_date.strftime('%b %d, %Y') : '-'%><br/>
-                        <%= event.time %><br/><%= event.location %>
-                      </td>
-                      <td>
-                        <%= humanized_money_with_symbol(event.price) %>
-                      </td>
-                      <td>
-                        <%= event.valid_confirmed_reservations.size%> of <%= pluralize(event.capacity, ' Seat') %>
-                      </td>
-                      <td>
-                        <% if !event.active?%>
-                         <%= link_to 'Destroy', prep_event_destroy_path(event), method: :delete, data: { confirm: 'Are you sure?' } %>
-                        <% else %>
-                          Active
-                        <% end %><br/>
-                        <%= event.e_type.nil? ? 'No Type':event.e_type%>
-                      </td>
-                      <td>
-                        <%= link_to 'Edit', prep_event_edit_path(event) %>
-                      </td>
-                  <% end %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+      <div class=" col-md-8 image_panel">
+        <div class="panel panel-palette_2">
+          <div class="panel-heading">
+            <h4><%= pluralize(@pay_terms.size, ' Pay Term')%></h4>
           </div>
-        <div class="col-md-2"></div>
+          <div class="panel-body, table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <tbody>
+                <%= content_tag_for(:tr, @pay_terms) do |pay_term| %>
+                  <td>
+                    <%= pay_term.active? ? 'Active' : 'Inactive'%>&nbsp;-&nbsp;<%= pay_term.title%>
+                  </td>
+                  <td>
+                    <%= pay_term.e_type %>
+                  </td>
+                  <% if !pay_term.active?%>
+                    <td>
+                      <%= link_to 'Destroy', event_terms_destroy_path(pay_term), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </td>
+                  <% end %>
+                  <td>
+                    <%= link_to 'Edit', event_terms_edit_path(pay_term) %>
+                  </td>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    <% end %>
-  <% end %>
+    <div class="col-md-2"></div>
+  </div>
 </div>

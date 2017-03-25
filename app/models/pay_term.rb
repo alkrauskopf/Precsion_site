@@ -8,4 +8,13 @@ class PayTerm < ActiveRecord::Base
     where('e_type = ? AND is_active', event.e_type).first
   end
 
+
+  def self.active
+    where('is_active')
+  end
+
+  def active?
+    self.is_active
+  end
+
 end

@@ -26,7 +26,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.enrollment = enrollment_number(@event)
     @reservation.event_id = @event.id
-    @reservation.price = @event.price
+    @reservation.price = params[:reservation][:price] == '' ? @event.price : params[:reservation][:price]
     @reservation.status = 'pending'
     if @reservation.save && @captcha_pass
       @reservation.email_us!
@@ -47,6 +47,7 @@ class ReservationsController < ApplicationController
     @event = @reservation.event
     @captcha_pass = true
     if @reservation.update(reservation_params)
+      @reservation.email_us! if @notify
       flash[:notice] = "Updated #{@reservation.full_name} Reservation"
       redirect_to prep_reservation_path
     else
@@ -100,12 +101,15 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    if params[:reservation][:status].present? && !@reservation.status.nil?
-      params[:reservation][:status] = (params[:reservation][:status] == '' ? @reservation.status : params[:reservation][:status].to_i)
+    current_status = (@reservation && !@reservation.status.nil?) ?  @reservation.status : 0
+    if params[:reservation][:status].present?
+      params[:reservation][:status] = (params[:reservation][:status] == '' ? current_status : params[:reservation][:status].to_i)
     else
       params[:reservation][:status] = 0
     end
+    params[:reservation][:price] = params[:reservation][:price].present? ? params[:reservation][:price] : ''
     params[:reservation][:phone] = phone_format(params[:reservation][:phone]) if params[:reservation][:phone].present?
+    @notify = (params[:user][:notify].present? && params[:user][:notify] == "false") ? false:true
     params.require(:reservation).permit(:event_id, :first_name, :last_name, :email, :status, :notes, :phone, :school, :price)
   end
 

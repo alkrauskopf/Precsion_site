@@ -2,6 +2,7 @@ class Admin::EventsController < ApplicationController
 
   before_action :admin_authorize, :set_event, only: [:edit, :update, :destroy]
   before_action :banner_image, except: []
+  before_action :set_pay_term, only: [:event_terms_edit, :event_terms_update, :event_terms_destroy]
 
   def index
     @venues = Venue.active.select{|v| !v.events.empty?}
@@ -46,22 +47,39 @@ class Admin::EventsController < ApplicationController
   end
 
   def event_terms_index
-    @event_terms = PayTerm.all
+    @pay_terms = PayTerm.all
   end
   def event_terms_new
-    @event_terms = PayTerm.all
+    @pay_term = PayTerm.new
   end
   def event_terms_create
-    @event_terms = PayTerm.all
+    @pay_term = PayTerm.new(pay_term_params)
+    if @pay_term.save
+      flash[:notice] = "Pay Terms Created"
+    else
+      flash[:error] = @pay_term.errors.full_messages
+    end
+    redirect_to event_terms_path
   end
   def event_terms_update
-    @event_terms = PayTerm.all
+    if @pay_term.update(pay_term_params)
+      flash[:notice] = 'Pay Terms Updated'
+      redirect_to event_terms_path
+    else
+      render :event_terms_edit
+    end
   end
+
   def event_terms_edit
-    @event_terms = PayTerm.all
+
   end
   def event_terms_destroy
-    @event_terms = PayTerm.all
+    if (!@pay_term.nil? && @pay_term.destroy)
+      flash[:notice] = 'Pay Term was successfully destroyed.'
+    else
+      flash[:error] = 'Pay Term Not Destroyed'
+    end
+    redirect_to event_terms_path
   end
 
   private
@@ -85,5 +103,18 @@ class Admin::EventsController < ApplicationController
 
   def venue_list
     @venue_select = Venue.active.sort_by{|v| v.name}.map{|v| [v.name, v.id]}
+  end
+
+  def set_pay_term
+    @pay_term = PayTerm.find(params[:id]) rescue nil
+  end
+
+  def pay_term_params
+    if !@pay_term.nil? && !@pay_term.e_type.nil?
+      params[:pay_term][:e_type] = (params[:pay_term][:e_type] == '' ? @pay_term.e_type : params[:pay_term][:e_type].to_i)
+    else
+      params[:pay_term][:e_type] = (params[:pay_term][:e_type] == '' ? 0 : params[:pay_term][:e_type].to_i)
+    end
+    params.require(:pay_term).permit(:title, :terms, :e_type, :is_active)
   end
 end

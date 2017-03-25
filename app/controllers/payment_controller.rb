@@ -28,7 +28,7 @@ class PaymentController < ApplicationController
     if workflow.success
       @buyable.confirm!
       if workflow.payment
-        matched_amount = @buyable.price_cents != charged_amount
+        matched_amount = @buyable.price_cents == charged_amount
         flash[:notice] = matched_amount ? ('Status: ' + status + ',  Charged Amount: ' + charged_string + cc_message) :
             ('Status: ' + status + ',  Charged Amount: ' + charged_string + ', Does Not Match Fee: ' + fee_string + cc_message)
         workflow.payment.email_payment_confirm!

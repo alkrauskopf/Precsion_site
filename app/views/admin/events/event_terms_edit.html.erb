@@ -7,9 +7,9 @@
 <div class="row enroll_header">
   <div class=" col-md-2"></div>
   <div class="col-md-9">
-    - - <%#=@event.e_type %> - -
+    - - <%=@pay_term.e_type %> - -
   </div>
 </div>
-<%= form_for(:event, :url=> event_terms_update_path(:id=> nil), html: { id: "id", class: "form-horizontal", role: "form" }) do |f| %>
-  <%= render partial: 'form', locals: {:f=> f} %>
+<%= form_for(:pay_term, :url=> event_terms_update_path(:id=> @pay_term.id), html: { id: "id", class: "form-horizontal", role: "form" }) do |f| %>
+  <%= render partial: 'event_terms_form', locals: {:f=> f} %>
 <% end %>
