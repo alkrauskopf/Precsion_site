@@ -1,0 +1,21 @@
+<h4>
+  NOTFICATION
+</h4>
+<h5><%= @event.name %></h5>
+<% if @event.venue %>
+  <h5><%= @event.venue.name%></h5>
+<% end %>
+<h5>
+  <%= !@event.start_date.nil? ? @event.start_date.strftime('%b %d, %Y') : ''%>&nbsp;-&nbsp;
+  <%= !@event.end_date.nil? ? @event.end_date.strftime('%b %d, %Y') : ''%>
+</h5>
+<h5>
+
+</h5>
+<p>
+  <%= @message.html_safe %>
+</p>
+
+<h5>
+  Contact: <%= @event.contact_name %> - <%= @event.contact_email %>
+</h5>

@@ -88,6 +88,10 @@ class Event < ActiveRecord::Base
     self.reservations.select{|r| r.validated? || r.confirmed?}
   end
 
+  def enrollment_distribution_list
+    self.valid_confirmed_reservations.map(&:email).join(', ')
+  end
+
   def pay_term
     PayTerm.for(self)
   end

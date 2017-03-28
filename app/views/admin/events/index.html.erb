@@ -34,6 +34,11 @@
                       </td>
                       <td>
                         <%= event.valid_confirmed_reservations.size%> of <%= pluralize(event.capacity, ' Seat') %>
+                        <% if event.valid_confirmed_reservations.size > 0 %>
+                          <br/>
+                            <u><%= link_to "Email Them", "#emailModal#{event.id}", "data-toggle" => "modal" %></u>
+                            <%= render partial: 'session/email_them_modal', locals: {event: event} %>
+                        <% end %>
                       </td>
                       <td>
                         <% if !event.active?%>

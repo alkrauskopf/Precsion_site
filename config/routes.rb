@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'login' => 'session#create'
   delete 'logout' => 'session#destroy'
   post 'contact_logs' => 'session#contact_us'
+  post 'event_email' => 'session#event_email_them', as: 'event_email'
   get 'image_show' => 'session#image_show'
   get 'about_us' => 'about#index'
   get 'pm' => 'about#pm_offering'

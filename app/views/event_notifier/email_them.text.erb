@@ -1,0 +1,18 @@
+
+  NOTFICATION
+
+  <%= @event.name %>
+
+<% if @event.venue %>
+      <%= @event.venue.name%>
+<% end %>
+
+
+  <%= !@event.start_date.nil? ? @event.start_date.strftime('%b %d, %Y') : ''%>&nbsp;-&nbsp;
+  <%= !@event.end_date.nil? ? @event.end_date.strftime('%b %d, %Y') : ''%>
+
+
+  <%= @message.html_safe %>
+
+
+  Contact: <%= @event.contact_name %> - <%= @event.contact_email %>

@@ -1,5 +1,6 @@
 class SessionController < ApplicationController
   before_action :banner_image, except: []
+  before_action :event_email_params, only: [:event_email_them]
 
   def login
     # GET action for the login page
@@ -40,6 +41,19 @@ class SessionController < ApplicationController
     redirect_to root_path
   end
 
+  def event_email_them
+    if !@event.nil?
+      if !@subject_line.empty? && !@message.empty?
+        EventNotifier.email_them(@event, @subject_line, @message).deliver_now
+      else
+        flash[:error] = "Empty Subject Line or Message."
+      end
+    else
+      flash[:error] = "Event Not Found."
+    end
+    redirect_to root_path
+  end
+
   def image_show
     redirect_to root_path
   end
@@ -54,6 +68,12 @@ class SessionController < ApplicationController
   private
   def contact_us_params
     params.require(:contact_log).permit(:user_email, :workplace, :message, :name)
+  end
+
+  def event_email_params
+    @event = Event.find_by_id(params[:event_id]) rescue nil
+    @subject_line = params[:event_email][:subject]
+    @message = params[:event_email][:message]
   end
 
   def contact_us_filtered?

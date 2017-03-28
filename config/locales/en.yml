@@ -44,3 +44,8 @@ en:
       subject: Precision Payment Notice
     pay_confirm_prec_but:
       subject: Precision Payment Anomaly
+
+  site_name: Precision Prep
+  event_notifier:
+    email_them:
+
