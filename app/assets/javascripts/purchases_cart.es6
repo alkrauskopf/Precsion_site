@@ -16,6 +16,9 @@ class StripeForm {
         this.checkoutForm.validFields().keyup(() => {
             this.checkoutForm.displayStatus()
         })
+        this.checkoutForm.acceptFields().click(() => {
+            this.checkoutForm.displayStatus()
+        })
     }
     handleSubmit(event) {
         event.preventDefault()
@@ -39,9 +42,11 @@ class CheckoutForm{
 
     form() { return $("#payment-form") }
     validFields() { return this.form().find(".valid-field") }
+    acceptFields() { return this.form().find(".accept-field") }
     numberField() { return this.form().find("#credit_card_number") }
     expiryField() { return this.form().find("#expiration_date") }
     cvcField() { return this.form().find("#cvc") }
+    termsField() { return this.form().find("#terms") }
     submit() { this.form().get(0).submit() }
     appendHidden(name, value) {
         const field = $("<input>")
@@ -55,6 +60,7 @@ class CheckoutForm{
         this.displayFieldStatus(this.numberField(), this.isNumberValid())
         this.displayFieldStatus(this.expiryField(), this.isExpiryValid())
         this.displayFieldStatus(this.cvcField(), this.isCvcValid())
+        this.displayFieldStatus(this.termsField(), this.isTermsAccept())
      /*   this.cardImage().attr("src", this.imageUrl()) */
         this.buttonStatus()
     }
@@ -80,6 +86,9 @@ class CheckoutForm{
 
     isCvcValid() { return $.payment.validateCardCVC(this.cvcField().val())}
 
+    isTermsAccept() { return this.termsField().prop("checked")}
+
+ /*   isTermsAccept() { return true }   */
    /*  cardImage() { return $("#card-image") }  */
 
   /*   imageUrl() { return '/assets/creditcards/${this.cardType()}.png' } */
@@ -91,7 +100,7 @@ class CheckoutForm{
     }
 
     valid() {
-        return this.isNumberValid() && this.isExpiryValid() && this.isCvcValid()
+        return this.isNumberValid() && this.isExpiryValid() && this.isCvcValid() && this.isTermsAccept()
     }
 
     button() { return this.form().find(".button_blue")}

@@ -9,21 +9,38 @@ h1 {
   margin-bottom: 20px;
   padding-bottom: 5px;
 }
-
+.pay_cc_info {
+  margin: 1em 0em 2em 10em;
+  font-weight:normal;
+  text-decoration:underline;
+  color:$blue_text;
+  text-align:left;
+  font-size:16px;
+}
 .pay_cc_box {
   margin: 1em 0em 0em 10em;
   text-align:left;
   font-size:13px;
 }
 .pay_cc_amount {
-  text-align:center;
-  font-weight:bold;
+  text-align:left;
+  font-weight:normal;
+  vertical-align:middle;
   color:$blue_text;
   font-size: 16px;
+}
+.pay_cc_terms {
+  text-align:left;
+  font-weight:normal;
+  vertical-align:middle;
+  text-decoration:underline;
+  color:$blue_text;
+  font-size: 12px;
 }
 
 .pay_cc_label {
   text-align:right;
+  vertical-align:middle;
   word-wrap:break-word;
 }
 

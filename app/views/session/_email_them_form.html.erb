@@ -12,8 +12,9 @@
         <%= pluralize(event.valid_confirmed_reservations.size, ' Enrollee') %>
       </div>
       <div class="row contact_line">
+        <% subject_line = 'Precision Prep ' + event.type_name + ' Notification' %>
           Subject:&nbsp;
-            <%= f.text_field :subject, size: 50 %>
+            <%= f.text_field :subject, size: 50, value: subject_line  %>
       </div>
       <div class="row contact_line">
         <div class="col-md-6">
@@ -27,6 +28,5 @@
       <div class="row contact_line">
         <%= f.submit 'Send Message' %>
       </div>
-
 <% end -%>
 </div>

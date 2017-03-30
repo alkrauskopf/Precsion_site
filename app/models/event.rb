@@ -75,7 +75,7 @@ class Event < ActiveRecord::Base
     if self.webinar?
       name = 'Webinar'
     elsif self.prep?
-      name = 'Tutoring'
+      name = 'Course'
     end
     name
   end
