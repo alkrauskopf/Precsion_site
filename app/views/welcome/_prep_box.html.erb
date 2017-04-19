@@ -4,17 +4,32 @@
   </div>
   <div class="panel-body">
     <div class="welcome-panel">
-    <% hr_break = false %>
-    <% unless pending_preps.empty? && next_webinar.nil? %>
-      <%= render 'prep_enroll_buttons'%>
-      <hr>
-    <% end %>
+      <% hr_break = false %>
       <div>
         <div class = "offering_header">
-          <% if !overview.nil?  && !overview.brief.strip.empty? %>
-            <%= overview.brief.html_safe %>
-            <% hr_break = true %>
-          <% end %>
+          <div class="row">
+            <% if !overview.nil?  && !overview.brief.strip.empty? %>
+              <% if pending_preps.empty? && next_webinar.nil? %>
+                <div class= "col-md-12" >
+                  <%= overview.brief.html_safe %>
+                </div>
+              <% else%>
+                <div class= "col-md-10" >
+                  <%= overview.brief.html_safe %>
+                </div>
+                <div class="col-md-2">
+                  <%if !pending_preps.empty? %>
+                    <%= button_to 'Course Schedule', prep_enroll_online_path(:e_type => 'prep'), class: 'button_enroll' %>
+                    <br/>
+                  <% end %>
+                  <%if !next_webinar.nil? %>
+                    <%= button_to 'Teacher Webinar', prep_enroll_online_path(:e_type => 'webinar'), class: 'button_webinar' %>
+                  <% end %>
+                </div>
+              <% end %>
+              <% hr_break = true %>
+            <% end %>
+          </div>
         </div>
         <% if !overview.images.not_carousels.empty? && false%>
             <% grp = 'p' %>
