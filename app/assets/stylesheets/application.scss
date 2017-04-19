@@ -83,10 +83,11 @@ a.btn {
 
 .precision_panel {
   @extend .panel-heading;
+  padding-top:1.5em;
   text-align:center;
   vertical-align:middle;
-  min-height:2em;
-  font-size:15px;
+  min-height:3.5em;
+  font-size:16px;
 }
 
 
