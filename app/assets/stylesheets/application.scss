@@ -604,12 +604,15 @@ h1, h2, h3, h4 {
 .terms-panel {
   background-color: $page_background;
 }
+
 .terms-box {
   margin: 0em 2em 1em 2em;
   color: $dark-text;
   text-align: left;
 }
-
+.terms-pay-line {
+  margin: 1em 0em 1em 0em;
+}
 .modal-image-panel {
   color: $dark_text;
   margin-left:0em;
@@ -670,7 +673,7 @@ h1, h2, h3, h4 {
 .modal-tst-panel {
   color: $dark_text;
   padding: 1.2em 1.5em 1.2em 1.5em;
-  font-size: 12px;
+  font-size: 14px;
   text-align: justify;
   font-weight:normal;
   font-style:italic;
@@ -866,7 +869,7 @@ h1, h2, h3, h4 {
   padding-left:1em;
   margin: 0em 0em 0em 0em;
 }
-.off_testimony_person {
+.off_testimony_org {
   padding-top:0em;
   line-height:1.2em;
   padding-right:2em;

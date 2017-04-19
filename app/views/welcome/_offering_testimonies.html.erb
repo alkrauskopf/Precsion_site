@@ -15,10 +15,12 @@
                     <%= image_tag (tst.images.first.pic) %>
                 <% end %>
               </td>
-              <td class = "off_testimony_person">
-                  <%= tst.tst_person_name %><br/>
+              <td class = "off_testimony_org">
+                <% if !tst.tst_organization.nil? %>
+                  <%= tst.tst_organization %><br/>
+                <% end %>
                 <span class = "off_testimony_role">
-                  <%= tst.tst_person_role %><br/>
+                  <%= tst.tst_person_role %>: <%= tst.tst_person_name %><br/>
                   On:&nbsp;<%= tst.tst_topic %>
                 </span>
               </td>

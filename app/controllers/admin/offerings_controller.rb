@@ -221,7 +221,7 @@ class Admin::OfferingsController < ApplicationController
     params.require(:offering).permit(:name, :brief, :description,
       :display_position, :is_visible, :parent_id, :offering_type,
       :panel_header, :panel_color, :tst_person_name, :tst_person_role,
-      :tst_statement, :tst_view_label, :tst_video, :tst_topic)
+      :tst_statement, :tst_view_label, :tst_video, :tst_topic, :tst_organization)
   end
 
   def expire_days_params

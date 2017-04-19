@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325032846) do
+ActiveRecord::Schema.define(version: 20170419001942) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -57,6 +57,22 @@ ActiveRecord::Schema.define(version: 20170325032846) do
     t.datetime "attached_report_updated_at"
   end
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   limit: 4,     default: 0, null: false
+    t.integer  "attempts",   limit: 4,     default: 0, null: false
+    t.text     "handler",    limit: 65535,             null: false
+    t.text     "last_error", limit: 65535
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by",  limit: 255
+    t.string   "queue",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
   create_table "escents", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "url",         limit: 255
@@ -83,6 +99,7 @@ ActiveRecord::Schema.define(version: 20170325032846) do
     t.string   "name",          limit: 255
     t.string   "contact_name",  limit: 255
     t.string   "contact_email", limit: 255
+    t.string   "terms_for",     limit: 255
   end
 
   add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
@@ -152,6 +169,7 @@ ActiveRecord::Schema.define(version: 20170325032846) do
     t.string  "tst_view_label",   limit: 255,   default: "Customer Feedback"
     t.text    "tst_video",        limit: 65535
     t.string  "tst_topic",        limit: 255
+    t.string  "tst_organization", limit: 255
   end
 
   create_table "pay_terms", force: :cascade do |t|
