@@ -11,6 +11,11 @@
       <% if !terms.nil? %>
         <div class="modal-body terms-panel">
           <div class="terms-box">
+            <% if !event.nil? && !event.terms_for.nil?%>
+              <div class="row terms-pay-line">
+                Your payment is for <%= event.terms_for %>.
+              </div>
+            <% end %>
             <div class="row">
               <%= terms.terms.html_safe %>
             </div>

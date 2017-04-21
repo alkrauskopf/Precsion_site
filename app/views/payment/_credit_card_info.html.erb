@@ -14,7 +14,7 @@
           <% if !@pay_term.nil? %>
             &nbsp;&nbsp;
               <%= link_to 'View Terms', "#termsModal", "data-toggle" => "modal", class: "pay_cc_terms" %>
-            <%= render partial: 'session/terms_modal', locals: {terms: @pay_term} %>
+            <%= render partial: 'session/terms_modal', locals: {terms: @pay_term, event: @buyable.event} %>
           <% end %>
         </div>
       </div>

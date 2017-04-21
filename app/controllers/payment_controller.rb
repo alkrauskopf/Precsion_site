@@ -43,6 +43,32 @@ class PaymentController < ApplicationController
     end
   end
 
+  def create_new
+    workflow = stripe_workflow
+    payment_id = workflow.payment ? workflow.payment.id : nil
+    charged_amount = workflow.payment ? (JSON.parse(workflow.payment.full_response)['amount'].to_i) : 0
+    charged_string = Money.us_dollar(charged_amount).format(:with_currency => false)
+    fee_string =  Money.us_dollar(@buyable.price_cents).format(:with_currency => false)
+    cc_message = (workflow.payment && !JSON.parse(workflow.payment.full_response)['message'].nil?) ? (', ' + JSON.parse(workflow.payment.full_response)['message']) : ''
+    status = workflow.payment ? workflow.payment.status.upcase : 'nil'
+    if workflow.success
+      @buyable.confirm!
+      if workflow.payment
+        matched_amount = @buyable.price_cents == charged_amount
+        flash[:notice] = matched_amount ? ('Status: ' + status + ',  Charged Amount: ' + charged_string + cc_message) :
+            ('Status: ' + status + ',  Charged Amount: ' + charged_string + ', Does Not Match Fee: ' + fee_string + cc_message)
+        workflow.payment.email_payment_confirm!
+      else
+        flash[:error] = "Your Payment Was Successful, However We See No Immediate Record Of It.   Please Contact Us"
+        @buyable.email_payment_problem!
+      end
+      redirect_to payment_show_path(:buyable_id => @buyable.id, :buyable_type => @buyable.class.to_s, :payment_id => payment_id)
+    else
+      flash[:error] = workflow.payment ? ('Status: ' + status + ',  Charged Amount: ' + charged_string +  cc_message) : "No Workflow Payment Recorded"
+      redirect_to payment_new_path(:buyable_id => @buyable.id, :buyable_type => @buyable.class.to_s)
+    end
+  end
+
   def show
     @buyable = @payment.buyable
     if !@buyable.nil?
@@ -84,5 +110,15 @@ class PaymentController < ApplicationController
     @status = @buyable.status
     @payments = @buyable.payments
     @pay_term = @buyable.pay_term
+  end
+
+  def stripe_workflow
+    @reference = Payment.generate_reference
+    PurchasesCartJob.perform_later(
+        buyable: @buyable,
+        params: card_params,
+        purchase_amount_cents: @buyable.price_cents,
+        payment_reference: @reference
+    )
   end
 end

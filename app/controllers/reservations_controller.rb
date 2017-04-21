@@ -109,7 +109,7 @@ class ReservationsController < ApplicationController
     end
     params[:reservation][:price] = params[:reservation][:price].present? ? params[:reservation][:price] : ''
     params[:reservation][:phone] = phone_format(params[:reservation][:phone]) if params[:reservation][:phone].present?
-    @notify = (params[:user][:notify].present? && params[:user][:notify] == "false") ? false:true
+    @notify = (params[:user].present? && params[:user][:notify].present? && params[:user][:notify] == "false") ? false:true
     params.require(:reservation).permit(:event_id, :first_name, :last_name, :email, :status, :notes, :phone, :school, :price)
   end
 

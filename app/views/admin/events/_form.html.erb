@@ -78,6 +78,12 @@
       </div>
     </div>
     <div class="row form_row">
+      <%= f.label :terms_for, "Payment Terms For:",class: "col-sm-2 control-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :terms_for, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row form_row">
       <%= f.label :message, "Message",class: "col-sm-2 control-label" %>
       <div class="col-sm-8">
         <%= f.text_field :message, class: "form-control" %>

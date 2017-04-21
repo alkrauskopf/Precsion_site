@@ -98,7 +98,8 @@ class Admin::EventsController < ApplicationController
       params[:event][:e_type] = (params[:event][:e_type] == '' ? 0 : params[:event][:e_type].to_i)
     end
     params.require(:event).permit(:venue_id, :start_date, :end_date, :capacity, :price,
-                                  :location, :time, :is_active, :e_type, :message, :name, :contact_name, :contact_email)
+                                  :location, :time, :is_active, :e_type, :message, :name, :contact_name, :contact_email,
+                                  :terms_for)
   end
 
   def venue_list
