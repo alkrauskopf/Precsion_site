@@ -11,7 +11,7 @@
 
   <div class="offering_descript">
     <%= offering.brief.html_safe %>
-    <% if !offering.decription.empty? || !offering.active_contents.empty? || !offering.images.not_carousel_headers.empty?%>
+    <% if !offering.description.empty? || !offering.active_contents.empty? || !offering.images.not_carousel_headers.empty?%>
       <span class="more" data-toggle="collapse" data-target="#collapse<%= offering.id %>"
          aria-expanded="false" aria-controls="collapse<%= offering.id %>">
          More...
