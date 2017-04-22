@@ -90,7 +90,6 @@ a.btn {
   font-size:16px;
 }
 
-
 .button_webinar {
   @extend .btn;
   @extend .btn-info;
@@ -148,6 +147,13 @@ a.btn {
 .nav.navbar-header {
   background-color: white;
   margin: 2em 0em 10em 0em;
+}
+
+.more {
+  padding-left:1.5em;
+  cursor:pointer;
+  color:$link;
+  font-style: italic;
 }
 
 h1, h2, h3, h4 {
@@ -984,18 +990,17 @@ h1, h2, h3, h4 {
 
 .offering_image_scroll {
   overflow: scroll;
-  max-height: 35em;
-  border:0px solid $border_gray;
+  max-height: 20em;
+  border:2px dotted $border_gray;
 }
 .offering_image_block {
-  margin: 1em 0em 0em 0em;
+  margin: 0em 0em 0em 0em;
 }
 .offering_image_name_2 {
   color: $palette_2;
   margin:0em 0em 1em 0em;
   text-align:center;
   font-weight:bold;
-  line-height: 1.6em;
   font-size:12px;
 }
 
@@ -1019,7 +1024,7 @@ h1, h2, h3, h4 {
   font-weight:normal;
   font-style: normal;
   text-align: left;
-  font-size:14px;
+  font-size:15px;
   color: $dark_text;
 }
 

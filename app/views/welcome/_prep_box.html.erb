@@ -12,19 +12,15 @@
               <% if pending_preps.empty? && next_webinar.nil? %>
                 <div class= "col-md-12" >
                   <%= overview.brief.html_safe %>
+                  <%= render partial: 'collapse_description', locals: {overview: overview} %>
                 </div>
               <% else%>
                 <div class= "col-md-10" >
                   <%= overview.brief.html_safe %>
+                  <%= render partial: 'collapse_description', locals: {overview: overview} %>
                 </div>
                 <div class="col-md-2">
-                  <%if !pending_preps.empty? %>
-                    <%= button_to 'Course Schedule', prep_enroll_online_path(:e_type => 'prep'), class: 'button_enroll' %>
-                    <br/>
-                  <% end %>
-                  <%if !next_webinar.nil? %>
-                    <%= button_to 'Teacher Webinar', prep_enroll_online_path(:e_type => 'webinar'), class: 'button_webinar' %>
-                  <% end %>
+                  <%= render 'prep_enroll_buttons'%>
                 </div>
               <% end %>
               <% hr_break = true %>
@@ -66,9 +62,13 @@
         <% end %>
         <% if hr_break %> <hr> <% end %>
         <% overview.children_by_position.active.each do |offering| %>
-            <%= render partial: 'offering_child_show', locals: {offering: offering} %>
-            <%= render 'prep_enroll_buttons'%>
-            <hr>
+          <%= render partial: 'offering_child_show', locals: {offering: offering} %>
+          <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+              <%= render 'prep_enroll_buttons'%>
+            </div>
+          </div>
         <% end -%>
       </div>
     </div>

@@ -1,14 +1,11 @@
-
+ <%if !pending_preps.empty? %>
   <div class="row enroll_buttons">
-    <div class="col-md-4">
-      <%if !pending_preps.empty? %>
-        <%= button_to 'Course Schedule', prep_enroll_online_path(:e_type => 'prep'), class: 'button_enroll' %>
-      <% end %>
-    </div>
-    <div class="col-md-5"></div>
-    <div class="col-md-3" style="padding-left:3em">
-     <%if !next_webinar.nil? %>
-      <%= button_to 'Teacher Webinar', prep_enroll_online_path(:e_type => 'webinar'), class: 'button_webinar' %>
-      <% end %>
-    </div>
+    <%= button_to 'Course Schedule', prep_enroll_online_path(:e_type => 'prep'), class: 'button_enroll' %>
   </div>
+ <% end %>
+
+<%if !next_webinar.nil? %>
+ <div class="row enroll_buttons">
+    <%= button_to 'Teacher Webinar', prep_enroll_online_path(:e_type => 'webinar'), class: 'button_webinar' %>
+ </div>
+ <% end %>

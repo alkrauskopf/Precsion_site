@@ -8,6 +8,7 @@
       <% if !overview.nil?  && !overview.brief.strip.empty? %>
         <span class = "offering_header">
           <%=  overview.brief.html_safe %>
+          <%= render partial: 'collapse_description', locals: {overview: overview} %>
           <% hr_break = true %>
         </span>
       <% end %>
