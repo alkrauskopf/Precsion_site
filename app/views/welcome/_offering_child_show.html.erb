@@ -21,7 +21,7 @@
         <div class= row>
           <div class= <%= div_class %>>
             <%= offering.description.html_safe %>
-            <% if !offering.images.not_carousel_headers.empty? %>
+            <% if !offering.images.not_carousel_headers.empty? && false%>
               <% grp = 'c1' %>
               <div class="about_blue_font off_image_list">
                 <% offering.images.not_carousel_headers.each_with_index do |image, idx| %>
@@ -72,7 +72,7 @@
       </div>
     <% end %>
   <% end %>
-  <% if !offering.testimonies.active.empty? && false%>
+  <% if !offering.testimonies.active.empty? %>
     <% grp = 'ofr' %>
     <div class="offering_images">
       <% offering.testimonies.active.each_with_index do |tst, idx| %>
