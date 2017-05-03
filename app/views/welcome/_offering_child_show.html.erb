@@ -13,7 +13,7 @@
     <%= offering.brief.html_safe %>
     <% if !offering.description.empty? || !offering.active_contents.empty? || !offering.images.not_carousel_headers.empty?%>
       <span class="more" data-toggle="collapse" data-target="#collapse<%= offering.id %>"
-         aria-expanded="false" aria-controls="collapse<%= offering.id %>">
+         aria-expanded="false" aria-controls="collapse<%= offering.id %>" style="color:<%=offering.parent.panel_color%>">
          More...
       </span>
       <div id="collapse<%= offering.id %>" class="panel-collapse collapse" role="tabpanel"
@@ -76,7 +76,7 @@
     <% grp = 'ofr' %>
     <div class="offering_images">
       <% offering.testimonies.active.each_with_index do |tst, idx| %>
-        <%=tst.tst_view_label%>&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
+        <%=tst.tst_view_label%>:&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
         <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
       <% end %>
     </div>
