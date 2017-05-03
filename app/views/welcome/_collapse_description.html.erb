@@ -1,10 +1,11 @@
 <% if !overview.description.empty? %>
-  <span class="more"  data-toggle="collapse" data-target="#collapse<%= overview.id %>"
-        aria-expanded="false" aria-controls="collapse<%= overview.id %>">
+  <span class="more"  data-toggle="collapse" data-target="#collapse_desc<%= overview.id %>"
+        aria-expanded="false" aria-controls="collapse_desc<%= overview.id %>">
     More...
   </span>
-  <div id="collapse<%= overview.id %>" class="panel-collapse collapse" role="tabpanel"
-       aria-labelledby="heading<%= overview.id %>">
+  <div id="collapse_desc<%= overview.id %>" class="panel-collapse collapse" role="tabpanel"
+       aria-labelledby="heading_desc<%= overview.id %>">
     <p><%= overview.description.html_safe %></p>
   </div>
 <% end %>
+

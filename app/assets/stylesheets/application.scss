@@ -150,10 +150,18 @@ a.btn {
 }
 
 .more {
-  padding-left:1.5em;
+  padding-left:1em;
   cursor:pointer;
   color:$link;
   font-style: italic;
+  fonr-size:12px;
+}
+
+.view_more {
+  padding-left:1em;
+  cursor:pointer;
+  color:$link;
+  font-style: normal;
 }
 
 h1, h2, h3, h4 {
@@ -838,6 +846,7 @@ h1, h2, h3, h4 {
   font-size: 11px;
   line-height:1.4em;
   font-style: normal;
+  color:$link;
 }
 
 .testimony_brief {
@@ -964,6 +973,26 @@ h1, h2, h3, h4 {
   font-style: normal;
   text-align: left;
   font-size:16px;
+  color: $dark_text;
+}
+
+.offering_image_view {
+  margin: 1em 0em 0em 0em;
+  width:100%;
+  line-height:1.5em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: left;
+  font-size:14px;
+  color: $dark_text;
+}
+.offering_images_descript {
+  padding: 2em 2em 1em 2em;
+  line-height:1.5em;
+  font-weight:normal;
+  font-style: normal;
+  text-align: left;
+  font-size:14px;
   color: $dark_text;
 }
 

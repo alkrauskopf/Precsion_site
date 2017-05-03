@@ -37,8 +37,16 @@
             </div>
             <% hr_break = true %>
         <% end %>
+        <% if !overview.images.not_carousels.empty?%>
+          <% overview.images.not_carousels.each_with_index do |image, idx| %>
+            <div class = "offering_images">
+              <%= render partial: 'collapse_image', locals: {image: image, idx: idx} %>
+            </div>
+          <% end %>
+          <% hr_break = true %>
+        <% end %>
         <% if !overview.user_povs.empty?%>
-          <div class="about_blue_font pov_list">
+          <div class="pov_list">
             <% overview.user_povs.each do |pov| %>
                 Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
             <% end %>
@@ -46,14 +54,17 @@
           <% hr_break = true %>
         <% end %>
         <% if !overview.active_contents.empty? %>
-            <div class="image_list">
+            <div class="offering_images">
               <% overview.active_contents.each do |content| %>
                   <% if content.exist? %>
-                      <% if content.type.upcase == "LINK" %>
-                          View:&nbsp;&nbsp;<a href= <%= content.content_url %> target="_blank"><u><%= content.title.html_safe%></u></a>
-                      <% else %>
-                          View:&nbsp;&nbsp;<a href= <%= content.attached_report %> target="_blank"><u><%= content.title.html_safe%></u></a>
-                      <% end %>
+                      View:&nbsp;&nbsp;
+                      <span class="view_more">
+                        <% if content.type.upcase == "LINK" %>
+                          <a href= <%= content.content_url %> target="_blank"><u><%= content.title.html_safe%></u></a>
+                        <% else %>
+                          <a href= <%= content.attached_report %> target="_blank"><u><%= content.title.html_safe%></u></a>
+                        <% end %>
+                      </span>
                       <br/>
                   <% end %>
               <% end %>
