@@ -27,11 +27,11 @@ class OfferingImage < ActiveRecord::Base
   end
 
   def self.headers
-    where('is_head = ?', true)
+    where('is_head = ?', true).order('display_position ASC')
   end
 
   def self.not_headers
-    where('is_head = ?', false)
+    where('is_head = ?', false).order('display_position ASC')
   end
 
   def self.not_carousel_headers
@@ -51,7 +51,7 @@ class OfferingImage < ActiveRecord::Base
   end
 
   def self.active
-    where('is_active = ?', true)
+    where('is_active = ?', true).order('display_position ASC')
   end
 
   def pic
