@@ -8,16 +8,24 @@
       <div>
         <div class = "offering_header">
           <div class="row">
-            <% if !overview.nil?  && !overview.brief.strip.empty? %>
+            <% if !overview.nil? %>
               <% if pending_preps.empty? && next_webinar.nil? %>
                 <div class= "col-md-12" >
-                  <%= overview.brief.html_safe %>
-                  <%= render partial: 'collapse_description', locals: {overview: overview} %>
+                  <% if !overview.brief.strip.empty?%>
+                    <%= overview.brief.html_safe %>
+                    <%= render partial: 'collapse_description', locals: {overview: overview} %>
+                  <% else %>
+                    <p><%= overview.description.html_safe %></p>
+                  <% end %>
                 </div>
               <% else%>
                 <div class= "col-md-10" >
-                  <%= overview.brief.html_safe %>
-                  <%= render partial: 'collapse_description', locals: {overview: overview} %>
+                  <% if !overview.brief.strip.empty?%>
+                    <%= overview.brief.html_safe %>
+                    <%= render partial: 'collapse_description', locals: {overview: overview} %>
+                  <% else %>33
+                      <p><%= overview.description.html_safe %></p>
+                  <% end %>
                 </div>
                 <div class="col-md-2">
                   <%= render 'prep_enroll_buttons'%>
