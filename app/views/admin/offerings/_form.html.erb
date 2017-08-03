@@ -124,6 +124,15 @@
       <%= f.label(:offering_hidden, 'No') %>
     </div>
   </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <h4>Default Site Page:</h4>
+        <%= f.radio_button(:is_default, true) %>
+        <%= f.label(:offering_default, 'Yes') %>
+        <%= f.radio_button(:is_default, false) %>
+        <%= f.label(:offering_default, 'No') %>
+      </div>
+    </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit class: "btn btn-primary" %>

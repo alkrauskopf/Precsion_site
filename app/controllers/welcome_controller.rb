@@ -14,7 +14,10 @@ class WelcomeController < ApplicationController
 
   private
   def get_offering
-    @offering = Offering.find(params[:id]) rescue nil
+    @offering = params[:id] ? @offering = Offering.find(params[:id]) : Offering.default_offering
+    if @offering.nil?
+      @offering = Offering.offerings.active.all_parents.first
+    end
   end
 
   def get_welcome_info
@@ -29,9 +32,6 @@ class WelcomeController < ApplicationController
     @consultant_parent = Offering.consultants.active.all_parents.first
     @m_size = Offering.marques.active.not_expired.size
     @offering_list = Offering.welcome_offerings
-    if @offering.nil?
-      @offering = Offering.offerings.active.all_parents.first
-    end
     @offering_images = @offering.offering_images.headers.active
   end
 end

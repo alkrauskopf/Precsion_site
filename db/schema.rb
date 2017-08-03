@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419001942) do
+ActiveRecord::Schema.define(version: 20170803191519) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 20170419001942) do
     t.text    "tst_video",        limit: 65535
     t.string  "tst_topic",        limit: 255
     t.string  "tst_organization", limit: 255
+    t.boolean "is_default",                     default: false
   end
 
   create_table "pay_terms", force: :cascade do |t|

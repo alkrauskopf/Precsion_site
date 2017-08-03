@@ -17,6 +17,10 @@ class Offering < ActiveRecord::Base
     where('parent_id IS NULL')
   end
 
+  def self.default_offering
+    where('is_default').first rescue nil
+  end
+
   def ancestor
     anc = self
     until anc.parent_id.nil? do
