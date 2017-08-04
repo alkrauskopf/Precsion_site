@@ -239,15 +239,25 @@ h1, h2, h3, h4 {
   color: $dark_text;
 }
 .mission_row {
-  margin-top: 0em;
-  margin-bottom: 2em;
+  padding-top: 3em;
+  padding-bottom: 3em;
 }
 
-.mission_block {
+.mission_header {
+  margin-top:1em;
+  padding:0em 5em 0em 5em;
   line-height: 1.9em;
+}
+.mission_block {
+  margin-top:2em;
+  padding:1em 2em 1em 2em;
+  line-height: 1.9em;
+  border: 2px;
+  border-radius: 10px;
   background: $mission_gray;
   color: $header_background;
   font-family: Garamond, Georgia, "Times New Roman", Times, serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .mission_border_1 {
   border: 3px $palette_1;
@@ -284,10 +294,10 @@ h1, h2, h3, h4 {
 }
 .mission_label_2 {
   font-weight:normal;
-  vertical-align:top;
+  vertical-align:middle;
   padding-top:1.25em;
   padding-bottom:1em;
-  font-size:12px;
+  font-size:20px;
   text-align: right;
 }
 
@@ -299,11 +309,11 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 .mission_statement_2 {
-  font-weight:bold;
-  vertical-align:top;
-  padding-top:1em;
+  font-weight:normal;
+  vertical-align:middle;
+  padding-top:1.25em;
   padding-bottom:1em;
-  font-size:15px;
+  font-size:20px;
   padding-left:2em;
   text-align: left;
   width:85%;
@@ -321,7 +331,7 @@ h1, h2, h3, h4 {
   vertical-align:top;
   padding-top:0em;
   padding-bottom:0em;
-  font-size:12px;
+  font-size:16px;
   text-align: right;
 }
 
@@ -332,7 +342,7 @@ h1, h2, h3, h4 {
   padding-bottom:1.25em;
   text-align: left;
   line-height: 1.5em;
-  font-size:13px;
+  font-size:16px;
 }
 
 .mission_panel_2 {

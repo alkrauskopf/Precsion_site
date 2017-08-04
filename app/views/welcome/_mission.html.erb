@@ -1,9 +1,11 @@
 
-<div class="row mission_row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div class="mission_block">
-          <div style=" border: 2px <%= active_offering.panel_color%>; border-style: solid; border-radius: 5px;">
+<div class="mission_row">
+  <div class="row mission_header">
+    <%= current_mission && !current_mission.description.empty? ? current_mission.description.html_safe : '' %>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="mission_block" style=" <%= active_offering.panel_color%>; border-style: solid;">
             <table style="width:100%">
               <tbody>
               <tr>
@@ -27,8 +29,7 @@
               </tbody>
             </table>
           </div>
-        </div>
       </div>
-      <div class="col-md-1"></div>
+  </div>
 </div>
 
