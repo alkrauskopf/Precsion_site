@@ -998,13 +998,15 @@ h1, h2, h3, h4 {
   color: $dark_text;
 }
 .offering_images_descript {
-  padding: 2em 2em 1em 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  padding:0em 0em 2em 0em;
   line-height:1.5em;
   font-weight:normal;
   font-style: normal;
   text-align: left;
-  font-size:14px;
-  color: $dark_text;
+  font-size:16px;
+  color: $red_text;
 }
 
 .research_join_list {

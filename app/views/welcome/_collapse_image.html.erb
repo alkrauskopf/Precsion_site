@@ -7,14 +7,16 @@
        aria-labelledby="heading_image<%= image.id %>">
     <div class="col-md-11">
       <div class="panel-body offering_image_block">
+        <% if !image.description.nil? && image.description != '' %>
+            <div class="row ">
+              <div class="col-md-12 offering_images_descript">
+                <%=image.description.html_safe %>
+              </div>
+            </div>
+        <% end %>
         <div  class="row offering_image">
           <%= image.pic? ? image_tag(image.image) : '' %>
         </div>
-        <% if !image.description.nil? && image.description != '' %>
-          <div class="row offering_images_descript">
-            <%=image.description.html_safe %>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>
