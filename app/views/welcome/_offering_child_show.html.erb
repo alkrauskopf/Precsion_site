@@ -87,7 +87,7 @@
     </div>
   <% end %>
   <% if !offering.user_povs.empty?%>
-    <div class="about_blue_font pov_list">
+    <div class="about_blue_font pov_list" style="color: <%=offering.panel_color%>">>
       <% offering.user_povs.each do |pov| %>
           Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name.html_safe %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
       <% end %>
