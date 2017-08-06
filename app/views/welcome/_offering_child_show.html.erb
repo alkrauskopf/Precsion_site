@@ -5,10 +5,9 @@
   <% div_class= "col-md-7" %>
 <% end %>
 <div class="row offering_row">
-  <div class="offering_name" style="color: <%=offering.panel_color%>">
-    <%= offering.name == '' ? '' : (offering.name.html_safe + ' ') %>
+  <div class="offering_name" style="color: <%=offering.parent.panel_color%>">
+   <%= offering.name == '' ? '' : (offering.name.html_safe + ' ') %>
   </div>
-
   <div class="offering_descript">
    <%= offering.brief.html_safe %>
     <% if !offering.description.empty? || !offering.active_contents.empty? || !offering.images.not_carousel_headers.empty?%>
@@ -87,7 +86,7 @@
     </div>
   <% end %>
   <% if !offering.user_povs.empty?%>
-    <div class="about_blue_font pov_list" style="color: <%=offering.panel_color%>">
+    <div class="about_blue_font pov_list">
       <% offering.user_povs.each do |pov| %>
           Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name.html_safe %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
       <% end %>
