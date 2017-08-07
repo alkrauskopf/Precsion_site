@@ -160,8 +160,9 @@ a.btn {
 .view_more {
   padding-top:.5em;
   padding-left:1em;
+  font-size:16px;
   cursor:pointer;
-  color:$dark_text;
+  color:$link;
   font-style: normal;
 }
 
@@ -835,7 +836,7 @@ h1, h2, h3, h4 {
   }
 
 .off_image_list {
-  font-size: 12px;
+  font-size: 14px;
   line-height:1.7em;
   font-style: normal;
 }
@@ -1006,7 +1007,7 @@ h1, h2, h3, h4 {
   font-style: normal;
   text-align: left;
   font-size:16px;
-  color: $red_text;
+  color: $dark_text;
 }
 
 .research_join_list {

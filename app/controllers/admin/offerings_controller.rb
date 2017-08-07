@@ -149,7 +149,7 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def show
-    @parent = @offering.parent
+    @parent = !@offering.parent_id.nil? ? @offering.parent : nil
   end
 
   def destroy
