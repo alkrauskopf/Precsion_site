@@ -252,7 +252,7 @@ h1, h2, h3, h4 {
 }
 .mission_block {
   margin:0em 0em 0em 0em;
-  padding:.5em 2em .5em 2em;
+  padding:.5em 0em .5em 0em;
   line-height: 1.9em;
   border: 1px;
   border-radius: 10px;
@@ -299,6 +299,7 @@ h1, h2, h3, h4 {
   vertical-align:middle;
   padding-top:1.25em;
   padding-bottom:1em;
+  padding-right:0em;
   font-size:20px;
   text-align: right;
 }
@@ -315,10 +316,10 @@ h1, h2, h3, h4 {
   vertical-align:middle;
   padding-top:1.25em;
   padding-bottom:1em;
+  padding-right:0em;
   font-size:20px;
-  padding-left:2em;
+  padding-left:0em;
   text-align: left;
-  width:85%;
 }
 .mission_panel {
   margin: 1em 3em 1.5em 3em;
@@ -332,14 +333,14 @@ h1, h2, h3, h4 {
   font-weight:normal;
   vertical-align:top;
   padding-top:0em;
-  padding-bottom:0em;
+  padding-right:0em;
   font-size:16px;
   text-align: right;
 }
 
 .vision_statement {
   padding-top:0em;
-  padding-left:.5em;
+  padding-left: 0em;
   padding-bottom:1.25em;
   text-align: left;
   line-height: 1.5em;
