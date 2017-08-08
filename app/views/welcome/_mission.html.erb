@@ -1,12 +1,12 @@
 
 <div class="mission_row">
-  <div class="row mission_header">
+  <div class="mission_header">
     <%= current_mission && !current_mission.description.empty? ? current_mission.description.html_safe : '' %>
   </div>
   <div class="row">
       <div class="col-md-12">
           <div class="mission_block" style=" <%= active_offering.panel_color%>; border-style: solid;">
-            <table style="width:100%">
+            <table>
               <tbody>
               <tr>
                 <td class="mission_label_2">
@@ -32,4 +32,5 @@
       </div>
   </div>
 </div>
+<hr>
 

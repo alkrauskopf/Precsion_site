@@ -15,9 +15,12 @@
  *= require font-awesome
  */
 
+@import "application-variables.scss";
+
 .page_background {
-    background-color:#f7f4ed;
+  background-color:$page_background;
 }
+
 .form_row {
     padding-top:1em;
     border-bottom: 0px solid #67655D;
