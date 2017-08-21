@@ -37,10 +37,23 @@
           <% hr_break = true %>
         <% end %>
         <% if hr_break %> <hr> <% end %>
-        <% overview.children_by_position.active.each do |tool| %>
-          <%= render partial: 'offering_child_show', locals: {offering: tool} %>
-          <hr>
-        <% end -%>
+      <% if !featured.nil? %>
+        <div class="offering_child_box">
+          <div class="row">
+            <%= render partial: 'offering_child_show', locals: {offering: featured} %>
+          </div>
+        </div>
+      <% end %>
+      <% overview.children_by_position.active.each do |offering| %>
+        <% if offering != featured %>
+          <div class="offering_child_box">
+            <div class="row">
+              <%= render partial: 'offering_child_show', locals: {offering: offering} %>
+            </div>
+          </div>
+        <% end %>
+        <hr>
+      <% end -%>
       </div>
   </div>
 </div>

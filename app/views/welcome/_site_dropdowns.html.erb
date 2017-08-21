@@ -1,0 +1,42 @@
+<div class="row">
+  <table class="table table-hover" style="width:95%;">
+    <tbody>
+      <colgroup>
+        <col style="width:10%">
+        <col style="width:90%">
+      </colgroup>
+      <% @offering_list.sort_by{|o| o.display_position}.each do |offering| %>
+        <tr >
+          <td class="right-hand" style="border:0px;"></td>
+          <% if offering.career? %>
+            <td class="site-link" style="border:0px;">
+              <%= link_to offering.name, "#careerModal", "data-toggle" => "modal" %>
+            </td>
+          <% elsif offering.partner? || offering.consultant?%>
+            <td class="site-link" style="border:0px;">
+              <%= link_to offering.name, root_path(:id => offering.id) %>
+            </td>
+          <% else %>
+            <td colspan=2  class="site-link" style="border:0px;">
+              <span data-toggle="collapse" data-target="#collapse<%= offering.id %>"
+                aria-expanded="false" aria-controls="collapse<%= offering.id %>">
+                <%= offering.name %>
+              </span>
+              <% class_label = "panel-collapse collapse" %>
+              <div id="collapse<%= offering.id %>" class="<%=class_label%>" role="tabpanel"
+                    aria-labelledby="heading<%= offering.id %>">
+                <div class= row>
+                  <% offering.children_by_position.active.each do |child| %>
+                     <div class="site_child_link">
+                       <%= link_to child.name, root_path(:id => offering.id, :child_id => child.id) %>
+                     </div>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -14,10 +14,11 @@ class WelcomeController < ApplicationController
 
   private
   def get_offering
-    @offering = params[:id] ? @offering = Offering.find(params[:id]) : Offering.default_offering
+    @offering = params[:id] ? Offering.find(params[:id]) : Offering.default_offering
     if @offering.nil?
       @offering = Offering.offerings.active.all_parents.first
     end
+    @offering_featured = params[:child_id] ? Offering.find(params[:child_id]) : (@offering.children_by_position.active.empty? ? nil : @offering.children_by_position.active.first)
   end
 
   def get_welcome_info

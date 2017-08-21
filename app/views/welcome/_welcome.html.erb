@@ -5,7 +5,8 @@
       <%= render partial: 'mission', locals: {active_offering: @offering}%>
       <div class="row">
         <div class="col-md-3 welcome-panel-left">
-          <%= render partial: 'site_list', locals: { active_offering: @offering} %>
+          <%#= render partial: 'site_list', locals: { active_offering: @offering} %>
+          <%= render partial: 'site_dropdowns', locals: { active_offering: @offering} %>
           <% if current_user && current_user.admin? %>
             <%= render partial: 'offering_log_list', locals: { active_offering: @offering} %>
           <% end %>
@@ -14,38 +15,38 @@
           <%= render partial: 'offering_image_list', locals: { active_offering: @offering} %>
         </div>
         <% if @offering.prep? %>
-            <div class="col-md-9">
-              <%= render partial: 'prep_box', locals: {overview: @offering} %>
-            </div>
+          <div class="col-md-9">
+            <%= render partial: 'prep_box', locals: {overview: @offering, :featured => @offering_featured} %>
+          </div>
         <% end %>
         <% if @offering.services? %>
           <div class="col-md-9">
-              <%= render partial: 'offerings_box', locals: {overview: @offering} %>
+              <%= render partial: 'offerings_box', locals: {overview: @offering, :featured => @offering_featured} %>
           </div>
         <% end %>
         <% if @offering.grant? %>
           <div class="col-md-9">
-            <%= render partial: 'grant_box', locals: {overview: @offering} %>
+            <%= render partial: 'grant_box', locals: {overview: @offering, :featured => @offering_featured} %>
           </div>
         <% end %>
         <% if @offering.research? %>
           <div class="col-md-9">
-            <%= render partial: 'research_box', locals: {overview: @offering} %>
+            <%= render partial: 'research_box', locals: {overview: @offering, :featured => @offering_featured} %>
           </div>
         <% end %>
         <% if @offering.tool? %>
             <div class="col-md-9">
-              <%= render partial: 'tools_box', locals: {overview: @tool_parent} %>
+              <%= render partial: 'tools_box', locals: {overview: @tool_parent, :featured => @offering_featured} %>
             </div>
         <% end %>
         <% if @offering.testimonial? %>
           <div class="col-md-9">
-            <%= render partial: 'testimony_box', locals: {overview: @offering} %>
+            <%= render partial: 'testimony_box', locals: {overview: @offering, :featured => @offering_featured} %>
           </div>
         <% end %>
         <% if @offering.partner? %>
             <div class="col-md-9">
-              <%= render partial: 'partner_box', locals: {overview: @offering} %>
+              <%= render partial: 'partner_box', locals: {overview: @offering, :featured => @offering_featured} %>
             </div>
         <% end %>
         <% if @offering.consultant? %>
