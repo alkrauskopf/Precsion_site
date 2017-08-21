@@ -1,11 +1,11 @@
 <div class="container">
-    <div id="title_row" class="row">
-      <h1>Manage Content</h1>
-      <a class="btn btn-success" href="<%= new_admin_offering_path %>">
-        <i class="glyphicon glyphicon-plus-sign"></i>
-        New Content
-      </a>
-    </div>
+  <div id="title_row" class="row new_content">
+    <h1>Manage Content</h1>
+    <a class="btn btn-success" href="<%= new_admin_offering_path %>">
+      <i class="glyphicon glyphicon-plus-sign"></i>
+      New Content
+    </a>
+  </div>
 <!-- Trivial change.  Need to break the below into a partial -->
 <!-- render Offerings in hierarchical structure (two levels deep only) -->
     <% @parents.each do |offering| %>
