@@ -1,8 +1,10 @@
 
 <div class="mission_row">
-  <div class="mission_header">
-    <%= current_mission && !current_mission.description.empty? ? current_mission.description.html_safe : '' %>
-  </div>
+  <% if false %>
+    <div class="mission_header">
+      <%= current_mission && !current_mission.description.empty? ? current_mission.description.html_safe : '' %>
+    </div>
+
   <div class="row mission_block" style=" border-color:<%= active_offering.panel_color%>; border-style: dashed;">
     <div class="row">
       <div class="col-md-3 mission_label_2">
@@ -22,7 +24,12 @@
         </div>
       </div>
     <% end %>
-</div>
+  </div>
+  <% end %>
+    <div class="descript">
+        <%= current_mission ? current_mission.brief.html_safe : '' %>
+    </div>
+
 </div>
 <hr>
 

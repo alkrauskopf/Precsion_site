@@ -68,9 +68,9 @@ a.btn {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-xs;
-  margin-top:2em;
+  margin-top:0em;
   margin-left:0em;
-  font-size:13px;
+  font-size:14px;
 }
 .button_enroll {
   @extend .btn;
@@ -103,9 +103,10 @@ a.btn {
   @extend .glyphicon;
   @extend .glyphicon-hand-right;
   color:$blue_hand;
+  border:0px;
   margin-top:0em;
   margin-left:0em;
-  font-size:16px;
+  font-size:14px;
 }
 .check-mark {
   @extend .glyphicon;
@@ -150,7 +151,7 @@ a.btn {
 }
 
 .precision_container {
-  padding: 0em 8em 2em 8em;
+  padding: 4em 5em 2em 5em;
 }
 .more {
   padding-left:1em;
@@ -179,15 +180,48 @@ h1, h2, h3, h4 {
   height:14em;
 }
 
-.header_background {
+.header_background_xx {
   background-color:$header_background;
 }
-.main_background_image img {
-  background-image: url(Precision_banner_1.png);
-
-  /*  background-color: $palette_2;  */
-  margin:0em 0em 0em 0em;
+.header_background {
+  background-color:transparent;
 }
+.main_background_image {
+  background-image: url("Precision_header_evans_shorter.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height:12em;
+  background-color:transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  border-bottom: 3px solid #eee;
+}
+.main_background_image .name{
+  padding:1.5em 0em 0em 2.5em;
+  color:$light_text;
+  font-size:35px;
+  font-weight:bold;
+  font-style:normal;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+.main_background_image .name .subname{
+  padding:0em 0em 0em 0em;
+  font-style: normal;
+  font-size:15px;
+  font-weight:normal;
+}
+.main_background_image .contact_us{
+  padding:3em 6em 0em 0em;
+  float:right;
+}
+.main_background_image .marque{
+  padding:.5em 0em 0em 0em;
+  float:right;
+}
+
 
 .site-frame {
   font-size:12px;
@@ -211,13 +245,18 @@ h1, h2, h3, h4 {
   text-align:left;
   border:0px;
   font-size:15px;
+  border:0px;
   margin:0em 0em 0em 0em;
   color:$link;
   cursor:pointer;
 }
+.site-link .childs {
+  background:transparent;
+}
 .site_child_link {
   text-align:left;
   border:0px;
+  background:transparent;
   line-height:1em;
   font-size:13px;
   padding:1em 0em 0em 2em;
@@ -237,7 +276,7 @@ h1, h2, h3, h4 {
 }
 
 .marque_row {
-  margin: 3.5em 4em 0em 15em;
+  margin: 3.5em 4em 0em 20em;
   padding-bottom: 0em;
   font-weight:normal;
   font-style: italic;
@@ -255,7 +294,15 @@ h1, h2, h3, h4 {
   color: $dark_text;
 }
 .mission_row {
-  margin:6em 4em 1em 4em;
+  padding:1em 0em 0em 0em;
+  text-align:center;
+  font-style:italic;
+  color:$palette_2;
+  font-size:20px;
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.mission_row .descript {
+  padding:0em 0em 0em 1.5em;
 }
 
 .mission_header {
@@ -312,7 +359,7 @@ h1, h2, h3, h4 {
   padding-top:1.25em;
   padding-bottom:1em;
   padding-right:0em;
-  font-size:20px;
+  font-size:18px;
   text-align: right;
 }
 
@@ -329,7 +376,7 @@ h1, h2, h3, h4 {
   padding-top:1.25em;
   padding-bottom:1em;
   padding-right:0em;
-  font-size:20px;
+  font-size:18px;
   padding-left:0em;
   text-align: left;
 }
@@ -414,7 +461,6 @@ h1, h2, h3, h4 {
 
 .page_background {
   background-color: $page_background;
-  margin:0em 0em 0em 0em;
 }
 
 .thumbnail-small img {
@@ -556,6 +602,8 @@ h1, h2, h3, h4 {
 .welcome-panel-left {
   overflow: scroll;
   max-height: 260em;
+  padding: 0em 1em 0em 0em;
+  border-right: 0px solid #ddd;
 }
 
 .panel {

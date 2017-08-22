@@ -1,9 +1,20 @@
+<% if false %>
+  <div class="card card-inverse">
+    <img class="card-img" src="<%= @banner_image.image %>" alt="Card image">
+    <div class="card-img-overlay">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+<% end %>
+<% if true %>
 <div class="panel header-panel navbar-fixed-top navbar_row">
-      <div class="panel-heading" >
-        <div class="row header_background" >
+      <div class="panel-heading main_background_imagex" >
+        <div  >
           <div class="col-md-4">
             <% if !@banner_image.nil? %>
-              <%= image_tag(@banner_image.image ) %>
+              <%#= image_tag(@banner_image.image ) %>
             <% end %>
           </div>
           <div class="col-md-6">
@@ -12,7 +23,7 @@
           <div class="col-md-2">
             <%= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal', :class=>'button_contact'} %>
           </div>
-          <% if logged_in? %>
+          <% if false && logged_in? %>
             <nav class="navbar navbar-inverse-x navbar-header" role="navigation" >
               <div class="col-md-1" ></div>
               <div class="col-md-10">
@@ -85,7 +96,7 @@
         </div>
       </div>
     </div>
-
+<% end %>
 <%= render '/session/contact_us_modal' %>
 <%= render '/session/career_modal' %>
 

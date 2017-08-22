@@ -25,7 +25,7 @@
               <% class_label = "panel-collapse collapse" %>
               <div id="collapse<%= offering.id %>" class="<%=class_label%>" role="tabpanel"
                     aria-labelledby="heading<%= offering.id %>">
-                <div class= row>
+                <div class= "row">
                   <% offering.children_by_position.active.each do |child| %>
                      <div class="site_child_link">
                        <%= link_to child.name, root_path(:id => offering.id, :child_id => child.id) %>

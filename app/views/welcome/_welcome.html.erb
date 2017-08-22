@@ -1,11 +1,12 @@
 <div id="welcome_page">
 <!-- Page Content -->
-  <div class="precision_containerx">
     <% if !@offering.nil? %>
       <%= render partial: 'mission', locals: {active_offering: @offering}%>
       <div class="row">
         <div class="col-md-3 welcome-panel-left">
-          <%#= render partial: 'site_list', locals: { active_offering: @offering} %>
+          <% if admin_authorized? %>
+            <%= render partial: 'admin_dropdowns' %>
+          <% end %>
           <%= render partial: 'site_dropdowns', locals: { active_offering: @offering} %>
           <% if current_user && current_user.admin? %>
             <%= render partial: 'offering_log_list', locals: { active_offering: @offering} %>
@@ -56,5 +57,4 @@
         <% end %>
       </div>
     <% end %>
-  </div>
 </div>
