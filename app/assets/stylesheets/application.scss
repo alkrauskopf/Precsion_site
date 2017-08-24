@@ -98,6 +98,13 @@ a.btn {
   margin-left:0em;
   font-size:16px;
 }
+.button_meeting {
+  @extend .btn;
+  @extend .btn-info;
+  @extend .btn-xs;
+  padding:0em 1em 0em 1em;
+  font-size:10px;
+}
 
 .right-hand {
   @extend .glyphicon;
@@ -187,17 +194,17 @@ h1, h2, h3, h4 {
   background-color:transparent;
 }
 .main_background_image {
-  background-image: image-url("Precision_header_evans_shorter.jpg");
+  background-image: url("/assets/Precision_header_evans_shorter.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
-  height:12em;
+  max-height:12em;
   background-color:transparent;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
   width: 100%;
-  border-bottom: 3px solid #eee;
+  border-bottom: 0px solid #eee;
 }
 .main_background_image .name{
   padding:1.5em 0em 0em 2.5em;
@@ -1120,8 +1127,8 @@ h1, h2, h3, h4 {
 }
 
 .offering_name {
-  margin-top:1em;
-  margin-bottom:1em;
+  margin-top:0em;
+  margin-bottom:0em;
   font-style: normal;
   font-weight:bold;
   text-align: left;
@@ -1137,6 +1144,15 @@ h1, h2, h3, h4 {
   text-align: left;
   font-size:15px;
   color: $dark_text;
+}
+
+.offering_signup {
+  padding: .5em 0em 0em 0em;
+  font-size:13px;
+  color: $red_text;
+}
+.offering_signup_button {
+  padding: 0em 0em 0em 2em;
 }
 
 .feature_name {

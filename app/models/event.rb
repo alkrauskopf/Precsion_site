@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :venue
   has_many :reservations
-  enum e_type: {prep: 0, webinar: 1}
+  enum e_type: {prep: 0, webinar: 1, meeting: 2}
   monetize :price_cents
 
   validates_format_of :contact_email, :with => /\A[\w._%+-]+@[\w.-]+\.[\w]{2,6}\z/, :message => 'invalid email format',
@@ -62,6 +62,10 @@ class Event < ActiveRecord::Base
     where('e_type = ?', 1)
   end
 
+  def self.meetings
+    where('e_type = ?', 2)
+  end
+
   def prep?
     self.e_type == 'prep'
   end
@@ -70,18 +74,28 @@ class Event < ActiveRecord::Base
     self.e_type == 'webinar'
   end
 
+  def meeting?
+    self.e_type == 'meeting'
+  end
+
   def type_name
     name = ''
     if self.webinar?
       name = 'Webinar'
     elsif self.prep?
       name = 'Course'
+    elsif self.meeting?
+      name = 'Meeting'
     end
     name
   end
 
   def self.next_webinar
     Event.pending('webinar').first rescue nil
+  end
+
+  def self.next_meeting
+    Event.pending('meeting').first rescue nil
   end
 
   def valid_confirmed_reservations

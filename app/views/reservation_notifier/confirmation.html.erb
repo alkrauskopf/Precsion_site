@@ -1,16 +1,20 @@
 <h4><%= @name %>,&nbsp;Thank You For Signing Up For <em><%= @enrollment.event.name %></em></h4>
+<% if !@enrollment.event.meeting? %>
 <h5>
   Click <%= link_to 'VALIDATE HERE', prep_validate_url(:enrollment => @enrollment.enrollment) %> to validate your email address.
 </h5>
 <h5>Your Enrollment Number Is <ul><%= @enrollment.enrollment %></ul></h5>
-
-<h5>Location:&nbsp;<%=@enrollment.event.venue.name%></h5>
+<% end %>
+<h5>Location:&nbsp;<%=@enrollment.event.venue.name%>&nbsp;|&nbsp;<%=@enrollment.event.location%>&nbsp;|&nbsp;<%=@enrollment.event.time%></h5>
 
 <h5>Start: <%= !@enrollment.event.start_date.nil? ? @enrollment.event.start_date.strftime('%b %d, %Y') : '-'%><br/>
-  End: <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%></h5>
-<h5>
-  Fee: <%= humanized_money_with_symbol(@fee) %>
+  End: <%= !@enrollment.event.end_date.nil? ? @enrollment.event.end_date.strftime('%b %d, %Y') : '-'%>
 </h5>
+<% if !@enrollment.event.meeting? %>
+  <h5>
+    Fee: <%= humanized_money_with_symbol(@fee) %>
+  </h5>
+<% end %>
 <h5>
   Contact: <%= @enrollment.event.contact_name %> - <%= @enrollment.event.contact_email %>
 </h5>
@@ -19,9 +23,11 @@
     Note: <%= @enrollment.event.message %>
   <% end %>
 </h5>
-<p>
-  Your reservation is currently <%=@enrollment.status.upcase %>
-</p>
+<% if !@enrollment.event.meeting? %>
+  <p>
+    Your reservation is currently <%=@enrollment.status.upcase %>
+  </p>
+<% end %>
 <p>
   Thanks Again!<br/>The Precision Prep Team
 </p>
