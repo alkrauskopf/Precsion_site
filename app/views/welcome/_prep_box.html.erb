@@ -18,14 +18,14 @@
                   <% else %>
                     <p><%= overview.description.html_safe %></p>
                   <% end %>
-                  <% if !Event.next_meeting.nil? %>
-                    <p class="offering_signup">
+                  <p class="offering_signup">
+                    <% if !Event.next_meeting.nil? %>
                       <%=Event.next_meeting.name%>, <%= Event.next_meeting.start_date.strftime("%a, %b %d") %>, <%= Event.next_meeting.time %>
                       <span class="offering_signup_button">
                         <%= link_to "I'll Attend", prep_enroll_path(:event_id=>Event.next_meeting.id), class: 'button_meeting' %>
                       </span>
-                    </p>
-                  <% end %>
+                    <% end %>
+                  </p>
                 </div>
               <% else%>
                 <div class= "col-md-10" >
