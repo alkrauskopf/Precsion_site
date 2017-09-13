@@ -82,7 +82,7 @@
             <div class="offering_images">
               <% overview.active_contents.each do |content| %>
                   <% if content.exist? %>
-                      View:&nbsp;&nbsp;
+                      View:
                       <span class="view_more">
                         <% if content.type.upcase == "LINK" %>
                           <a href= <%= content.content_url %> target="_blank"><u><%= content.title.html_safe%></u></a>
