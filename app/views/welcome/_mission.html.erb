@@ -1,35 +1,37 @@
 
 <div class="mission_row">
-  <% if false %>
-    <div class="mission_header">
-      <%= current_mission && !current_mission.description.empty? ? current_mission.description.html_safe : '' %>
-    </div>
+  <% if current_mission %>
+    <% if false %>
+      <div class="mission_header">
+        <%= !current_mission.description.empty? ? current_mission.description.html_safe : '' %>
+      </div>
 
-  <div class="row mission_block" style=" border-color:<%= active_offering.panel_color%>; border-style: dashed;">
-    <div class="row">
-      <div class="col-md-3 mission_label_2">
-        Our Mission
+    <div class="row mission_block" style=" border-color:<%= active_offering.panel_color%>; border-style: dashed;">
+      <div class="row">
+        <div class="col-md-3 mission_label_2">
+          Our Mission
+        </div>
+        <div class="col-md-9 mission_statement_2" >
+          <%= current_mission ? current_mission.brief.html_safe : '' %>
+        </div>
       </div>
-      <div class="col-md-9 mission_statement_2" >
-        <%= current_mission ? current_mission.brief.html_safe : '' %>
-      </div>
+      <% if !active_offering.vision.empty? %>
+        <div class="row" style="color:<%= active_offering.panel_color%>">
+          <div class="col-md-3 vision_label">
+            <%= active_offering.vision_label.html_safe %>
+          </div>
+          <div class="col-md-9 vision_statement" >
+            <%= active_offering.vision.html_safe %>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <% if !active_offering.vision.empty? %>
-      <div class="row" style="color:<%= active_offering.panel_color%>">
-        <div class="col-md-3 vision_label">
-          <%= active_offering.vision_label.html_safe %>
-        </div>
-        <div class="col-md-9 vision_statement" >
-          <%= active_offering.vision.html_safe %>
-        </div>
-      </div>
     <% end %>
-  </div>
-  <% end %>
     <div class="descript">
         <%= current_mission ? current_mission.brief.html_safe : '' %>
     </div>
-
+  <% end %>
 </div>
 <hr>
+
 

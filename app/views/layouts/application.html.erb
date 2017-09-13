@@ -41,37 +41,35 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body >
+<body>
+  <div class="main_header">
   <div class="main_background_image">
-    <div class="row ">
-      <div class="col-md-6 name">
-        <% if false %>
-          Precision
-          <span class="subname"> School Improvement, LLC</span>
-        <% end %>
+    <div class="row">
+      <div class="col-md-6">
       </div>
       <div class="col-md-6">
-        <div class="contact_us">
-          <%= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal', :class=>'button_contact'} %>
-        </div>
         <div class="marque">
           <%= render 'layouts/marque_bar' %>
+        </div>
+        <div class="contact_us">
+          <%= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal', :class=>'button_contact'} %>
         </div>
       </div>
       <%= render '/session/contact_us_modal' %>
       <%= render '/session/career_modal' %>
     </div>
   </div>
-  <div class="page_background">
-  <div class="precision_container">
-    <%#= render 'layouts/nav_bar' %>
-    <div class="row site-frame">
-      <% if !flash.empty? && !@no_flash %><%#= render 'layouts/flash_bar' %>
-      <% end %>
-      <%#= render 'layouts/ajax_loader'%>
-      <%= yield %>
-    </div>
   </div>
+  <div class="page_backgroundx">
+    <div class="precision_container">
+      <%#= render 'layouts/nav_bar' %>
+      <div class="row site-frame">
+        <% if !flash.empty? && !@no_flash %><%#= render 'layouts/flash_bar' %>
+        <% end %>
+        <%#= render 'layouts/ajax_loader'%>
+        <%= yield %>
+      </div>
+    </div>
     <%= render 'layouts/main_footer' %>
   </div>
 <!-- /.container -->

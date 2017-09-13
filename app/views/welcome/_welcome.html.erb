@@ -1,7 +1,7 @@
 <div id="welcome_page">
 <!-- Page Content -->
     <% if !@offering.nil? %>
-      <%= render partial: 'mission', locals: {active_offering: @offering}%>
+      <%#= render partial: 'mission', locals: {active_offering: @offering}%>
       <div class="row">
         <div class="col-md-3 welcome-panel-left">
           <% if admin_authorized? %>
