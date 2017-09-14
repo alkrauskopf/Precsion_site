@@ -34,20 +34,6 @@
                 <% end %>
               </div>
             <% end %>
-            <% if !offering.active_contents.empty? %>
-              <div class="view_more">
-                <% offering.active_contents.each do |content| %>
-                    <% if content.exist? %>
-                        <% if content.type.upcase == "LINK" %>
-                            View:&nbsp;&nbsp;<a href= <%= content.content_url %> target="_blank"><u><%= content.title.html_safe%></u></a>
-                        <% else %>
-                            View:&nbsp;&nbsp;<a href= <%= content.attached_report %> target="_blank"><u><%= content.title.html_safe%></u></a>
-                        <% end %>
-                        <br/>
-                    <% end %>
-                <% end %>
-              </div>
-            <% end %>
           </div>
           <% if !offering.offering_images.active.headers.empty?%>
             <div class="col-md-5">
@@ -71,14 +57,14 @@
   </div>
   <% if !offering.offering_images.active.not_headers.empty?%>
     <% offering.offering_images.active.not_headers.each_with_index do |image, idx| %>
-      <div class = "view_more">
+      <div class = "about_blue_font view_more">
         <%= render partial: 'collapse_image', locals: {image: image, idx: idx} %>
       </div>
     <% end %>
   <% end %>
   <% if !offering.testimonies.active.empty? %>
     <% grp = 'ofr' %>
-    <div class="view_more">
+    <div class="about_blue_font view_more">
       <% offering.testimonies.active.each_with_index do |tst, idx| %>
         <%=tst.tst_view_label%>:&nbsp;<u><%= link_to tst.brief, "#imageModal#{grp}#{idx}#{tst.id}", "data-toggle" => "modal" %></u><br/>
         <%= render partial: 'session/testimony_show_modal', locals: {grp: grp, idx: idx, testimony: tst } %>
@@ -91,5 +77,19 @@
           Read:&nbsp;<u><a href= <%= pov.url %> target="_blank"> <%= pov.name.html_safe %> </a></u><small><%= pov.user ? (' (' + pov.user.last_name + ')') : '' %></small></br>
       <% end %>
     </div>
+  <% end %>
+  <% if !offering.active_contents.empty? %>
+      <div class="about_blue_font view_more">
+        <% offering.active_contents.each do |content| %>
+            <% if content.exist? %>
+                <% if content.type.upcase == "LINK" %>
+                    View:&nbsp;&nbsp;<a href= <%= content.content_url %> target="_blank"><u><%= content.title.html_safe%></u></a>
+                <% else %>
+                    View:&nbsp;&nbsp;<a href= <%= content.attached_report %> target="_blank"><u><%= content.title.html_safe%></u></a>
+                <% end %>
+                <br/>
+            <% end %>
+        <% end %>
+      </div>
   <% end %>
 </div>
