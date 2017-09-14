@@ -4,9 +4,11 @@
       <%#= render partial: 'mission', locals: {active_offering: @offering}%>
       <div class="row">
         <div class="col-md-3 welcome-panel-left">
+          <%= render partial: 'contact_us' %>
           <% if admin_authorized? %>
             <%= render partial: 'admin_dropdowns' %>
           <% end %>
+
           <%= render partial: 'site_dropdowns', locals: { active_offering: @offering} %>
           <% if current_user && current_user.admin? %>
             <%= render partial: 'offering_log_list', locals: { active_offering: @offering} %>
