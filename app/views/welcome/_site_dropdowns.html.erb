@@ -9,7 +9,7 @@
       <% @offering_list.sort_by{|o| o.display_position}.each do |offering| %>
         <tr >
           <td class="right-hand" style="border:0px;"></td>
-          <% if offering.career? %>
+          <% if offering.career?%>
             <td class="site-link" style="border:0px;">
               <%= link_to offering.name, "#careerModal", "data-toggle" => "modal" %>
             </td>
