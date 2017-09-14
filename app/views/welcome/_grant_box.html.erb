@@ -42,11 +42,11 @@
           <% if offering != featured %>
             <div class="offering_child_box">
               <div class="row">
+                <hr>
                 <%= render partial: 'offering_child_show', locals: {offering: offering} %>
               </div>
             </div>
           <% end %>
-          <hr>
         <% end -%>
       </div>
     </div>
