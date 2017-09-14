@@ -743,7 +743,9 @@ h1, h2, h3, h4 {
   font-style: normal;
   background-color: $page_background;
 }
-
+.modal-tst-offset {
+  margin-top:210px;
+}
 .modal-tst-body {
   background-color: $page_background;
 }
