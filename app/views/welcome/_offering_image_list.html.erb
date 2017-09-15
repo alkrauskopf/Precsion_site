@@ -2,7 +2,6 @@
   <div class="offering_image_box">
     <% active_offering.offering_images.active.carousels.by_position.each do|image| %>
       <div class="row">
-        <hr>
         <p  class = "image_name">
           <%= image.name.html_safe %>
         </p>
@@ -13,6 +12,7 @@
           <%= image.pic? ? image_tag(image.image) : '' %>
         </p>
       </div>
+      <hr>
     <% end %>
   </div>
 <% end %>
