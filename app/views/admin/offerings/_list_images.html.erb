@@ -29,6 +29,9 @@
                 <% if image.carousel? %>
                     Carousel<br/>
                 <% end %>
+                <% if image.button? %>
+                    Button<br/>
+                <% end %>
                 <%= image.active? ? "Active" : "Not Active" %>
               </td>
               <td>

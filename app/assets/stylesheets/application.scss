@@ -66,7 +66,7 @@ a.btn {
 }
 .button_contact {
   @extend .btn;
-  @extend .btn-primary;
+  @extend .btn-default;
   @extend .btn-xs;
   margin-top:0em;
   margin-left:0em;
@@ -83,11 +83,13 @@ a.btn {
 
 .precision_panel {
   @extend .panel-heading;
-  padding-top:1.5em;
+  padding-top:1em;
+  padding-bottom:0em;
   text-align:center;
   vertical-align:middle;
-  min-height:3.5em;
+  min-height:2.5em;
   font-size:18px;
+  font-family:  Arial, Helvetica, sans-serif;
 }
 
 .button_webinar {
@@ -109,11 +111,10 @@ a.btn {
 .right-hand {
   @extend .glyphicon;
   @extend .glyphicon-hand-right;
-  color:$blue_hand;
   border:0px;
   margin-top:0em;
   margin-left:0em;
-  font-size:14px;
+  font-size:13px;
 }
 .check-mark {
   @extend .glyphicon;
@@ -196,7 +197,7 @@ h1, h2, h3, h4 {
   background-color:transparent;
 }
 .main_background_image {
-  background-image: image_url("Precision_header_snow_2.jpeg");
+  background-image: image_url("Precision_header_snow_3.jpeg");
   background-repeat: no-repeat;
   width: 100%;
   background-size: 100%;
@@ -228,12 +229,12 @@ h1, h2, h3, h4 {
   font-weight:normal;
 }
 .contact_us_row{
-  padding:2em 0em .5em 2em;
+  padding:2em 0em .5em 1em;
   font-size:10px;
   float:left;
 }
 .main_background_image .marque{
-  padding:0em 0em 0em 0em;
+  padding:3.5em 0em 0em 0em;
   float:right;
 }
 
@@ -267,14 +268,26 @@ h1, h2, h3, h4 {
 .site-link .childs {
   background:transparent;
 }
-.site_child_link {
+.site_child_box {
+  padding:0em 0em 1.5em 1em;
   text-align:left;
   border:0px;
   background:transparent;
   line-height:1em;
-  font-size:13px;
-  padding:1em 0em 0em 2em;
   color:$link;
+}
+.site_child_row {
+  padding:.5em 0em 0em 1em;
+  text-align:left;
+  border:0px;
+  background:transparent;
+  line-height:1em;
+  color:$link;
+}
+.site_child_link {
+  padding:0em 0em 0em 0em;
+  font-family: Copperplate, Arial, Helvetica, sans-serif;
+  font-size:12px;
 }
 
 .offering_image img {
@@ -290,14 +303,14 @@ h1, h2, h3, h4 {
 }
 
 .marque_row {
-  margin: 3.5em 4em 0em 20em;
+  margin: 3em 5em 0em 5em;
   padding-bottom: 0em;
   font-weight:normal;
   font-style: italic;
   font-size: 13px;
   border-width:0px 0px 0px 0px;
   vertical-align:bottom;
-  color: $light-text;
+  color: white;
 }
 .flash_row {
   margin: .5em 10em .5em 10em;

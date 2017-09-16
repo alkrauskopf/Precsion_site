@@ -43,22 +43,19 @@
 </head>
 <body>
   <div class="main_header">
-  <div class="main_background_image">
-    <div class="row">
-      <div class="col-md-6">
-      </div>
-      <div class="col-md-6">
-        <div class="marque">
-          <%= render 'layouts/marque_bar' %>
+    <div class="main_background_image">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="marque">
+            <%= render 'layouts/marque_bar' %>
+          </div>
         </div>
-        <div class="contact_us">
-          <%#= link_to 'Contact Us', contact_logs_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#contactModal', :class=>'button_contact'} %>
-        </div>
+        <div class="col-md-3"></div>
+        <%= render '/session/contact_us_modal' %>
+        <%= render '/session/career_modal' %>
       </div>
-      <%= render '/session/contact_us_modal' %>
-      <%= render '/session/career_modal' %>
     </div>
-  </div>
   </div>
   <div class="page_backgroundx">
     <div class="precision_container">

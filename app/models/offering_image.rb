@@ -19,23 +19,27 @@ class OfferingImage < ActiveRecord::Base
   end
 
   def self.carousels
-    where('is_carousel_img = ?', true)
+    where('is_carousel_img = ? AND is_button = ?', true, false)
   end
 
   def self.not_carousels
-    where('is_carousel_img = ?', false)
+    where('is_carousel_img = ? AND is_button = ?', false, false)
   end
 
   def self.headers
-    where('is_head = ?', true).order('display_position ASC')
+    where('is_head = ? AND is_button = ?', true, false).order('display_position ASC')
   end
 
   def self.not_headers
-    where('is_head = ?', false).order('display_position ASC')
+    where('is_head = ? AND is_button = ?', false, false).order('display_position ASC')
   end
 
   def self.not_carousel_headers
-    where('is_head = ? AND is_carousel_img = ?', false, false)
+    where('is_head = ? AND is_carousel_img = ? AND is_button = ?', false, false, false)
+  end
+
+  def self.buttons
+    where('is_button = ?', true)
   end
 
   def carousel?
@@ -71,4 +75,7 @@ class OfferingImage < ActiveRecord::Base
     self.is_head
   end
 
+  def button?
+    self.is_button
+  end
 end

@@ -50,6 +50,14 @@ class Offering < ActiveRecord::Base
     self.active_images
   end
 
+  def button_image
+    self.offering_images.buttons.active.empty? ? nil : self.offering_images.buttons.active.first
+  end
+
+  def button?
+    self.button_image.nil? ? false : true
+  end
+
   def header_image
     self.header_images.empty? ? nil : self.header_images.first
   end
