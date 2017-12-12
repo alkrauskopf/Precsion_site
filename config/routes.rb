@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
 
-#  mount Wirispluginengine::Engine => 'wirispluginengine'
+ # mount Wirispluginengine::Engine => 'wirispluginengine'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
+  get 'precision_prep' => 'welcome#index', :search_name => 'prep'
+  get 'grants' => 'welcome#index', :search_name => 'grant'
+  get 'team' => 'welcome#index', :search_name => 'team'
+  get 'tools' => 'welcome#index', :search_name => 'tool'
+  get 'services' => 'welcome#index', :search_name => 'service'
+  get 'research' => 'welcome#index', :search_name => 'research'
 
   get 'login' => 'session#login'
   post 'login' => 'session#create'

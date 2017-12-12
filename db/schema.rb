@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803191519) do
+ActiveRecord::Schema.define(version: 20171212195526) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20170803191519) do
     t.text     "description",        limit: 65535
     t.boolean  "is_header",                        default: false
     t.boolean  "is_head"
+    t.boolean  "is_button",                        default: false
   end
 
   create_table "offering_logs", force: :cascade do |t|
@@ -171,7 +172,10 @@ ActiveRecord::Schema.define(version: 20170803191519) do
     t.string  "tst_topic",        limit: 255
     t.string  "tst_organization", limit: 255
     t.boolean "is_default",                     default: false
+    t.string  "search_name",      limit: 10
   end
+
+  add_index "offerings", ["search_name"], name: "index_offerings_on_search_name", using: :btree
 
   create_table "pay_terms", force: :cascade do |t|
     t.string   "title",      limit: 255

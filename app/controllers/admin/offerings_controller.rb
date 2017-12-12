@@ -39,6 +39,7 @@ class Admin::OfferingsController < ApplicationController
         format.html { redirect_to admin_offering_path(@offering.id), notice: "#{@offering.name} has been created." }
         format.json { render :show, status: :ok, location: @offering }
       else
+        parent_options
         format.html { render :new }
         format.json { render json: @offering.errors, status: :unprocessable_entity }
       end
@@ -104,6 +105,7 @@ class Admin::OfferingsController < ApplicationController
         format.html { redirect_to admin_offering_path, notice: "#{@offering.name} has been updated." }
         format.json { render :show, status: :ok, location: @offering }
       else
+        parent_options
         format.html { render :edit }
         format.json { render json: @offering.errors, status: :unprocessable_entity }
       end
@@ -218,7 +220,7 @@ class Admin::OfferingsController < ApplicationController
   end
 
   def offering_params
-    params.require(:offering).permit(:name, :brief, :description,
+    params.require(:offering).permit(:name, :search_name, :brief, :description,
       :display_position, :is_visible, :is_default, :parent_id, :offering_type,
       :panel_header, :panel_color, :tst_person_name, :tst_person_role,
       :tst_statement, :tst_view_label, :tst_video, :tst_topic, :tst_organization)

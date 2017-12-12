@@ -12,6 +12,7 @@ class Offering < ActiveRecord::Base
   has_many :testimony_fors, :through => :offering_testimonies
 
   validates_presence_of :offering_type
+  validates_length_of :search_name,:maximum => 10, :allow_blank => true
 
   def self.all_parents
     where('parent_id IS NULL')

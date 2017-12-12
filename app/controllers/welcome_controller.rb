@@ -14,7 +14,12 @@ class WelcomeController < ApplicationController
 
   private
   def get_offering
-    @offering = params[:id] ? Offering.find(params[:id]) : Offering.default_offering
+    if params[:search_name]
+      @offering = Offering.find_by_search_name(params[:search_name]) rescue nil
+    end
+    if @offering.nil?
+      @offering = params[:id] ? Offering.find(params[:id]) : Offering.default_offering
+    end
     if @offering.nil?
       @offering = Offering.offerings.active.all_parents.first
     end
